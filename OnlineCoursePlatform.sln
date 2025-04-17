@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{64DE1202-3E16-45A7-87D6-71F07B344198}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{5E1D48B3-3750-4668-B5EC-B510AC930673}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{576E87FC-09B0-4CF5-AF9B-4B9DC1DE348B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A706347F-344F-477A-A9BD-31E54089CE46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{EAF6016F-D8B6-4971-9BCC-5AA689C29872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Domain", "OnlineCoursePlatform.Domain\OnlineCoursePlatform.Domain.csproj", "{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5E1D48B3-3750-4668-B5EC-B510AC930673} = {64DE1202-3E16-45A7-87D6-71F07B344198}
+		{576E87FC-09B0-4CF5-AF9B-4B9DC1DE348B} = {64DE1202-3E16-45A7-87D6-71F07B344198}
+		{A706347F-344F-477A-A9BD-31E54089CE46} = {64DE1202-3E16-45A7-87D6-71F07B344198}
+		{EAF6016F-D8B6-4971-9BCC-5AA689C29872} = {64DE1202-3E16-45A7-87D6-71F07B344198}
+		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67} = {576E87FC-09B0-4CF5-AF9B-4B9DC1DE348B}
+	EndGlobalSection
+EndGlobal

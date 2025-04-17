@@ -1,0 +1,149 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\certificate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.domain\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}|OnlineCoursePlatform.Domain\\OnlineCoursePlatform.Domain.csproj|solutionrelative:onlinecourseplatform.domain\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 229,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Certificate.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Certificate.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Certificate.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Certificate.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Certificate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T14:04:15.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Enrollment.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Enrollment.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Enrollment.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Enrollment.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Enrollment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T14:00:37.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Answer.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Answer.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Answer.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Answer.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Answer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T13:57:06.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Question.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Question.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Question.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Question.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T13:55:08.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Test.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Test.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Test.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Test.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Test.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T13:53:36.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Lesson.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Lesson.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Lesson.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T13:39:30.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Category.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T13:31:38.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Course.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Course.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Domain\\Entities\\Course.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain\\Entities\\Course.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Domain\\Entities\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T13:25:35.088Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
