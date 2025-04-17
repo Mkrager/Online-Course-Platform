@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{64DE1202-3E16-45A7-87D6-71F07B344198}"
 EndProject
@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{EAF6016F-D8B6-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Domain", "OnlineCoursePlatform.Domain\OnlineCoursePlatform.Domain.csproj", "{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Application", "OnlineCoursePlatform.Application\OnlineCoursePlatform.Application.csproj", "{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +43,6 @@ Global
 		{A706347F-344F-477A-A9BD-31E54089CE46} = {64DE1202-3E16-45A7-87D6-71F07B344198}
 		{EAF6016F-D8B6-4971-9BCC-5AA689C29872} = {64DE1202-3E16-45A7-87D6-71F07B344198}
 		{A1C89B90-6ACE-4D79-8040-21D52C6CAC67} = {576E87FC-09B0-4CF5-AF9B-4B9DC1DE348B}
+		{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D} = {576E87FC-09B0-4CF5-AF9B-4B9DC1DE348B}
 	EndGlobalSection
 EndGlobal
