@@ -21,7 +21,7 @@
 
 
 	<ItemGroup>
-	  <Folder Include="Features\" />
+	  <Folder Include="Features\Courses\Commands\" />
 	</ItemGroup>
 
 </Project>
