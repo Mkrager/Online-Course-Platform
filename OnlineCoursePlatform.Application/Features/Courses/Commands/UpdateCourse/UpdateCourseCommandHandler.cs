@@ -33,6 +33,8 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
 
             _mapper.Map(request, courseToUpdate, typeof(UpdateCourseCommand), typeof(Course));
 
+            await _courseRepository.UpdateAsync(courseToUpdate);
+
             return Unit.Value;
         }
     }

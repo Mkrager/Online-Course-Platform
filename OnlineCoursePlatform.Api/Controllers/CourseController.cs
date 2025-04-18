@@ -1,5 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -16,5 +20,41 @@ namespace OnlineCoursePlatform.Api.Controllers
             var dtos = await mediator.Send(new GetCoursesListQuery());
             return Ok(dtos);
         }
+
+        [HttpGet("{id}", Name = "GetCourseById")]
+        public async Task<ActionResult<CourseDetailVm>> GetCourseById(Guid id)
+        {
+            var getCourseDetailQuery = new GetCourseDetailQuery() { Id = id };
+            return Ok(await mediator.Send(getCourseDetailQuery));
+        }
+
+        [HttpPost(Name = "AddCourse")]
+        public async Task<ActionResult<Guid>> Create([FromBody] CreateCourseCommand createCourseCommand)
+        {
+            var id = await mediator.Send(createCourseCommand);
+            return Ok(id);
+        }
+
+        [HttpPut(Name = "UpdateCourse")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Update([FromBody] UpdateCourseCommand updateCourseCommand)
+        {
+            await mediator.Send(updateCourseCommand);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}", Name = "DeleteCourse")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var deleteEventCommand = new DeleteCourseCommand() { Id = id };
+            await mediator.Send(deleteEventCommand);
+            return NoContent();
+        }
+
     }
 }
