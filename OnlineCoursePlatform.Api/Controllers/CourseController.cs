@@ -22,6 +22,8 @@ namespace OnlineCoursePlatform.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCourseById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CourseDetailVm>> GetCourseById(Guid id)
         {
             var getCourseDetailQuery = new GetCourseDetailQuery() { Id = id };
@@ -51,8 +53,8 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var deleteEventCommand = new DeleteCourseCommand() { Id = id };
-            await mediator.Send(deleteEventCommand);
+            var deleteCourseCommand = new DeleteCourseCommand() { Id = id };
+            await mediator.Send(deleteCourseCommand);
             return NoContent();
         }
 

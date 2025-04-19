@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Persis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Api", "OnlineCoursePlatform.Api\OnlineCoursePlatform.Api.csproj", "{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.ApplicationTests", "OnlineCoursePlatform.ApplicationTests\OnlineCoursePlatform.ApplicationTests.csproj", "{5EC046E0-5238-4868-A11D-871FA0CA8950}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D} = {576E87FC-09B0-4CF5-AF9B-4B9DC1DE348B}
 		{DFBA4160-EDFB-45ED-8938-63C3518AD5E3} = {A706347F-344F-477A-A9BD-31E54089CE46}
 		{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6} = {5E1D48B3-3750-4668-B5EC-B510AC930673}
+		{5EC046E0-5238-4868-A11D-871FA0CA8950} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
 	EndGlobalSection
 EndGlobal
