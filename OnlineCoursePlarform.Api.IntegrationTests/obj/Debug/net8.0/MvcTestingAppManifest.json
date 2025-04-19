@@ -1,0 +1,6 @@
+{
+  "OnlineCoursePlatform.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api",
+  "OnlineCoursePlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application",
+  "OnlineCoursePlatform.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Domain",
+  "OnlineCoursePlatform.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence"
+}

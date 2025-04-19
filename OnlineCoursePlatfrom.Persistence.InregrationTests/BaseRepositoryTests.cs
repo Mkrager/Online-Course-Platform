@@ -78,7 +78,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var result = await _repository.ListAllAsync();
 
             Assert.NotNull(result);
-            Assert.Single(result);
+            Assert.Equal(2, result.Count);
         }
     }
 }

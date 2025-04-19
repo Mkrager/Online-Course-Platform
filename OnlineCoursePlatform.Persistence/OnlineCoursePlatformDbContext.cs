@@ -44,7 +44,17 @@ namespace OnlineCoursePlatform.Persistence
                 ThumbnailUrl = "test"
             });
 
-
+            modelBuilder.Entity<Course>().HasData(new Course
+            {
+                Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"),
+                CategoryId = testCategoryId,
+                Description = "test2",
+                IsPublished = true,
+                InstructorId = "test2Id",
+                Price = 100,
+                Title = "test2",
+                ThumbnailUrl = "test2"
+            });
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
