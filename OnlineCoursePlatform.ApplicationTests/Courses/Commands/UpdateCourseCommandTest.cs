@@ -27,7 +27,6 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async Task UpdateCourse_ValidCommand_UpdatesCourseSuccessfully()
         {
-            // Arrange
             var handler = new UpdateCourseCommandHandler(_mapper, _mockCourseRepository.Object);
             var updateCommand = new UpdateCourseCommand
             {
@@ -39,10 +38,8 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
                 ThumbnailUrl = "test"
             };
 
-            // Act
             await handler.Handle(updateCommand, CancellationToken.None);
 
-            // Assert
             var updatedAccommodation = await _mockCourseRepository.Object.GetByIdAsync(updateCommand.Id);
 
             updatedAccommodation.ShouldNotBeNull();

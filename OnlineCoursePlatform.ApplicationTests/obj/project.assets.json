@@ -6402,9 +6402,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.ApplicationTests.csproj",
-      "projectName": "OnlineCoursePlatform.ApplicationTests",
-      "projectPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.ApplicationTests.csproj",
+      "projectUniqueName": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj",
+      "projectName": "OnlineCoursePlatform.Application.UnitTests",
+      "projectPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj",
       "packagesPath": "C:\\Users\\Smaga\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\obj\\",
       "projectStyle": "PackageReference",

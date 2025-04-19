@@ -23,7 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Persis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Api", "OnlineCoursePlatform.Api\OnlineCoursePlatform.Api.csproj", "{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.ApplicationTests", "OnlineCoursePlatform.ApplicationTests\OnlineCoursePlatform.ApplicationTests.csproj", "{5EC046E0-5238-4868-A11D-871FA0CA8950}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Application.UnitTests", "OnlineCoursePlatform.ApplicationTests\OnlineCoursePlatform.Application.UnitTests.csproj", "{5EC046E0-5238-4868-A11D-871FA0CA8950}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatfrom.Persistence.InregrationTests", "OnlineCoursePlatfrom.Persistence.InregrationTests\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj", "{3958BCF5-07B8-466A-B650-89A333DB1467}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EC046E0-5238-4868-A11D-871FA0CA8950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3958BCF5-07B8-466A-B650-89A333DB1467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3958BCF5-07B8-466A-B650-89A333DB1467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3958BCF5-07B8-466A-B650-89A333DB1467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3958BCF5-07B8-466A-B650-89A333DB1467}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{DFBA4160-EDFB-45ED-8938-63C3518AD5E3} = {A706347F-344F-477A-A9BD-31E54089CE46}
 		{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6} = {5E1D48B3-3750-4668-B5EC-B510AC930673}
 		{5EC046E0-5238-4868-A11D-871FA0CA8950} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
+		{3958BCF5-07B8-466A-B650-89A333DB1467} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
 	EndGlobalSection
 EndGlobal
