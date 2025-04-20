@@ -2,6 +2,7 @@
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Persistence.Repositories;
 using OnlineCoursePlatform.Persistence;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 {
@@ -13,16 +14,15 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         public CategoryRepositoryTests()
         {
             var options = new DbContextOptionsBuilder<OnlineCoursePlatformDbContext>()
-                .UseInMemoryDatabase(databaseName: "RestinoDb")
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
             _dbContext = new OnlineCoursePlatformDbContext(options);
             _repository = new CategoryRepository(_dbContext);
         }
 
         [Fact]
-        public async Task GetCategoryWithCourses_ReturnsCategoriesWithCourses__WhenOnlyOneCategoryResultIsFalse()
+        public async Task GetCategoryWithCourses_ReturnsCategoriesWithCourses()
         {
-            // Arrange
             var categoryId = Guid.NewGuid();
             var category = new Category
             {
@@ -39,10 +39,8 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.AddRange(courseTest1, courseTest2);
             await _dbContext.SaveChangesAsync();
 
-            // Act
             var result = await _repository.GetCategoriesWithCourses();
 
-            // Assert
             Assert.NotNull(result);
             Assert.Single(result);
             var returnedCategory = result.First();
@@ -50,5 +48,34 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             Assert.Equal(2, returnedCategory.Courses.Count);
         }
 
+        [Fact]
+        public async Task CheckIsCategoryNameUnique_ReturnsFalseWhenNotUnique()
+        {
+            var category1Id = Guid.NewGuid();
+            var category2Id = Guid.NewGuid();
+
+            var category1 = new Category { Id = category1Id, Name = "TestName" };
+
+            _dbContext.Categories.Add(category1);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.IsCategoryNameUnique("TestName");
+            Assert.False(result);
+        }
+
+        [Fact]
+        public async Task CheckIsCategoryNameUnique_ReturnsTrueWhenUnique()
+        {
+            var category1Id = Guid.NewGuid();
+            var category2Id = Guid.NewGuid();
+
+            var category1 = new Category { Id = category1Id, Name = "TestName1" };
+
+            _dbContext.Categories.Add(category1);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.IsCategoryNameUnique("TestName");
+            Assert.True(result);
+        }
     }
 }

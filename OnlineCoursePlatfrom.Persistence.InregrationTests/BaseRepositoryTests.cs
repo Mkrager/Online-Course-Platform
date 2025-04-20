@@ -13,7 +13,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         public BaseRepositoryTests()
         {
             var options = new DbContextOptionsBuilder<OnlineCoursePlatformDbContext>()
-                .UseInMemoryDatabase(databaseName: "RestinoDb")
+                .UseInMemoryDatabase(databaseName: "OnlineCoursePlatformDb")
                 .Options;
             _dbContext = new OnlineCoursePlatformDbContext(options);
             _repository = new BaseRepositrory<Course>(_dbContext);

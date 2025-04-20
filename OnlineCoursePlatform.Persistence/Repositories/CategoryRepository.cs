@@ -15,5 +15,11 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             var allCategories = await _dbContext.Categories.Include(x => x.Courses).ToListAsync();
             return allCategories;
         }
+
+        public Task<bool> IsCategoryNameUnique(string name)
+        {
+            var matches =  _dbContext.Categories.Any(x => x.Name.Equals(name));
+            return Task.FromResult(!matches);
+        }
     }
 }

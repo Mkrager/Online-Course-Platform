@@ -21,7 +21,6 @@
 
 
 	<ItemGroup>
-	  <Folder Include="Features\Categories\Commands\CreateCategory\" />
 	  <Folder Include="Features\Categories\Commands\DeleteCategory\" />
 	</ItemGroup>
 
