@@ -13,7 +13,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Categories.Queries
     public class GetCategoriesListQueryHandlerTests
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<Category>> _mockCategoryRepository;
+        private readonly Mock<ICategoryRepository> _mockCategoryRepository;
 
         public GetCategoriesListQueryHandlerTests()
         {

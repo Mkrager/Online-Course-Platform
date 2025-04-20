@@ -17,7 +17,7 @@ namespace OnlineCoursePlatform.Persistence
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepositrory<>));
 
-            //services.AddScoped<ICourseRepository, CategoryRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             return services;
         }

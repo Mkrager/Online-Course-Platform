@@ -50,7 +50,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
             return mockRepository;
         }
 
-        public static Mock<IAsyncRepository<Category>> GetCategoryRepository()
+        public static Mock<ICategoryRepository> GetCategoryRepository()
         {
             var categories = new List<Category>
             {
@@ -59,7 +59,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             };
 
-            var mockRepository = new Mock<IAsyncRepository<Category>>();
+            var mockRepository = new Mock<ICategoryRepository>();
 
             mockRepository.Setup(r => r.ListAllAsync())
                 .ReturnsAsync(categories);
@@ -86,6 +86,8 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Category>()))
                 .Callback((Category category) => categories.Remove(category));
+
+            mockRepository.Setup(repo => repo.GetCategoriesWithCourses()).ReturnsAsync(categories);
 
             return mockRepository;
         }

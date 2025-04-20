@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
+using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -17,5 +18,13 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
+        [HttpGet("allwithcourses", Name = "GetCategoriesWithCourses")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<List<CategoryListVm>>> GetCategoriesWithCourses()
+        {
+            var dtos = await mediator.Send(new GetCategoriesListWithCoursesQuery());
+            return Ok(dtos);
+        }
     }
 }

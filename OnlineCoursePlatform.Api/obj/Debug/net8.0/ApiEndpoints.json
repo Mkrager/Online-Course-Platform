@@ -30,6 +30,36 @@
     "EndpointName": "GetAllCategories"
   },
   {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.CategoryController",
+    "Method": "GetCategoriesWithCourses",
+    "RelativePath": "api/Category/allwithcourses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList.CategoryListVm, OnlineCoursePlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 0
+      }
+    ],
+    "EndpointName": "GetCategoriesWithCourses"
+  },
+  {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.CourseController",
     "Method": "GetAllCourses",
     "RelativePath": "api/Course",

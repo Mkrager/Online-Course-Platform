@@ -23,7 +23,6 @@
 	<ItemGroup>
 	  <Folder Include="Features\Categories\Commands\CreateCategory\" />
 	  <Folder Include="Features\Categories\Commands\DeleteCategory\" />
-	  <Folder Include="Features\Categories\Queries\GetCategoriesListWithCourses\" />
 	</ItemGroup>
 
 </Project>
