@@ -16,12 +16,12 @@ namespace OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCa
 
             RuleFor(e => e)
                 .MustAsync(CategoryNameUnique)
-                .WithMessage("An category with the same name and date already exists.");
+                .WithMessage("An category with the same name already exists.");
         }
 
         private async Task<bool> CategoryNameUnique(CreateCategoryCommand e, CancellationToken token)
         {
-            return !(await _categoryRepository.IsCategoryNameUnique(e.Name));
+            return await _categoryRepository.IsCategoryNameUnique(e.Name);
         }
 
     }

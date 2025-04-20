@@ -54,8 +54,8 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
         {
             var categories = new List<Category>
             {
-                new Category { Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"), Name = "TestCategory" },
-                new Category { Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"), Name = "TestCategory" }
+                new Category { Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"), Name = "TestCategory1" },
+                new Category { Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"), Name = "TestCategory2" }
 
             };
 
@@ -88,6 +88,9 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
                 .Callback((Category category) => categories.Remove(category));
 
             mockRepository.Setup(repo => repo.GetCategoriesWithCourses()).ReturnsAsync(categories);
+
+            mockRepository.Setup(repo => repo.IsCategoryNameUnique(It.IsAny<string>()))
+                .ReturnsAsync((string name) => !categories.Any(c => c.Name == name));
 
             return mockRepository;
         }

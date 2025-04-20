@@ -1,19 +1,21 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
+using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.ApplicationTests.Mocks;
+using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Categories.Queries
 {
-    public class GetCategoriesListWithCoursesQueryHandlerTests
+    public class GetCategoriesListQueryHandlerTest
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICategoryRepository> _mockCategoryRepository;
 
-        public GetCategoriesListWithCoursesQueryHandlerTests()
+        public GetCategoriesListQueryHandlerTest()
         {
             _mockCategoryRepository = RepositoryMocks.GetCategoryRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
@@ -24,14 +26,13 @@ namespace OnlineCoursePlatform.Application.UnitTests.Categories.Queries
         }
 
         [Fact]
-        public async Task GetCategoriesListWithCourses()
+        public async Task GetCategoryList_ReturnsListOfCategories()
         {
+            var handler = new GetCategoriesListQueryHandler(_mapper, _mockCategoryRepository.Object);
 
-            var handler = new GetCategoriesListWithCoursesQueryHandler(_mapper, _mockCategoryRepository.Object);
+            var result = await handler.Handle(new GetCategoriesListQuery(), CancellationToken.None);
 
-            var result = await handler.Handle(new GetCategoriesListWithCoursesQuery(), CancellationToken.None);
-
-            result.ShouldBeOfType<List<CategoryCourseListVm>>();
+            result.ShouldBeOfType<List<CategoryListVm>>();
 
             result.Count.ShouldBe(2);
         }

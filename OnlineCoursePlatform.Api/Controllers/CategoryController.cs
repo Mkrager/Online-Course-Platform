@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
 
@@ -26,5 +27,14 @@ namespace OnlineCoursePlatform.Api.Controllers
             var dtos = await mediator.Send(new GetCategoriesListWithCoursesQuery());
             return Ok(dtos);
         }
+
+        [HttpPost(Name = "AddCategory")]
+        public async Task<ActionResult<Guid>> CreateCategory
+            ([FromBody] CreateCategoryCommand createCategoryCommand)
+        {
+            var responce = await mediator.Send(createCategoryCommand);
+            return Ok(responce);
+        }
+
     }
 }

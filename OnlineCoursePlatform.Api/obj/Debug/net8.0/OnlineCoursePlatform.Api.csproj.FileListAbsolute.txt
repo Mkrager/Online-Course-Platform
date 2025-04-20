@@ -39,9 +39,11 @@ C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\De
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\System.Composition.Convention.dll
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\System.Composition.Hosting.dll
@@ -150,5 +152,3 @@ C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\De
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\Debug\net8.0\OnlineCoursePlatform.Api.pdb
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\Debug\net8.0\OnlineCoursePlatform.Api.genruntimeconfig.cache
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\Debug\net8.0\ref\OnlineCoursePlatform.Api.dll
-C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Mono.TextTemplating.dll
-C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\System.CodeDom.dll

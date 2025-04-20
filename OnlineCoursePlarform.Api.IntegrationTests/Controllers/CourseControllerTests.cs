@@ -81,6 +81,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var response = await client.PostAsync("/api/Course", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseString);
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);

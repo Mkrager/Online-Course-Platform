@@ -31,6 +31,33 @@
   },
   {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.CategoryController",
+    "Method": "CreateCategory",
+    "RelativePath": "api/Category",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createCategoryCommand",
+        "Type": "OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory.CreateCategoryCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "AddCategory"
+  },
+  {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.CategoryController",
     "Method": "GetCategoriesWithCourses",
     "RelativePath": "api/Category/allwithcourses",
     "HttpMethod": "GET",

@@ -1,8 +1,10 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
+using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
@@ -46,6 +48,33 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.NotNull(result);
             Assert.IsType<List<CategoryCourseListVm>>(result);
             Assert.NotEmpty(result);
+        }
+
+        [Fact]
+        public async Task CreateCategory_ReturnsSuccessAndValidResponse()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var createCategoryCommand = new CreateCategoryCommand
+            {
+                Name = "TestCategory",
+            };
+
+            var content = new StringContent(
+                JsonSerializer.Serialize(createCategoryCommand),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var response = await client.PostAsync("/api/category", content);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<Guid>(responseString);
+
+            Assert.NotNull(result);
+            Assert.NotEqual(Guid.Empty, result);
         }
 
     }

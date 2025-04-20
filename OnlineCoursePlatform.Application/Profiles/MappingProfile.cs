@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
@@ -24,6 +25,8 @@ namespace OnlineCoursePlatform.Application.Profiles
 
             CreateMap<Category, CategoryListVm>().ReverseMap();
             CreateMap<Category, CategoryCourseListVm>().ReverseMap();
+
+            CreateMap<Category, CreateCategoryCommand>().ReverseMap();
         }
     }
 }
