@@ -51,6 +51,18 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -63,7 +75,14 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         new
                         {
                             Id = new Guid("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "test"
+                        },
+                        new
+                        {
+                            Id = new Guid("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a4"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "test2"
                         });
                 });
 
@@ -99,19 +118,24 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("InstructorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsPublished")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -135,13 +159,25 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         {
                             Id = new Guid("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
                             CategoryId = new Guid("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3"),
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "testId",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "test",
-                            InstructorId = "testId",
                             IsPublished = true,
                             Price = 100m,
                             ThumbnailUrl = "test",
                             Title = "test"
+                        },
+                        new
+                        {
+                            Id = new Guid("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"),
+                            CategoryId = new Guid("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3"),
+                            CreatedBy = "test2Id",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "test2",
+                            IsPublished = true,
+                            Price = 100m,
+                            ThumbnailUrl = "test2",
+                            Title = "test2"
                         });
                 });
 

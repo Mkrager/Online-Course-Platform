@@ -45,7 +45,7 @@ namespace OnlineCoursePlatform.Persistence
                 CategoryId = testCategory1Id,
                 Description = "test",
                 IsPublished = true,
-                InstructorId = "testId",
+                CreatedBy = "testId",
                 Price = 100,
                 Title = "test",
                 ThumbnailUrl = "test"
@@ -57,7 +57,7 @@ namespace OnlineCoursePlatform.Persistence
                 CategoryId = testCategory1Id,
                 Description = "test2",
                 IsPublished = true,
-                InstructorId = "test2Id",
+                CreatedBy = "test2Id",
                 Price = 100,
                 Title = "test2",
                 ThumbnailUrl = "test2"
@@ -71,13 +71,13 @@ namespace OnlineCoursePlatform.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedAt = DateTime.Now;
+                        entry.Entity.CreatedDate = DateTime.Now;
                         //entry.Entity.CreatedBy = _loggedInUserService.UserId;
                         break;
-                    //case EntityState.Modified:
-                    //    entry.Entity. = DateTime.Now;
-                    //    entry.Entity.LastModifiedBy = _loggedInUserService.UserId;
-                    //    break;
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedDate = DateTime.Now;
+                        //entry.Entity.LastModifiedBy = _loggedInUserService.UserId;
+                        break;
                 }
             }
             return base.SaveChangesAsync(cancellationToken);

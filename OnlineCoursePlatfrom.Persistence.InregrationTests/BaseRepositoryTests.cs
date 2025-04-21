@@ -22,7 +22,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         [Fact]
         public async Task AddAsync_ShouldAddEntityToDatabase()
         {
-            var course = new Course { Title = "New Course", CreatedAt = DateTime.UtcNow };
+            var course = new Course { Title = "New Course", CreatedDate = DateTime.UtcNow };
 
             var result = await _repository.AddAsync(course);
 
@@ -34,7 +34,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         [Fact]
         public async Task UpdateAsync_ShouldUpdateEntity()
         {
-            var course = new Course { Title = "Old Name", CreatedAt = DateTime.UtcNow };
+            var course = new Course { Title = "Old Name", CreatedDate = DateTime.UtcNow };
             await _repository.AddAsync(course);
 
             course.Title = "Updated Name";
@@ -48,7 +48,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         [Fact]
         public async Task DeleteAsync_ShouldDeleteEntity()
         {
-            var course = new Course { Title = "Course to Delete", CreatedAt = DateTime.UtcNow };
+            var course = new Course { Title = "Course to Delete", CreatedDate = DateTime.UtcNow };
             await _repository.AddAsync(course);
 
             await _repository.DeleteAsync(course);
@@ -60,7 +60,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         [Fact]
         public async Task GetByIdAsync_ShouldReturnEntity_WhenEntityExists()
         {
-            var course = new Course { Title = "Course", CreatedAt = DateTime.UtcNow };
+            var course = new Course { Title = "Course", CreatedDate = DateTime.UtcNow };
             await _repository.AddAsync(course);
 
             var result = await _repository.GetByIdAsync(course.Id);
