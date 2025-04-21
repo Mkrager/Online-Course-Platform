@@ -9,12 +9,12 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Categories.Commands
 {
-    public class CreateCategoryCommandHandlerTest
+    public class CreateCategoryCommandTest
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICategoryRepository> _mockCategoryRepository;
 
-        public CreateCategoryCommandHandlerTest()
+        public CreateCategoryCommandTest()
         {
             _mockCategoryRepository = RepositoryMocks.GetCategoryRepository();
             var configurationProvider = new MapperConfiguration(cfg =>

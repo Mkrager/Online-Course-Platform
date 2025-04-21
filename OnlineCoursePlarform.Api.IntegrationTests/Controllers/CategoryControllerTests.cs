@@ -6,6 +6,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using Xunit.Abstractions;
 
 namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 {
@@ -71,10 +72,23 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var responseString = await response.Content.ReadAsStringAsync();
+
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);
             Assert.NotEqual(Guid.Empty, result);
+        }
+
+        [Fact]
+        public async Task DeleteCategory_ReturnsNoContent_WhenCategoryExists()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            Guid categoryId = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a4");
+
+            var response = await client.DeleteAsync($"/api/Category/{categoryId}");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
 
     }

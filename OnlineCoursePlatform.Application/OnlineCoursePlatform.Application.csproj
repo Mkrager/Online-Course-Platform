@@ -19,9 +19,4 @@
 		<ProjectReference Include="..\OnlineCoursePlatform.Domain\OnlineCoursePlatform.Domain.csproj" />
 	</ItemGroup>
 
-
-	<ItemGroup>
-	  <Folder Include="Features\Categories\Commands\DeleteCategory\" />
-	</ItemGroup>
-
 </Project>

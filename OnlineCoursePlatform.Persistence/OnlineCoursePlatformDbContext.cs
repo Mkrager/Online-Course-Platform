@@ -24,18 +24,25 @@ namespace OnlineCoursePlatform.Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OnlineCoursePlatformDbContext).Assembly);
 
-            var testCategoryId = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3");
+            var testCategory1Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3");
+            var testCategory2Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a4");
 
             modelBuilder.Entity<Category>().HasData(new Category
             {
-                Id = testCategoryId,
+                Id = testCategory1Id,
                 Name = "test"
+            });
+
+            modelBuilder.Entity<Category>().HasData(new Category
+            {
+                Id = testCategory2Id,
+                Name = "test2"
             });
 
             modelBuilder.Entity<Course>().HasData(new Course
             {
                 Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
-                CategoryId = testCategoryId,
+                CategoryId = testCategory1Id,
                 Description = "test",
                 IsPublished = true,
                 InstructorId = "testId",
@@ -47,7 +54,7 @@ namespace OnlineCoursePlatform.Persistence
             modelBuilder.Entity<Course>().HasData(new Course
             {
                 Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"),
-                CategoryId = testCategoryId,
+                CategoryId = testCategory1Id,
                 Description = "test2",
                 IsPublished = true,
                 InstructorId = "test2Id",

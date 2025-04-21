@@ -4,11 +4,11 @@ using System.Text.Json;
 
 namespace OnlineCoursePlatform.Api.Middlewares
 {
-    public class ExceptionHandlerMiddelware
+    public class ExceptionHandlerMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public ExceptionHandlerMiddelware(RequestDelegate next)
+        public ExceptionHandlerMiddleware(RequestDelegate next)
         {
             _next = next;
         }

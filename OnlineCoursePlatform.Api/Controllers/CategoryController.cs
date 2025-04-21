@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
+using OnlineCoursePlatform.Application.Features.Categories.Commands.DeleteCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -34,6 +36,17 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var responce = await mediator.Send(createCategoryCommand);
             return Ok(responce);
+        }
+
+        [HttpDelete("{id}", Name = "DeleteCategory")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var deleteCourseCommand = new DeleteCategoryCommand() { Id = id };
+            await mediator.Send(deleteCourseCommand);
+            return NoContent();
         }
 
     }

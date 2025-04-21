@@ -6,6 +6,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using Xunit.Abstractions;
 
 namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 {
@@ -81,7 +82,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var response = await client.PostAsync("/api/Course", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseString);
+
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);
@@ -130,7 +131,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
 
         [Fact]
-        public async Task DeleteCourse_ReturnsNoContent_WhenCategoryExists()
+        public async Task DeleteCourse_ReturnsNoContent_WhenCourseExists()
         {
             var client = _factory.GetAnonymousClient();
 
