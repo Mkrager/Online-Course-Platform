@@ -274,7 +274,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Test");
+                    b.ToTable("Tests");
                 });
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Answer", b =>
