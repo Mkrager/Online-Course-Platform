@@ -8,7 +8,7 @@ using OnlineCoursePlatform.ApplicationTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
-namespace OnlineCoursePlatform.Application.UnitTests.Tests
+namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 {
     public class CreateTestCommandTest
     {
