@@ -19,4 +19,9 @@
 		<ProjectReference Include="..\OnlineCoursePlatform.Domain\OnlineCoursePlatform.Domain.csproj" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <Folder Include="Features\Tests\Queries\" />
+	</ItemGroup>
+
 </Project>

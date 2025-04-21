@@ -1,0 +1,40 @@
+﻿using AutoMapper;
+using MediatR;
+using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Domain.Entities;
+
+namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
+{
+    public class CreateTestCommandHandler : IRequestHandler<CreateTestCommand, Guid>
+    {
+        private readonly IMapper _mapper;
+        private readonly IAsyncRepository<Test> _testRepository;
+        public CreateTestCommandHandler(IMapper mapper, IAsyncRepository<Test> testRepository)
+        {
+            _mapper = mapper;
+            _testRepository = testRepository;
+        }
+
+        public async Task<Guid> Handle(CreateTestCommand request, CancellationToken cancellationToken)
+        {
+            var test = new Test
+            {
+                CourseId = request.CourseId,
+                Title = request.Title,
+                Questions = request.Questions.Select(q => new Question
+                {
+                    Text = q.Text,
+                    Answers = q.Answers.Select(a => new Answer
+                    {
+                        Text = a.Text,
+                        IsCorrect = a.IsCorrect
+                    }).ToList()
+                }).ToList()
+            };
+
+            test = await _testRepository.AddAsync(test);
+
+            return test.Id;
+        }
+    }
+}

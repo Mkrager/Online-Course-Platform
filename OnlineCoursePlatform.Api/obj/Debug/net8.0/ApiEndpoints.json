@@ -301,5 +301,32 @@
       }
     ],
     "EndpointName": "DeleteCourse"
+  },
+  {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.TestController",
+    "Method": "Create",
+    "RelativePath": "api/Test",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createTestCommand",
+        "Type": "OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest.CreateTestCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "AddTest"
   }
 ]
