@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="@Url.Content("~/css/style.css")">
+</head>
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">Categories</a>
+            <a href="#">Courses</a>
+            <a href="#">About</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+
+    <div class="block">
+        <img src="~/lib/img/Main.png" alt="Img that represent online courses" class="image">
+        <div class="info">
+            <h2>Site info</h2>
+            <p>Welcome to Online Course Platform, the ultimate destination for online learning. Our platform offers a wide variety of courses designed to help you master new skills, advance your career, and achieve your personal goals. Whether you're looking to improve your professional skills or explore new interests, our easy-to-use platform provides high-quality courses, flexible learning, and expert instructors. Start your learning journey today and unlock your full potential!</p>
+        </div>
+    </div>
+
+    @RenderBody()
+</body>
+</html>

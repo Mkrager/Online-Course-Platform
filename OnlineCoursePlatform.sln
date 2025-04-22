@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatfrom.Persis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlarform.Api.IntegrationTests", "OnlineCoursePlarform.Api.IntegrationTests\OnlineCoursePlarform.Api.IntegrationTests.csproj", "{6415B4EF-1505-4726-AA40-8FF50B096639}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatfrom.App", "OnlineCoursePlatfrom.App\OnlineCoursePlatfrom.App.csproj", "{ECD35B7A-2BCC-4DDF-9CF9-97C62928A403}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{6415B4EF-1505-4726-AA40-8FF50B096639}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6415B4EF-1505-4726-AA40-8FF50B096639}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6415B4EF-1505-4726-AA40-8FF50B096639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD35B7A-2BCC-4DDF-9CF9-97C62928A403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD35B7A-2BCC-4DDF-9CF9-97C62928A403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD35B7A-2BCC-4DDF-9CF9-97C62928A403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD35B7A-2BCC-4DDF-9CF9-97C62928A403}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,5 +85,6 @@ Global
 		{5EC046E0-5238-4868-A11D-871FA0CA8950} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
 		{3958BCF5-07B8-466A-B650-89A333DB1467} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
 		{6415B4EF-1505-4726-AA40-8FF50B096639} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
+		{ECD35B7A-2BCC-4DDF-9CF9-97C62928A403} = {EAF6016F-D8B6-4971-9BCC-5AA689C29872}
 	EndGlobalSection
 EndGlobal
