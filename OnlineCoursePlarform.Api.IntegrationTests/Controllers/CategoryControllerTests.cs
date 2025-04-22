@@ -13,9 +13,11 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
     public class CategoryControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        public CategoryControllerTests(CustomWebApplicationFactory<Program> factory)
+        private readonly ITestOutputHelper _output;
+        public CategoryControllerTests(CustomWebApplicationFactory<Program> factory, ITestOutputHelper output)
         {
             _factory = factory;
+            _output = output;
         }
 
         [Fact]
@@ -68,11 +70,12 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             );
 
             var response = await client.PostAsync("/api/category", content);
+            _output.WriteLine(response.ToString());
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var responseString = await response.Content.ReadAsStringAsync();
-
+            _output.WriteLine(responseString);
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);

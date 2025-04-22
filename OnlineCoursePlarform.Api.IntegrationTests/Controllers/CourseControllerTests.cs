@@ -13,9 +13,11 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
     public class CourseControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        public CourseControllerTests(CustomWebApplicationFactory<Program> factory)
+        private readonly ITestOutputHelper _output;
+        public CourseControllerTests(CustomWebApplicationFactory<Program> factory, ITestOutputHelper output)
         {
             _factory = factory;
+            _output = output;
         }
 
         [Fact]
@@ -39,7 +41,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         {
             var client = _factory.GetAnonymousClient();
 
-            Guid courseId = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2");
+            Guid courseId = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1");
 
             var response = await client.GetAsync($"/api/Course/{courseId}");
 
@@ -82,7 +84,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var response = await client.PostAsync("/api/Course", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
-
+            _output.WriteLine(responseString);
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);
@@ -99,7 +101,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             var updateCourseCommand = new UpdateCourseCommand
             {
-                Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"),
+                Id = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1"),
                 Title = "UpdatedCourse",
                 Description = "UpdatedCourseDescriptionUpdatedCourseDescriptionUpdatedCourseDescriptionUpdatedCourseDescriptionUpdatedCourseDescriptionUpdatedCourseDescriptionUpdatedCourseDescriptionUpdatedCourseDescription",
                 Price = 2000,

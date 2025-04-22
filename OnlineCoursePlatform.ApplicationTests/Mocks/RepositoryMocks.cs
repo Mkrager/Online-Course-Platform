@@ -95,7 +95,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
             return mockRepository;
         }
 
-        public static Mock<IAsyncRepository<Test>> GetTestRepository()
+        public static Mock<ITestRepository> GetTestRepository()
         {
             var tests = new List<Test>
             {
@@ -104,7 +104,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             };
 
-            var mockRepository = new Mock<IAsyncRepository<Test>>();
+            var mockRepository = new Mock<ITestRepository>();
 
             mockRepository.Setup(r => r.ListAllAsync())
                 .ReturnsAsync(tests);
@@ -131,6 +131,8 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Test>()))
                 .Callback((Test test) => tests.Remove(test));
+
+            mockRepository.Setup(repo => repo.GetTestWithQuestionsAndAnswers(It.IsAny<Guid>())).ReturnsAsync((Guid id) => tests.FirstOrDefault(x => x.Id == id));
 
             return mockRepository;
 

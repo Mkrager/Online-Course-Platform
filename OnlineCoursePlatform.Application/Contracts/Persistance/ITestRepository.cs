@@ -2,7 +2,7 @@
 
 namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
-    public interface ITestRepository
+    public interface ITestRepository : IAsyncRepository<Test>
     {
         Task<Test> GetTestWithQuestionsAndAnswers(Guid id);
     }

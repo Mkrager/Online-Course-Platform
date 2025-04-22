@@ -53,7 +53,7 @@ namespace OnlineCoursePlatform.Persistence
 
             modelBuilder.Entity<Course>().HasData(new Course
             {
-                Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"),
+                Id = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1"),
                 CategoryId = testCategory1Id,
                 Description = "test2",
                 IsPublished = true,
@@ -61,6 +61,13 @@ namespace OnlineCoursePlatform.Persistence
                 Price = 100,
                 Title = "test2",
                 ThumbnailUrl = "test2"
+            });
+
+            modelBuilder.Entity<Test>().HasData(new Test
+            {
+                Id = Guid.Parse("1f5a4c21-2c9b-4b4e-bcb9-36b770a742d0"),
+                CourseId = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1"),
+                Title = "test"
             });
         }
 
