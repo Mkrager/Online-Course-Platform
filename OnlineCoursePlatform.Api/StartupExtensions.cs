@@ -23,7 +23,7 @@ namespace OnlineCoursePlatform.Api
             {
                 options.AddPolicy("Open", policy =>
                 {
-                    policy.WithOrigins("https://localhost:7079 Z UI sulku")
+                    policy.WithOrigins("https://localhost:7063")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
