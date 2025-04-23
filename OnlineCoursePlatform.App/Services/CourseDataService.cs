@@ -100,9 +100,9 @@ namespace OnlineCoursePlatform.App.Services
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
 
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
+                    var courseDetail = JsonSerializer.Deserialize<Guid>(responseContent);
 
-                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseId);
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseDetail);
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
@@ -115,9 +115,31 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public Task<ApiResponse<Guid>> DeleteCourse(Guid id)
+        public async Task<ApiResponse<Guid>> DeleteCourse(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7275/api/course/{id}");
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var courseDetail = JsonSerializer.Deserialize<Guid>(responseContent);
+
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseDetail);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
+            }
         }
     }
 }

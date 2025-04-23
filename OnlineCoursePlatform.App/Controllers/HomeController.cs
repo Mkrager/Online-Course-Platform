@@ -12,18 +12,8 @@ namespace OnlineCoursePlatform.App.Controllers
             _courseDataService = courseDataService;
         }
         public async Task<IActionResult> Index()
-            {
-            CourseDetailViewModel viewModel = new CourseDetailViewModel()
-            {
-                Description = "test",
-                IsPublished = true,
-                Price = 1,
-                ThumbnailUrl = "test",
-                Title = "test",
-                CategoryId = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3")
-            };
-
-            var createCourse = await _courseDataService.CreateCourse(viewModel);
+        {
+            var createCourse = await _courseDataService.DeleteCourse(Guid.Parse("9d528c62-ece4-4aeb-8014-08dd82735b67"));
             return View();
         }
 
