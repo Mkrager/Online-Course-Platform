@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels;
+using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
@@ -52,6 +53,71 @@ namespace OnlineCoursePlatform.App.Services
             }
 
             return new List<CourseListViewModel>();
+        }
+
+        public async Task<ApiResponse<Guid>> CreateCourse(CourseDetailViewModel courseDetailViewModel)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/course")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(courseDetailViewModel), Encoding.UTF8, "application/json")
+                };
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
+
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseId);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
+            }
+        }
+
+        public async Task<ApiResponse<Guid>> UpdateCourse(CourseDetailViewModel courseDetailViewModel)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/course")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(courseDetailViewModel), Encoding.UTF8, "application/json")
+                };
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
+
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseId);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
+            }
+        }
+
+        public Task<ApiResponse<Guid>> DeleteCourse(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

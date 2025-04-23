@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using System.Diagnostics;
+using OnlineCoursePlatform.App.ViewModels;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -12,8 +12,18 @@ namespace OnlineCoursePlatform.App.Controllers
             _courseDataService = courseDataService;
         }
         public async Task<IActionResult> Index()
-        {
-            var list = await _courseDataService.GetAllCourses();
+            {
+            CourseDetailViewModel viewModel = new CourseDetailViewModel()
+            {
+                Description = "test",
+                IsPublished = true,
+                Price = 1,
+                ThumbnailUrl = "test",
+                Title = "test",
+                CategoryId = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3")
+            };
+
+            var createCourse = await _courseDataService.CreateCourse(viewModel);
             return View();
         }
 
