@@ -7,11 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
     <Folder Include="Controllers\" />
     <Folder Include="Middlewares\" />
     <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
