@@ -19,6 +19,7 @@ namespace OnlineCoursePlatform.Persistence
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Test> Tests { get; set; }
+        public DbSet<Level> Levels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +27,24 @@ namespace OnlineCoursePlatform.Persistence
 
             var testCategory1Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3");
             var testCategory2Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a4");
+
+            modelBuilder.Entity<Level>().HasData(new Level
+            {
+                Id = Guid.Parse("f80e97ef-6640-41a5-8ccd-603a6ab1bd33"),
+                Name = "Beginner"
+            });
+
+            modelBuilder.Entity<Level>().HasData(new Level
+            {
+                Id = Guid.Parse("03e986cf-2784-4096-b130-2762c2018777"),
+                Name = "Intermediate"
+            });
+
+            modelBuilder.Entity<Level>().HasData(new Level
+            {
+                Id = Guid.Parse("3503ccbe-92df-4525-a908-a4aceeae1036"),
+                Name = "Advanced"
+            });
 
             modelBuilder.Entity<Category>().HasData(new Category
             {
@@ -46,6 +65,7 @@ namespace OnlineCoursePlatform.Persistence
                 Description = "test",
                 IsPublished = true,
                 CreatedBy = "testId",
+                LevelId = Guid.Parse("f80e97ef-6640-41a5-8ccd-603a6ab1bd33"),
                 Price = 100,
                 Title = "test",
                 ThumbnailUrl = "test"
@@ -57,6 +77,7 @@ namespace OnlineCoursePlatform.Persistence
                 CategoryId = testCategory1Id,
                 Description = "test2",
                 IsPublished = true,
+                LevelId = Guid.Parse("f80e97ef-6640-41a5-8ccd-603a6ab1bd33"),
                 CreatedBy = "test2Id",
                 Price = 100,
                 Title = "test2",
