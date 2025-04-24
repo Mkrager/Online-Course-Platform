@@ -689,6 +689,20 @@
         },
         "additionalProperties": false
       },
+      "CategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CategoryListVm": {
         "type": "object",
         "properties": {
@@ -755,6 +769,17 @@
           "thumbnailUrl": {
             "type": "string",
             "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "$ref": "#/components/schemas/CategoryDto"
           }
         },
         "additionalProperties": false
