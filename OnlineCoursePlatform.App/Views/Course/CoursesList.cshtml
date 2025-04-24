@@ -5,14 +5,14 @@
     {
         <div class="course-card">
             <h3 class="title">@course.Title</h3>
-            @* <p class="author">@course</p> *@
+            <p class="author">@course.CreatedBy</p> 
             <div class="category-section">
-                <span class="category">@course.</span>
+                <span class="category">@course.Category.Name</span>
             </div>
             <div class="course-info">
                 <span class="level">Beginner</span>
-                <span class="duration">14m 51s</span>
-                <span class="date">06 Dec 2024</span>
+                @* <span class="duration">@course.Duration</span> *@
+                <span class="date">@course.CreatedDate</span>
                 <button class="buy-btn">Buy</button>
             </div>
         </div>
