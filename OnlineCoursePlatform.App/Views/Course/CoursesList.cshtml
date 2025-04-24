@@ -1,0 +1,20 @@
+﻿@model List<CourseListViewModel>
+
+<div class="card-container">
+    @foreach(var course in Model)
+    {
+        <div class="course-card">
+            <h3 class="title">@course.Title</h3>
+            @* <p class="author">@course</p> *@
+            <div class="tags">
+                <span class="tag">Core Tech</span>
+            </div>
+            <div class="course-info">
+                <span class="level">Beginner</span>
+                <span class="duration">14m 51s</span>
+                <span class="date">06 Dec 2024</span>
+                <button class="buy-btn">Buy</button>
+            </div>
+        </div>
+    }
+</div>
