@@ -43,6 +43,8 @@ namespace OnlineCoursePlatform.Application.Profiles
 
             CreateMap<Question, QuestionDto>().ReverseMap();
             CreateMap<Question, QuestionDetailDto>().ReverseMap();
+
+            CreateMap<Level, LevelDto>().ReverseMap();
         }
     }
 }

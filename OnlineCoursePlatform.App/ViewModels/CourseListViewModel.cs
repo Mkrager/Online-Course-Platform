@@ -11,5 +11,6 @@
         public string? CreatedBy { get; set; }
 
         public CategoryViewModel Category { get; set; } = default!;
+        public LevelViewModel Level { get; set; } = default!;
     }
 }

@@ -762,6 +762,10 @@
             "type": "string",
             "format": "uuid"
           },
+          "levelId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "price": {
             "type": "number",
             "format": "double"
@@ -780,6 +784,9 @@
           },
           "category": {
             "$ref": "#/components/schemas/CategoryDto"
+          },
+          "level": {
+            "$ref": "#/components/schemas/LevelDto"
           }
         },
         "additionalProperties": false
@@ -836,6 +843,20 @@
             "items": {
               "$ref": "#/components/schemas/QuestionDto"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LevelDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
             "nullable": true
           }
         },
