@@ -137,11 +137,11 @@ h2 {
     margin-bottom: 10px;
 }
 
-.tags {
+.category-section {
     margin-bottom: 15px;
 }
 
-.tag {
+.category {
     display: inline-block;
     background: #eef1f6;
     color: #000000;

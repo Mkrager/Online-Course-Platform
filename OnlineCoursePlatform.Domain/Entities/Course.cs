@@ -11,6 +11,7 @@ namespace OnlineCoursePlatform.Domain.Entities
         public decimal Price { get; set; }
         public bool IsPublished { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
+        public TimeSpan Duration { get; set; }
 
         public Category Category { get; set; } = default!;
         public ICollection<Lesson>? Lessons { get; set; }
