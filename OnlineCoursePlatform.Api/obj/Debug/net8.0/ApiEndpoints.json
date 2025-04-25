@@ -1,5 +1,57 @@
 [
   {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.AccountController",
+    "Method": "AuthenticateAsync",
+    "RelativePath": "api/Account/authenticate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "OnlineCoursePlatform.Application.DTOs.Authentication.AuthenticationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnlineCoursePlatform.Application.DTOs.Authentication.AuthenticationResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.AccountController",
+    "Method": "RegisterAsync",
+    "RelativePath": "api/Account/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "OnlineCoursePlatform.Application.DTOs.Authentication.RegistrationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnlineCoursePlatform.Application.DTOs.Authentication.RegistrationResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.CategoryController",
     "Method": "GetAllCategories",
     "RelativePath": "api/Category",

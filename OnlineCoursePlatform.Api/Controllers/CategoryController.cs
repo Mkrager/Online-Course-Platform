@@ -4,7 +4,6 @@ using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCatego
 using OnlineCoursePlatform.Application.Features.Categories.Commands.DeleteCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
