@@ -9,6 +9,7 @@
         public string ThumbnailUrl { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
         public string? CreatedBy { get; set; }
+        public TimeSpan Duration { get; set; }
 
         public CategoryViewModel Category { get; set; } = default!;
         public LevelViewModel Level { get; set; } = default!;

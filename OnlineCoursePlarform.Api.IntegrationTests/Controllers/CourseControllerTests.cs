@@ -64,6 +64,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         [Fact]
         public async Task CreateCourse_ReturnsSuccessAndValidResponse()
         {
+            System.Diagnostics.Debugger.Launch();
             var client = _factory.GetAnonymousClient();
 
             var createCourseCommand = new CreateCourseCommand
@@ -73,6 +74,8 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
                 ThumbnailUrl = "TestThumbnailUrl",
                 Price = 1000,
                 CategoryId = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3"),
+                LevelId = Guid.Parse("03e986cf-2784-4096-b130-2762c2018777")
+                
             };
 
             var content = new StringContent(

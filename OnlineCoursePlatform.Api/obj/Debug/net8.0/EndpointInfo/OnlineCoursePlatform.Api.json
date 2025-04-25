@@ -778,6 +778,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "duration": {
+            "type": "string",
+            "format": "date-span"
+          },
           "createdBy": {
             "type": "string",
             "nullable": true
@@ -813,6 +817,10 @@
             "nullable": true
           },
           "categoryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "levelId": {
             "type": "string",
             "format": "uuid"
           },

@@ -1,18 +1,19 @@
 ﻿@model List<CourseListViewModel>
+@using OnlineCoursePlatform.App.Middlewares;
 
 <div class="card-container">
-    @foreach(var course in Model)
+    @foreach (var course in Model)
     {
         <div class="course-card">
             <h3 class="title">@course.Title</h3>
-            <p class="author">@course.CreatedBy</p> 
+            <p class="author">@course.CreatedBy</p>
             <div class="category-section">
                 <span class="category">@course.Category.Name</span>
             </div>
             <div class="course-info">
                 <span class="level">@course.Level.Name</span>
-                @* <span class="duration">@course.Duration</span> *@
-                <span class="date">@course.CreatedDate</span>
+                <span class="duration">@course.Duration</span>
+                <span class="date">@DateFormatter.ToShortDate(course.CreatedDate)</span>
                 <button class="buy-btn">Buy</button>
             </div>
         </div>
