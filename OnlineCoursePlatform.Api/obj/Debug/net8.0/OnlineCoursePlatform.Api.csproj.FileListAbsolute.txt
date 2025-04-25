@@ -152,3 +152,8 @@ C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\De
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\Debug\net8.0\OnlineCoursePlatform.Api.pdb
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\Debug\net8.0\OnlineCoursePlatform.Api.genruntimeconfig.cache
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\obj\Debug\net8.0\ref\OnlineCoursePlatform.Api.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\OnlineCoursePlatform.Identity.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Api\bin\Debug\net8.0\OnlineCoursePlatform.Identity.pdb

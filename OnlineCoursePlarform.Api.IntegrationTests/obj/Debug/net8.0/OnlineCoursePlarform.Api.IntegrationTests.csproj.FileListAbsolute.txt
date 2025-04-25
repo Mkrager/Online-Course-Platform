@@ -519,3 +519,8 @@ C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.Integr
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\obj\Debug\net8.0\OnlineCoursePlarform.Api.IntegrationTests.pdb
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\obj\Debug\net8.0\OnlineCoursePlarform.Api.IntegrationTests.genruntimeconfig.cache
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\obj\Debug\net8.0\ref\OnlineCoursePlarform.Api.IntegrationTests.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\bin\Debug\net8.0\OnlineCoursePlatform.Identity.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlarform.Api.IntegrationTests\bin\Debug\net8.0\OnlineCoursePlatform.Identity.pdb

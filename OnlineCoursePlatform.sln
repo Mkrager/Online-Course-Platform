@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlarform.Api.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.App", "OnlineCoursePlatform.App\OnlineCoursePlatform.App.csproj", "{542AFBF2-02ED-4B84-BAC1-38C87A67E4EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCoursePlatform.Identity", "OnlineCoursePlatform.Identity\OnlineCoursePlatform.Identity.csproj", "{3376E9B7-3813-43E7-A189-DDE5930FECB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{542AFBF2-02ED-4B84-BAC1-38C87A67E4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{542AFBF2-02ED-4B84-BAC1-38C87A67E4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{542AFBF2-02ED-4B84-BAC1-38C87A67E4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3376E9B7-3813-43E7-A189-DDE5930FECB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3376E9B7-3813-43E7-A189-DDE5930FECB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3376E9B7-3813-43E7-A189-DDE5930FECB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3376E9B7-3813-43E7-A189-DDE5930FECB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +92,6 @@ Global
 		{3958BCF5-07B8-466A-B650-89A333DB1467} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
 		{6415B4EF-1505-4726-AA40-8FF50B096639} = {AB43DFF0-4290-4CDA-9031-C5DCDD21C4ED}
 		{542AFBF2-02ED-4B84-BAC1-38C87A67E4EF} = {EAF6016F-D8B6-4971-9BCC-5AA689C29872}
+		{3376E9B7-3813-43E7-A189-DDE5930FECB2} = {A706347F-344F-477A-A9BD-31E54089CE46}
 	EndGlobalSection
 EndGlobal

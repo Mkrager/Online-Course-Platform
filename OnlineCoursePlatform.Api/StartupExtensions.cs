@@ -2,6 +2,7 @@
 using OnlineCoursePlatform.Persistence;
 using OnlineCoursePlatform.Application;
 using OnlineCoursePlatform.Api.Middlewares;
+using OnlineCoursePlatform.Identity;
 
 namespace OnlineCoursePlatform.Api
 {
@@ -13,6 +14,7 @@ namespace OnlineCoursePlatform.Api
             AddSwagger(builder.Services);
 
             builder.Services.AddApplicationServices();
+            builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
 
             builder.Services.AddHttpContextAccessor();
