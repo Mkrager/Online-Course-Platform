@@ -1,4 +1,4 @@
-﻿namespace OnlineCoursePlatform.Application.DTOs
+﻿namespace OnlineCoursePlatform.Application.DTOs.Authentication
 {
     public class JwtSettings
     {

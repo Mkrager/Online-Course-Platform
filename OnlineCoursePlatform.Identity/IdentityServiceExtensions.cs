@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using OnlineCoursePlatform.Application.DTOs;
+using OnlineCoursePlatform.Application.Contracts.Identity;
+using OnlineCoursePlatform.Application.DTOs.Authentication;
 using OnlineCoursePlatform.Identity.Models;
+using OnlineCoursePlatform.Identity.Service;
 using System.Text;
 using System.Text.Json;
 
@@ -24,7 +26,7 @@ namespace OnlineCoursePlatform.Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<OnlineCoursePlatformIdentityDbContext>().AddDefaultTokenProviders();
 
-            //services.AddTransient<IAuthenticationService, AuthenticationService>();
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
             //services.AddTransient<IUserService, UserService>();
 
             services.AddAuthentication(options =>
