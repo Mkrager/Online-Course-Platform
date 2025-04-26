@@ -3,6 +3,8 @@ using OnlineCoursePlatform.Persistence;
 using OnlineCoursePlatform.Application;
 using OnlineCoursePlatform.Api.Middlewares;
 using OnlineCoursePlatform.Identity;
+using OnlineCoursePlatform.Api.Services;
+using OnlineCoursePlatform.Application.Contracts;
 
 namespace OnlineCoursePlatform.Api
 {
@@ -16,6 +18,8 @@ namespace OnlineCoursePlatform.Api
             builder.Services.AddApplicationServices();
             builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
+
+            builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             builder.Services.AddHttpContextAccessor();
 

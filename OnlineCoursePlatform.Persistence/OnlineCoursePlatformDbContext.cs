@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Persistence
 {
     public class OnlineCoursePlatformDbContext : DbContext
     {
-        public OnlineCoursePlatformDbContext(DbContextOptions<OnlineCoursePlatformDbContext> options)
+        private readonly ICurrentUserService _currentUserService;
+        public OnlineCoursePlatformDbContext(DbContextOptions<OnlineCoursePlatformDbContext> options, ICurrentUserService currentUserService)
             : base(options)
         {
-            
+            _currentUserService = currentUserService;
         }
 
         public DbSet<Course> Courses { get; set; }
@@ -100,11 +102,11 @@ namespace OnlineCoursePlatform.Persistence
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedDate = DateTime.Now;
-                        //entry.Entity.CreatedBy = _loggedInUserService.UserId;
+                        entry.Entity.CreatedBy = _currentUserService.UserId;
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = DateTime.Now;
-                        //entry.Entity.LastModifiedBy = _loggedInUserService.UserId;
+                        entry.Entity.LastModifiedBy = _currentUserService.UserId;
                         break;
                 }
             }
