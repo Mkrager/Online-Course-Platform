@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineCoursePlatform.Application.Contracts;
+using OnlineCoursePlatform.Domain.Common;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Persistence
@@ -96,7 +97,7 @@ namespace OnlineCoursePlatform.Persistence
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            foreach (var entry in ChangeTracker.Entries<Course>())
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
             {
                 switch (entry.State)
                 {

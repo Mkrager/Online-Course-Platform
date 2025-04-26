@@ -64,7 +64,6 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         [Fact]
         public async Task CreateCourse_ReturnsSuccessAndValidResponse()
         {
-            System.Diagnostics.Debugger.Launch();
             var client = _factory.GetAnonymousClient();
 
             var createCourseCommand = new CreateCourseCommand

@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Moq;
+using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Persistence;
 using OnlineCoursePlatform.Persistence.Repositories;
@@ -9,13 +11,20 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
     {
         private readonly OnlineCoursePlatformDbContext _dbContext;
         private readonly BaseRepositrory<Course> _repository;
+        private readonly Mock<ICurrentUserService> _currentUserServiceMock;
+        private readonly string _currentUserId;
 
         public BaseRepositoryTests()
         {
             var options = new DbContextOptionsBuilder<OnlineCoursePlatformDbContext>()
                 .UseInMemoryDatabase(databaseName: "OnlineCoursePlatformDb")
                 .Options;
-            _dbContext = new OnlineCoursePlatformDbContext(options);
+
+            _currentUserId = "00000000-0000-0000-0000-000000000000";
+            _currentUserServiceMock = new Mock<ICurrentUserService>();
+            _currentUserServiceMock.Setup(m => m.UserId).Returns(_currentUserId);
+
+            _dbContext = new OnlineCoursePlatformDbContext(options, _currentUserServiceMock.Object);
             _repository = new BaseRepositrory<Course>(_dbContext);
         }
 
