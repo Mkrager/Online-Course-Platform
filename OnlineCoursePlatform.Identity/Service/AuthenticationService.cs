@@ -9,6 +9,7 @@ using OnlineCoursePlatform.Identity.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 
 namespace OnlineCoursePlatform.Identity.Service
 {
@@ -23,7 +24,7 @@ namespace OnlineCoursePlatform.Identity.Service
             _jwtSettings = jwtSettings.Value;
             _userManager = userManager;
             _signInManager = signInManager;
-        }   
+        }
 
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
         {
@@ -84,7 +85,8 @@ namespace OnlineCoursePlatform.Identity.Service
                 }
                 else
                 {
-                    throw new Exception($"{result.Errors}");
+                    var errorMessages = string.Join("; ", result.Errors.Select(e => e.Description));
+                    throw new Exception(errorMessages);
                 }
             }
             else

@@ -92,6 +92,7 @@ a {
     align-items: center;
     margin: 20px;
     padding: 50px;
+    margin-top: -350px;
     background-color: rgba(0, 0, 0, 0.72);
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -208,11 +209,6 @@ h2 {
 
     .wrapper.active-popup {
         transform: scale(1);
-    }
-
-    .wrapper.active .block {
-        transition: transform .18s ease;
-        transform: translateX(0);
     }
 
     .wrapper.active {

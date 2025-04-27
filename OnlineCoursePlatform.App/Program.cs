@@ -5,11 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddHttpClient();
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<ICourseDataService, CourseDataService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

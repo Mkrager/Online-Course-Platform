@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "64po+9aVBYjuVOk6R4WfHeimzSzLlvMF6KEannUfmNc=",
+  "Hash": "pQl1RVMC/dmK9PTM0wlTfQxQhGxzwm4qZfF0Jw7hWmI=",
   "Source": "OnlineCoursePlatform.App",
   "BasePath": "_content/OnlineCoursePlatform.App",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "7tcwab4k2f",
-      "Integrity": "JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0=",
+      "Fingerprint": "epd9y2arat",
+      "Integrity": "XkhXhFYKGCqOmjYgvNey48Y4iL2mPSq5gfSZT7NpNr8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "zcpkxk1l05",
-      "Integrity": "nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8=",
+      "Fingerprint": "k2bi24zp5t",
+      "Integrity": "jEpXEoL1aY9BGQfqvzZiVzxvuSdLctMtVM9wq9iLsE8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Script.js"
@@ -1342,51 +1342,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/style.7tcwab4k2f.css",
-      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7223"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 13:34:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "7tcwab4k2f"
-        },
-        {
-          "Name": "label",
-          "Value": "css/style.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0="
-        }
-      ]
-    },
-    {
       "Route": "css/style.css",
       "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
       "Selectors": [],
@@ -1397,7 +1352,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7223"
+          "Value": "7132"
         },
         {
           "Name": "Content-Type",
@@ -1405,11 +1360,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0=\""
+          "Value": "\"XkhXhFYKGCqOmjYgvNey48Y4iL2mPSq5gfSZT7NpNr8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 13:34:15 GMT"
+          "Value": "Sun, 27 Apr 2025 14:20:02 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1419,7 +1374,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0="
+          "Value": "sha256-XkhXhFYKGCqOmjYgvNey48Y4iL2mPSq5gfSZT7NpNr8="
+        }
+      ]
+    },
+    {
+      "Route": "css/style.epd9y2arat.css",
+      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7132"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XkhXhFYKGCqOmjYgvNey48Y4iL2mPSq5gfSZT7NpNr8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Apr 2025 14:20:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "epd9y2arat"
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XkhXhFYKGCqOmjYgvNey48Y4iL2mPSq5gfSZT7NpNr8="
         }
       ]
     },
@@ -1434,7 +1434,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "675"
+          "Value": "794"
         },
         {
           "Name": "Content-Type",
@@ -1442,11 +1442,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8=\""
+          "Value": "\"jEpXEoL1aY9BGQfqvzZiVzxvuSdLctMtVM9wq9iLsE8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 12:07:01 GMT"
+          "Value": "Sun, 27 Apr 2025 14:08:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1456,12 +1456,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8="
+          "Value": "sha256-jEpXEoL1aY9BGQfqvzZiVzxvuSdLctMtVM9wq9iLsE8="
         }
       ]
     },
     {
-      "Route": "js/Script.zcpkxk1l05.js",
+      "Route": "js/Script.k2bi24zp5t.js",
       "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\Script.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1471,7 +1471,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "675"
+          "Value": "794"
         },
         {
           "Name": "Content-Type",
@@ -1479,11 +1479,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8=\""
+          "Value": "\"jEpXEoL1aY9BGQfqvzZiVzxvuSdLctMtVM9wq9iLsE8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 27 Apr 2025 12:07:01 GMT"
+          "Value": "Sun, 27 Apr 2025 14:08:21 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1493,7 +1493,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "zcpkxk1l05"
+          "Value": "k2bi24zp5t"
         },
         {
           "Name": "label",
@@ -1501,7 +1501,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8="
+          "Value": "sha256-jEpXEoL1aY9BGQfqvzZiVzxvuSdLctMtVM9wq9iLsE8="
         }
       ]
     },
