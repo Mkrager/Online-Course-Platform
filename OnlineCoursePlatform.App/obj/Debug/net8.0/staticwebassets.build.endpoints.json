@@ -85,6 +85,51 @@
       ]
     },
     {
+      "Route": "css/style.7tcwab4k2f.css",
+      "AssetFile": "css/style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7223"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Apr 2025 13:34:15 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7tcwab4k2f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0="
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        }
+      ]
+    },
+    {
       "Route": "css/style.css",
       "AssetFile": "css/style.css",
       "Selectors": [],
@@ -99,7 +144,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3577"
+          "Value": "7223"
         },
         {
           "Name": "Content-Type",
@@ -107,23 +152,60 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Wvd96MWWJOFCpDB6zUDXKtvDkvmPqRNnZNhLZUwPCAs=\""
+          "Value": "\"JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:56:31 GMT"
+          "Value": "Sun, 27 Apr 2025 13:34:15 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Wvd96MWWJOFCpDB6zUDXKtvDkvmPqRNnZNhLZUwPCAs="
+          "Value": "sha256-JWEc39Ax27i50+0lta3PLl2unwKzFaqY4GoTEGu0sM0="
         }
       ]
     },
     {
-      "Route": "css/style.uzl8umyrky.css",
-      "AssetFile": "css/style.css",
+      "Route": "js/Script.js",
+      "AssetFile": "js/Script.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "675"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 27 Apr 2025 12:07:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8="
+        }
+      ]
+    },
+    {
+      "Route": "js/Script.zcpkxk1l05.js",
+      "AssetFile": "js/Script.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -136,33 +218,33 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3577"
+          "Value": "675"
         },
         {
           "Name": "Content-Type",
-          "Value": "text/css"
+          "Value": "text/javascript"
         },
         {
           "Name": "ETag",
-          "Value": "\"Wvd96MWWJOFCpDB6zUDXKtvDkvmPqRNnZNhLZUwPCAs=\""
+          "Value": "\"nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 24 Apr 2025 12:56:31 GMT"
+          "Value": "Sun, 27 Apr 2025 12:07:01 GMT"
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "uzl8umyrky"
+          "Value": "zcpkxk1l05"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Wvd96MWWJOFCpDB6zUDXKtvDkvmPqRNnZNhLZUwPCAs="
+          "Value": "sha256-nWGw9PgpUd+yxsD2nxoQ2OhRBvz58mc3xYz68ykQlR8="
         },
         {
           "Name": "label",
-          "Value": "css/style.css"
+          "Value": "js/Script.js"
         }
       ]
     },
