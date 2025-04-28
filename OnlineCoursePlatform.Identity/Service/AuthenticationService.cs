@@ -85,8 +85,8 @@ namespace OnlineCoursePlatform.Identity.Service
                 }
                 else
                 {
-                    var errorMessages = string.Join("; ", result.Errors.Select(e => e.Description));
-                    throw new Exception(errorMessages);
+                    var errors = result.Errors.Select(e => e.Description).ToList();
+                    throw new Exception($"{result.Errors}");
                 }
             }
             else

@@ -14,9 +14,9 @@ namespace OnlineCoursePlatform.App.Controllers
             _authenticationService = authenticationService;
         }
 
-        public async Task<IActionResult> Login(AuthenticateRequest request)
+        public async Task<IActionResult> Login(AuthenticationViewModel request)
         {
-            var result = await _authenticationService.Authenticate(request);
+            var result = await _authenticationService.Authenticate(request.AuthenticateRequest);
             TempData["Message"] = HandleResponse<bool>(result, "Success");
 
             if (result.IsSuccess)
@@ -29,6 +29,23 @@ namespace OnlineCoursePlatform.App.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public async Task<IActionResult> Register(AuthenticationViewModel request)
+        {
+            var result = await _authenticationService.Register(request.RegistrationRequest);
+            TempData["Message"] = HandleResponse<bool>(result, "Success");
+
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            TempData["ErrorMessage"] = result.ErrorText ?? "Invalid register attempt.";
+            TempData["ShowLoginPopup"] = true;
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
 
         private string HandleResponse<T>(ApiResponse<T> response, string successMessage = "")
         {

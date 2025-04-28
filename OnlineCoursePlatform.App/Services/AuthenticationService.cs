@@ -98,11 +98,10 @@ namespace OnlineCoursePlatform.App.Services
 
                 var errorContent = await response.Content.ReadAsStringAsync();
 
-                var errorDictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent);
+                var errorMessages = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent) ??
+                                    new Dictionary<string, string> { { "error", errorContent } };
 
-                var errorMessage = errorDictionary?.GetValueOrDefault("error");
-
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessage);
+                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.GetValueOrDefault("error"));
             }
             catch (Exception ex)
             {
