@@ -92,7 +92,6 @@ a {
     align-items: center;
     margin: 20px;
     padding: 50px;
-    margin-top: -350px;
     background-color: rgba(0, 0, 0, 0.72);
     border-radius: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -122,7 +121,7 @@ h2 {
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     padding: 20px;
-    margin: 5px;
+    margin: -5px;
     width: 600px;
 }
 
@@ -165,7 +164,7 @@ h2 {
     gap: 20px;
     align-items: center;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 160px;
 }
 
 .buy-btn {
@@ -191,7 +190,7 @@ h2 {
     }
 
 .wrapper {
-    position: relative;
+    position: fixed;
     width: 400px;
     height: 440px;
     background: transparent;
