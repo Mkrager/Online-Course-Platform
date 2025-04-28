@@ -32,14 +32,14 @@ namespace OnlineCoursePlatform.Identity.Service
 
             if (user == null)
             {
-                throw new UnauthorizedAccessException($"User with {request.Email} not found.");
+                throw new UnauthorizedAccessException($"Invalid email or password.");
             }
 
             var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
 
             if (!result.Succeeded)
             {
-                throw new UnauthorizedAccessException($"Credentials for '{request.Email} aren't valid'.");
+                throw new UnauthorizedAccessException($"Invalid email or password.");
             }
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);

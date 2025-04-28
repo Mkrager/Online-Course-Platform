@@ -5,3 +5,17 @@
         <p>Welcome to Online Course Platform, the ultimate destination for online learning. Our platform offers a wide variety of courses designed to help you master new skills, advance your career, and achieve your personal goals. Whether you're looking to improve your professional skills or explore new interests, our easy-to-use platform provides high-quality courses, flexible learning, and expert instructors. Start your learning journey today and unlock your full potential!</p>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Hello, World!");
+
+            var showLoginPopup = '@TempData["ShowLoginPopup"]';
+
+            if (showLoginPopup === 'True') {
+                document.querySelector('.wrapper').classList.add('active-popup');
+            }
+        });
+    </script>
+}
