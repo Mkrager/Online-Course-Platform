@@ -1,5 +1,9 @@
 ﻿@inject IHttpContextAccessor HttpContextAccessor
 
+@{
+    var userId = User.FindFirst("uid")?.Value;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
             <a href="#">About</a>
             @if (User.Identity.IsAuthenticated)
             {
-                <a asp-controller="account" asp-action="overview">Account</a>
+                <a asp-controller="account" asp-action="overview" asp-route-userId="@userId">Account</a>
             }
             else{
                 <button class="btnLogin-popup">Login</button>

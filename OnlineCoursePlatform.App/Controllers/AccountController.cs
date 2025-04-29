@@ -1,12 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineCoursePlatform.App.Contracts;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult Overview()
+        private readonly IUserDataService _userDataService;
+
+        public AccountController(IUserDataService userDataService)
         {
-            return View();
+            _userDataService = userDataService;
+        }
+        public async Task<IActionResult> Overview(string userId)
+        {
+            var user = await _userDataService.GetUserDetails(userId);
+            return View(user);
         }
     }
 }

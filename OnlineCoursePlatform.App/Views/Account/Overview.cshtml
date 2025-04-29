@@ -1,6 +1,8 @@
-﻿<div class="account-container">
+﻿@model UserDetailsResponse;
+
+<div class="account-container">
     <div class="account-header">
-        <h2>Welcome, [Username]</h2>
+        <h2>Welcome, @Model.UserName</h2>
         <p>Manage your profile and courses easily.</p>
     </div>
 
@@ -8,7 +10,7 @@
         <div class="profile-section">
             <img src="/lib/img/profile.jpg" alt="Profile Picture" class="profile-image">
             <div class="user-info">
-                <p>Email: [user@example.com]</p>
+                <p>Email: @Model.Email</p>
                 <p>Member Since: [Date]</p>
             </div>
             <button class="btn-edit">Edit Profile</button>
@@ -18,19 +20,14 @@
             <h3>Your Courses</h3>
             <div class="course-list">
                 <!-- Course Example -->
-                <div class="course-item">
-                    <h4>Course Title 1</h4>
-                    <p class="course-description">Short description about the course...</p>
-                    <button class="btn-edit-course">Edit</button>
-                </div>
+                @foreach(var course in Model.Courses){
+                    <div class="course-item">
+                        <h4>@course.Title</h4>
+                        <p class="course-description">Desc</p>
+                        <button class="btn-edit-course">Edit</button>
+                    </div>
 
-                <div class="course-item">
-                    <h4>Course Title 2</h4>
-                    <p class="course-description">Short description about the course...</p>
-                    <button class="btn-edit-course">Edit</button>
-                </div>
-            </div>
-
+                }
             <button class="btn-add-course">Create New Course</button>
         </div>
     </div>
