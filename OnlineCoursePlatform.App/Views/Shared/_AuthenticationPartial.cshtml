@@ -1,0 +1,108 @@
+﻿@model AuthenticationViewModel;
+
+@{
+    var message = TempData["Message"] as string;
+}
+
+<div class="wrapper">
+    <span class="icon-close">
+        <ion-icon name="close"></ion-icon>
+    </span>
+    <div class="form-box login">
+        <form asp-controller="Authentication" asp-action="Login" method="post" role="form" id="loginForm">
+            <h2>Login</h2>
+            <h3 class="message">@message</h3>
+
+            <div asp-validation-summary="All" class="error-text"></div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input asp-for="AuthenticateRequest.Email" type="email" placeholder=" " required />
+                <label>Email</label>
+                <span asp-validation-for="AuthenticateRequest.Email" class="error-text"></span>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input asp-for="AuthenticateRequest.Password" type="password" placeholder=" " required />
+                <label>Password</label>
+                <span asp-validation-for="AuthenticateRequest.Password" class="error-text"></span>
+            </div>
+
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <input type="submit" class="btn" value="Login" />
+            <div class="login-register">
+                <p>
+                    Don't have an account? <a href="#"
+                                              class="register-link">Register</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-box register">
+        <form asp-controller="Authentication" asp-action="Register" method="post" role="form" id="registerForm">
+            <h2>Registration</h2>
+            <h3 class="message">@message</h3>
+
+            <div asp-validation-summary="All" class="error-text"></div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input asp-for="RegistrationRequest.Email" type="email" placeholder=" " required />
+                <label>Email</label>
+                <span asp-validation-for="RegistrationRequest.Email" class="error-text"></span>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input asp-for="RegistrationRequest.UserName" placeholder=" " required />
+                <label>Username</label>
+                <span asp-validation-for="RegistrationRequest.UserName" class="error-text"></span>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input asp-for="RegistrationRequest.FirstName" placeholder=" " required />
+                <label>First Name</label>
+                <span asp-validation-for="RegistrationRequest.FirstName" class="error-text"></span>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <input asp-for="RegistrationRequest.LastName" placeholder=" " required />
+                <label>Last Name</label>
+                <span asp-validation-for="RegistrationRequest.LastName" class="error-text"></span>
+            </div>
+
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input asp-for="RegistrationRequest.Password" type="password" placeholder=" " required />
+                <label>Password</label>
+                <span asp-validation-for="RegistrationRequest.Password" class="error-text"></span>
+            </div>
+
+            <input type="submit" class="btn">Register</input>
+            <div class="login-register">
+                <p>
+                    Already have an account? <a href="#"
+                                                class="login-link">Login</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        // Перевіряємо, чи є повідомлення
+        const message = "@TempData["Message"]";
+        if (message) {
+            // Якщо є повідомлення, відкриваємо попап
+            document.querySelector('.wrapper')?.classList.add('active-popup');
+        }
+    }
+</script>

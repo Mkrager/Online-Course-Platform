@@ -39,9 +39,6 @@ namespace OnlineCoursePlatform.App.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            TempData["ErrorMessage"] = result.ErrorText ?? "Invalid register attempt.";
-            TempData["ShowLoginPopup"] = true;
-
             return RedirectToAction("Index", "Home");
         }
 

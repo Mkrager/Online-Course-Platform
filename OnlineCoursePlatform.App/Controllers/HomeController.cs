@@ -8,12 +8,6 @@ namespace OnlineCoursePlatform.App.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IAuthenticationService _authenticationService;
-        public HomeController(IAuthenticationService authenticationService)
-        {
-            _authenticationService = authenticationService;
-        }
-
         public IActionResult Index()
         {
             return View();
