@@ -19,6 +19,7 @@ namespace OnlineCoursePlatform.Persistence
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITestRepository, TestRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
 
             return services;
         }

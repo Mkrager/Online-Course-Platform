@@ -27,7 +27,7 @@ namespace OnlineCoursePlatform.Identity
                 .AddEntityFrameworkStores<OnlineCoursePlatformIdentityDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IAuthenticationService, AuthenticationService>();
-            //services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddAuthentication(options =>
             {
