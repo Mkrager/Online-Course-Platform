@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineCoursePlatfrom.Persistence.InregrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d92c314ebb3885ab5731d16cf1c9c91d67bf618d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b17b361048d81673fbacd2c025b65c76f9a1fc9")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineCoursePlatfrom.Persistence.InregrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineCoursePlatfrom.Persistence.InregrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

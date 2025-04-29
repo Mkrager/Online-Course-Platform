@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatfrom.persistence.inregrationtests\\courserepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|solutionrelative:onlinecourseplatfrom.persistence.inregrationtests\\courserepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatfrom.persistence.inregrationtests\\testrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|solutionrelative:onlinecourseplatfrom.persistence.inregrationtests\\testrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\features\\user\\queries\\getuserdetailsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\features\\user\\queries\\getuserdetailsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DFBA4160-EDFB-45ED-8938-63C3518AD5E3}|OnlineCoursePlatform.Persistence\\OnlineCoursePlatform.Persistence.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.persistence\\repositories\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFBA4160-EDFB-45ED-8938-63C3518AD5E3}|OnlineCoursePlatform.Persistence\\OnlineCoursePlatform.Persistence.csproj|solutionrelative:onlinecourseplatform.persistence\\repositories\\courserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TestController.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\TestController.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\TestController.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\TestController.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\TestController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAzAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "CourseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:29:16.948Z",
+              "WhenOpened": "2025-04-29T13:59:43.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "RelativeToolTip": "OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T13:56:51.936Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
+              "Title": "CourseRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\CourseRepositoryTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatfrom.Persistence.InregrationTests\\CourseRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\CourseRepositoryTests.cs",
+              "RelativeToolTip": "OnlineCoursePlatfrom.Persistence.InregrationTests\\CourseRepositoryTests.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwCAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:29:10.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CourseController.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\CourseController.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\CourseController.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\CourseController.cs*",
-              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\CourseController.cs*",
-              "ViewState": "AgIAABMAAAAAAAAAAAAIwCEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:26:52.627Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GetUserDetailsQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\User\\Queries\\GetUserDetailsQueryHandler.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Features\\User\\Queries\\GetUserDetailsQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\User\\Queries\\GetUserDetailsQueryHandler.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Application\\Features\\User\\Queries\\GetUserDetailsQueryHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-29T13:04:19.097Z",
+              "WhenOpened": "2025-04-29T13:56:37.704Z",
               "EditorCaption": ""
             }
           ]
