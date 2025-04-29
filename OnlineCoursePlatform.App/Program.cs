@@ -23,6 +23,7 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<ICourseDataService, CourseDataService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IUserDataService, UserDataServcie>();
 
 builder.Services.AddControllersWithViews();
 

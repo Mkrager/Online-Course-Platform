@@ -1,15 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Win32;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Services;
-using OnlineCoursePlatform.App.ViewModels;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IUserDataService _userDataService;
+
+        public HomeController(IUserDataService userDataService)
         {
+            _userDataService = userDataService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var result = await _userDataService.GetUserDetails("8a525106-add9-474f-8e24-33c03928353a");
             return View();
         }
 
