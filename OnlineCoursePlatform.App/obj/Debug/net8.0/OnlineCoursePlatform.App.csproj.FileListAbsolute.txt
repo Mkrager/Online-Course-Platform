@@ -33,3 +33,11 @@ C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\obj\De
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\obj\Debug\net8.0\OnlineCoursePlatform.App.pdb
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\obj\Debug\net8.0\OnlineCoursePlatform.App.genruntimeconfig.cache
 C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\obj\Debug\net8.0\ref\OnlineCoursePlatform.App.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\obj\Debug\net8.0\OnlineCoursePlatform.App.csproj.AssemblyReference.cache
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.App\obj\Debug\net8.0\OnlineCo.5E8517B6.Up2Date

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3Wa1m3O43t4Uq85KzO0nZ3PJ+4AWt8khhJSQqDMRSZI=",
+  "Hash": "ZPafNUjAQjLCaaehiuUOC5skMP/b81noRNAj/mjPN/M=",
   "Source": "OnlineCoursePlatform.App",
   "BasePath": "_content/OnlineCoursePlatform.App",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "liqevsdqpc",
-      "Integrity": "Q8OBLEelVfvsU5bnoUPsYuKc9w/Q+9REH7edVlibMow=",
+      "Fingerprint": "6fs40jmr6m",
+      "Integrity": "HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
@@ -1342,6 +1342,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/style.6fs40jmr6m.css",
+      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9937"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 29 Apr 2025 12:20:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6fs40jmr6m"
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k="
+        }
+      ]
+    },
+    {
       "Route": "css/style.css",
       "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
       "Selectors": [],
@@ -1352,7 +1397,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8821"
+          "Value": "9937"
         },
         {
           "Name": "Content-Type",
@@ -1360,11 +1405,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Q8OBLEelVfvsU5bnoUPsYuKc9w/Q+9REH7edVlibMow=\""
+          "Value": "\"HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Apr 2025 11:24:56 GMT"
+          "Value": "Tue, 29 Apr 2025 12:20:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1374,52 +1419,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Q8OBLEelVfvsU5bnoUPsYuKc9w/Q+9REH7edVlibMow="
-        }
-      ]
-    },
-    {
-      "Route": "css/style.liqevsdqpc.css",
-      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8821"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Q8OBLEelVfvsU5bnoUPsYuKc9w/Q+9REH7edVlibMow=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 29 Apr 2025 11:24:56 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "liqevsdqpc"
-        },
-        {
-          "Name": "label",
-          "Value": "css/style.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Q8OBLEelVfvsU5bnoUPsYuKc9w/Q+9REH7edVlibMow="
+          "Value": "sha256-HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k="
         }
       ]
     },
