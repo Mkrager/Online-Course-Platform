@@ -17,6 +17,11 @@ namespace OnlineCoursePlatform.Identity.Service
         {
             var user = await _userManager.FindByIdAsync(userId);
 
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user), "User not found.");
+            }
+
             UserDetailsResponse userDetailsResponse = new UserDetailsResponse()
             {
                 Email = user.Email,
