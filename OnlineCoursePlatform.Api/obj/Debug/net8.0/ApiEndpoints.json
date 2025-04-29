@@ -416,5 +416,41 @@
       }
     ],
     "EndpointName": "GetTestById"
+  },
+  {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.UserController",
+    "Method": "GetUserDetails",
+    "RelativePath": "api/User/GetUserDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "OnlineCoursePlatform.Application.DTOs.User.UserDetailsResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "EndpointName": "GetUserDetails"
   }
 ]
