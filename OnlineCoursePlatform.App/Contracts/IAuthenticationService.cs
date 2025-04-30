@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Services;
 using OnlineCoursePlatform.App.ViewModels;
+using OnlineCoursePlatform.App.ViewModels.Authenticate;
 
 namespace OnlineCoursePlatform.App.Contracts
 {

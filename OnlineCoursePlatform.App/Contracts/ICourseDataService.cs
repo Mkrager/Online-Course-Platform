@@ -1,5 +1,5 @@
 ﻿using OnlineCoursePlatform.App.Services;
-using OnlineCoursePlatform.App.ViewModels;
+using OnlineCoursePlatform.App.ViewModels.Course;
 
 namespace OnlineCoursePlatform.App.Contracts
 {

@@ -1,4 +1,5 @@
-﻿@inject IHttpContextAccessor HttpContextAccessor
+﻿@using OnlineCoursePlatform.App.ViewModels.Authenticate;
+@inject IHttpContextAccessor HttpContextAccessor
 
 @{
     var userId = User.FindFirst("uid")?.Value;

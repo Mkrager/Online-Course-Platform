@@ -12,9 +12,10 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             _userDataService = userDataService;
         }
-        public async Task<IActionResult> Index()
+
+        [HttpGet]
+        public IActionResult Index()
         {
-            var result = await _userDataService.GetUserDetails("8a525106-add9-474f-8e24-33c03928353a");
             return View();
         }
 

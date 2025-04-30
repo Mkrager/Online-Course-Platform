@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Services;
-using OnlineCoursePlatform.App.ViewModels;
+using OnlineCoursePlatform.App.ViewModels.Authenticate;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -14,6 +14,7 @@ namespace OnlineCoursePlatform.App.Controllers
             _authenticationService = authenticationService;
         }
 
+        [HttpPost]
         public async Task<IActionResult> Login(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Authenticate(request.AuthenticateRequest);
@@ -29,6 +30,8 @@ namespace OnlineCoursePlatform.App.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpPost]
         public async Task<IActionResult> Register(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Register(request.RegistrationRequest);

@@ -11,6 +11,8 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             _userDataService = userDataService;
         }
+
+        [HttpGet]
         public async Task<IActionResult> Overview(string userId)
         {
             var user = await _userDataService.GetUserDetails(userId);

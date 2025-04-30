@@ -1,4 +1,4 @@
-﻿namespace OnlineCoursePlatform.App.ViewModels
+﻿namespace OnlineCoursePlatform.App.ViewModels.Level
 {
     public class LevelViewModel
     {

@@ -1,5 +1,5 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.ViewModels;
+using OnlineCoursePlatform.App.ViewModels.User;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services

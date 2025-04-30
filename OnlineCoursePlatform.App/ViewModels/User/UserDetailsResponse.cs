@@ -1,4 +1,6 @@
-﻿namespace OnlineCoursePlatform.App.ViewModels
+﻿using OnlineCoursePlatform.App.ViewModels.Course;
+
+namespace OnlineCoursePlatform.App.ViewModels.User
 {
     public class UserDetailsResponse
     {

@@ -1,4 +1,7 @@
-﻿namespace OnlineCoursePlatform.App.ViewModels
+﻿using OnlineCoursePlatform.App.ViewModels.Category;
+using OnlineCoursePlatform.App.ViewModels.Level;
+
+namespace OnlineCoursePlatform.App.ViewModels.Course
 {
     public class CourseListViewModel
     {

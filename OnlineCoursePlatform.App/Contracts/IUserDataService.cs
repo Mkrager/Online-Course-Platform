@@ -1,4 +1,4 @@
-﻿using OnlineCoursePlatform.App.ViewModels;
+﻿using OnlineCoursePlatform.App.ViewModels.User;
 
 namespace OnlineCoursePlatform.App.Contracts
 {
