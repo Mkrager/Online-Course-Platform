@@ -1,12 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OnlineCoursePlatform.Application.DTOs.User;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
-using OnlineCoursePlatform.Application.Features.User.Queries;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
