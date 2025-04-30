@@ -1,16 +1,16 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Category;
-using OnlineCoursePlatform.App.ViewModels.Course;
+using OnlineCoursePlatform.App.ViewModels.Level;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class CategoryDataService : ICategoryDataService
+    public class LevelDataService : ILevelDataService
     {
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptions;
 
-        public CategoryDataService(HttpClient httpClient)
+        public LevelDataService(HttpClient httpClient)
         {
             _httpClient = httpClient;
 
@@ -19,10 +19,9 @@ namespace OnlineCoursePlatform.App.Services
                 PropertyNameCaseInsensitive = true
             };
         }
-
-        public async Task<List<CategoryViewModel>> GetAllCategories()
+        public async Task<List<LevelViewModel>> GetAllLevels()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/category");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/level");
 
             var response = await _httpClient.SendAsync(request);
 
@@ -30,12 +29,13 @@ namespace OnlineCoursePlatform.App.Services
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
 
-                var categoryList = JsonSerializer.Deserialize<List<CategoryViewModel>>(responseContent, _jsonOptions);
+                var levelList = JsonSerializer.Deserialize<List<LevelViewModel>>(responseContent, _jsonOptions);
 
-                return categoryList;
+                return levelList;
             }
 
-            return new List<CategoryViewModel>();
+            return new List<LevelViewModel>();
+
         }
     }
 }
