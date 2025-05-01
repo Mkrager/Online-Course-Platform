@@ -1,25 +1,17 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.Cookie.Name = "access_token";
-        options.Cookie.HttpOnly = true;
-        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-        options.Cookie.SameSite = SameSiteMode.Strict;
-        options.ExpireTimeSpan = TimeSpan.FromDays(30);
-    });
-
 
 builder.Services.AddRazorPages();
 
 builder.Services.AddHttpClient();
 
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSingleton<JwtHelper>();
 
 builder.Services.AddScoped<ICourseDataService, CourseDataService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();

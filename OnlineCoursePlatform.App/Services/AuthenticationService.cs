@@ -1,12 +1,11 @@
-﻿using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.ViewModels;
+﻿using OnlineCoursePlatform.App.ViewModels;
 using System.Text.Json;
 using System.Text;
+using OnlineCoursePlatform.App.ViewModels.Authenticate;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
-using OnlineCoursePlatform.App.ViewModels.Authenticate;
+using System.Security.Claims;
 
 namespace OnlineCoursePlatform.App.Services
 {
@@ -55,21 +54,6 @@ namespace OnlineCoursePlatform.App.Services
                             SameSite = SameSiteMode.Strict,
                             Expires = DateTime.UtcNow.AddDays(30)
                         });
-                        var handler = new JwtSecurityTokenHandler();
-                        var token = handler.ReadJwtToken(jwtToken);
-
-                        var claims = token.Claims.ToList();
-                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var principal = new ClaimsPrincipal(identity);
-
-                        await _httpContextAccessor.HttpContext.SignInAsync(
-                            CookieAuthenticationDefaults.AuthenticationScheme,
-                            principal,
-                            new AuthenticationProperties
-                            {
-                                IsPersistent = true,
-                                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(30)
-                            });
 
                         return new ApiResponse<bool>(System.Net.HttpStatusCode.OK, true);
                     }

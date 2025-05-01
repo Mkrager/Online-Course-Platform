@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Course;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -10,14 +11,16 @@ namespace OnlineCoursePlatform.App.Services
     {
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptions;
+        private readonly IAuthenticationService _authenticationService;
 
-        public CourseDataService(HttpClient httpClient)
+        public CourseDataService(HttpClient httpClient, IAuthenticationService authenticationService)
         {
             _httpClient = httpClient;
             _jsonOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
+            _authenticationService = authenticationService;
         }
 
         public async Task<CourseDetailViewModel> GetCourseById(Guid id)
@@ -65,7 +68,12 @@ namespace OnlineCoursePlatform.App.Services
                     Content = new StringContent(JsonSerializer.Serialize(courseDetailViewModel), Encoding.UTF8, "application/json")
                 };
 
+                string accessToken = _authenticationService.GetAccessToken();
+
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
                 var response = await _httpClient.SendAsync(request);
+
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -77,9 +85,7 @@ namespace OnlineCoursePlatform.App.Services
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
-                var validationErrors = JsonSerializer.Deserialize<ValidationErrors>(errorContent, _jsonOptions);
-                var errorMessages = validationErrors?.Errors?.SelectMany(e => e.Value).ToList(); 
-
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
                 return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
