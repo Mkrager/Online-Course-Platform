@@ -1,0 +1,54 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Course
+@model CourseDetailViewModel
+
+@{
+    var categories = TempData["Categories"] as SelectList;
+    var levels = TempData["Levels"] as SelectList;
+}
+<section class="form-container">
+    <h2>Create a New Course</h2>
+    <form asp-controller="Course" asp-action="create" method="POST" role="form" id="createForm">
+
+        <div asp-validation-summary="All" class="error-text"></div>
+
+        <div class="input-group">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" />
+            <span asp-validation-for="Title" class="error-text"></span>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" />
+            <span asp-validation-for="Description" class="error-text"></span>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" />
+            <span asp-validation-for="Price" class="error-text"></span>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="ThumbnailUrl"></label>
+            <input asp-for="ThumbnailUrl" />
+            <span asp-validation-for="ThumbnailUrl" class="error-text"></span>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="CategoryId">Category</label>
+            <select asp-for="CategoryId" asp-items="@categories">
+            </select>
+            <span asp-validation-for="CategoryId" class="error-text"></span>
+        </div>
+
+        <div class="input-group">
+            <label asp-for="LevelId">Level</label>
+            <select asp-for="LevelId" asp-items="@levels">
+            </select>
+            <span asp-validation-for="LevelId" class="error-text"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Create Course</button>
+    </form>
+</section>

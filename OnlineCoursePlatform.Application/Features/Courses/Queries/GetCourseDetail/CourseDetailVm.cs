@@ -8,5 +8,6 @@
         public Guid CategoryId { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
+        public string LevelId { get; set; } = string.Empty;
     }
 }

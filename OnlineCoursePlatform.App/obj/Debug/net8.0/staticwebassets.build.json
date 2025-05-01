@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZPafNUjAQjLCaaehiuUOC5skMP/b81noRNAj/mjPN/M=",
+  "Hash": "9bYHN3LU/FHVDWfl5+fxlGVZ4tNCnkh1MpWsl5uwmCA=",
   "Source": "OnlineCoursePlatform.App",
   "BasePath": "_content/OnlineCoursePlatform.App",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6fs40jmr6m",
-      "Integrity": "HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k=",
+      "Fingerprint": "ua8lfopktk",
+      "Integrity": "RnzhkIqW268MYfvBCiYgf1jB13ucIiZr9t7nBqHZ+8s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
@@ -1342,51 +1342,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/style.6fs40jmr6m.css",
-      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "9937"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 29 Apr 2025 12:20:25 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "6fs40jmr6m"
-        },
-        {
-          "Name": "label",
-          "Value": "css/style.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k="
-        }
-      ]
-    },
-    {
       "Route": "css/style.css",
       "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
       "Selectors": [],
@@ -1397,7 +1352,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9937"
+          "Value": "11216"
         },
         {
           "Name": "Content-Type",
@@ -1405,11 +1360,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k=\""
+          "Value": "\"RnzhkIqW268MYfvBCiYgf1jB13ucIiZr9t7nBqHZ+8s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 29 Apr 2025 12:20:25 GMT"
+          "Value": "Thu, 01 May 2025 12:20:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1419,7 +1374,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-HksIy4HdUcn6sqT1aBPAEgFc+gdtcmtUWTkqaj2XW9k="
+          "Value": "sha256-RnzhkIqW268MYfvBCiYgf1jB13ucIiZr9t7nBqHZ+8s="
+        }
+      ]
+    },
+    {
+      "Route": "css/style.ua8lfopktk.css",
+      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RnzhkIqW268MYfvBCiYgf1jB13ucIiZr9t7nBqHZ+8s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 01 May 2025 12:20:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ua8lfopktk"
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RnzhkIqW268MYfvBCiYgf1jB13ucIiZr9t7nBqHZ+8s="
         }
       ]
     },

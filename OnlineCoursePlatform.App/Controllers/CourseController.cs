@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.ViewModels.Course;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -8,11 +9,13 @@ namespace OnlineCoursePlatform.App.Controllers
     {
         private readonly ICourseDataService _courseDataService;
         private readonly ICategoryDataService _categoryDataService;
+        private readonly ILevelDataService _levelDataService;
 
-        public CourseController(ICourseDataService courseDataService, ICategoryDataService categoryDataService)
+        public CourseController(ICourseDataService courseDataService, ICategoryDataService categoryDataService, ILevelDataService levelDataService)
         {
             _courseDataService = courseDataService;
             _categoryDataService = categoryDataService;
+            _levelDataService = levelDataService;
         }
 
         public async Task<SelectList> Categories()
@@ -21,12 +24,12 @@ namespace OnlineCoursePlatform.App.Controllers
             var categoryList = new SelectList(categories, "Id", "Name");
             return categoryList;
         }
-        //public async Task<SelectList> Levels()
-        //{
-        //    var levels = await _categoryDataService.GetAllCategories();
-        //    var categoryList = new SelectList(categories, "Id", "Name");
-        //    return categoryList;
-        //}
+        public async Task<SelectList> Levels()
+        {
+            var levels = await _levelDataService.GetAllLevels();
+            var levelList = new SelectList(levels, "Id", "Name");
+            return levelList;
+        }
 
 
         [HttpGet]
@@ -39,8 +42,8 @@ namespace OnlineCoursePlatform.App.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var categories = _categoryDataService.GetAllCategories();
-
+            TempData["Categories"] = await Categories();
+            TempData["Levels"] = await Levels();
 
             return View();
         }

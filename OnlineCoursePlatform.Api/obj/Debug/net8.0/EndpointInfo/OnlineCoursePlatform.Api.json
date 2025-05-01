@@ -1103,6 +1103,10 @@
           "thumbnailUrl": {
             "type": "string",
             "nullable": true
+          },
+          "levelId": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

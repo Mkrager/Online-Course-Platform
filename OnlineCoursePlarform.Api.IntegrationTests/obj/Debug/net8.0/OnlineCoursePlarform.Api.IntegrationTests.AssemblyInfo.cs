@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineCoursePlarform.Api.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca8877f26e3a7a41190a6aceab208edc10a6550a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b70cd1725e59568522a652c00682f9a237a7eee0")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineCoursePlarform.Api.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineCoursePlarform.Api.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
