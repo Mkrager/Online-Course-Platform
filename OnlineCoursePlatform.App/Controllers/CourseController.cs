@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Services;
 using OnlineCoursePlatform.App.ViewModels.Course;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -47,5 +48,30 @@ namespace OnlineCoursePlatform.App.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CourseDetailViewModel courseDetailViewModel)
+        {
+            var newCourse = await _courseDataService.CreateCourse(courseDetailViewModel);
+
+            TempData["Message"] = HandleResponse<Guid>(newCourse);
+            TempData["Categories"] = await Categories();
+            TempData["Levels"] = await Levels();
+
+            return View();
+        }
+
+        private string HandleResponse<T>(ApiResponse<T> response, string successMessage = "")
+        {
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return successMessage;
+            }
+            else
+            {
+                return response.ErrorText;
+            }
+        }
+
     }
 }

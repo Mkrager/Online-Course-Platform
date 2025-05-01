@@ -4,9 +4,12 @@
 @{
     var categories = TempData["Categories"] as SelectList;
     var levels = TempData["Levels"] as SelectList;
+    var message = TempData["Message"] as string;
 }
 <section class="form-container">
     <h2>Create a New Course</h2>
+
+    <h1 class="error-text">@message</h1>
     <form asp-controller="Course" asp-action="create" method="POST" role="form" id="createForm">
 
         <div asp-validation-summary="All" class="error-text"></div>
