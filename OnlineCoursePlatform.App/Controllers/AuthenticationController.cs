@@ -18,15 +18,12 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Login(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Authenticate(request.AuthenticateRequest);
-            TempData["Message"] = HandleResponse<bool>(result, "Success");
+            TempData["LoginErrorMessage"] = HandleResponse<bool>(result, "Success");
 
             if (result.IsSuccess)
             {
                 return RedirectToAction("Index", "Home");
             }
-
-            TempData["ErrorMessage"] = result.ErrorText ?? "Invalid login attempt.";
-            TempData["ShowLoginPopup"] = true;
 
             return RedirectToAction("Index", "Home");
         }
@@ -35,7 +32,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Register(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Register(request.RegistrationRequest);
-            TempData["Message"] = HandleResponse<bool>(result, "Success");
+            TempData["LoginErrorMessage"] = HandleResponse<bool>(result, "Success");
 
             if (result.IsSuccess)
             {

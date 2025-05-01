@@ -40,14 +40,16 @@
 
         <div class="input-group">
             <label asp-for="CategoryId">Category</label>
-            <select asp-for="CategoryId" asp-items="@categories">
+            <select asp-for="CategoryId" asp-items="@categories" >
+                <option value="" selected disabled>Select a category</option>
             </select>
             <span asp-validation-for="CategoryId" class="error-text"></span>
         </div>
 
         <div class="input-group">
             <label asp-for="LevelId">Level</label>
-            <select asp-for="LevelId" asp-items="@levels">
+            <select asp-for="LevelId" asp-items="@levels" >
+                <option value="" selected disabled>Select a category</option>
             </select>
             <span asp-validation-for="LevelId" class="error-text"></span>
         </div>

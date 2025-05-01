@@ -1,4 +1,5 @@
-﻿using OnlineCoursePlatform.App.Contracts;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Course;
 using System.Text;
 using System.Text.Json;
@@ -76,7 +77,9 @@ namespace OnlineCoursePlatform.App.Services
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var validationErrors = JsonSerializer.Deserialize<ValidationErrors>(errorContent, _jsonOptions);
+                var errorMessages = validationErrors?.Errors?.SelectMany(e => e.Value).ToList(); 
+
                 return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)

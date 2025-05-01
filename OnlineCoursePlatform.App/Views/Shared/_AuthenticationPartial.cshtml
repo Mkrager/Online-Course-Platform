@@ -2,7 +2,7 @@
 @model AuthenticationViewModel;
 
 @{
-    var message = TempData["Message"] as string;
+    var message = TempData["LoginErrorMessage"] as string;
 }
 
 <div class="wrapper">
@@ -99,10 +99,9 @@
 
 <script>
     window.onload = function () {
-        // Перевіряємо, чи є повідомлення
-        const message = "@TempData["Message"]";
+        const message = "@TempData["LoginErrorMessage"]";
         if (message) {
-            // Якщо є повідомлення, відкриваємо попап
+
             document.querySelector('.wrapper')?.classList.add('active-popup');
         }
     }
