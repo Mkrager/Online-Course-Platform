@@ -1,28 +1,28 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/css/style.a8vi5tymr9.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\style.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"a8vi5tymr9"},{"Name":"integrity","Value":"sha256-ZjgVNl5C1o7EzUN5P6CeIgkN/KAbuADJlpDOVaVooDc="},{"Name":"label","Value":"_content/OnlineCoursePlatform.App/css/style.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11239"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZjgVNl5C1o7EzUN5P6CeIgkN/KAbuADJlpDOVaVooDc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 01 May 2025 12:24:10 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/css/style.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\style.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ZjgVNl5C1o7EzUN5P6CeIgkN/KAbuADJlpDOVaVooDc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11239"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZjgVNl5C1o7EzUN5P6CeIgkN/KAbuADJlpDOVaVooDc=\u0022"},{"Name":"Last-Modified","Value":"Thu, 01 May 2025 12:24:10 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2EQlKiWFMftDBWitNmX9JA2wziTEelOqS6UseMiYB8k="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"11240"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222EQlKiWFMftDBWitNmX9JA2wziTEelOqS6UseMiYB8k=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 19:22:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/css/style.okjb5y6fnr.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\style.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"okjb5y6fnr"},{"Name":"integrity","Value":"sha256-2EQlKiWFMftDBWitNmX9JA2wziTEelOqS6UseMiYB8k="},{"Name":"label","Value":"_content/OnlineCoursePlatform.App/css/style.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11240"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222EQlKiWFMftDBWitNmX9JA2wziTEelOqS6UseMiYB8k=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 19:22:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/js/Script.2qruzqlub6.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Script.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2qruzqlub6"},{"Name":"integrity","Value":"sha256-2mLW6B2zMLYgOjOP\u002B\u002B2x1Ixlgmiqy2/PE/KU8HfEbqc="},{"Name":"label","Value":"_content/OnlineCoursePlatform.App/js/Script.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"811"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00222mLW6B2zMLYgOjOP\u002B\u002B2x1Ixlgmiqy2/PE/KU8HfEbqc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 19:15:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/js/Script.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Script.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Io/tG69FRNPJRZSDWUic\u002BOMAjOfX4G7jKcXdi7L7uLA="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"679"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022Io/tG69FRNPJRZSDWUic\u002BOMAjOfX4G7jKcXdi7L7uLA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 01 May 2025 12:32:51 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/js/Script.ukfwiikl6o.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Script.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ukfwiikl6o"},{"Name":"integrity","Value":"sha256-Io/tG69FRNPJRZSDWUic\u002BOMAjOfX4G7jKcXdi7L7uLA="},{"Name":"label","Value":"_content/OnlineCoursePlatform.App/js/Script.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"679"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022Io/tG69FRNPJRZSDWUic\u002BOMAjOfX4G7jKcXdi7L7uLA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 01 May 2025 12:32:51 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-2mLW6B2zMLYgOjOP\u002B\u002B2x1Ixlgmiqy2/PE/KU8HfEbqc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"811"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00222mLW6B2zMLYgOjOP\u002B\u002B2x1Ixlgmiqy2/PE/KU8HfEbqc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 19:15:43 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OnlineCoursePlatform.App/lib/bootstrap/dist/css/bootstrap-grid.agp80tu62r.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap-grid.css'))</AssetFile>

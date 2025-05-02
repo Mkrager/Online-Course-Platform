@@ -18,8 +18,6 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddSingleton<JwtHelper>();
-
 builder.Services.AddScoped<ICourseDataService, CourseDataService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUserDataService, UserDataServcie>();
