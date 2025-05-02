@@ -1,10 +1,8 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.Authenticate;
 @using OnlineCoursePlatform.App.Middlewares;
-@inject IHttpContextAccessor HttpContextAccessor
-@inject JwtHelper JwtHelper
 
 @{
-    var userId = JwtHelper.GetClaimFromToken("uid");
+    var userId = User.FindFirst("uid")?.Value;
 }
 
 <!DOCTYPE html>
@@ -24,11 +22,12 @@
             <a href="#">Categories</a>
             <a asp-controller="Course" asp-action="CoursesList">Courses</a>
             <a href="#">About</a>
-            @if (HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey("access_token"))
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
             {
                 <a asp-controller="account" asp-action="overview" asp-route-userId="@userId">Account</a>
             }
-            else{
+            else
+            {
                 <button class="btnLogin-popup">Login</button>
             }
         </nav>

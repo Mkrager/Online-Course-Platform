@@ -47,6 +47,23 @@ namespace OnlineCoursePlatform.App.Services
 
                     if (!string.IsNullOrEmpty(jwtToken))
                     {
+                        var handler = new JwtSecurityTokenHandler();
+                        var token = handler.ReadJwtToken(jwtToken);
+
+                        var claims = token.Claims.ToList();
+
+                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        var principal = new ClaimsPrincipal(identity);
+
+                        await _httpContextAccessor.HttpContext.SignInAsync(
+                            CookieAuthenticationDefaults.AuthenticationScheme,
+                            principal,
+                            new AuthenticationProperties
+                            {
+                                IsPersistent = true,
+                                ExpiresUtc = DateTime.UtcNow.AddDays(30)
+                            });
+
                         _httpContextAccessor.HttpContext.Response.Cookies.Append("access_token", jwtToken, new CookieOptions
                         {
                             HttpOnly = true,

@@ -7,6 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        //options.LoginPath = "/account/login";
+        //options.AccessDeniedPath = "/account/denied";
+    });
+
 builder.Services.AddHttpClient();
 
 builder.Services.AddHttpContextAccessor();
@@ -29,6 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
