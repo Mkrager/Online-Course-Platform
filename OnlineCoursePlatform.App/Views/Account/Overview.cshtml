@@ -25,6 +25,7 @@
                         <h4>@course.Title</h4>
                         <p class="course-description">Desc</p>
                         <button class="btn-edit-course">Edit</button>
+                        <a class="btn-delete-course" onclick="deleteCourse('@course.Id')">Delete</a>
                     </div>
 
                 }
@@ -33,3 +34,22 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function deleteCourse(courseId) {
+        $.ajax({
+            url: '@Url.Action("Delete", "Course")/' + courseId,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function (response) {
+                window.location.href = "/Home/Index";
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Error');
+            }
+        });
+    }
+
+</script>

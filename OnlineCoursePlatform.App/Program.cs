@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.Services;
 
 var builder = WebApplication.CreateBuilder(args);
