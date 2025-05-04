@@ -394,6 +394,10 @@ h2 {
         text-align: center;
     }
 
+    .account-container h3 {
+        color: #ffffff;
+    }
+
     .account-container h4 {
         color: #ffffff;
     }

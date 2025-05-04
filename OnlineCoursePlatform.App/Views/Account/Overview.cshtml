@@ -43,7 +43,7 @@
             type: 'DELETE',
             dataType: 'json',
             success: function (response) {
-                window.location.href = "/Home/Index";
+                window.location.href = response.redirectUrl;            
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);

@@ -65,7 +65,12 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _courseDataService.DeleteCourse(id);
-            return RedirectToAction("Overview", "Account");
+
+            var userId = User.FindFirst("uid")?.Value;
+
+            var redirectUrl = Url.Action("Overview", "Account", new { userId = userId });
+
+            return Json(new { redirectUrl });
         }
 
         private string HandleResponse<T>(ApiResponse<T> response, string successMessage = "")
