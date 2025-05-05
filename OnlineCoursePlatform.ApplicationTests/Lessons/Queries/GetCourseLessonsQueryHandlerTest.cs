@@ -8,11 +8,11 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Queries
 {
-    public class GetCourseLessonsQueryHandlerTests
+    public class GetCourseLessonsQueryHandlerTest
     {
         private readonly Mock<ILessonRepository> _lessonRepository;
         private readonly IMapper _mapper;
-        public GetCourseLessonsQueryHandlerTests()
+        public GetCourseLessonsQueryHandlerTest()
         {
             _lessonRepository = RepositoryMocks.GetLessonRepository();
             var configurationProvider = new MapperConfiguration(cfg =>

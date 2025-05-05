@@ -9,12 +9,12 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Levels.Queries
 {
-    public class GetLevelsListQueryHandlerTests
+    public class GetLevelsListQueryHandlerTest
     {
         private readonly IMapper _mapper;
         private readonly Mock<IAsyncRepository<Level>> _mockLLevelRepository;
 
-        public GetLevelsListQueryHandlerTests()
+        public GetLevelsListQueryHandlerTest()
         {
             _mockLLevelRepository = RepositoryMocks.GetLevelRepository();
             var configurationProvider = new MapperConfiguration(cfg =>

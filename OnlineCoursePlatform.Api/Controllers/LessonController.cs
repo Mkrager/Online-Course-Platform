@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
+using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -16,5 +17,14 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
+        [HttpGet("{courseId}", Name = "GetCourseLessons")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
+        public async Task<ActionResult<List<CourseLessonListVm>>> GetCourseLessons(Guid courseId)
+        {
+            var getCourseLessonsQuery = new GetCourseLessonsQuery() { CourseId = courseId };
+            return Ok(await mediator.Send(getCourseLessonsQuery));
+        }
     }
 }
