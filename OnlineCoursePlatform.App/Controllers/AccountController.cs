@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUserDataService _userDataService;
-        private readonly ILessonDataService _lessonDataService;
 
-        public AccountController(IUserDataService userDataService, ILessonDataService lessonDataService)
+        public AccountController(IUserDataService userDataService)
         {
             _userDataService = userDataService;
-            _lessonDataService = lessonDataService;
         }
 
         [HttpGet]
