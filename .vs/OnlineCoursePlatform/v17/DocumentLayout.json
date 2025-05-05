@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatfrom.persistence.inregrationtests\\baserepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|solutionrelative:onlinecourseplatfrom.persistence.inregrationtests\\baserepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatfrom.persistence.inregrationtests\\lessonrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|solutionrelative:onlinecourseplatfrom.persistence.inregrationtests\\lessonrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatfrom.persistence.inregrationtests\\testrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3958BCF5-07B8-466A-B650-89A333DB1467}|OnlineCoursePlatfrom.Persistence.InregrationTests\\OnlineCoursePlatfrom.Persistence.InregrationTests.csproj|solutionrelative:onlinecourseplatfrom.persistence.inregrationtests\\testrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6415B4EF-1505-4726-AA40-8FF50B096639}|OnlineCoursePlarform.Api.IntegrationTests\\OnlineCoursePlarform.Api.IntegrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplarform.api.integrationtests\\controllers\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6415B4EF-1505-4726-AA40-8FF50B096639}|OnlineCoursePlarform.Api.IntegrationTests\\OnlineCoursePlarform.Api.IntegrationTests.csproj|solutionrelative:onlinecourseplarform.api.integrationtests\\controllers\\accountcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DFBA4160-EDFB-45ED-8938-63C3518AD5E3}|OnlineCoursePlatform.Persistence\\OnlineCoursePlatform.Persistence.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.persistence\\repositories\\lessonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DFBA4160-EDFB-45ED-8938-63C3518AD5E3}|OnlineCoursePlatform.Persistence\\OnlineCoursePlatform.Persistence.csproj|solutionrelative:onlinecourseplatform.persistence\\repositories\\lessonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,11 +50,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BaseRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\BaseRepositoryTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatfrom.Persistence.InregrationTests\\BaseRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\BaseRepositoryTests.cs",
+              "RelativeToolTip": "OnlineCoursePlatfrom.Persistence.InregrationTests\\BaseRepositoryTests.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T12:47:18.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "TestRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "RelativeToolTip": "OnlineCoursePlatfrom.Persistence.InregrationTests\\TestRepositoryTests.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T12:41:10.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LessonRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\LessonRepositoryTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatfrom.Persistence.InregrationTests\\LessonRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatfrom.Persistence.InregrationTests\\LessonRepositoryTests.cs",
+              "RelativeToolTip": "OnlineCoursePlatfrom.Persistence.InregrationTests\\LessonRepositoryTests.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwDkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T12:41:08.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\AccountControllerTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\AccountControllerTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\AccountControllerTests.cs",
+              "RelativeToolTip": "OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\AccountControllerTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T12:40:46.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PersistenceServiceRegistration.cs",
               "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\PersistenceServiceRegistration.cs",
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\PersistenceServiceRegistration.cs",
@@ -46,12 +114,11 @@
               "RelativeToolTip": "OnlineCoursePlatform.Persistence\\PersistenceServiceRegistration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:38:14.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:38:14.092Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\CategoryRepository.cs",
@@ -59,12 +126,11 @@
               "RelativeToolTip": "OnlineCoursePlatform.Persistence\\Repositories\\CategoryRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:38:10.363Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:38:10.363Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "BaseRepositrory.cs",
               "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\BaseRepositrory.cs",
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\BaseRepositrory.cs",
@@ -72,12 +138,11 @@
               "RelativeToolTip": "OnlineCoursePlatform.Persistence\\Repositories\\BaseRepositrory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:37:54.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:37:54.238Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "LessonRepository.cs",
               "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\LessonRepository.cs",
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\LessonRepository.cs",
@@ -90,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "TestRepository.cs",
               "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\TestRepository.cs",
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\TestRepository.cs",
@@ -98,12 +163,11 @@
               "RelativeToolTip": "OnlineCoursePlatform.Persistence\\Repositories\\TestRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:35:21.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:35:21.974Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "CourseRepository.cs",
               "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
@@ -111,8 +175,7 @@
               "RelativeToolTip": "OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T12:35:18.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T12:35:18.443Z"
             }
           ]
         }

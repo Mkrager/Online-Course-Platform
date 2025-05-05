@@ -10,7 +10,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
     public class BaseRepositoryTests
     {
         private readonly OnlineCoursePlatformDbContext _dbContext;
-        private readonly BaseRepositrory<Course> _repository;
+        private readonly BaseRepository<Course> _repository;
         private readonly Mock<ICurrentUserService> _currentUserServiceMock;
         private readonly string _currentUserId;
 
@@ -25,7 +25,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _currentUserServiceMock.Setup(m => m.UserId).Returns(_currentUserId);
 
             _dbContext = new OnlineCoursePlatformDbContext(options, _currentUserServiceMock.Object);
-            _repository = new BaseRepositrory<Course>(_dbContext);
+            _repository = new BaseRepository<Course>(_dbContext);
         }
 
         [Fact]
