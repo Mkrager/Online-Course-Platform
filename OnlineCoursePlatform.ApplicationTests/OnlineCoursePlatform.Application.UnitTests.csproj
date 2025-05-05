@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Lessons\Queries\" />
 	  <Folder Include="Levels\Commands\" />
 	</ItemGroup>
 
