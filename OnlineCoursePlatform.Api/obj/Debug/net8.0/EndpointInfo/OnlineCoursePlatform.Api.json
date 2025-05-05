@@ -1236,6 +1236,10 @@
       "CourseLessonListVm": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
           "title": {
             "type": "string",
             "nullable": true
@@ -1243,6 +1247,10 @@
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "courseId": {
+            "type": "string",
+            "format": "uuid"
           },
           "videoUrl": {
             "type": "string",

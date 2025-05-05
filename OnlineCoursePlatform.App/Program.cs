@@ -22,6 +22,7 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUserDataService, UserDataServcie>();
 builder.Services.AddScoped<ICategoryDataService, CategoryDataService>();
 builder.Services.AddScoped<ILevelDataService, LevelDataService>();
+builder.Services.AddScoped<ILessonDataService, LessonDataService>();
 
 
 builder.Services.AddControllersWithViews();

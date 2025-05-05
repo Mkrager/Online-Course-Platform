@@ -6,10 +6,12 @@ namespace OnlineCoursePlatform.App.Controllers
     public class AccountController : Controller
     {
         private readonly IUserDataService _userDataService;
+        private readonly ILessonDataService _lessonDataService;
 
-        public AccountController(IUserDataService userDataService)
+        public AccountController(IUserDataService userDataService, ILessonDataService lessonDataService)
         {
             _userDataService = userDataService;
+            _lessonDataService = lessonDataService;
         }
 
         [HttpGet]
