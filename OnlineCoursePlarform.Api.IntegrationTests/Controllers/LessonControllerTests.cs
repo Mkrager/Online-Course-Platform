@@ -1,5 +1,7 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
+using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 using System.Net;
 using System.Text;
 using System.Text.Json;
@@ -49,5 +51,29 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.NotEqual(Guid.Empty, result);
         }
 
+        [Fact]
+        public async Task GetCourseLessons_ReturnsSuccessAndValidObject()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            Guid courseId = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1");
+
+            var response = await client.GetAsync($"/api/lesson/{courseId}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            var result = JsonSerializer.Deserialize<List<CourseLessonListVm>>(
+                responseString,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.True(result.Count > 0);
+        }
     }
 }
