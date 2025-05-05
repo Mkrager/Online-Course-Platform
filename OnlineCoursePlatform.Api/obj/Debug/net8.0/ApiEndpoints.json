@@ -355,6 +355,33 @@
     "EndpointName": "DeleteCourse"
   },
   {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.LessonController",
+    "Method": "Create",
+    "RelativePath": "api/Lesson",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createLessonCommand",
+        "Type": "OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson.CreateLessonCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Guid",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "AddLesson"
+  },
+  {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.LevelController",
     "Method": "GetAllLevels",
     "RelativePath": "api/Level",
