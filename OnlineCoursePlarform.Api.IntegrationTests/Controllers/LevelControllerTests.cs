@@ -1,8 +1,6 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList;
 using System.Text.Json;
-using Xunit.Abstractions;
 
 namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 {

@@ -2,7 +2,6 @@
 using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using System.Net;
 using System.Text;
 using System.Text.Json;
