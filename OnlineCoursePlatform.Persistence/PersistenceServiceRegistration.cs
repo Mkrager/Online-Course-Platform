@@ -15,11 +15,12 @@ namespace OnlineCoursePlatform.Persistence
             options.UseSqlServer(configuration.GetConnectionString
             ("OnlineCoursePlatformConnectionString")));
 
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepositrory<>));
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITestRepository, TestRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ILessonRepository, LessonRepository>();
 
             return services;
         }

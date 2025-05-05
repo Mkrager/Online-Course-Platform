@@ -3,10 +3,10 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Persistence.Repositories
 {
-    public class BaseRepositrory<T> : IAsyncRepository<T> where T : class
+    public class BaseRepository<T> : IAsyncRepository<T> where T : class
     {
         protected readonly OnlineCoursePlatformDbContext _dbContext;
-        public BaseRepositrory(OnlineCoursePlatformDbContext dbContext)
+        public BaseRepository(OnlineCoursePlatformDbContext dbContext)
         {
             _dbContext = dbContext;
         }

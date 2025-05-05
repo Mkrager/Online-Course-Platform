@@ -4,7 +4,7 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Persistence.Repositories
 {
-    public class CourseRepository : BaseRepositrory<Category>, ICourseRepository
+    public class CourseRepository : BaseRepository<Course>, ICourseRepository
     {
         public CourseRepository(OnlineCoursePlatformDbContext dbContext) : base(dbContext)
         {
