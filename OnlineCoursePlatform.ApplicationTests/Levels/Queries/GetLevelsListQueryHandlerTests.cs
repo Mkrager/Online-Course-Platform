@@ -9,12 +9,12 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Levels.Queries
 {
-    public class GetLevelsLustQueryHandlerTests
+    public class GetLevelsListQueryHandlerTests
     {
         private readonly IMapper _mapper;
         private readonly Mock<IAsyncRepository<Level>> _mockLLevelRepository;
 
-        public GetLevelsLustQueryHandlerTests()
+        public GetLevelsListQueryHandlerTests()
         {
             _mockLLevelRepository = RepositoryMocks.GetLevelRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
@@ -35,6 +35,5 @@ namespace OnlineCoursePlatform.Application.UnitTests.Levels.Queries
 
             result.Count.ShouldBe(2);
         }
-
     }
 }

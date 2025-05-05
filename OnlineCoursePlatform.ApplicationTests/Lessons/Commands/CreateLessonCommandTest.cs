@@ -13,7 +13,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
     public class CreateLessonCommandTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<Lesson>> _mockLessonRepository;
+        private readonly Mock<ILessonRepository> _mockLessonRepository;
 
         public CreateLessonCommandTest()
         {
