@@ -486,7 +486,7 @@ h2 {
     margin-bottom: 12px;
 }
 
-.btn-edit-course {
+.btn-edit {
     background-color: #51009d;
     color: white;
     border: none;
@@ -497,7 +497,7 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
-    .btn-edit-course:hover {
+    .btn-edit:hover {
         background-color: #37007b;
     }
 
@@ -593,4 +593,39 @@ h2 {
 
     .btn-submit:hover {
         background-color: #37007b;
+    }
+
+.lessons-section {
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.72);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 180px;
+    color: #fff;
+}
+
+    .lessons-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lesson-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #333;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+    .lesson-item:hover {
+        background-color: #444;
     }

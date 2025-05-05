@@ -1,0 +1,12 @@
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\bin\Debug\net8.0\OnlineCoursePlatform.Domain.deps.json
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\bin\Debug\net8.0\OnlineCoursePlatform.Domain.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\bin\Debug\net8.0\OnlineCoursePlatform.Domain.pdb
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.AssemblyInfoInputs.cache
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.AssemblyInfo.cs
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.sourcelink.json
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\refint\OnlineCoursePlatform.Domain.dll
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\OnlineCoursePlatform.Domain.pdb
+C:\Users\Smaga\source\repos\OnlineCoursePlatform\OnlineCoursePlatform.Domain\obj\Debug\net8.0\ref\OnlineCoursePlatform.Domain.dll

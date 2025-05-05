@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
