@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList
 {
-    internal class GetCourseLessonQuery
+    public class GetCourseLessonQuery : IRequest<List<CourseLessonListVm>>
     {
+        public Guid CourseId { get; set; }
     }
 }

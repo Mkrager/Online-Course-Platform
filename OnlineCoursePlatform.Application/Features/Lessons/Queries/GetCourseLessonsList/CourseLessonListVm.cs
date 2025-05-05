@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList
+﻿namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList
 {
-    internal class CourseLessonListVm
+    public class CourseLessonListVm
     {
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string VideoUrl { get; set; } = string.Empty;
+        public int Order { get; set; }
+        public TimeSpan Duration { get; set; }
     }
 }
