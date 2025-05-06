@@ -6,7 +6,7 @@
 }
 
 <div class="form-container">
-    <h2>Create a New Course</h2>
+    <h2>Add lesson</h2>
 
     <h1 class="error-text">@message</h1>
     <form asp-controller="Lesson" asp-action="Add" method="POST" role="form" id="addForm">
@@ -23,7 +23,7 @@
 
         <div class="input-group">
             <label asp-for="Description"></label>
-            <textarea asp-for="Description" rows="4" cols="50"></textarea>
+            <input asp-for="Description" />
             <span asp-validation-for="Description" class="error-text"></span>
         </div>
 

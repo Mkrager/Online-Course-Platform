@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8o/BlORM/zx8re8GJlMUQDlQrYcAVltc14qcvgkHgf0=",
+  "Hash": "I7MId91UVClu+Cs2PgYnj9GEBOZrFdOSErxo7SbUCWo=",
   "Source": "OnlineCoursePlatform.App",
   "BasePath": "_content/OnlineCoursePlatform.App",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "nbpawphypb",
-      "Integrity": "Ta2AGzbkA7Kaq3R33L2WGSYkcQK2Kmy3mnXicWCkeeo=",
+      "Fingerprint": "dc28r2izv6",
+      "Integrity": "3eCn73z/vuspcCLuzM3JdwW3J7bAmkXswOPKbXLAMcU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
@@ -1360,11 +1360,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Ta2AGzbkA7Kaq3R33L2WGSYkcQK2Kmy3mnXicWCkeeo=\""
+          "Value": "\"3eCn73z/vuspcCLuzM3JdwW3J7bAmkXswOPKbXLAMcU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 13:21:19 GMT"
+          "Value": "Tue, 06 May 2025 13:22:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1374,12 +1374,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Ta2AGzbkA7Kaq3R33L2WGSYkcQK2Kmy3mnXicWCkeeo="
+          "Value": "sha256-3eCn73z/vuspcCLuzM3JdwW3J7bAmkXswOPKbXLAMcU="
         }
       ]
     },
     {
-      "Route": "css/style.nbpawphypb.css",
+      "Route": "css/style.dc28r2izv6.css",
       "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1397,11 +1397,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Ta2AGzbkA7Kaq3R33L2WGSYkcQK2Kmy3mnXicWCkeeo=\""
+          "Value": "\"3eCn73z/vuspcCLuzM3JdwW3J7bAmkXswOPKbXLAMcU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 06 May 2025 13:21:19 GMT"
+          "Value": "Tue, 06 May 2025 13:22:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1411,7 +1411,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nbpawphypb"
+          "Value": "dc28r2izv6"
         },
         {
           "Name": "label",
@@ -1419,7 +1419,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Ta2AGzbkA7Kaq3R33L2WGSYkcQK2Kmy3mnXicWCkeeo="
+          "Value": "sha256-3eCn73z/vuspcCLuzM3JdwW3J7bAmkXswOPKbXLAMcU="
         }
       ]
     },
