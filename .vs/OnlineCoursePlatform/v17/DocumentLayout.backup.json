@@ -3,24 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\lessons\\commands\\deletelessoncommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\lessons\\commands\\deletelessoncommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6415B4EF-1505-4726-AA40-8FF50B096639}|OnlineCoursePlarform.Api.IntegrationTests\\OnlineCoursePlarform.Api.IntegrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplarform.api.integrationtests\\controllers\\lessoncontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6415B4EF-1505-4726-AA40-8FF50B096639}|OnlineCoursePlarform.Api.IntegrationTests\\OnlineCoursePlarform.Api.IntegrationTests.csproj|solutionrelative:onlinecourseplarform.api.integrationtests\\controllers\\lessoncontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\courses\\commands\\deletecoursecommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\courses\\commands\\deletecoursecommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\features\\lessons\\commands\\deletelesson\\deletelessoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\features\\lessons\\commands\\deletelesson\\deletelessoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\lessons\\commands\\createlessoncommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\lessons\\commands\\createlessoncommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6415B4EF-1505-4726-AA40-8FF50B096639}|OnlineCoursePlarform.Api.IntegrationTests\\OnlineCoursePlarform.Api.IntegrationTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplarform.api.integrationtests\\controllers\\coursecontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6415B4EF-1505-4726-AA40-8FF50B096639}|OnlineCoursePlarform.Api.IntegrationTests\\OnlineCoursePlarform.Api.IntegrationTests.csproj|solutionrelative:onlinecourseplarform.api.integrationtests\\controllers\\coursecontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/OnlineCoursePlatformTestDb/True/SqlTable/dbo.Lessons.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +29,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DeleteCourseCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\DeleteCourseCommandTest.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\DeleteCourseCommandTest.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\DeleteCourseCommandTest.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\DeleteCourseCommandTest.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwCIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:48:26.067Z",
+              "DocumentIndex": 4,
+              "Title": "dbo.Lessons [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/OnlineCoursePlatformTestDb/True/SqlTable/dbo.Lessons.sql",
+              "ToolTip": "dbo.Lessons [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-05-06T14:01:38.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CreateLessonCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\CreateLessonCommandTest.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\CreateLessonCommandTest.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\CreateLessonCommandTest.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\CreateLessonCommandTest.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Title": "CourseControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\CourseControllerTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\CourseControllerTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\CourseControllerTests.cs",
+              "RelativeToolTip": "OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\CourseControllerTests.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAADwv40AAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:47:59.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAYwDcAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:44:42.619Z",
+              "WhenOpened": "2025-05-06T14:00:49.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DeleteLessonCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\DeleteLessonCommandTest.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\DeleteLessonCommandTest.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\DeleteLessonCommandTest.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\DeleteLessonCommandTest.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAIwBkAAAAIAAAAAAAAAA==",
+              "Title": "LessonControllerTests.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\LessonControllerTests.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\LessonControllerTests.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\LessonControllerTests.cs",
+              "RelativeToolTip": "OnlineCoursePlarform.Api.IntegrationTests\\Controllers\\LessonControllerTests.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAowFAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:41:18.796Z",
+              "WhenOpened": "2025-05-06T14:00:05.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA0wCwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-06T13:56:41.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DeleteLessonCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Lessons\\Commands\\DeleteLesson\\DeleteLessonCommand.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Features\\Lessons\\Commands\\DeleteLesson\\DeleteLessonCommand.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Lessons\\Commands\\DeleteLesson\\DeleteLessonCommand.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Application\\Features\\Lessons\\Commands\\DeleteLesson\\DeleteLessonCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Title": "LessonController.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwCEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-06T13:34:16.013Z",
+              "WhenOpened": "2025-05-06T13:55:59.972Z",
               "EditorCaption": ""
             }
           ]

@@ -75,5 +75,17 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.NotEmpty(result);
             Assert.True(result.Count > 0);
         }
+
+        [Fact]
+        public async Task DeleteLesson_ReturnsNoContent_WhenLessonExists()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            Guid lessonId = Guid.Parse("2e8b13d5-4c5e-4f4b-9387-8e19c844dbe9");
+
+            var response = await client.DeleteAsync($"api/lesson/{lessonId}");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
     }
 }
