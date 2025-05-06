@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
+using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -20,11 +21,21 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpGet("{courseId}", Name = "GetCourseLessons")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
         public async Task<ActionResult<List<CourseLessonListVm>>> GetCourseLessons(Guid courseId)
         {
             var getCourseLessonsQuery = new GetCourseLessonsQuery() { CourseId = courseId };
             return Ok(await mediator.Send(getCourseLessonsQuery));
+        }
+
+        [HttpDelete("{id}", Name = "DeleteLesson")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> DeleteLesson(Guid id)
+        {
+            var deleteLessonCommand = new DeleteLessonCommand() { Id = id };
+            await mediator.Send(deleteLessonCommand);
+            return NoContent();
         }
     }
 }

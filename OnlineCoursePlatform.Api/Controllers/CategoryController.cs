@@ -47,6 +47,5 @@ namespace OnlineCoursePlatform.Api.Controllers
             await mediator.Send(deleteCourseCommand);
             return NoContent();
         }
-
     }
 }
