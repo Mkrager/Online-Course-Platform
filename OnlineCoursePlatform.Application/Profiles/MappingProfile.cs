@@ -9,6 +9,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
+using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 using OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
@@ -50,8 +51,9 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Level, LevelListVm>().ReverseMap();
             CreateMap<Level, LevelDto>().ReverseMap();
 
-            CreateMap<Lesson, CreateLessonCommand>().ReverseMap();
             CreateMap<Lesson, CourseLessonListVm>().ReverseMap();
+            CreateMap<Lesson, CreateLessonCommand>().ReverseMap();
+            CreateMap<Lesson, DeleteLessonCommand>().ReverseMap();
         }
     }
 }
