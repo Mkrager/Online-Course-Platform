@@ -484,6 +484,12 @@ h2 {
     font-size: 1rem;
     color: #ffffff;
     margin-bottom: 12px;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .course-actions {

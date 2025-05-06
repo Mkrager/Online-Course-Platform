@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList
 
         public async Task<List<LevelListVm>> Handle(GetLevelsListQuery request, CancellationToken cancellationToken)
         {
-            var allLevels = await _levelRepository.ListAllAsync();
+            var allLevels = (await _levelRepository.ListAllAsync()).OrderBy(o => o.Order);
             return _mapper.Map<List<LevelListVm>>(allLevels);
         }
     }

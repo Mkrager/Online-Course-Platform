@@ -23,7 +23,7 @@
                 {
                     <div class="course-item">
                         <h4>@course.Title</h4>
-                        <p class="course-description">Desc</p>
+                        <p class="course-description">@course.Description</p>
 
                         <div class="course-actions">
                             <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>

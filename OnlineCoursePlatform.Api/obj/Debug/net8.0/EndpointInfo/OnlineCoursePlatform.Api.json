@@ -1354,6 +1354,10 @@
             "type": "number",
             "format": "double"
           },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
           "thumbnailUrl": {
             "type": "string",
             "nullable": true
@@ -1534,6 +1538,10 @@
           "name": {
             "type": "string",
             "nullable": true
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
           },
           "courses": {
             "type": "array",

@@ -10,6 +10,7 @@ namespace OnlineCoursePlatform.App.ViewModels.Course
         public Guid CategoryId { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
         public string? CreatedBy { get; set; }
         public TimeSpan Duration { get; set; }

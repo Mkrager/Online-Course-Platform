@@ -7,6 +7,7 @@
         public Guid CategoryId { get; set; }
         public Guid LevelId { get; set; }
         public decimal Price { get; set; }
+        public string Description { get; set; } = string.Empty;
         public string ThumbnailUrl { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; }
         public TimeSpan Duration { get; set; }

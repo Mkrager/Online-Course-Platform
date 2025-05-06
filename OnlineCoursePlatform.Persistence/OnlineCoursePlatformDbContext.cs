@@ -34,18 +34,21 @@ namespace OnlineCoursePlatform.Persistence
             modelBuilder.Entity<Level>().HasData(new Level
             {
                 Id = Guid.Parse("f80e97ef-6640-41a5-8ccd-603a6ab1bd33"),
+                Order = 1,
                 Name = "Beginner"
             });
 
             modelBuilder.Entity<Level>().HasData(new Level
             {
                 Id = Guid.Parse("03e986cf-2784-4096-b130-2762c2018777"),
+                Order = 2,
                 Name = "Intermediate"
             });
 
             modelBuilder.Entity<Level>().HasData(new Level
             {
                 Id = Guid.Parse("3503ccbe-92df-4525-a908-a4aceeae1036"),
+                Order = 3,
                 Name = "Advanced"
             });
 
