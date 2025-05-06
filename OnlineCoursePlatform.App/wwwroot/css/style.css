@@ -402,10 +402,10 @@ h2 {
         color: #ffffff;
     }
 
-    .account-header {
-        text-align: center;
-        margin-bottom: 30px;
-    }
+.account-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
     .account-header h2 {
         font-size: 2rem;
@@ -620,6 +620,23 @@ h2 {
     margin-top: 180px;
     color: #fff;
 }
+
+    .lessons-section .btn-add {
+        display: inline-block;
+        background-color: #51009d;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+        .lessons-section .btn-add:hover {
+            background-color: #37007b;
+        }
 
     .lessons-section h2 {
         font-size: 1.8em;

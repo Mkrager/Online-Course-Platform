@@ -7,9 +7,10 @@
         @foreach (var lesson in Model)
         {
             <div class="lesson-item">
-                <span>@lesson.Order. @lesson.Title</span>
+                <span>@lesson.Order. @lesson.Title</span>                
                 <button class="btn-edit">Edit</button>
             </div>
         }
     </div>
+    <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.First().CourseId" class="btn-add">Add lesson</a>
 </div>
