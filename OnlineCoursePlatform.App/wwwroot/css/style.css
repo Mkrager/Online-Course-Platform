@@ -501,6 +501,22 @@ h2 {
         background-color: #37007b;
     }
 
+.btn-lessons {
+    background-color: #008a65;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 7px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-lessons:hover {
+        background-color: #006046;
+    }
+
 .btn-delete-course {
     background-color: #ac2222;
     color: white;

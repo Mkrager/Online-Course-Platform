@@ -1,21 +1,15 @@
-﻿<section class="lessons-section">
+﻿@using OnlineCoursePlatform.App.ViewModels.Lesson
+@model List<LessonViewModel>;
+
+<div class="lessons-section">
     <h2>Lessons</h2>
     <div class="lessons-list">
-        <div class="lesson-item">
-            <span>Lesson 1: Introduction to HTML</span>
-            <button class="btn-edit">Edit</button>
-        </div>
-        <div class="lesson-item">
-            <span>Lesson 2: CSS Basics</span>
-            <button class="btn-edit">Edit</button>
-        </div>
-        <div class="lesson-item">
-            <span>Lesson 3: Responsive Design</span>
-            <button class="btn-edit">Edit</button>
-        </div>
-        <div class="lesson-item">
-            <span>Lesson 4: JavaScript Fundamentals</span>
-            <button class="btn-edit">Edit</button>
-        </div>
+        @foreach (var lesson in Model)
+        {
+            <div class="lesson-item">
+                <span>@lesson.Order. @lesson.Title</span>
+                <button class="btn-edit">Edit</button>
+            </div>
+        }
     </div>
-</section>
+</div>
