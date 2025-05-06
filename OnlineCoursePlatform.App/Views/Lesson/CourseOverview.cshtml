@@ -1,16 +1,48 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.Lesson
-@model List<LessonViewModel>;
+@model CourseLessonsViewModel
 
-<div class="lessons-section">
-    <h2>Lessons</h2>
-    <div class="lessons-list">
-        @foreach (var lesson in Model)
-        {
-            <div class="lesson-item">
-                <span>@lesson.Order. @lesson.Title</span>                
-                <button class="btn-edit">Edit</button>
-            </div>
-        }
+@if (Model.Lessons.Count != 0)
+{
+    <div class="lessons-section">
+        <h2>Lessons</h2>
+        <div class="lessons-list">
+            @foreach (var lesson in Model.Lessons)
+            {
+                <div class="lesson-item">
+                    <span>@lesson.Order. @lesson.Title</span>
+
+                    <div class="lesson-actions">
+                        <button class="btn-edit">Edit</button>
+                        <a class="btn-delete" onclick="deleteLesson('@lesson.Id')">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
     </div>
-    <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.First().CourseId" class="btn-add">Add lesson</a>
-</div>
+}
+else
+{
+    <div class="lessons-section">
+        <h2>No lessons available</h2>
+        <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
+    </div>
+}
+
+
+<script>
+    function deleteLesson(lessonId) {
+        $.ajax({
+            url: '@Url.Action("Delete", "Lesson")/' + lessonId,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function (response) {
+                window.location.href = response.redirectUrl;
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Error');
+            }
+        });
+    }
+</script>

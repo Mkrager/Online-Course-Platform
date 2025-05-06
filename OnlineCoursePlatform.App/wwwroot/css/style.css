@@ -486,6 +486,12 @@ h2 {
     margin-bottom: 12px;
 }
 
+.course-actions {
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+}
+
 .btn-edit {
     background-color: #51009d;
     color: white;
@@ -509,7 +515,6 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    margin-right: 7px;
     transition: background-color 0.3s ease;
 }
 
@@ -517,7 +522,7 @@ h2 {
         background-color: #006046;
     }
 
-.btn-delete-course {
+.btn-delete {
     background-color: #ac2222;
     color: white;
     border: none;
@@ -525,11 +530,10 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    margin-left: 7px;
     transition: background-color 0.3s ease;
 }
 
-    .btn-delete-course:hover {
+    .btn-delete:hover {
         background-color: #7f1a1a;
     }
 
@@ -662,3 +666,9 @@ h2 {
     .lesson-item:hover {
         background-color: #444;
     }
+
+.lesson-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}

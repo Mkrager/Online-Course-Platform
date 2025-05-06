@@ -24,9 +24,13 @@
                     <div class="course-item">
                         <h4>@course.Title</h4>
                         <p class="course-description">Desc</p>
-                        <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>
-                        <button class="btn-edit">Edit</button>
-                        <a class="btn-delete-course" onclick="deleteCourse('@course.Id')">Delete</a>
+
+                        <div class="course-actions">
+                            <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>
+                            <button class="btn-edit">Edit</button>
+                            <a class="btn-delete" onclick="deleteCourse('@course.Id')">Delete</a>
+                        </div>
+
                     </div>
                 }
                 <a asp-controller="Course" asp-action="Create" class="btn-add-course">Create New Course</a>
@@ -43,7 +47,7 @@
             type: 'DELETE',
             dataType: 'json',
             success: function (response) {
-                window.location.href = response.redirectUrl;            
+                window.location.href = response.redirectUrl;
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);
@@ -51,5 +55,4 @@
             }
         });
     }
-
 </script>

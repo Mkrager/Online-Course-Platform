@@ -17,7 +17,14 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> CourseOverview(Guid courseId)
         {
             var courseLessons = await _lessonDataService.GetCourseLessons(courseId);
-            return View(courseLessons);
+
+            var model = new CourseLessonsViewModel()
+            {
+                Lessons = courseLessons,
+                CourseId = courseId           
+            };
+
+            return View(model);
         }
 
         [HttpGet]
@@ -27,6 +34,7 @@ namespace OnlineCoursePlatform.App.Controllers
             {
                 CourseId = courseId
             };
+
             return View(model);
         }
 
@@ -35,9 +43,17 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var result = await _lessonDataService.CreateLesson(lessonViewModel);
 
-            var userId = User.FindFirst("uid")?.Value;
+            return RedirectToAction("CourseOverview", "Lesson", new { courseId = lessonViewModel.CourseId });
+        }
 
-            return RedirectToAction("Overview", "Account", new { userId = userId });
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _lessonDataService.DeleteLesson(id);
+
+            var referer = Request.Headers["Referer"].ToString();
+
+            return Json(new { redirectUrl = referer });
         }
     }
 }
