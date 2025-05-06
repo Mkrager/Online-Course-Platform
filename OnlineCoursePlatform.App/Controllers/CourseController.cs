@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.Services;
 using OnlineCoursePlatform.App.ViewModels.Course;
+using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -54,7 +56,12 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var newCourse = await _courseDataService.CreateCourse(courseDetailViewModel);
 
-            TempData["Message"] = HandleResponse<Guid>(newCourse);
+            if (newCourse.IsSuccess)
+            {
+                return RedirectToAction("Overview", "Account", new { userId = User.FindFirst("uid")?.Value });
+            }
+
+            TempData["Message"] = HandleErrors.HandleResponse<Guid>(newCourse);
             TempData["Categories"] = await Categories();
             TempData["Levels"] = await Levels();
 
@@ -72,18 +79,5 @@ namespace OnlineCoursePlatform.App.Controllers
 
             return Json(new { redirectUrl });
         }
-
-        private string HandleResponse<T>(ApiResponse<T> response, string successMessage = "")
-        {
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                return successMessage;
-            }
-            else
-            {
-                return response.ErrorText;
-            }
-        }
-
     }
 }

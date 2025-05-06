@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -21,7 +22,7 @@ namespace OnlineCoursePlatform.App.Controllers
             var model = new CourseLessonsViewModel()
             {
                 Lessons = courseLessons,
-                CourseId = courseId           
+                CourseId = courseId
             };
 
             return View(model);
@@ -43,7 +44,14 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var result = await _lessonDataService.CreateLesson(lessonViewModel);
 
-            return RedirectToAction("CourseOverview", "Lesson", new { courseId = lessonViewModel.CourseId });
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("CourseOverview", "Lesson", new { courseId = lessonViewModel.CourseId });
+            }
+
+            TempData["Message"] = HandleErrors.HandleResponse(result, "Success");
+
+            return View();
         }
 
         [HttpDelete]

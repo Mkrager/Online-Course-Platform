@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Services;
+using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.ViewModels.Authenticate;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Login(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Authenticate(request.AuthenticateRequest);
-            TempData["LoginErrorMessage"] = HandleResponse<bool>(result, "Success");
+            TempData["LoginErrorMessage"] = HandleErrors.HandleResponse<bool>(result, "Success");
 
             if (result.IsSuccess)
             {
@@ -32,7 +32,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Register(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Register(request.RegistrationRequest);
-            TempData["LoginErrorMessage"] = HandleResponse<bool>(result, "Success");
+            TempData["LoginErrorMessage"] = HandleErrors.HandleResponse<bool>(result, "Success");
 
             if (result.IsSuccess)
             {
@@ -41,20 +41,5 @@ namespace OnlineCoursePlatform.App.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
-
-
-        private string HandleResponse<T>(ApiResponse<T> response, string successMessage = "")
-        {
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                return successMessage;
-            }
-            else
-            {
-                return response.ErrorText;
-            }
-        }
-
     }
 }
