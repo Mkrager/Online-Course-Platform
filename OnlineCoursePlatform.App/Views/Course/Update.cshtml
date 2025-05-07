@@ -1,0 +1,107 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Course
+@model CourseDetailViewModel
+
+@{
+    var categories = TempData["Categories"] as SelectList;
+    var levels = TempData["Levels"] as SelectList;
+    var message = TempData["Message"] as string;
+}
+<div class="form-container">
+    <h2>Update course</h2>
+
+    <h1 class="error-text">@message</h1>
+
+    <div asp-validation-summary="All" class="error-text"></div>
+
+    <div class="input-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" value="@Model.Title" />
+        <span asp-validation-for="Title" class="error-text"></span>
+    </div>
+
+    <div class="input-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" rows="4" cols="50" value="@Model.Description"></textarea>
+        <span asp-validation-for="Description" class="error-text"></span>
+    </div>
+
+    <div class="input-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" value="@Model.Price" />
+        <span asp-validation-for="Price" class="error-text"></span>
+    </div>
+
+    <div class="input-group">
+        <label asp-for="ThumbnailUrl"></label>
+        <input asp-for="ThumbnailUrl" value="@Model.ThumbnailUrl" />
+        <span asp-validation-for="ThumbnailUrl" class="error-text"></span>
+    </div>
+
+    <div class="input-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId">
+            <option value="" selected disabled>Select a category</option>
+            @foreach (var item in categories)
+            {
+                <option value="@item.Value" selected="@(item.Value == Model.CategoryId.ToString() ? "selected" : null)">
+                    @item.Text
+                </option>
+            }
+
+        </select>
+        <span asp-validation-for="CategoryId" class="error-text"></span>
+    </div>
+
+    <div class="input-group">
+        <label asp-for="LevelId">Level</label>
+        <select asp-for="LevelId">
+            <option value="" selected disabled>Select a category</option>
+            @foreach (var item in levels)
+            {
+                <option value="@item.Value" selected="@(item.Value == Model.LevelId.ToString() ? "selected" : null)">
+                    @item.Text
+                </option>
+            }
+        </select>
+        <span asp-validation-for="LevelId" class="error-text"></span>
+    </div>
+
+    <button type="submit" class="btn-submit" onclick="updateCourse('@Model.Id')">Update Course</button>
+</div>
+
+@section Scripts {
+    <script>
+        function updateCourse(courseId) {
+            var formData = {
+                Id: courseId,
+                Title: $('#Title').val(),
+                Description: $('#Description').val(),
+                Price: $('#Price').val() || null,
+                ThumbnailUrl: $('#ThumbnailUrl').val(),
+                CategoryId: $('#CategoryId').val(),
+                LevelId: $('#LevelId').val()
+            };
+
+            $.ajax({
+                url: '@Url.Action("Update", "Course")',
+                type: 'PUT',
+                data: JSON.stringify(formData),
+                contentType: 'application/json',
+                        success: function (response) {
+                    if (response.redirectToUrl) {
+                        window.location.href = response.redirectToUrl;
+                    }
+                    else{
+                         for (var key in response.errors) {
+                            var errorMessage = response.errors[key];
+                            $('#' + key).next('.error-text').text(errorMessage);
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    </script>
+}

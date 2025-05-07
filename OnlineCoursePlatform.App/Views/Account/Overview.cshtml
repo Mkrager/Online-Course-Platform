@@ -27,7 +27,7 @@
 
                         <div class="course-actions">
                             <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>
-                            <button class="btn-edit">Edit</button>
+                            <a asp-controller="Course" asp-action="Update" asp-route-id="@course.Id" class="btn-edit">Edit</a>
                             <a class="btn-delete" onclick="deleteCourse('@course.Id')">Delete</a>
                         </div>
 

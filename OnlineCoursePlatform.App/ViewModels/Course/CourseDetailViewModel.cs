@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.App.ViewModels.Course
 
         [Required(ErrorMessage = "Price is required")]
         [Range(0, int.MaxValue, ErrorMessage = "Price should be a positive value")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         [Required(ErrorMessage = "Image is required")]
         public string ThumbnailUrl { get; set; } = string.Empty;

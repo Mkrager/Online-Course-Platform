@@ -68,6 +68,41 @@ namespace OnlineCoursePlatform.App.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Update(Guid id)
+        {
+            var courseToUpdate = await _courseDataService.GetCourseById(id);
+
+            TempData["Categories"] = await Categories();
+            TempData["Levels"] = await Levels();
+
+            return View(courseToUpdate);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] CourseDetailViewModel courseDetailViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.ToDictionary(
+                    kv => kv.Key,
+                    kv => kv.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+                return Json(new { errors });
+            }
+
+            var result = await _courseDataService.UpdateCourse(courseDetailViewModel);
+
+            if (result.IsSuccess)
+            {
+                return Json(new { redirectToUrl = Url.Action("Overview", "Account", new { userId = User.FindFirst("uid")?.Value }) });
+
+            }
+
+            TempData["Message"] = HandleErrors.HandleResponse(result);
+
+            return Json(new { redirectToUrl = Url.Action("Update", "Course", new { id = courseDetailViewModel.Id }) });
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
         {

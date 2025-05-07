@@ -15,5 +15,18 @@ namespace OnlineCoursePlatform.App.Middlewares
                 return response.ErrorText;
             }
         }
+
+        public static string HandleResponse(ApiResponse response, string successMessage = "")
+        {
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return successMessage;
+            }
+            else
+            {
+                return response.ErrorText;
+            }
+        }
+
     }
 }
