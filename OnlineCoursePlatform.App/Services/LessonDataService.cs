@@ -117,5 +117,23 @@ namespace OnlineCoursePlatform.App.Services
 
             return new List<LessonViewModel>();
         }
+
+        public async Task<LessonViewModel> GetLessonById(Guid id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Lesson/GetLessonById/{id}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                var lesson = JsonSerializer.Deserialize<LessonViewModel>(responseContent, _jsonOptions);
+
+                return lesson;
+            }
+
+            return new LessonViewModel();
+        }
     }
 }

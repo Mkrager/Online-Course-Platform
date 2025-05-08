@@ -9,5 +9,6 @@ namespace OnlineCoursePlatform.App.Contracts
         Task<ApiResponse<Guid>> CreateLesson(LessonViewModel lessonViewModel);
         Task<ApiResponse> DeleteLesson(Guid id);
         Task<ApiResponse> UpdateLesson(LessonViewModel lessonViewModel);
+        Task<LessonViewModel> GetLessonById(Guid id);
     }
 }
