@@ -12,6 +12,7 @@
                     <span>@lesson.Order. @lesson.Title</span>
 
                     <div class="lesson-actions">
+                        <a asp-controller="Lesson" asp-action="details" asp-route-id="@lesson.Id" class="btn-edit">View lesson</a>
                         <a asp-controller="Lesson" asp-action="update" asp-route-id="@lesson.Id" class="btn-edit">Edit</a>
                         <a class="btn-delete" onclick="deleteLesson('@lesson.Id')">Delete</a>
                     </div>

@@ -1,0 +1,19 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Lesson;
+@model LessonViewModel
+
+<div class="lesson-container">
+    <h2 class="lesson-title">Lesson Title: @Model.Title</h2>
+    
+    <div class="video-wrapper">
+        <video class="lesson-video" controls>
+            <source src="@Model.VideoUrl" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+
+    <div class="lesson-description">
+        <p>
+            @Model.Description
+        </p>
+    </div>
+</div>

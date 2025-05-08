@@ -678,3 +678,37 @@ h2 {
     gap: 10px;
     margin-left: auto;
 }
+
+.lesson-container {
+    margin-top: 180px;
+    max-width: 900px;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.72);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-align: center;
+}
+
+.lesson-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.lesson-video {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.lesson-description {
+    font-size: 1.1em;
+    color: #dddddd;
+}

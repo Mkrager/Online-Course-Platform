@@ -30,6 +30,13 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var lesson = await _lessonDataService.GetLessonById(id);
+            return View(lesson);
+        }
+
+        [HttpGet]
         public IActionResult Add(Guid courseId)
         {
             var model = new LessonViewModel
