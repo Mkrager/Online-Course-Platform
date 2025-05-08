@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
+using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -57,7 +58,32 @@ namespace OnlineCoursePlatform.App.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(Guid id)
         {
-            return View();
+            var lessonToUpdate = await _lessonDataService.GetLessonById(id);
+            return View(lessonToUpdate);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] LessonViewModel lessonViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.ToDictionary(
+                    kv => kv.Key,
+                    kv => kv.Value.Errors.Select(e => e.ErrorMessage).ToArray());
+                return Json(new { errors });
+            }
+
+            var result = await _lessonDataService.UpdateLesson(lessonViewModel);
+
+            if (result.IsSuccess)
+            {
+                return Json(new { redirectToUrl = Url.Action("CourseOverview", "Lesson", new { courseId = lessonViewModel.CourseId }) });
+            }
+
+            TempData["Message"] = HandleErrors.HandleResponse(result);
+
+            return Json(new { redirectToUrl = Url.Action("Update", "Lesson", new { id = lessonViewModel.Id }) });
+
         }
 
         [HttpDelete]

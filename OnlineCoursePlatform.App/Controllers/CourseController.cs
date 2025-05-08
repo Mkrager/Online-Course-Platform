@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
-using OnlineCoursePlatform.App.Services;
 using OnlineCoursePlatform.App.ViewModels.Course;
-using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -95,7 +93,6 @@ namespace OnlineCoursePlatform.App.Controllers
             if (result.IsSuccess)
             {
                 return Json(new { redirectToUrl = Url.Action("Overview", "Account", new { userId = User.FindFirst("uid")?.Value }) });
-
             }
 
             TempData["Message"] = HandleErrors.HandleResponse(result);
