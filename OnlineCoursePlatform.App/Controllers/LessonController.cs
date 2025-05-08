@@ -54,6 +54,12 @@ namespace OnlineCoursePlatform.App.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Update(Guid id)
+        {
+            return View();
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
         {
