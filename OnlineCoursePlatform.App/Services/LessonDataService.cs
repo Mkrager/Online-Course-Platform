@@ -73,7 +73,7 @@ namespace OnlineCoursePlatform.App.Services
             }
             catch (Exception ex)
             {
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message)
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
         }
 

@@ -1,12 +1,11 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
+using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail;
 using System.Net;
 using System.Text;
 using System.Text.Json;
-using Xunit.Abstractions;
 
 namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 {
@@ -47,6 +46,30 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             Assert.NotNull(result);
             Assert.NotEqual(Guid.Empty, result);
+        }
+
+        [Fact]
+        public async Task GetLessonById_RuturnsSuccessAndValidObject()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            Guid lessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49");
+
+            var response = await client.GetAsync($"/api/Lesson/GetLessonById/{lessonId}");
+
+            response.EnsureSuccessStatusCode();
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            var result = JsonSerializer.Deserialize<LessonDetailVm>(
+                responseString,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+            Assert.NotNull(result);
+            Assert.Equal(result.Id, Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"));
         }
 
         [Fact]
@@ -99,9 +122,16 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
 
-            var updateLessonResponse = await client.GetAsync($"/api/lesson/{lessonId}");
+            var updateLessonResponse = await client.GetAsync($"/api/Lesson/GetLessonById/{lessonId}");
 
             updateLessonResponse.EnsureSuccessStatusCode();
+
+
+            var updatedLesson = JsonSerializer.Deserialize<LessonDetailVm>(
+                await updateLessonResponse.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            Assert.Equal("Upd", updatedLesson.Title);
         }
 
         [Fact]

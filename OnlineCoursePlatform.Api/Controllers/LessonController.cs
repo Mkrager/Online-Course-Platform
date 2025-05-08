@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
-        [HttpGet("{id}", Name = "GetLessonById")]
+        [HttpGet("[action]/{id}", Name = "GetLessonById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<LessonDetailVm>> GetLessonById(Guid id)
