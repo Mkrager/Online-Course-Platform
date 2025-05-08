@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\lessons\\commands\\updatelessoncommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\lessons\\commands\\updatelessoncommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\courses\\commands\\updatecoursecommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\courses\\commands\\updatecoursecommandtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\mocks\\repositorymocks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\mocks\\repositorymocks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.api\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CBDD114-7A90-4FEE-A219-C9C5D4765CE6}|OnlineCoursePlatform.Api\\OnlineCoursePlatform.Api.csproj|solutionrelative:onlinecourseplatform.api\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UpdateLessonCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBwAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T11:46:14.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UpdateCourseCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\UpdateCourseCommandTest.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\UpdateCourseCommandTest.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\UpdateCourseCommandTest.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Courses\\Commands\\UpdateCourseCommandTest.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\CourseController.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\CourseController.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\CourseController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAiwCcAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T11:43:52.921Z",
+              "WhenOpened": "2025-05-08T11:49:02.555Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RepositoryMocks.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
-              "ViewState": "AgIAAKQAAAAAAAAAAAAYwLkAAABSAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LessonController.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Api\\Controllers\\LessonController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAYwCQAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T11:40:14.326Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAYwDgAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:48:03.473Z",
+              "WhenOpened": "2025-05-08T11:47:20.956Z",
               "EditorCaption": ""
             }
           ]

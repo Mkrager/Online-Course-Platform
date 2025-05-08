@@ -26,8 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateLessonCommandTest.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-08T11:46:14.837Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -39,19 +52,6 @@
               "ViewState": "AgIAABYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-08T11:43:52.921Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UpdateLessonCommandTest.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Lessons\\Commands\\UpdateLessonCommandTest.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAYwC4AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-08T10:43:06.752Z",
               "EditorCaption": ""
             },
             {

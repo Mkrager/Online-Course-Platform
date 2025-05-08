@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
+using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -25,6 +26,16 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var getCourseLessonsQuery = new GetCourseLessonsQuery() { CourseId = courseId };
             return Ok(await mediator.Send(getCourseLessonsQuery));
+        }
+
+        [HttpPut(Name = "UpdateLesson")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> UpdateLesson([FromBody] UpdateLessonCommand updateLessonCommand)
+        {
+            await mediator.Send(updateLessonCommand);
+            return NoContent();
         }
 
         [HttpDelete("{id}", Name = "DeleteLesson")]
