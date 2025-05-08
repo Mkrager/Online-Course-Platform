@@ -97,6 +97,13 @@ namespace OnlineCoursePlatform.Persistence
                 Title = "testLesson"
             });
 
+            modelBuilder.Entity<Lesson>().HasData(new Lesson
+            {
+                Id = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
+                CourseId = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1"),
+                Title = "test2Lesson"
+            });
+
 
             modelBuilder.Entity<Test>().HasData(new Test
             {

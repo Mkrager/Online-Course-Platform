@@ -1,6 +1,7 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
+using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 using System.Net;
 using System.Text;
@@ -12,11 +13,9 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
     public class LessonControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        private readonly ITestOutputHelper _output;
-        public LessonControllerTests(CustomWebApplicationFactory<Program> factory, ITestOutputHelper output)
+        public LessonControllerTests(CustomWebApplicationFactory<Program> factory)
         {
             _factory = factory;
-            _output = output;
         }
 
         [Fact]
@@ -39,12 +38,11 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             );
 
             var response = await client.PostAsync("/api/lesson", content);
-            _output.WriteLine(response.ToString());
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             var responseString = await response.Content.ReadAsStringAsync();
-            _output.WriteLine(responseString);
+
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);
@@ -74,6 +72,36 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.NotNull(result);
             Assert.NotEmpty(result);
             Assert.True(result.Count > 0);
+        }
+
+        [Fact]
+        public async Task UpdateLesson_ReturnsNoContent_WhemLessonUpdated()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            Guid lessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49");
+
+            var updateLessonCommand = new UpdateLessonCommand
+            {
+                Id = lessonId,
+                Title = "Upd",
+                Description = "UpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpdUpd",
+                Order = 1,
+            };
+
+            var content = new StringContent(
+                JsonSerializer.Serialize(updateLessonCommand),
+                Encoding.UTF8,
+                "application/json"
+                );
+
+            var response = await client.PutAsync($"/api/lesson", content);
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+
+            var updateLessonResponse = await client.GetAsync($"/api/lesson/{lessonId}");
+
+            updateLessonResponse.EnsureSuccessStatusCode();
         }
 
         [Fact]
