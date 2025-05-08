@@ -4,6 +4,7 @@ using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
+using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -17,6 +18,15 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var id = await mediator.Send(createLessonCommand);
             return Ok(id);
+        }
+
+        [HttpGet("{id}", Name = "GetLessonById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<LessonDetailVm>> GetLessonById(Guid id)
+        {
+            var getLessonDetailQuery = new GetLessonDetailQuery() { Id = id };
+            return Ok(await mediator.Send(getLessonDetailQuery));
         }
 
         [HttpGet("{courseId}", Name = "GetCourseLessons")]
