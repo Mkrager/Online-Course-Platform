@@ -40,14 +40,14 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
 
             await handler.Handle(updateCommand, CancellationToken.None);
 
-            var updatedAccommodation = await _mockCourseRepository.Object.GetByIdAsync(updateCommand.Id);
+            var updatedCourse = await _mockCourseRepository.Object.GetByIdAsync(updateCommand.Id);
 
-            updatedAccommodation.ShouldNotBeNull();
-            updatedAccommodation.Title.ShouldBe(updateCommand.Title);
-            updatedAccommodation.Description.ShouldBe(updateCommand.Description);
-            updatedAccommodation.CategoryId.ShouldBe(updateCommand.CategoryId);
-            updatedAccommodation.ThumbnailUrl.ShouldBe(updateCommand.ThumbnailUrl);
-            updatedAccommodation.Price.ShouldBe(updateCommand.Price);
+            updatedCourse.ShouldNotBeNull();
+            updatedCourse.Title.ShouldBe(updateCommand.Title);
+            updatedCourse.Description.ShouldBe(updateCommand.Description);
+            updatedCourse.CategoryId.ShouldBe(updateCommand.CategoryId);
+            updatedCourse.ThumbnailUrl.ShouldBe(updateCommand.ThumbnailUrl);
+            updatedCourse.Price.ShouldBe(updateCommand.Price);
         }
 
     }
