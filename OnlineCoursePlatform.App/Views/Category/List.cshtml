@@ -1,0 +1,12 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Category
+@model List<CategoryViewModel>
+
+<div class="category-list-container">
+    <h2>Available Categories</h2>
+    <div class="category-list">
+        @foreach (var category in Model)
+        {
+            <a class="category">@category.Name</a>
+        }
+    </div>
+</div>

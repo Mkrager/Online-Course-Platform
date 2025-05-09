@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Services;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -18,18 +17,5 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             return View();
         }
-
-        private string HandleResponse<T>(ApiResponse<T> response, string successMessage = "")
-        {
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                return successMessage;
-            }
-            else
-            {
-                return response.ErrorText;
-            }
-        }
-
     }
 }

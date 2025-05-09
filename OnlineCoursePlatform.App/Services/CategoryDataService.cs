@@ -37,5 +37,10 @@ namespace OnlineCoursePlatform.App.Services
 
             return new List<CategoryViewModel>();
         }
+
+        public async Task<List<>> GetCategoriesWithCourses()
+        {
+
+        }
     }
 }

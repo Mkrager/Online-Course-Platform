@@ -19,7 +19,7 @@
         </a>
         <nav class="navigation">
             <a href="#">Home</a>
-            <a href="#">Categories</a>
+            <a asp-controller="Category" asp-action="List">Categories</a>
             <a asp-controller="Course" asp-action="CoursesList">Courses</a>
             <a href="#">About</a>
             @if (User.Identity != null && User.Identity.IsAuthenticated)
@@ -33,7 +33,7 @@
         </nav>
     </header>
 
-    <partial name="_AuthenticationPartial" model="new AuthenticationViewModel()"/>
+    <partial name="_AuthenticationPartial" model="new AuthenticationViewModel()" />
 
     @RenderBody()
     @RenderSection("Scripts", required: false)
