@@ -10,6 +10,13 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
+        public async Task<List<Course>> GetCoursesByCategoryId(Guid categoryId)
+        {
+            var courses = await _dbContext.Courses.Where(x => x.CategoryId == categoryId).ToListAsync();
+
+            return courses;
+        }
+
         public async Task<List<Course>> GetCoursesByUserId(string userId)
         {
             var courses = await _dbContext.Courses.Where(x => x.CreatedBy == userId).ToListAsync();
