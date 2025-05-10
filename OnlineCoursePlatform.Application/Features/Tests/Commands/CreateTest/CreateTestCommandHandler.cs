@@ -17,20 +17,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 
         public async Task<Guid> Handle(CreateTestCommand request, CancellationToken cancellationToken)
         {
-            var test = new Test
-            {
-                CourseId = request.CourseId,
-                Title = request.Title,
-                Questions = request.Questions.Select(q => new Question
-                {
-                    Text = q.Text,
-                    Answers = q.Answers.Select(a => new Answer
-                    {
-                        Text = a.Text,
-                        IsCorrect = a.IsCorrect
-                    }).ToList()
-                }).ToList()
-            };
+            var test = _mapper.Map<Test>(request);            
 
             test = await _testRepository.AddAsync(test);
 

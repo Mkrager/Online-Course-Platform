@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\features\\tests\\commands\\createtest\\createtestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\features\\tests\\commands\\createtest\\createtestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\features\\categories\\commands\\createcategory\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\features\\categories\\commands\\createcategory\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Application\\Profiles\\MappingProfile.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAYwCoAAABAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CreateCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Application\\Features\\Categories\\Commands\\CreateCategory\\CreateCategoryCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T15:30:15.516Z",
+              "WhenOpened": "2025-05-10T15:59:28.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateTestCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Tests\\Commands\\CreateTest\\CreateTestCommandHandler.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Features\\Tests\\Commands\\CreateTest\\CreateTestCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Tests\\Commands\\CreateTest\\CreateTestCommandHandler.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.Application\\Features\\Tests\\Commands\\CreateTest\\CreateTestCommandHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T15:57:10.095Z",
               "EditorCaption": ""
             }
           ]
