@@ -21,29 +21,10 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         public async Task<List<Course>> GetCoursesByCategoryId(Guid categoryId)
         {
             return await _dbContext.Courses
-                .Where(x => x.CategoryId == categoryId)
-                .Select(c => new Course
-                {
-                    Id = c.Id,
-                    Title = c.Title,
-                    CreatedDate = c.CreatedDate,
-                    Description = c.Description,
-                    Price = c.Price,
-                    Duration = c.Duration,
-                    ThumbnailUrl = c.ThumbnailUrl,
-                    CategoryId = c.CategoryId,
-                    LevelId = c.LevelId,
-                    Category = new Category
-                    {
-                        Id = c.Category.Id,
-                        Name = c.Category.Name
-                    },
-                    Level = new Level
-                    {
-                        Id = c.Level.Id,
-                        Name = c.Level.Name
-                    }
-                })
+                .Include(c => c.Category)
+                .Include(c => c.Level)
+                .Where(c => c.CategoryId == categoryId)
+                .OrderBy(c => c.CreatedDate)
                 .ToListAsync();
         }
 

@@ -30,8 +30,7 @@
               "RelativeToolTip": "OnlineCoursePlatform.Application\\Features\\Courses\\Queries\\GetCoursesByCategory\\GetCoursesByCategoryQueryHandler.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T12:22:13.065Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T12:22:13.065Z"
             },
             {
               "$type": "Document",
@@ -41,7 +40,7 @@
               "RelativeDocumentMoniker": "OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
               "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
               "RelativeToolTip": "OnlineCoursePlatform.Persistence\\Repositories\\CourseRepository.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAcwA0AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwBwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T12:23:27.055Z",
               "EditorCaption": ""
