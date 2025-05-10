@@ -1,4 +1,4 @@
-﻿using OnlineCoursePlatform.Domain.Entities;
+﻿using OnlineCoursePlatform.Application.Features.User.Queries;
 
 namespace OnlineCoursePlatform.Application.DTOs.User
 {
@@ -7,6 +7,6 @@ namespace OnlineCoursePlatform.Application.DTOs.User
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
 
-        public List<Course> Courses { get; set; } = default!;
+        public List<UserCourseVm> Courses { get; set; } = default!;
     }
 }

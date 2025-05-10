@@ -17,6 +17,7 @@ using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail;
 using OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail;
+using OnlineCoursePlatform.Application.Features.User.Queries;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Profiles
@@ -29,6 +30,7 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Course, CourseDetailVm>().ReverseMap();
             CreateMap<Course, CategoryCourseDto>().ReverseMap();
             CreateMap<Course, CoursesByCategoryVm>().ReverseMap();
+            CreateMap<Course, UserCourseVm>().ReverseMap();
 
             CreateMap<Course, CreateCourseCommand>().ReverseMap();
             CreateMap<Course, UpdateCourseCommand>().ReverseMap();
@@ -37,11 +39,11 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Category, CategoryListVm>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CourseByCategoryDto>().ReverseMap();
-
             CreateMap<Category, CategoryCourseListVm>().ReverseMap();
-            CreateMap<Category, DeleteCategoryCommand>().ReverseMap();
+            CreateMap<Category, UserCategoryDto>().ReverseMap();
 
             CreateMap<Category, CreateCategoryCommand>().ReverseMap();
+            CreateMap<Category, DeleteCategoryCommand>().ReverseMap();
 
             CreateMap<Test, CreateTestCommand>().ReverseMap();
             CreateMap<Test,TestDetailVm>().ReverseMap();
@@ -56,6 +58,7 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Level, LevelListVm>().ReverseMap();
             CreateMap<Level, LevelDto>().ReverseMap();
             CreateMap<Level, CourseByCategoryLevelDto>().ReverseMap();
+            CreateMap<Level, UserLevelDto>().ReverseMap();
 
             CreateMap<Lesson, CourseLessonListVm>().ReverseMap();
             CreateMap<Lesson, LessonDetailVm>().ReverseMap();

@@ -1327,44 +1327,6 @@
         },
         "additionalProperties": false
       },
-      "Category": {
-        "type": "object",
-        "properties": {
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastModifiedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "courses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Course"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CategoryDto": {
         "type": "object",
         "properties": {
@@ -1388,77 +1350,6 @@
           },
           "name": {
             "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Course": {
-        "type": "object",
-        "properties": {
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastModifiedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "categoryId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "levelId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "price": {
-            "type": "number",
-            "format": "double"
-          },
-          "isPublished": {
-            "type": "boolean"
-          },
-          "thumbnailUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "duration": {
-            "type": "string",
-            "format": "date-span"
-          },
-          "category": {
-            "$ref": "#/components/schemas/Category"
-          },
-          "level": {
-            "$ref": "#/components/schemas/Level"
-          },
-          "lessons": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Lesson"
-            },
             "nullable": true
           }
         },
@@ -1755,60 +1646,6 @@
         },
         "additionalProperties": false
       },
-      "Lesson": {
-        "type": "object",
-        "properties": {
-          "createdBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "lastModifiedBy": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastModifiedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "courseId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "videoUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "order": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "duration": {
-            "type": "string",
-            "format": "date-span"
-          },
-          "course": {
-            "$ref": "#/components/schemas/Course"
-          }
-        },
-        "additionalProperties": false
-      },
       "LessonDetailVm": {
         "type": "object",
         "properties": {
@@ -1839,31 +1676,6 @@
           "duration": {
             "type": "string",
             "format": "date-span"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Level": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "order": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "courses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Course"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2082,6 +1894,67 @@
         },
         "additionalProperties": false
       },
+      "UserCategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserCourseVm": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "levelId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "isPublished": {
+            "type": "boolean"
+          },
+          "thumbnailUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "duration": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "category": {
+            "$ref": "#/components/schemas/UserCategoryDto"
+          },
+          "level": {
+            "$ref": "#/components/schemas/UserLevelDto"
+          }
+        },
+        "additionalProperties": false
+      },
       "UserDetailsResponse": {
         "type": "object",
         "properties": {
@@ -2096,8 +1969,22 @@
           "courses": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Course"
+              "$ref": "#/components/schemas/UserCourseVm"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserLevelDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
             "nullable": true
           }
         },
