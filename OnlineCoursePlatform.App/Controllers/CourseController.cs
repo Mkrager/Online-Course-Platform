@@ -100,6 +100,13 @@ namespace OnlineCoursePlatform.App.Controllers
             return Json(new { redirectToUrl = Url.Action("Update", "Course", new { id = courseDetailViewModel.Id }) });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> CategoryCourses(Guid categoryId)
+        {
+            var courses = await _courseDataService.GetCoursesByCategoryId(categoryId);
+            return View(courses);
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
         {

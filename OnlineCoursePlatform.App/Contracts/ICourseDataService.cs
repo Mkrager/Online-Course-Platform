@@ -7,7 +7,7 @@ namespace OnlineCoursePlatform.App.Contracts
     {
         Task<CourseDetailViewModel> GetCourseById(Guid id);
         Task<List<CourseListViewModel>> GetAllCourses();
-        Task<List<CourseListViewModel>> GetCoursesByCategory(Guid categoryId);
+        Task<List<CourseListViewModel>> GetCoursesByCategoryId(Guid categoryId);
         Task<ApiResponse<Guid>> CreateCourse(CourseDetailViewModel courseDetailViewModel);
         Task<ApiResponse> UpdateCourse(CourseDetailViewModel courseDetailViewModel);
         Task<ApiResponse> DeleteCourse(Guid id);

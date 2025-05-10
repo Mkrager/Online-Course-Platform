@@ -143,7 +143,7 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public async Task<List<CourseListViewModel>> GetCoursesByCategory(Guid categoryId)
+        public async Task<List<CourseListViewModel>> GetCoursesByCategoryId(Guid categoryId)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Course/GetCourseByCategoryId/{categoryId}");
 
@@ -153,7 +153,7 @@ namespace OnlineCoursePlatform.App.Services
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
 
-                var courses = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent);
+                var courses = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent, _jsonOptions);
 
                 return courses;
             }
