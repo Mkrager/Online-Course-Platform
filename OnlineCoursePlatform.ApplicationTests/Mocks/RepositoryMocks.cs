@@ -10,7 +10,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
         {
             var courses = new List<Course>
             {
-                new Course { Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"), Title = "test", Description = "test", Price = 100, ThumbnailUrl = "test" },
+                new Course { Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"), Title = "test", Description = "test", Price = 100, ThumbnailUrl = "test", CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a262-2f2b197b4c6a") },
                 new Course { Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"), Title = "test2", Description = "test2", Price = 200, ThumbnailUrl = "test2" }
 
             };
@@ -49,6 +49,9 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             mockRepository.Setup(r => r.GetAllWithCategoryAndLevel())
                 .ReturnsAsync(courses);
+
+            mockRepository.Setup(r => r.GetCoursesByCategoryId(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid categoryId) => courses.Where(x => x.CategoryId == categoryId).ToList());
 
             return mockRepository;
         }

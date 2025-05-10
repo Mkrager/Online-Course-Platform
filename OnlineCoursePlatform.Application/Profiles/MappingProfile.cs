@@ -7,6 +7,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
@@ -27,6 +28,7 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Course, CourseListVm>().ReverseMap();
             CreateMap<Course, CourseDetailVm>().ReverseMap();
             CreateMap<Course, CategoryCourseDto>().ReverseMap();
+            CreateMap<Course, CoursesByCategoryVm>().ReverseMap();
 
             CreateMap<Course, CreateCourseCommand>().ReverseMap();
             CreateMap<Course, UpdateCourseCommand>().ReverseMap();
@@ -34,6 +36,7 @@ namespace OnlineCoursePlatform.Application.Profiles
 
             CreateMap<Category, CategoryListVm>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CourseByCategoryDto>().ReverseMap();
 
             CreateMap<Category, CategoryCourseListVm>().ReverseMap();
             CreateMap<Category, DeleteCategoryCommand>().ReverseMap();
@@ -52,6 +55,7 @@ namespace OnlineCoursePlatform.Application.Profiles
 
             CreateMap<Level, LevelListVm>().ReverseMap();
             CreateMap<Level, LevelDto>().ReverseMap();
+            CreateMap<Level, CourseByCategoryLevelDto>().ReverseMap();
 
             CreateMap<Lesson, CourseLessonListVm>().ReverseMap();
             CreateMap<Lesson, LessonDetailVm>().ReverseMap();

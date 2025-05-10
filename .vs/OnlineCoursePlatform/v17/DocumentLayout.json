@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.application\\features\\courses\\queries\\getcoursesbycategory\\getcoursesbycategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5AC8BB4F-903E-45CB-B4B6-E79066C5AD6D}|OnlineCoursePlatform.Application\\OnlineCoursePlatform.Application.csproj|solutionrelative:onlinecourseplatform.application\\features\\courses\\queries\\getcoursesbycategory\\getcoursesbycategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\courses\\queries\\getcoursesbycategoryqueryhandlertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\courses\\queries\\getcoursesbycategoryqueryhandlertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\courses\\queries\\getcoursedetailsqueryhandlertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\courses\\queries\\getcoursedetailsqueryhandlertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|c:\\users\\smaga\\source\\repos\\onlinecourseplatform\\onlinecourseplatform.applicationtests\\mocks\\repositorymocks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EC046E0-5238-4868-A11D-871FA0CA8950}|OnlineCoursePlatform.ApplicationTests\\OnlineCoursePlatform.Application.UnitTests.csproj|solutionrelative:onlinecourseplatform.applicationtests\\mocks\\repositorymocks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 229,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GetCoursesByCategoryQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Courses\\Queries\\GetCoursesByCategory\\GetCoursesByCategoryQueryHandler.cs",
-              "RelativeDocumentMoniker": "OnlineCoursePlatform.Application\\Features\\Courses\\Queries\\GetCoursesByCategory\\GetCoursesByCategoryQueryHandler.cs",
-              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.Application\\Features\\Courses\\Queries\\GetCoursesByCategory\\GetCoursesByCategoryQueryHandler.cs",
-              "RelativeToolTip": "OnlineCoursePlatform.Application\\Features\\Courses\\Queries\\GetCoursesByCategory\\GetCoursesByCategoryQueryHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "RepositoryMocks.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Mocks\\RepositoryMocks.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwDEAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T12:22:13.065Z",
+              "WhenOpened": "2025-05-10T12:52:44.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetCourseDetailsQueryHandlerTest.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCourseDetailsQueryHandlerTest.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCourseDetailsQueryHandlerTest.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCourseDetailsQueryHandlerTest.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCourseDetailsQueryHandlerTest.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T12:48:59.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetCoursesByCategoryQueryHandlerTest.cs",
+              "DocumentMoniker": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCoursesByCategoryQueryHandlerTest.cs",
+              "RelativeDocumentMoniker": "OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCoursesByCategoryQueryHandlerTest.cs",
+              "ToolTip": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCoursesByCategoryQueryHandlerTest.cs",
+              "RelativeToolTip": "OnlineCoursePlatform.ApplicationTests\\Courses\\Queries\\GetCoursesByCategoryQueryHandlerTest.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAxwB0AAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T12:46:46.369Z",
               "EditorCaption": ""
             }
           ]
