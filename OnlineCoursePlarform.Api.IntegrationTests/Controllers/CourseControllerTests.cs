@@ -2,6 +2,7 @@
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using System.Net;
 using System.Text;
@@ -13,11 +14,9 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
     public class CourseControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        private readonly ITestOutputHelper _output;
-        public CourseControllerTests(CustomWebApplicationFactory<Program> factory, ITestOutputHelper output)
+        public CourseControllerTests(CustomWebApplicationFactory<Program> factory)
         {
             _factory = factory;
-            _output = output;
         }
 
         [Fact]
@@ -30,6 +29,25 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             var responseString = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<List<CourseListVm>>(responseString);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.True(result.Count > 0);
+        }
+
+        [Fact]
+        public async Task GetCoursesByCategoryId_ReturnsSuccessAndNonEmptyList()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var categoryId = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3");
+
+            var ressponse = await client.GetAsync($"/api/Course/GetCourseByCategoryId/{categoryId}");
+
+            ressponse.EnsureSuccessStatusCode();
+
+            var responseString = await ressponse.Content.ReadAsStringAsync();
+            var result = JsonSerializer.Deserialize<List<CoursesByCategoryVm>>(responseString);
 
             Assert.NotNull(result);
             Assert.NotEmpty(result);
@@ -86,7 +104,6 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var response = await client.PostAsync("/api/Course", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
-            _output.WriteLine(responseString);
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);

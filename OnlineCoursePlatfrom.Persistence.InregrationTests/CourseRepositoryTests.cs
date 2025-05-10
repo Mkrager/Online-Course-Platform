@@ -50,36 +50,53 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         }
 
         [Fact]
-        public async Task GetCoursesByCategoryId_WhenCategoryHasCourses_ReturnsCategoryCourses()
+        public async Task GetCoursesByCategoryId_ShouldReturnCoursesOfGivenCategory()
         {
-            var courseId = Guid.NewGuid();
-
             var categoryId = Guid.NewGuid();
+            var anotherCategoryId = Guid.NewGuid();
+            var level = new Level { Id = Guid.NewGuid(), Name = "Beginner" };
 
-            var category = new Category
+            var category = new Category { Id = categoryId, Name = "Development" };
+            var anotherCategory = new Category { Id = anotherCategoryId, Name = "Business" };
+
+            _dbContext.Categories.AddRange(category, anotherCategory);
+            _dbContext.Levels.Add(level);
+
+            var course1 = new Course
             {
-                Id = categoryId,
-                Name = "Test",
-            };  
-
-            _dbContext.Categories.Add(category);
-            await _dbContext.SaveChangesAsync();
-
-            var course = new Course
-            {
-                Id = courseId,
+                Id = Guid.NewGuid(),
+                Title = "C# Basics",
                 CategoryId = categoryId,
-                Title = "TestCourse"
+                Level = level
             };
 
-            _dbContext.Courses.Add(course);
+            var course2 = new Course
+            {
+                Id = Guid.NewGuid(),
+                Title = "ASP.NET Core",
+                CategoryId = categoryId,
+                Level = level
+            };
+
+            var course3 = new Course
+            {
+                Id = Guid.NewGuid(),
+                Title = "Business Basics",
+                CategoryId = anotherCategoryId,
+                Level = level
+            };
+
+            _dbContext.Courses.AddRange(course1, course2, course3);
             await _dbContext.SaveChangesAsync();
 
             var result = await _repository.GetCoursesByCategoryId(categoryId);
 
             Assert.NotNull(result);
-            Assert.Equal(1, result.Count);
+            Assert.Equal(2, result.Count);
+            Assert.All(result, c => Assert.Equal(categoryId, c.CategoryId));
+            Assert.Equal(course1.Id, result.First().Id);
         }
+
 
         [Fact]
         public async Task GetAllWithCategoryAndLevel_ShouldReturnAllCourses()

@@ -4,6 +4,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -28,6 +29,15 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var getCourseDetailQuery = new GetCourseDetailQuery() { Id = id };
             return Ok(await mediator.Send(getCourseDetailQuery));
+        }
+
+        [HttpGet("[action]/{categoryId}", Name = "GetCourseByCategoryId")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<List<CoursesByCategoryVm>>> GetCourseByCategoryId(Guid categoryId)
+        {
+            var getCoursesByCategoryQuery = new GetCoursesByCategoryQuery() { CategoryId = categoryId };
+            return Ok(await mediator.Send(getCoursesByCategoryQuery));
         }
 
         [HttpPost(Name = "AddCourse")]
