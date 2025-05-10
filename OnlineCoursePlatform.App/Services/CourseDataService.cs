@@ -142,5 +142,23 @@ namespace OnlineCoursePlatform.App.Services
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        public async Task<List<CourseListViewModel>> GetCoursesByCategory(Guid categoryId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Course/GetCourseByCategoryId/{categoryId}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                var courses = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent);
+
+                return courses;
+            }
+
+            return new List<CourseListViewModel>();
+        }
     }
 }
