@@ -12,15 +12,11 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Queries
     public class GetCoursesListQueryHandlerTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<Course>> _mockCourseRepository;
-        private readonly Mock<ICategoryRepository> _mockCategoryRepository;
-        private readonly Mock<IAsyncRepository<Level>> _mockLLevelRepository;
+        private readonly Mock<ICourseRepository> _mockCourseRepository;
 
         public GetCoursesListQueryHandlerTest()
         {
             _mockCourseRepository = RepositoryMocks.GetCourseRepository();
-            _mockCategoryRepository = RepositoryMocks.GetCategoryRepository();
-            _mockLLevelRepository = RepositoryMocks.GetLevelRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -31,7 +27,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Queries
         [Fact]
         public async Task GetCourseList_ReturnsListOfCourses()
         {
-            var handler = new GetCoursesListQueryHandler(_mapper, _mockCourseRepository.Object, _mockCategoryRepository.Object, _mockLLevelRepository.Object);
+            var handler = new GetCoursesListQueryHandler(_mapper, _mockCourseRepository.Object);
 
             var result = await handler.Handle(new GetCoursesListQuery(), CancellationToken.None);
 

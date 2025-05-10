@@ -6,5 +6,6 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
     {
         Task<List<Course>> GetCoursesByUserId(string userId);
         Task<List<Course>> GetCoursesByCategoryId(Guid categoryId);
+        Task<List<Course>> GetAllWithCategoryAndLevel();
     }
 }

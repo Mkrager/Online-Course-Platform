@@ -6,7 +6,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 {
     public class RepositoryMocks
     {
-        public static Mock<IAsyncRepository<Course>> GetCourseRepository()
+        public static Mock<ICourseRepository> GetCourseRepository()
         {
             var courses = new List<Course>
             {
@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             };
 
-            var mockRepository = new Mock<IAsyncRepository<Course>>();
+            var mockRepository = new Mock<ICourseRepository>();
 
             mockRepository.Setup(r => r.ListAllAsync())
                 .ReturnsAsync(courses);
@@ -46,6 +46,9 @@ namespace OnlineCoursePlatform.ApplicationTests.Mocks
 
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Course>()))
                 .Callback((Course course) => courses.Remove(course));
+
+            mockRepository.Setup(r => r.GetAllWithCategoryAndLevel())
+                .ReturnsAsync(courses);
 
             return mockRepository;
         }

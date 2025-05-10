@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
@@ -75,6 +76,47 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             await _dbContext.SaveChangesAsync();
 
             var result = await _repository.GetCoursesByCategoryId(categoryId);
+
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public async Task GetAllWithCategoryAndLevel_ShouldReturnAllCourses()
+        {
+            var courseId = Guid.NewGuid();
+
+            var categoryId = Guid.NewGuid();
+
+            var levelId = Guid.NewGuid();
+
+            var level = new Level
+            {
+                Name = "Test",
+                Id = levelId
+            };
+
+            var category = new Category
+            {
+                Id = categoryId,
+                Name = "Test",
+            };
+
+            _dbContext.Categories.Add(category);
+            await _dbContext.SaveChangesAsync();
+
+            var course = new Course
+            {
+                Id = courseId,
+                CategoryId = categoryId,
+                Title = "TestCourse",
+                Level = level
+            };
+
+            _dbContext.Courses.Add(course);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.GetAllWithCategoryAndLevel();
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);

@@ -12,7 +12,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
     public class UpdateCourseCommandTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<Course>> _mockCourseRepository;
+        private readonly Mock<ICourseRepository> _mockCourseRepository;
 
         public UpdateCourseCommandTest()
         {

@@ -1,6 +1,5 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Category;
-using OnlineCoursePlatform.App.ViewModels.Course;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
@@ -38,9 +37,9 @@ namespace OnlineCoursePlatform.App.Services
             return new List<CategoryViewModel>();
         }
 
-        public async Task<List<>> GetCategoriesWithCourses()
-        {
+        //public async Task<List<>> GetCategoriesWithCourses()
+        //{
 
-        }
+        //}
     }
 }

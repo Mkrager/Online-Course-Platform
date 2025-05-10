@@ -4,7 +4,6 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.ApplicationTests.Mocks;
-using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
@@ -12,7 +11,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
     public class CreateCourseCommandTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<Course>> _mockCourseRepository;
+        private readonly Mock<ICourseRepository> _mockCourseRepository;
 
         public CreateCourseCommandTest()
         {
