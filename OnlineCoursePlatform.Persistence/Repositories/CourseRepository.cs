@@ -13,7 +13,15 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         public async Task<List<Course>> GetAllWithCategoryAndLevel()
         {
             return await _dbContext.Courses
-                .OrderBy(c => c.CreatedDate)
+                .Include(c => c.Category)
+                .Include(c => c.Level)
+                .ToListAsync();
+        }
+
+        public async Task<List<Course>> GetCoursesByCategoryId(Guid categoryId)
+        {
+            return await _dbContext.Courses
+                .Where(x => x.CategoryId == categoryId)
                 .Select(c => new Course
                 {
                     Id = c.Id,
@@ -37,13 +45,6 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                     }
                 })
                 .ToListAsync();
-        }
-
-        public async Task<List<Course>> GetCoursesByCategoryId(Guid categoryId)
-        {
-            var courses = await _dbContext.Courses.Where(x => x.CategoryId == categoryId).ToListAsync();
-
-            return courses;
         }
 
         public async Task<List<Course>> GetCoursesByUserId(string userId)

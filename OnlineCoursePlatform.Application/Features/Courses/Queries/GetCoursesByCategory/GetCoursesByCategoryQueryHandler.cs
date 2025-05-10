@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory
 {
@@ -9,8 +8,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesBy
     {
         private readonly IMapper _mapper;
         private readonly ICourseRepository _courseRepository;
-        private readonly IAsyncRepository<Level> _levelRepository;
-        private readonly IAsyncRepository<Category> _categoryRepository;
 
         public GetCoursesByCategoryQueryHandler(IMapper mapper, ICourseRepository courseRepository)
         {
