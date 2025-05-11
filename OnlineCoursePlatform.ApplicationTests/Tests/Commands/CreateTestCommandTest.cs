@@ -30,10 +30,23 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         {
             var handler = new CreateTestCommandHandler(_mapper, _mockTestRepository.Object);
 
+            var answer = new AnswerDto
+            {
+                IsCorrect = true,
+                Text = "test"
+            };
+
+            var question = new QuestionDto
+            {
+                Text = "Test",
+                Answers = new List<AnswerDto> { answer }
+            };
+
             var command = new CreateTestCommand
             {
                 Title = "CreatedTest",
-                CourseId = Guid.NewGuid(),
+                Questions = new List<QuestionDto> { question },
+                CourseId = Guid.NewGuid()
             };
 
             await handler.Handle(command, CancellationToken.None);
