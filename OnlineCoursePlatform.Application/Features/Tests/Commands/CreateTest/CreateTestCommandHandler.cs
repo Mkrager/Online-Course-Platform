@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
@@ -17,11 +18,17 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 
         public async Task<Guid> Handle(CreateTestCommand request, CancellationToken cancellationToken)
         {
-            var test = _mapper.Map<Test>(request);            
+            var validator = new CreateTestValidator();
+            var validatorResult = await validator.ValidateAsync(request);
 
-            test = await _testRepository.AddAsync(test);
+            if (validatorResult.Errors.Count > 0)
+                throw new ValidationException(validatorResult);
 
-            return test.Id;
+            var @test = _mapper.Map<Test>(request);            
+
+            @test = await _testRepository.AddAsync(test);
+
+            return @test.Id;
         }
     }
 }
