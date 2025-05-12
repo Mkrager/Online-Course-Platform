@@ -484,7 +484,6 @@ h2 {
     font-size: 1rem;
     color: #ffffff;
     margin-bottom: 12px;
-
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
@@ -747,3 +746,68 @@ h2 {
             color: #fff;
         }
 
+.test-form {
+    background-color: rgba(0, 0, 0, 0.72);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    width: 800px;
+    margin-top: 160px;
+}
+
+.question {
+    border: 1px solid #aaa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #333;
+}
+
+    .question.collapsed .answers {
+        display: none;
+    }
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .question-header span {
+        margin-left: 10px;
+    }
+
+.answers {
+    margin-top: 10px;
+}
+
+.answer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #51009d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #c0392b;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}

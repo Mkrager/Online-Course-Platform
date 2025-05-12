@@ -1628,7 +1628,7 @@
       "CreateTestCommand": {
         "type": "object",
         "properties": {
-          "courseId": {
+          "lessonId": {
             "type": "string",
             "format": "uuid"
           },
