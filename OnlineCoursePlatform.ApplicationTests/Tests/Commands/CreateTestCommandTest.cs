@@ -46,7 +46,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
             {
                 Title = "CreatedTest",
                 Questions = new List<QuestionDto> { question },
-                CourseId = Guid.NewGuid()
+                LessonId = Guid.NewGuid()
             };
 
             await handler.Handle(command, CancellationToken.None);

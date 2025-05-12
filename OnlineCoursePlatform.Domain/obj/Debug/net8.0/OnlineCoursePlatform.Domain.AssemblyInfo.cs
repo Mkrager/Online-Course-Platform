@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OnlineCoursePlatform.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1aaafab5fb958aa20fdfa6043dc25048b7ff5e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+817bbba6e4e70ba1e5e1e47ddef455de042967c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("OnlineCoursePlatform.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OnlineCoursePlatform.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
