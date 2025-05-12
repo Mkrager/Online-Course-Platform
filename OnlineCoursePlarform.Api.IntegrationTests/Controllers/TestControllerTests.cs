@@ -26,7 +26,9 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         {
             var client = _factory.GetAnonymousClient();
 
-            var questions = new List<QuestionDto>();
+            var answers = new List<AnswerDto>() { new AnswerDto() { Text = "Test", IsCorrect = true } };
+
+            var questions = new List<QuestionDto>() { new QuestionDto() { Text = "Test", Answers = answers } };
 
             var createTestCommand = new CreateTestCommand
             {

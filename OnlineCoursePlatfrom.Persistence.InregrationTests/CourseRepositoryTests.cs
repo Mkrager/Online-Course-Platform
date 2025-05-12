@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
@@ -21,7 +22,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
 
-            _currentUserId = "00000000-0000-0000-0000-000000000000";
+            _currentUserId = "12300000-0000-0000-0000-000000000000";
             _currentUserServiceMock = new Mock<ICurrentUserService>();
             _currentUserServiceMock.Setup(m => m.UserId).Returns(_currentUserId);
 
@@ -34,16 +35,37 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         public async Task GetCoursesByUserId_WhenUserHasCourses_ReturnsUserCourses()
         {
             var courseId = Guid.NewGuid();
+
+            var levelId = Guid.NewGuid();
+
+            var level = new Level
+            {
+                Id = levelId,
+                Name = "Test"
+            };
+
+            var categoryId = Guid.NewGuid();
+
+            var category = new Category
+            {
+                Id = categoryId,
+                Name = "Test",
+            };
+
             var course = new Course
             {
                 Id = courseId,
-                Title = "TestCourse"
+                LevelId = levelId,
+                CategoryId = categoryId,
+                Title = "TestCourse",
+                Level = level,
+                Category = category,
             };
 
             _dbContext.Courses.Add(course);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursesByUserId("00000000-0000-0000-0000-000000000000");
+            var result = await _repository.GetCoursesByUserId(_currentUserId);
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);

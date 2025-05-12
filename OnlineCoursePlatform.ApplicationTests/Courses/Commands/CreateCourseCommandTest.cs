@@ -50,6 +50,5 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
             createdCourse.Description.ShouldBe(command.Description);
             createdCourse.Price.ShouldBe(command.Price);
         }
-
     }
 }
