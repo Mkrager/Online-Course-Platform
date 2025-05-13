@@ -755,6 +755,16 @@ h2 {
     margin-top: 160px;
 }
 
+    .test-form .btn {
+        margin-top: 10px;
+        padding: 8px 15px;
+        background-color: #51009d;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
 .question {
     border: 1px solid #aaa;
     padding: 15px;
@@ -762,6 +772,8 @@ h2 {
     margin-bottom: 15px;
     background-color: #333;
 }
+
+
 
     .question.collapsed .answers {
         display: none;
@@ -787,16 +799,6 @@ h2 {
     align-items: center;
     gap: 10px;
     margin-bottom: 8px;
-}
-
-.btn {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #51009d;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .btn-danger {

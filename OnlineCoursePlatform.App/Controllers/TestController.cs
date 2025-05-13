@@ -14,9 +14,14 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(Guid lessonId)
         {
-            return View();
+            var model = new TestViewModel()
+            {
+                LessonId = lessonId
+            };
+
+            return View(model);
         }
 
         [HttpPost]

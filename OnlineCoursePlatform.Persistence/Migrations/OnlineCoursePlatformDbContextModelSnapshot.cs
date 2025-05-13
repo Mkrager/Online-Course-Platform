@@ -271,6 +271,17 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                             Order = 0,
                             Title = "testLesson",
                             VideoUrl = ""
+                        },
+                        new
+                        {
+                            Id = new Guid("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
+                            CourseId = new Guid("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "",
+                            Duration = new TimeSpan(0, 0, 0, 0, 0),
+                            Order = 0,
+                            Title = "test2Lesson",
+                            VideoUrl = ""
                         });
                 });
 
@@ -338,7 +349,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CourseId")
+                    b.Property<Guid>("LessonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
@@ -347,7 +358,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("LessonId");
 
                     b.ToTable("Tests");
 
@@ -355,7 +366,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         new
                         {
                             Id = new Guid("1f5a4c21-2c9b-4b4e-bcb9-36b770a742d0"),
-                            CourseId = new Guid("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1"),
+                            LessonId = new Guid("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
                             Title = "test"
                         });
                 });
@@ -436,13 +447,13 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Test", b =>
                 {
-                    b.HasOne("OnlineCoursePlatform.Domain.Entities.Course", "Course")
+                    b.HasOne("OnlineCoursePlatform.Domain.Entities.Lesson", "Lesson")
                         .WithMany()
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Course");
+                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Category", b =>

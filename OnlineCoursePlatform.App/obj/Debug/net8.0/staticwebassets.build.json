@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CcFsFjpklbUEAqBLUY/t6E7A/p4yM4L6LPeFAeGZZ38=",
+  "Hash": "I0DCmSG9FijmEJvgtgU7r+Vu03RTalnywG5j58yqYu4=",
   "Source": "OnlineCoursePlatform.App",
   "BasePath": "_content/OnlineCoursePlatform.App",
   "Mode": "Default",
@@ -73,19 +73,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "bekevpixm3",
-      "Integrity": "w0HmWpCyT4UHn3mEeggnmWGjvSKUjnmghPDM0rT/H+o=",
+      "Fingerprint": "nb2vejlhow",
+      "Integrity": "g6cNX5IU/bN1KEaT9qK4mrgJ5MEWkFlCAdn3l13g8es=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\Script.js",
+      "Identity": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\script.js",
       "SourceId": "OnlineCoursePlatform.App",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\",
       "BasePath": "_content/OnlineCoursePlatform.App",
-      "RelativePath": "js/Script#[.{fingerprint}]?.js",
+      "RelativePath": "js/script#[.{fingerprint}]?.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -98,7 +98,7 @@
       "Integrity": "2mLW6B2zMLYgOjOP++2x1Ixlgmiqy2/PE/KU8HfEbqc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Script.js"
+      "OriginalItemSpec": "wwwroot\\js\\script.js"
     },
     {
       "Identity": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
@@ -1342,51 +1342,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/style.bekevpixm3.css",
-      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "15780"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"w0HmWpCyT4UHn3mEeggnmWGjvSKUjnmghPDM0rT/H+o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 17:33:22 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "bekevpixm3"
-        },
-        {
-          "Name": "label",
-          "Value": "css/style.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-w0HmWpCyT4UHn3mEeggnmWGjvSKUjnmghPDM0rT/H+o="
-        }
-      ]
-    },
-    {
       "Route": "css/style.css",
       "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
       "Selectors": [],
@@ -1397,7 +1352,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "15780"
+          "Value": "15831"
         },
         {
           "Name": "Content-Type",
@@ -1405,11 +1360,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w0HmWpCyT4UHn3mEeggnmWGjvSKUjnmghPDM0rT/H+o=\""
+          "Value": "\"g6cNX5IU/bN1KEaT9qK4mrgJ5MEWkFlCAdn3l13g8es=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 12 May 2025 17:33:22 GMT"
+          "Value": "Tue, 13 May 2025 11:21:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1419,13 +1374,58 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-w0HmWpCyT4UHn3mEeggnmWGjvSKUjnmghPDM0rT/H+o="
+          "Value": "sha256-g6cNX5IU/bN1KEaT9qK4mrgJ5MEWkFlCAdn3l13g8es="
         }
       ]
     },
     {
-      "Route": "js/Script.2qruzqlub6.js",
-      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\Script.js",
+      "Route": "css/style.nb2vejlhow.css",
+      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15831"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g6cNX5IU/bN1KEaT9qK4mrgJ5MEWkFlCAdn3l13g8es=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 13 May 2025 11:21:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nb2vejlhow"
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-g6cNX5IU/bN1KEaT9qK4mrgJ5MEWkFlCAdn3l13g8es="
+        }
+      ]
+    },
+    {
+      "Route": "js/script.2qruzqlub6.js",
+      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\script.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1460,7 +1460,7 @@
         },
         {
           "Name": "label",
-          "Value": "js/Script.js"
+          "Value": "js/script.js"
         },
         {
           "Name": "integrity",
@@ -1469,8 +1469,8 @@
       ]
     },
     {
-      "Route": "js/Script.js",
-      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\Script.js",
+      "Route": "js/script.js",
+      "AssetFile": "C:\\Users\\Smaga\\source\\repos\\OnlineCoursePlatform\\OnlineCoursePlatform.App\\wwwroot\\js\\script.js",
       "Selectors": [],
       "ResponseHeaders": [
         {
