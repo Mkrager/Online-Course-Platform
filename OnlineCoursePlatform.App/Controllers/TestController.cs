@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Middlewares;
+using OnlineCoursePlatform.App.ViewModels.Lesson;
 using OnlineCoursePlatform.App.ViewModels.Test;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -29,7 +31,13 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var result = await _testDataService.CreateTest(testViewModel);
 
-            return View();
+            if (!result.IsSuccess)
+            {
+                TempData["Message"] = HandleErrors.HandleResponse(result);
+                return View();
+            }
+
+            return RedirectToAction("Overview", "Account", new { userId = User.FindFirst("uid")?.Value });
         }
     }
 }

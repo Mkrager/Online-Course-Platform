@@ -35,8 +35,17 @@ namespace OnlineCoursePlatform.App.Services
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessage = JsonSerializer.Deserialize<List<string>>(errorContent);
-                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessage.FirstOrDefault());
+
+                var problemDetails = JsonSerializer.Deserialize<ValidationProblemDetails>(errorContent, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                var allErrors = problemDetails?.Errors
+                    .SelectMany(e => e.Value)
+                    .ToList();
+
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, allErrors.FirstOrDefault());
             }
             catch (Exception ex)
             {
@@ -44,4 +53,12 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
     }
+}
+public class ValidationProblemDetails
+{
+    public string Type { get; set; }
+    public string Title { get; set; }
+    public int Status { get; set; }
+    public Dictionary<string, string[]> Errors { get; set; }
+    public string TraceId { get; set; }
 }

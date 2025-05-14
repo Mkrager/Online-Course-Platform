@@ -1,13 +1,23 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.Test
 @model TestViewModel
 
+@{
+    var message = TempData["Message"] as string;
+}
+
 <form asp-controller="Test" asp-action="Create" class="test-form" id="testForm">
     <h2>Create Test</h2>
 
-    <div class="question-header">
+    <h1 class="error-text">@message</h1>
+
+    <div class="form-group">
         <label asp-for="Title"></label>
-        <input asp-for="Title" />
         <span asp-validation-for="Title" class="error-text"></span>
+        <input asp-for="Title" />
+    </div>
+
+    <div class="question-header">
+
     </div>
 
     <div id="questions"></div>
@@ -28,13 +38,11 @@
         questionBlock.innerHTML = `
             <div class="question-header">
                 <input type="text" name="Questions[${index}].Text" placeholder="Question Text" />
-                <span asp-validation-for="Questions[${index}].Text" class="error-text"></span>
                 <span onclick="toggleQuestion(${index})"><ion-icon name="caret-down-outline"></ion-icon></span>
             </div>
             <div class="answers">
                 <div class="answer">
                     <input type="checkbox" name="Questions[${index}].Answers[0].IsCorrect" value="true" />
-                    <span asp-validation-for="Questions[${index}].Answers[0]" class="error-text"></span>
                     <input type="text" name="Questions[${index}].Answers[0].Text" placeholder="Answer Option" />
                 </div>
                 <button type="button" class="btn" onclick="addAnswer(${index}, this)">+ Add Answer</button>

@@ -455,6 +455,36 @@ h2 {
         background-color: #37007b;
     }
 
+.btn-add-test {
+    background-color: #00809b;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-add-test:hover {
+        background-color: #005c6f;
+    }
+
+.btn-view-lesson {
+    background-color: #a09303;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-view-lesson:hover {
+        background-color: #625a02;
+    }
+
 .courses-section {
     width: 65%;
 }
@@ -812,4 +842,16 @@ input[type="text"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
 }
