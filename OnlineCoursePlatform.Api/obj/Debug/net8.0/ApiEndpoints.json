@@ -630,6 +630,38 @@
   },
   {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.TestController",
+    "Method": "UpdateTest",
+    "RelativePath": "api/Test",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateTestCommand",
+        "Type": "OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest.UpdateTestCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "EndpointName": "UpdateTest"
+  },
+  {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.TestController",
     "Method": "GetTestById",
     "RelativePath": "api/Test/{id}",
     "HttpMethod": "GET",
