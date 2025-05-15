@@ -9,12 +9,12 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Queries
 {
-    public class GetTestDetailQueryHandlerTests
+    public class GetTestDetailQueryHandlerTest
     {
         private readonly IMapper _mapper;
         private readonly Mock<ITestRepository> _testRepository;
 
-        public GetTestDetailQueryHandlerTests()
+        public GetTestDetailQueryHandlerTest()
         {
             _testRepository = RepositoryMocks.GetTestRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
@@ -25,7 +25,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Queries
         }
 
         [Fact]
-        public async Task GetTestListWithQuestionAndAnswer()
+        public async Task GetTestListWithQuestionAndAnswer_RetursnListOfTests()
         {
 
             var handler = new GetTestDetailQueryHandler(_mapper, _testRepository.Object);

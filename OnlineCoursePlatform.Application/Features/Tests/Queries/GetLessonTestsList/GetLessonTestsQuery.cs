@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsList
 {
-    internal class GetLessonTestsQuery
+    public class GetLessonTestsQuery : IRequest<List<LessonTestListVm>>
     {
+        public Guid LessonId { get; set; }
     }
 }
