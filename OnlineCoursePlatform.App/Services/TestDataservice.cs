@@ -8,10 +8,16 @@ namespace OnlineCoursePlatform.App.Services
     public class TestDataservice : ITestDataService
     {
         private readonly HttpClient _httpClient;
+        private readonly JsonSerializerOptions _jsonOptions;
 
         public TestDataservice(HttpClient httpClient)
         {
             _httpClient = httpClient;
+            _jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
         }
 
         public async Task<ApiResponse<Guid>> CreateTest(TestViewModel testViewModel)
@@ -74,6 +80,24 @@ namespace OnlineCoursePlatform.App.Services
             {
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        public async Task<List<TestViewModel>> GetTestByLessonId(Guid lessonId)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/GetTestByLessonId/{lessonId}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                var testsList = JsonSerializer.Deserialize<List<TestViewModel>>(content, _jsonOptions);
+
+                return testsList;
+            }
+
+            return new List<TestViewModel>();
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
-using OnlineCoursePlatform.App.ViewModels.Lesson;
 using OnlineCoursePlatform.App.ViewModels.Test;
-using System.Runtime.CompilerServices;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -14,6 +12,20 @@ namespace OnlineCoursePlatform.App.Controllers
         public TestController(ITestDataService testDataService)
         {
             _testDataService = testDataService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List(Guid lessonId)
+        {
+            var tests = await _testDataService.GetTestByLessonId(lessonId);
+
+            var lessonTestViewModel = new LessonTestsViewModel()
+            {
+                Tests = tests,
+                LessonId = lessonId
+            };
+
+            return View(lessonTestViewModel);
         }
 
         [HttpGet]

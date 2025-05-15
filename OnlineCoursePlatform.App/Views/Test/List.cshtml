@@ -1,0 +1,50 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Test
+@model LessonTestsViewModel
+
+@if (Model.Tests.Count != 0)
+{
+    <div class="lessons-section">
+        <h2>Tests</h2>
+        <div class="lessons-list">
+            @foreach (var test in Model.Tests)
+            {
+                <div class="lesson-item">
+                    <span>@test.Title</span>
+
+                    <div class="lesson-actions">
+                        @* <a asp-controller="Lesson" asp-action="update" asp-route-id="@lesson.Id" class="btn-edit">Edit</a> *@
+                        @* <a asp-controller="Lesson" asp-action="details" asp-route-id="@lesson.Id" class="btn-view-lesson">View lesson</a> *@
+                        @* <a asp-controller="Test" asp-action="create" asp-route-lessonId="@lesson.Id" class="btn-add-test">Add test</a> *@
+                        <a class="btn-delete" onclick="deleteTest('@test.Id')">Delete</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <a asp-controller="Test" asp-action="Create" asp-route-lessonId="@Model.LessonId" class="btn-add">Add test</a>
+    </div>
+}
+else
+{
+    <div class="lessons-section">
+        <h2>No test available</h2>
+        <a asp-controller="Test" asp-action="Create" asp-route-lessonId="@Model.LessonId" class="btn-add">Add test</a>
+    </div>
+}
+
+
+<script>
+    function deleteTest(testId) {
+        $.ajax({
+            url: '@Url.Action("Delete", "Test")/' + testId,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function (response) {
+                window.location.href = response.redirectUrl;
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Error');
+            }
+        });
+    }
+</script>

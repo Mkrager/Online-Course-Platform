@@ -5,6 +5,7 @@ namespace OnlineCoursePlatform.App.ViewModels.Test
 {
     public class TestViewModel
     {
+        public Guid Id { get; set; }
         public Guid LessonId { get; set; }
 
         [Required(ErrorMessage = "Title required")]
