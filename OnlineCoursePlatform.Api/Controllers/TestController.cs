@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail;
+using OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsList;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -25,6 +26,15 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var getCourseDetailQuery = new GetTestDetailQuery() { Id = id };
             return Ok(await mediator.Send(getCourseDetailQuery));
+        }
+
+        [HttpGet("[action]/{lessonId}", Name = "GetTestByLessonId")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<List<LessonTestListVm>>> GetTestByLessonId(Guid lessonId)
+        {
+            var getLessonTestQuery = new GetLessonTestsQuery() { LessonId = lessonId };
+            return Ok(await mediator.Send(getLessonTestQuery));
         }
 
         [HttpDelete("{id}", Name = "DeleteTest")]

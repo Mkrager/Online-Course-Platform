@@ -1,6 +1,7 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail;
+using OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsList;
 using System.Net;
 using System.Text;
 using System.Text.Json;
@@ -47,6 +48,24 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
+        [Fact]
+        public async Task GetTestByLessonId_ReturnsSuccessAndNonEmptyResult()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var lessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49");
+
+            var response = await client.GetAsync($"/api/Test/GetTestByLessonId/{lessonId}");
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            var result = JsonSerializer.Deserialize<List<LessonTestListVm>>(responseString);
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+        }
 
         [Fact]
         public async Task GetTestWithQuestionAndAnswer_ReturnsSuccessAndNonEmptyResult()

@@ -706,6 +706,42 @@
     "EndpointName": "DeleteTest"
   },
   {
+    "ContainingType": "OnlineCoursePlatform.Api.Controllers.TestController",
+    "Method": "GetTestByLessonId",
+    "RelativePath": "api/Test/GetTestByLessonId/{lessonId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lessonId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsList.LessonTestListVm, OnlineCoursePlatform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "EndpointName": "GetTestByLessonId"
+  },
+  {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.UserController",
     "Method": "GetUserDetails",
     "RelativePath": "api/User/GetUserDetails/{id}",
