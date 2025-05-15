@@ -52,13 +52,28 @@ namespace OnlineCoursePlatform.App.Services
                 return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
             }
         }
+
+        public async Task<ApiResponse> DeleteTest(Guid id)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7275/api/test/{id}");
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return new ApiResponse(System.Net.HttpStatusCode.OK);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessage = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessage.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
-}
-public class ValidationProblemDetails
-{
-    public string Type { get; set; }
-    public string Title { get; set; }
-    public int Status { get; set; }
-    public Dictionary<string, string[]> Errors { get; set; }
-    public string TraceId { get; set; }
 }

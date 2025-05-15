@@ -1,6 +1,8 @@
-﻿namespace OnlineCoursePlatform.Domain.Entities
+﻿using OnlineCoursePlatform.Domain.Common;
+
+namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class Test
+    public class Test : AuditableEntity
     {
         public Guid Id { get; set; }
         public Guid LessonId { get; set; }

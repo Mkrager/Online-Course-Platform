@@ -349,6 +349,18 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<Guid>("LessonId")
                         .HasColumnType("uniqueidentifier");
 
@@ -366,8 +378,16 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         new
                         {
                             Id = new Guid("1f5a4c21-2c9b-4b4e-bcb9-36b770a742d0"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LessonId = new Guid("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
                             Title = "test"
+                        },
+                        new
+                        {
+                            Id = new Guid("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LessonId = new Guid("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
+                            Title = "test2"
                         });
                 });
 

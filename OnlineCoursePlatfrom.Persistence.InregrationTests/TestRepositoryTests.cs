@@ -55,5 +55,36 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             Assert.Equal(2, result.Questions.Count);
         }
 
+        [Fact]
+        public async Task GetTestsByUserId_WhenUserHasTests_ReturnsUserTests()
+        {
+            var lessonId = Guid.NewGuid();
+
+            var lesson = new Lesson
+            {
+                Id = lessonId,
+                Title = "Test"
+            };
+
+            _dbContext.Lessons.Add(lesson);
+            await _dbContext.SaveChangesAsync();
+
+            var testId = Guid.NewGuid();
+
+            var test = new Test
+            {
+                Id = testId,
+                Title = "Test",
+                LessonId = lessonId
+            };
+
+            _dbContext.Tests.Add(test);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.GetTestsByUserId(_currentUserId);
+
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Count);
+        }
     }
 }

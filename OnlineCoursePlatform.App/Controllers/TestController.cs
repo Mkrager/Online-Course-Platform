@@ -3,6 +3,7 @@ using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.ViewModels.Lesson;
 using OnlineCoursePlatform.App.ViewModels.Test;
+using System.Runtime.CompilerServices;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -38,6 +39,16 @@ namespace OnlineCoursePlatform.App.Controllers
             }
 
             return RedirectToAction("Overview", "Account", new { userId = User.FindFirst("uid")?.Value });
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _testDataService.DeleteTest(id);
+
+            var referer = Request.Headers["Referer"].ToString();
+
+            return Json(new { redirectUrl = referer });
         }
     }
 }
