@@ -19,17 +19,17 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
 
         public async Task<Unit> Handle(UpdateCourseCommand request, CancellationToken cancellationToken)
         {
-            var courseToUpdate = await _courseRepository.GetByIdAsync(request.Id);
-            if (courseToUpdate == null)
-            {
-                throw new NotFoundException(nameof(Course), request.Id);
-            }
-
             var validator = new UpdateCourseCommandValidator();
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Count > 0)
                 throw new ValidationException(validationResult);
+
+            var courseToUpdate = await _courseRepository.GetByIdAsync(request.Id);
+
+            if (courseToUpdate == null)
+                throw new NotFoundException(nameof(Course), request.Id);
+
 
             _mapper.Map(request, courseToUpdate, typeof(UpdateCourseCommand), typeof(Course));
 

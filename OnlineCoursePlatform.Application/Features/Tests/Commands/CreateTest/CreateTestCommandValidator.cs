@@ -2,9 +2,9 @@
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 {
-    public class CreateTestValidator : AbstractValidator<CreateTestCommand>
+    public class CreateTestCommandValidator : AbstractValidator<CreateTestCommand>
     {
-        public CreateTestValidator()
+        public CreateTestCommandValidator()
         {
             RuleFor(p => p.Title)
                 .NotEmpty()

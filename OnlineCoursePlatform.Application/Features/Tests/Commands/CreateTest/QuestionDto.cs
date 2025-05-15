@@ -4,6 +4,6 @@
     {
         public string Text { get; set; } = string.Empty;
 
-        public List<AnswerDto> Answers { get; set; } = new();
+        public List<AnswerDto> Answers { get; set; } = default!;
     }
 }

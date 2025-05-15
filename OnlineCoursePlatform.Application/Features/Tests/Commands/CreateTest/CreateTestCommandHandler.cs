@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 
         public async Task<Guid> Handle(CreateTestCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateTestValidator();
+            var validator = new CreateTestCommandValidator();
             var validatorResult = await validator.ValidateAsync(request);
 
             if (validatorResult.Errors.Count > 0)
