@@ -111,6 +111,13 @@ namespace OnlineCoursePlatform.Persistence
                 LessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
                 Title = "test"
             });
+
+            modelBuilder.Entity<Test>().HasData(new Test
+            {
+                Id = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
+                LessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
+                Title = "test2"
+            });
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

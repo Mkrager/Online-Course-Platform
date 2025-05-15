@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
+using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -26,5 +27,15 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getCourseDetailQuery));
         }
 
+        [HttpDelete("{id}", Name = "DeleteTest")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> DeleteTest(Guid id)
+        {
+            var deleteTestCommand = new DeleteTestCommand() { Id = id };
+            await mediator.Send(deleteTestCommand);
+            return NoContent();
+        }
     }
 }

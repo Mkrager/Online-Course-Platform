@@ -1,9 +1,6 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
-using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail;
-using OnlineCoursePlatform.Domain.Entities;
 using System.Net;
 using System.Text;
 using System.Text.Json;
@@ -14,11 +11,9 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
     public class TestControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        private readonly ITestOutputHelper _output;
-        public TestControllerTests(CustomWebApplicationFactory<Program> factory, ITestOutputHelper output)
+        public TestControllerTests(CustomWebApplicationFactory<Program> factory)
         {
             _factory = factory;
-            _output = output;
         }
 
         [Fact]
@@ -46,7 +41,6 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var response = await client.PostAsync("/api/Test", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
-            _output.WriteLine(responseString);
             var result = JsonSerializer.Deserialize<Guid>(responseString);
 
             Assert.NotNull(result);
@@ -72,5 +66,16 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.IsType<TestDetailVm>(result);
         }
 
+        [Fact]
+        public async Task DeleteTest_ReturnsNoContent_WhenTestExists()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var id = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa");
+
+            var response = await client.DeleteAsync($"/api/test/{id}");
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
     }
 }
