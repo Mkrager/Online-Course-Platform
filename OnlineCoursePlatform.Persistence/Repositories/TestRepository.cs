@@ -16,9 +16,9 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             return testWithQuestionAndAnswer;
         }
 
-        public async Task<List<Test>> GetTestsByUserId(string userId)
+        public async Task<List<Test>> GetTestsByLessonId(Guid lessonId)
         {
-            var userTests = await _dbContext.Tests.Where(u => u.CreatedBy == userId).ToListAsync();
+            var userTests = await _dbContext.Tests.Where(u => u.LessonId == lessonId).ToListAsync();
             return userTests;
         }
     }

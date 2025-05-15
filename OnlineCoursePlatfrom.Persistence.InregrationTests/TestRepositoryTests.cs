@@ -56,7 +56,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         }
 
         [Fact]
-        public async Task GetTestsByUserId_WhenUserHasTests_ReturnsUserTests()
+        public async Task GetTestsByLessonId_WhenLessonHasTests_ReturnsLessonTests()
         {
             var lessonId = Guid.NewGuid();
 
@@ -81,7 +81,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Tests.Add(test);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetTestsByUserId(_currentUserId);
+            var result = await _repository.GetTestsByLessonId(lessonId);
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);
