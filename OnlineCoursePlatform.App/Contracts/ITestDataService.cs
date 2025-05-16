@@ -8,5 +8,6 @@ namespace OnlineCoursePlatform.App.Contracts
         Task<List<TestViewModel>> GetTestByLessonId(Guid lessonId);
         Task<ApiResponse<Guid>> CreateTest(TestViewModel testViewModel);
         Task<ApiResponse> DeleteTest(Guid id);
+        Task<ApiResponse> UpdateTest(Guid id);
     }
 }

@@ -99,5 +99,28 @@ namespace OnlineCoursePlatform.App.Services
 
             return new List<TestViewModel>();
         }
+
+        public async Task<ApiResponse> UpdateTest(Guid id)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/test/lesson/{id}");
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return new ApiResponse(System.Net.HttpStatusCode.OK);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errrorMessage = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errrorMessage.FirstOrDefault());
+            }
+            catch(Exception ex)
+            {
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
 }
