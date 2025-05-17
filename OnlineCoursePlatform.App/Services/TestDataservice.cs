@@ -82,6 +82,24 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
+        public async Task<TestViewModel> GetTestById(Guid id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/{id}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                var test = JsonSerializer.Deserialize<TestViewModel>(content);
+
+                return test;
+            }
+
+            return new TestViewModel();
+        }
+
         public async Task<List<TestViewModel>> GetTestByLessonId(Guid lessonId)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/lesson/{lessonId}");
@@ -117,10 +135,12 @@ namespace OnlineCoursePlatform.App.Services
                 var errrorMessage = JsonSerializer.Deserialize<List<string>>(errorContent);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errrorMessage.FirstOrDefault());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        
     }
 }

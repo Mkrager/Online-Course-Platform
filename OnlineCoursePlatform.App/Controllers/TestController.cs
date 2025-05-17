@@ -53,6 +53,12 @@ namespace OnlineCoursePlatform.App.Controllers
             return RedirectToAction("Overview", "Account", new { userId = User.FindFirst("uid")?.Value });
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> Update(Guid id)
+        //{
+        //    var test = _testDataService.Get
+        //}
+
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
         {
