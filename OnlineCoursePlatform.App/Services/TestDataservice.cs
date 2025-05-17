@@ -5,12 +5,12 @@ using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class TestDataservice : ITestDataService
+    public class TestDataService : ITestDataService
     {
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptions;
 
-        public TestDataservice(HttpClient httpClient)
+        public TestDataService(HttpClient httpClient)
         {
             _httpClient = httpClient;
             _jsonOptions = new JsonSerializerOptions
@@ -92,7 +92,7 @@ namespace OnlineCoursePlatform.App.Services
             {
                 var content = await response.Content.ReadAsStringAsync();
 
-                var test = JsonSerializer.Deserialize<TestViewModel>(content);
+                var test = JsonSerializer.Deserialize<TestViewModel>(content, _jsonOptions);
 
                 return test;
             }
@@ -118,11 +118,14 @@ namespace OnlineCoursePlatform.App.Services
             return new List<TestViewModel>();
         }
 
-        public async Task<ApiResponse> UpdateTest(Guid id)
+        public async Task<ApiResponse> UpdateTest(TestViewModel testViewModel)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/test/lesson/{id}");
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/lesson")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(testViewModel), Encoding.UTF8, "application/json")
+                };
 
                 var response = await _httpClient.SendAsync(request);
 
@@ -139,8 +142,6 @@ namespace OnlineCoursePlatform.App.Services
             {
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
-        }
-
-        
+        }        
     }
 }

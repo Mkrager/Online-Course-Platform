@@ -50,14 +50,29 @@ namespace OnlineCoursePlatform.App.Controllers
                 return View();
             }
 
-            return RedirectToAction("Overview", "Account", new { userId = User.FindFirst("uid")?.Value });
+            return RedirectToAction("List", "Test", new { lessonId = testViewModel.LessonId });
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> Update(Guid id)
-        //{
-        //    var test = _testDataService.Get
-        //}
+        [HttpGet]
+        public async Task<IActionResult> Update(Guid id)
+        {
+            var testToUpdate = await _testDataService.GetTestById(id);
+            return View(testToUpdate);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(TestViewModel testViewModel)
+         {
+            var result = await _testDataService.UpdateTest(testViewModel);
+
+            if (!result.IsSuccess)
+            {
+                TempData["Message"] = HandleErrors.HandleResponse(result);
+                return View();
+            }
+
+            return RedirectToAction("List", "Test", new { lessonId = testViewModel.LessonId });
+        }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)

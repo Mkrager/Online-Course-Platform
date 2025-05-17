@@ -624,6 +624,15 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ],
     "EndpointName": "AddTest"
@@ -740,7 +749,7 @@
   {
     "ContainingType": "OnlineCoursePlatform.Api.Controllers.TestController",
     "Method": "GetTestByLessonId",
-    "RelativePath": "api/Test/GetTestByLessonId/{lessonId}",
+    "RelativePath": "api/Test/Lesson/{lessonId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
