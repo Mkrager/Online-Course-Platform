@@ -122,7 +122,7 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/lesson")
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/test")
                 {
                     Content = new StringContent(JsonSerializer.Serialize(testViewModel), Encoding.UTF8, "application/json")
                 };

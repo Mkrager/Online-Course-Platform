@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
+using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.Test;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -68,10 +69,10 @@ namespace OnlineCoursePlatform.App.Controllers
             if (!result.IsSuccess)
             {
                 TempData["Message"] = HandleErrors.HandleResponse(result);
-                return View();
+                return Json(new { redirectToUrl = Url.Action("Update", "Test", new { id = testViewModel.Id }) });
             }
 
-            return RedirectToAction("List", "Test", new { lessonId = testViewModel.LessonId });
+            return Json(new { redirectToUrl = Url.Action("List", "Test", new { lessonId = testViewModel.LessonId }) });
         }
 
         [HttpDelete]

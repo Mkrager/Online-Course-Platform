@@ -2040,6 +2040,10 @@
             "type": "string",
             "nullable": true
           },
+          "lessonId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "questions": {
             "type": "array",
             "items": {
@@ -2114,6 +2118,10 @@
         "type": "object",
         "properties": {
           "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "lessonId": {
             "type": "string",
             "format": "uuid"
           },

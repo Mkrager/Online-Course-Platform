@@ -5,7 +5,7 @@
     var message = TempData["Message"] as string;
 }
 
-<div class="test-form">
+<form id="updateTestForm" class="test-form">
     <h2>Update Test</h2>
 
     <h1 class="error-text">@message</h1>
@@ -14,10 +14,11 @@
         <label asp-for="Title"></label>
         <span asp-validation-for="Title" class="error-text"></span>
         <input asp-for="Title" />
+
     </div>
 
-    <input type="hidden" asp-for="Id" />
-    <input type="hidden" asp-for="LessonId" />
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <input type="hidden" asp-for="LessonId" value="@Model.LessonId" />
 
     <div id="questions">
         @for (int i = 0; i < Model.Questions.Count; i++)
@@ -45,7 +46,7 @@
     <button type="button" class="btn" onclick="addQuestion()">+ Add Question</button>
 
     <button type="button" class="btn" onclick="updateTest()">Save Changes</button>
-</div>
+</form>
 
 @section Scripts {
     <script>
@@ -105,75 +106,17 @@
             reindex();
         }
 
-        // Функція для оновлення індексів у name та data-index після змін
-        function reindex() {
-            const questionBlocks = document.querySelectorAll('.question');
-            questionBlocks.forEach((qBlock, qIndex) => {
-                qBlock.setAttribute('data-index', qIndex);
-                const questionTextInput = qBlock.querySelector('.question-header input[type="text"]');
-                questionTextInput.name = `Questions[${qIndex}].Text`;
-
-                const answerBlocks = qBlock.querySelectorAll('.answer');
-                answerBlocks.forEach((aBlock, aIndex) => {
-                    const checkbox = aBlock.querySelector('input[type="checkbox"]');
-                    const textInput = aBlock.querySelector('input[type="text"]');
-                    checkbox.name = `Questions[${qIndex}].Answers[${aIndex}].IsCorrect`;
-                    textInput.name = `Questions[${qIndex}].Answers[${aIndex}].Text`;
-                });
-            });
-
-            // Оновлюємо лічильник загальної кількості питань
-            questionCount = questionBlocks.length;
-        }
-
-        function getFormData() {
-            const title = document.querySelector('input[name="Title"]')?.value || "";
-            const id = document.querySelector('input[name="Id"]')?.value || "";
-            const lessonId = document.querySelector('input[name="LessonId"]')?.value || "";
-
-            const questions = [];
-
-            const questionBlocks = document.querySelectorAll(".question");
-
-            questionBlocks.forEach(block => {
-                const questionTextInput = block.querySelector('.question-header input[type="text"]');
-                const questionText = questionTextInput ? questionTextInput.value : "";
-
-                const answers = [];
-
-                const answerBlocks = block.querySelectorAll(".answer");
-                answerBlocks.forEach(answerBlock => {
-                    const isCorrectInput = answerBlock.querySelector('input[type="checkbox"]');
-                    const textInput = answerBlock.querySelector('input[type="text"]');
-                    const isCorrect = isCorrectInput ? isCorrectInput.checked : false;
-                    const text = textInput ? textInput.value : "";
-
-                    answers.push({ Text: text, IsCorrect: isCorrect });
-                });
-
-                questions.push({ Text: questionText, Answers: answers });
-            });
-
-            const formData = {
-                Id: id,
-                LessonId: lessonId,
-                Title: title,
-                Questions: questions
-            };
-
-            console.log('FormData to send:', JSON.stringify(formData, null, 2)); // Для дебагу
-
-            return formData;
-        }
 
         function updateTest() {
-            const formData = getFormData();
+            const form = document.getElementById('updateTestForm');
+            const formData = new FormData(form);
 
             $.ajax({
                 url: '@Url.Action("Update", "Test")',
-                type: 'PUT',
-                data: JSON.stringify(formData),
-                contentType: 'application/json',
+                type: 'Put',
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     if (response.redirectToUrl) {
                         window.location.href = response.redirectToUrl;

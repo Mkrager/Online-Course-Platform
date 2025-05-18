@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using OnlineCoursePlatform.App.Contracts;
+﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Course;
 using System.Net.Http.Headers;
 using System.Text;
