@@ -5,12 +5,16 @@
     var message = TempData["Message"] as string;
 }
 
-<div class="form-container">
+<form id="updateLessonForm" class="form-container">
     <h2>Update lesson</h2>
 
     <h1 class="error-text">@message</h1>
 
     <div asp-validation-summary="All" class="error-text"></div>
+
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <input type="hidden" asp-for="CourseId" value="@Model.CourseId" />
+
 
     <div class="input-group">
         <label asp-for="Title"></label>
@@ -30,25 +34,21 @@
         <span asp-validation-for="Order" class="error-text"></span>
     </div>
 
-    <button type="submit" class="btn-submit" onclick="updateLesson('@Model.Id')">Update Course</button>
-</div>
+    <button type="submit" class="btn-submit" onclick="updateLesson()">Update Course</button>
+</form>
 
 @section Scripts {
     <script>
-        function updateLesson(lessonId) {
-            var formData = {
-                Id: lessonId,
-                Title: $('#Title').val(),
-                Description: $('#Description').val(),
-                Order: $('#Order').val(),
-                CourseId: '@Model.CourseId'
-            };
+        function updateLesson() {
+            const form = document.getElementById('updateLessonForm');
+            const formData = new FormData(form);
 
             $.ajax({
                 url: '@Url.Action("Update", "Lesson")',
                 type: 'PUT',
-                data: JSON.stringify(formData),
-                contentType: 'application/json',
+                data: formData,
+                processData: false,
+                contentType: false,
                         success: function (response) {
                     if (response.redirectToUrl) {
                         window.location.href = response.redirectToUrl;

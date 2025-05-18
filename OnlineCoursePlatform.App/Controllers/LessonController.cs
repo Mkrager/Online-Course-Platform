@@ -70,7 +70,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] LessonViewModel lessonViewModel)
+        public async Task<IActionResult> Update(LessonViewModel lessonViewModel)
         {
             if (!ModelState.IsValid)
             {
