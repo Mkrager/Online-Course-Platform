@@ -6,7 +6,7 @@
     var levels = TempData["Levels"] as SelectList;
     var message = TempData["Message"] as string;
 }
-<div class="form-container">
+<form id="updateCourseForm" class="form-container">
     <h2>Update course</h2>
 
     <h1 class="error-text">@message</h1>
@@ -21,7 +21,7 @@
 
     <div class="input-group">
         <label asp-for="Description"></label>
-        <textarea asp-for="Description" rows="4" cols="50" value="@Model.Description"></textarea>
+        <textarea asp-for="Description" rows="4" cols="50">@Model.Description</textarea>
         <span asp-validation-for="Description" class="error-text"></span>
     </div>
 
@@ -66,27 +66,21 @@
         <span asp-validation-for="LevelId" class="error-text"></span>
     </div>
 
-    <button type="submit" class="btn-submit" onclick="updateCourse('@Model.Id')">Update Course</button>
-</div>
+    <button type="button" class="btn-submit" onclick="updateCourse()">Update Course</button>
+</form>
 
 @section Scripts {
     <script>
-        function updateCourse(courseId) {
-            var formData = {
-                Id: courseId,
-                Title: $('#Title').val(),
-                Description: $('#Description').val(),
-                Price: $('#Price').val() || null,
-                ThumbnailUrl: $('#ThumbnailUrl').val(),
-                CategoryId: $('#CategoryId').val(),
-                LevelId: $('#LevelId').val()
-            };
+        function updateCourse() {
+            const form = document.getElementById('updateCourseForm');
+            const formData = new FormData(form);
 
             $.ajax({
                 url: '@Url.Action("Update", "Course")',
                 type: 'PUT',
-                data: JSON.stringify(formData),
-                contentType: 'application/json',
+                data: formData,
+                processData: false,
+                contentType: false,
                         success: function (response) {
                     if (response.redirectToUrl) {
                         window.location.href = response.redirectToUrl;
