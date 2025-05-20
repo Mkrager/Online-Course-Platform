@@ -14,9 +14,11 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
     public class TestControllerTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        public TestControllerTests(CustomWebApplicationFactory<Program> factory)
+        private readonly ITestOutputHelper _outputer;
+        public TestControllerTests(CustomWebApplicationFactory<Program> factory, ITestOutputHelper outputer)
         {
             _factory = factory;
+            _outputer = outputer;
         }
 
         [Fact]
@@ -51,7 +53,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task GetTestByLessonId_ReturnsSuccessAndNonEmptyResult()
+        public async Task GetTestsByLessonId_ReturnsSuccessAndNonEmptyResult()
         {
             var client = _factory.GetAnonymousClient();
 
@@ -112,7 +114,8 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             var updateTestCommand = new UpdateTestCommand()
             {
-                Id = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
+                Id = Guid.Parse("1f5a4c21-2c9b-4b4e-bcb9-36b770a742d0"),
+                LessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
                 Title = "updTitle",
                 Questions = question
             };
@@ -124,6 +127,10 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             );
 
             var response = await client.PutAsync($"/api/test/", content);
+
+            var errorCOntent = await response.Content.ReadAsStringAsync();
+
+            _outputer.WriteLine(errorCOntent);
 
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
 

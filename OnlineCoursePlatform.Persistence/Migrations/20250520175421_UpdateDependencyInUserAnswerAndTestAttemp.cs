@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OnlineCoursePlatform.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserAnswersAndTestAttemptsEntities : Migration
+    public partial class UpdateDependencyInUserAnswerAndTestAttemp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -25,6 +25,12 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TestAttempts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TestAttempts_Tests_TestId",
+                        column: x => x.TestId,
+                        principalTable: "Tests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,6 +66,11 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TestAttempts_TestId",
+                table: "TestAttempts",
+                column: "TestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserAnswers_AnswerId",

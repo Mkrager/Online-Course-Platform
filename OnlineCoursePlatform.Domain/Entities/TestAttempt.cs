@@ -9,6 +9,7 @@
         public DateTime? EndTime { get; set; }
         public bool IsCompleted { get; set; }
 
+        public Test Test { get; set; } = default!;
         public ICollection<UserAnswer> UserAnswers { get; set; } = default!;
     }
 }

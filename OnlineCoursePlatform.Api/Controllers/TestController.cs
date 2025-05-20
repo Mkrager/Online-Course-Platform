@@ -23,7 +23,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getCourseDetailQuery));
         }
 
-        [HttpGet("Lesson/{lessonId}", Name = "GetTestByLessonId")]
+        [HttpGet("Lesson/{lessonId}", Name = "GetTestsByLessonId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<LessonTestListVm>>> GetTestByLessonId(Guid lessonId)

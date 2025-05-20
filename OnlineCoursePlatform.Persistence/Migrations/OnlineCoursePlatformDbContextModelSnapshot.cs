@@ -401,6 +401,8 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TestId");
+
                     b.ToTable("TestAttempts");
                 });
 
@@ -522,18 +524,29 @@ namespace OnlineCoursePlatform.Persistence.Migrations
                     b.Navigation("Lesson");
                 });
 
+            modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.TestAttempt", b =>
+                {
+                    b.HasOne("OnlineCoursePlatform.Domain.Entities.Test", "Test")
+                        .WithMany()
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+                });
+
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.UserAnswer", b =>
                 {
                     b.HasOne("OnlineCoursePlatform.Domain.Entities.Answer", "Answer")
                         .WithMany()
                         .HasForeignKey("AnswerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("OnlineCoursePlatform.Domain.Entities.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("OnlineCoursePlatform.Domain.Entities.TestAttempt", "TestAttempt")
