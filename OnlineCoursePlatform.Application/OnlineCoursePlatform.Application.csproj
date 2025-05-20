@@ -23,6 +23,7 @@
 	<ItemGroup>
 	  <Folder Include="Features\Levels\Commands\" />
 	  <Folder Include="Features\Questions\Commands\" />
+	  <Folder Include="Features\TestAttemps\Queries\" />
 	  <Folder Include="Features\User\Commands\" />
 	</ItemGroup>
 
