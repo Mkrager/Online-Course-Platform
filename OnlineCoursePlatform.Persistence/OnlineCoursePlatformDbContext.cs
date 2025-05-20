@@ -23,10 +23,14 @@ namespace OnlineCoursePlatform.Persistence
         public DbSet<Question> Questions { get; set; }
         public DbSet<Test> Tests { get; set; }
         public DbSet<Level> Levels { get; set; }
-
+        public DbSet<UserAnswer> UserAnswers { get; set; }
+        public DbSet<TestAttempt> TestAttempts { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OnlineCoursePlatformDbContext).Assembly);
+
+
 
             var testCategory1Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3");
             var testCategory2Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a4");
