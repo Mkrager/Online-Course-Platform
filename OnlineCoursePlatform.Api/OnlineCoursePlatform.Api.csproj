@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="MediatR" Version="11.0.0" />
@@ -17,9 +17,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\OnlineCoursePlatform.Application\OnlineCoursePlatform.Application.csproj" />
-    <ProjectReference Include="..\OnlineCoursePlatform.Identity\OnlineCoursePlatform.Identity.csproj" />
-    <ProjectReference Include="..\OnlineCoursePlatform.Persistence\OnlineCoursePlatform.Persistence.csproj" />
-  </ItemGroup>
+		<ProjectReference Include="..\OnlineCoursePlatform.Application\OnlineCoursePlatform.Application.csproj" />
+		<ProjectReference Include="..\OnlineCoursePlatform.Identity\OnlineCoursePlatform.Identity.csproj" />
+		<ProjectReference Include="..\OnlineCoursePlatform.Persistence\OnlineCoursePlatform.Persistence.csproj" />
+	</ItemGroup>
 
 </Project>
