@@ -20,6 +20,8 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAt
         {
             var testAttempt = _mapper.Map<TestAttempt>(request);
 
+            testAttempt.StartTime = DateTime.UtcNow;
+
             testAttempt = await _testAttemptRepository.AddAsync(testAttempt);
 
             return testAttempt.Id;
