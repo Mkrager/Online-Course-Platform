@@ -3,7 +3,7 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail;
 using OnlineCoursePlatform.Application.Profiles;
-using OnlineCoursePlatform.ApplicationTests.Mocks;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Queries
 {

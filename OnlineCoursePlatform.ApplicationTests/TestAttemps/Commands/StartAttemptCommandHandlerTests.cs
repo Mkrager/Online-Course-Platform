@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
 using OnlineCoursePlatform.Application.Profiles;
-using OnlineCoursePlatform.ApplicationTests.Mocks;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
-namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps
+namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 {
     public class StartAttemptCommandHandlerTests
     {

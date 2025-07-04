@@ -3,7 +3,7 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Profiles;
-using OnlineCoursePlatform.ApplicationTests.Mocks;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands

@@ -43,7 +43,5 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.NotNull(result);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
-
-
     }
 }

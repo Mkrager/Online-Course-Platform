@@ -15,6 +15,7 @@ using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail;
 using OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList;
+using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
@@ -30,6 +31,8 @@ namespace OnlineCoursePlatform.Application.Profiles
     {
         public MappingProfile()
         {
+            //TODO: disable reverse mapping for ID
+
             CreateMap<Course, CourseListVm>().ReverseMap();
             CreateMap<Course, CourseDetailVm>().ReverseMap();
             CreateMap<Course, CategoryCourseDto>().ReverseMap();
@@ -75,6 +78,9 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Lesson, DeleteLessonCommand>().ReverseMap();
 
             CreateMap<TestAttempt, StartAttemptCommand>().ReverseMap();
+            CreateMap<TestAttempt, EndAttemptCommand>().ReverseMap();
+
+            CreateMap<UserAnswer, UserAnswerDto>().ReverseMap();
         }
     }
 }

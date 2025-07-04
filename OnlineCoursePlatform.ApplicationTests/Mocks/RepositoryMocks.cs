@@ -2,7 +2,7 @@
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
-namespace OnlineCoursePlatform.ApplicationTests.Mocks
+namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 {
     public class RepositoryMocks
     {
