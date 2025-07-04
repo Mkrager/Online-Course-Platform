@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -13,6 +14,13 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var id = await mediator.Send(startAttemptCommand);
             return Ok(id);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> EndAttempt([FromBody] EndAttemptCommand endAttemptCommand)
+        {
+            await mediator.Send(endAttemptCommand);
+            return NoContent();
         }
     }
 }

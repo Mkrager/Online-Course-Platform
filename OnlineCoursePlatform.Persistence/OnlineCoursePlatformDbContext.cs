@@ -133,6 +133,30 @@ namespace OnlineCoursePlatform.Persistence
                 LessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49"),
                 Title = "test2"
             });
+
+            modelBuilder.Entity<Question>().HasData(new Question
+            {
+                Id = Guid.Parse("a1783ff1-7a2b-4d7a-84a5-c453be4c0f90"),
+                TestId = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
+                Text = "someQuestion"
+            });
+
+            modelBuilder.Entity<Answer>().HasData(new Answer
+            {
+                Id = Guid.Parse("5cd711f0-cc43-4b7f-b6a3-d7f4c208b38a"),
+                IsCorrect = true,
+                QuestionId = Guid.Parse("a1783ff1-7a2b-4d7a-84a5-c453be4c0f90"),
+                Text = "someAnswer"
+            });
+
+            modelBuilder.Entity<TestAttempt>().HasData(new TestAttempt
+            {
+                Id = Guid.Parse("d45f7a9e-3a01-4c64-9f86-cde3e55ebc36"),
+                StartTime = DateTime.Now,
+                IsCompleted = false,
+                TestId = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
+                UserId = "someUserId",              
+            });
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
