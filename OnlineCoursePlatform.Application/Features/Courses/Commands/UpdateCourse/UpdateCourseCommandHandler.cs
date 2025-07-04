@@ -30,7 +30,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
             if (courseToUpdate == null)
                 throw new NotFoundException(nameof(Course), request.Id);
 
-
             _mapper.Map(request, courseToUpdate, typeof(UpdateCourseCommand), typeof(Course));
 
             await _courseRepository.UpdateAsync(courseToUpdate);
