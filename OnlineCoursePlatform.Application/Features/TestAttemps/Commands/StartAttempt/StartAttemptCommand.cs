@@ -9,7 +9,5 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAt
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public bool IsCompleted { get; set; }
-
-        List<UserAnswerDto> UserAnswers { get; set; } = default!;
     }
 }
