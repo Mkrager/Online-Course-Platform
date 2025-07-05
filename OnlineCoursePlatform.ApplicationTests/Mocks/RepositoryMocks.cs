@@ -284,5 +284,22 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             return mockRepository;
         }
+
+        public static Mock<IUserAnswerRepository> GetUserAnswerRepository()
+        {
+            var mockRepository = new Mock<IUserAnswerRepository>();
+
+            mockRepository.Setup(repo => repo.PopulateIsCorrectAsync(It.IsAny<List<UserAnswer>>()))
+                .ReturnsAsync((List<UserAnswer> userAnswers) =>
+                {
+                    foreach (var ua in userAnswers)
+                    {
+                        ua.IsCorrect = true;
+                    }
+                    return userAnswers;
+                });
+
+            return mockRepository;
+        }
     }
 }

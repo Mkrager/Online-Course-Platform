@@ -13,11 +13,12 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
     {
         private readonly IMapper _mapper;
         private readonly Mock<IAsyncRepository<TestAttempt>> _mockTestAttemptRepository;
+        private readonly Mock<IUserAnswerRepository> _mockUserAnswerRepository;
 
         public EndAttemptCommandHandlerTests()
         {
             _mockTestAttemptRepository = Mocks.RepositoryMocks.GetTestAttemptRepository();
-
+            _mockUserAnswerRepository = Mocks.RepositoryMocks.GetUserAnswerRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -28,7 +29,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
         [Fact]
         public async Task Should_Update_TestAttempt_Successfully()
         {
-            var handler = new EndAttemptCommandHandler(_mapper, _mockTestAttemptRepository.Object);
+            var handler = new EndAttemptCommandHandler(_mapper, _mockTestAttemptRepository.Object, _mockUserAnswerRepository.Object);
 
             var command = new EndAttemptCommand
             {
