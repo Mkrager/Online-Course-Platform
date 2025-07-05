@@ -18,12 +18,6 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest
 
         public async Task<Unit> Handle(UpdateTestCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateTestCommandValidator();
-            var validationResult = await validator.ValidateAsync(request);
-
-            if (validationResult.Errors.Count > 0)
-                throw new ValidationException(validationResult);
-
             var testToUpdate = await _testRepository.GetTestWithQuestionsAndAnswers(request.Id);
 
             if (testToUpdate == null)

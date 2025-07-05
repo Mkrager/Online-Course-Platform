@@ -14,12 +14,6 @@ namespace OnlineCoursePlatform.Application.Features.Account.Commands.Registratio
 
         public async Task<RegistrationResponse> Handle(RegistrationCommand request, CancellationToken cancellationToken)
         {
-            var validator = new RegistrationCommandValidator();
-            var validatorResult = await validator.ValidateAsync(request);
-
-            if (validatorResult.Errors.Count > 0)
-                throw new Exceptions.ValidationException(validatorResult);
-
             var registerUser = new RegistrationRequest
             {
                 Email = request.Email,

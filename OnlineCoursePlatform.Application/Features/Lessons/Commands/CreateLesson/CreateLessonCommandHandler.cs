@@ -19,12 +19,6 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesso
 
         public async Task<Guid> Handle(CreateLessonCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateLessonCommandValidator();
-            var validatorResult = await validator.ValidateAsync(request);
-
-            if(validatorResult.Errors.Count > 0)
-                throw new ValidationException(validatorResult);
-
             var @lesson = _mapper.Map<Lesson>(request);
 
             @lesson = await _lessonRepository.AddAsync(lesson);

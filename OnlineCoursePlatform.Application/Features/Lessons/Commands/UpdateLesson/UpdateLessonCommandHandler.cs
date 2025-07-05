@@ -22,13 +22,6 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesso
             if (lessonToUpdate == null)
                 throw new NotFoundException(nameof(Lesson), request.Id);
 
-            var validator = new UpdateLessonCommandValidator();
-
-            var validatorResult = await validator.ValidateAsync(request);
-
-            if (validatorResult.Errors.Count > 0)
-                throw new ValidationException(validatorResult);
-
             _mapper.Map(request, lessonToUpdate, typeof(UpdateLessonCommand), typeof(Lesson));
 
             await _lessonRepository.UpdateAsync(lessonToUpdate);

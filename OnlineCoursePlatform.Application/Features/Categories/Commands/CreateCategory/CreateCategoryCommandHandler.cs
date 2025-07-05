@@ -18,12 +18,6 @@ namespace OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCa
 
         public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateCategoryValidator(_categoryRepository);
-            var validatorResult = await validator.ValidateAsync(request);
-
-            if (validatorResult.Errors.Count > 0)
-                throw new ValidationException(validatorResult);
-
             var @category = _mapper.Map<Category>(request);
 
             @category = await _categoryRepository.AddAsync(category);

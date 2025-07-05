@@ -19,12 +19,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCours
 
         public async Task<Guid> Handle(CreateCourseCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateCourseValidator();
-            var validatorResult = await validator.ValidateAsync(request);
-
-            if (validatorResult.Errors.Count > 0)
-                throw new ValidationException(validatorResult);
-
             var @course = _mapper.Map<Course>(request);
 
             @course = await _courseRepository.AddAsync(course);
