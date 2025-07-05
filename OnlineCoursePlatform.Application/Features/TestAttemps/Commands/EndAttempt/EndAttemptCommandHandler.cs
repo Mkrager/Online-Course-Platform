@@ -19,11 +19,14 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAtte
 
         public async Task<Unit> Handle(EndAttemptCommand request, CancellationToken cancellationToken)
         {
+
             var testAttemptToUpdate = await _testAttemptRepository.GetByIdAsync(request.AttempId);
 
             if (testAttemptToUpdate == null)
                 throw new NotFoundException(nameof(TestAttempt), request.AttempId);
 
+            // Треба доробити тут шляпу, щоб визначалася чи правильна відповідь чи щось типу того і
+            // ще щось там я забув і взагалі мені все одно =)
             testAttemptToUpdate.EndTime = DateTime.UtcNow;
             testAttemptToUpdate.UserAnswers = _mapper.Map<List<UserAnswer>>(request.UserAnswerDto);
 
