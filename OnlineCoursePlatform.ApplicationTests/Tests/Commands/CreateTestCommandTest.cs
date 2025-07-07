@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
+using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
-using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
@@ -57,6 +56,107 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
             var createdCourse = allCourses.FirstOrDefault(a => a.Title == command.Title);
             createdCourse.ShouldNotBeNull();
             createdCourse.Title.ShouldBe(command.Title);
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenQuestionEmpty()
+        {
+            var validator = new CreateTestCommandValidator();
+            var query = new CreateTestCommand()
+            {
+                LessonId = Guid.Parse("eede3937-e906-48a8-bb99-cf04c9a19767"),
+                Title = "test",
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Questions");
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenLessonIdEmpty()
+        {
+            var validator = new CreateTestCommandValidator();
+            var query = new CreateTestCommand()
+            {
+                LessonId = Guid.Empty,
+                Title = "test",
+                Questions = new List<QuestionDto>()
+                {
+                    new QuestionDto()
+                    {
+                        Text = "test",
+                        Answers = new List<AnswerDto>()
+                        {
+                             new AnswerDto()
+                            {
+                                Text = "test",
+                                IsCorrect = false
+                            }
+                        }
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "LessonId");
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenQuestionsHasEmptyValue()
+        {
+            var validator = new CreateTestCommandValidator();
+            var query = new CreateTestCommand()
+            {
+                LessonId = Guid.Empty,
+                Title = "test",
+                Questions = new List<QuestionDto>()
+                {
+                    new QuestionDto()
+                    {
+                        Text = "test",
+                        Answers = new List<AnswerDto>()
+                        {
+                             new AnswerDto()
+                            {
+                                Text = "",
+                                IsCorrect = false
+                            }
+                        }
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Questions[0].Answers[0].Text");
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenQuestionsHasEmptyAnswers()
+        {
+            var validator = new CreateTestCommandValidator();
+            var query = new CreateTestCommand()
+            {
+                LessonId = Guid.Empty,
+                Title = "test",
+                Questions = new List<QuestionDto>()
+                {
+                    new QuestionDto()
+                    {
+                        Text = "test"
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Questions[0].Answers");
         }
 
     }
