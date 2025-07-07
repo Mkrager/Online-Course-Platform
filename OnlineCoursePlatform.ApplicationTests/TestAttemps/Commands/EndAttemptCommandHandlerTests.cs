@@ -51,5 +51,72 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             updatedTestAttempt.Id.ShouldBe(command.AttempId);
             updatedTestAttempt.UserAnswers.ShouldNotBeNull();
         }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenUserAnswerEmpty()
+        {
+            var validator = new EndAttemptCommandValidator();
+            var query = new EndAttemptCommand()
+            {
+                AttempId = Guid.Parse("6a89d499-b6b5-41e3-9377-4b60fad2bb38")
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "UserAnswerDto");
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenAttemptIdEmpty()
+        {
+            var validator = new EndAttemptCommandValidator();
+            var query = new EndAttemptCommand()
+            {
+                AttempId = Guid.Empty,
+                UserAnswerDto = new List<UserAnswerDto>()
+                {
+                    new UserAnswerDto()
+                    {
+                        IsCorrect = false,
+                        AnswerId = Guid.Parse("c51522a2-3297-4052-987e-8f7458d920a2"),
+                        QuestionId = Guid.Parse("03b8c36c-ad34-4834-896e-df534c5739b5"),
+                        UserId = "someUserId"
+                    }
+                }
+
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "AttempId");
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenUserAnswerHasEmptyValue()
+        {
+            var validator = new EndAttemptCommandValidator();
+            var query = new EndAttemptCommand()
+            {
+                AttempId = Guid.Parse("6a89d499-b6b5-41e3-9377-4b60fad2bb38"),
+                UserAnswerDto = new List<UserAnswerDto>()
+                {
+                    new UserAnswerDto()
+                    {
+                        IsCorrect = false,
+                        AnswerId = Guid.Parse("c51522a2-3297-4052-987e-8f7458d920a2"),
+                        QuestionId = Guid.Empty,
+                        UserId = "someUserId"
+                    }
+                }
+
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "UserAnswerDto[0].QuestionId");
+        }
     }
 }
