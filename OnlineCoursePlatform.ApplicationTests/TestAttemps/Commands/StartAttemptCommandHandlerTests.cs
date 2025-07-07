@@ -50,5 +50,23 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             createdCourse.StartTime.ShouldBeInRange(command.StartTime - TimeSpan.FromSeconds(1), command.StartTime + TimeSpan.FromSeconds(1)); 
             createdCourse.UserId.ShouldBe(command.UserId);
         }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenTestIdEmpty()
+        {
+            var validator = new StartAttemptCommandValidator();
+            var query = new StartAttemptCommand()
+            {
+                TestId = Guid.Empty,
+                IsCompleted = false,
+                UserId = "someUserId",
+                StartTime = DateTime.UtcNow
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "TestId");
+        }
     }
 }

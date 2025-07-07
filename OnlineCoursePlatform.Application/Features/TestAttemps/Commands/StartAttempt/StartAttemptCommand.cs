@@ -8,6 +8,6 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAt
         public Guid TestId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool IsCompleted { get; set; } = false;
     }
 }
