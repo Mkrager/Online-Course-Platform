@@ -14,14 +14,14 @@ namespace OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCa
                 .NotEmpty()
                 .NotNull().WithMessage("{PropertyName} is required.");
 
-            RuleFor(e => e)
+            RuleFor(e => e.Name)
                 .MustAsync(CategoryNameUnique)
                 .WithMessage("An category with the same name already exists.");
         }
 
-        private async Task<bool> CategoryNameUnique(CreateCategoryCommand e, CancellationToken token)
+        private async Task<bool> CategoryNameUnique(string name, CancellationToken token)
         {
-            return await _categoryRepository.IsCategoryNameUnique(e.Name);
+            return await _categoryRepository.IsCategoryNameUnique(name);
         }
 
     }
