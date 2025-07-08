@@ -52,6 +52,25 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         }
 
         [Fact]
+        public async void Validator_ShouldHaveError_WhenTitleEmpty()
+        {
+            var validator = new CreateLessonCommandValidator();
+            var query = new CreateLessonCommand
+            {
+                CourseId = Guid.Parse("c3e5468c-a2f9-4853-8ac1-5f8d098dd2c8"),
+                Order = 1,
+                Description = "Description",
+                Title = "",
+                VideoUrl = "videoUrl"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Title");
+        }
+
+        [Fact]
         public async void Validator_ShouldHaveError_WhenTitleGratherThan100()
         {
             var validator = new CreateLessonCommandValidator();

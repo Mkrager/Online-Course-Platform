@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -48,5 +49,63 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
             updateLesson.Title.ShouldBe(updateLessonCommand.Title);
             updateLesson.Order.ShouldBe(updateLessonCommand.Order);
         }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenTitleEmpty()
+        {
+            var validator = new UpdateLessonCommandValidator();
+            var query = new UpdateLessonCommand
+            {
+                Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
+                Order = 1,
+                Description = "Description",
+                Title = "",
+                VideoUrl = "videoUrl"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Title");
+        }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenTitleGratherThan100()
+        {
+            var validator = new UpdateLessonCommandValidator();
+            var query = new UpdateLessonCommand
+            {
+                Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
+                Order = 1,
+                Description = "Description",
+                Title = "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle",
+                VideoUrl = "videoUrl"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Title");
+        }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenOrderDontGratherThan0()
+        {
+            var validator = new UpdateLessonCommandValidator();
+            var query = new UpdateLessonCommand
+            {
+                Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
+                Order = 0,
+                Description = "Description",
+                Title = "Title",
+                VideoUrl = "videoUrl"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Order");
+        }
+
     }
 }
