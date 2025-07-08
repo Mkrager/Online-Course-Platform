@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -111,7 +110,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
             var validator = new CreateTestCommandValidator();
             var query = new CreateTestCommand()
             {
-                LessonId = Guid.Empty,
+                LessonId = Guid.Parse("e138ba25-be71-47d2-9c13-a5ac8b0498fd"),
                 Title = "test",
                 Questions = new List<QuestionDto>()
                 {
@@ -142,13 +141,50 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
             var validator = new CreateTestCommandValidator();
             var query = new CreateTestCommand()
             {
-                LessonId = Guid.Empty,
+                LessonId = Guid.Parse("e138ba25-be71-47d2-9c13-a5ac8b0498fd"),
                 Title = "test",
                 Questions = new List<QuestionDto>()
                 {
                     new QuestionDto()
                     {
                         Text = "test"
+                    }
+                }
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Questions[0].Answers");
+        }
+
+        [Fact]
+        public async Task Validator_ShouldHaveError_WhenQuestionDontHaveCorrectAnswer()
+        {
+            var validator = new CreateTestCommandValidator();
+            var query = new CreateTestCommand()
+            {
+                LessonId = Guid.Parse("e138ba25-be71-47d2-9c13-a5ac8b0498fd"),
+                Title = "Test",
+                Questions = new List<QuestionDto>()
+                {
+                    new QuestionDto()
+                    {
+                        Text = "test",
+                        Answers = new List<AnswerDto>()
+                        {
+                            new AnswerDto()
+                            {
+                                Text = "test",
+                                IsCorrect = false
+                            },
+
+                            new AnswerDto()
+                            {
+                                Text = "test2",
+                                IsCorrect = false
+                            }
+                        }
                     }
                 }
             };
