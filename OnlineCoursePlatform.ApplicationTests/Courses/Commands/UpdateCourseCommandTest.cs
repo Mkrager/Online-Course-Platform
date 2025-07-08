@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -50,5 +51,84 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
             updatedCourse.Price.ShouldBe(updateCommand.Price);
         }
 
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenTitleEmpty()
+        {
+            var validator = new UpdateCourseCommandValidator();
+            var query = new UpdateCourseCommand
+            {
+                Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"),
+                CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
+                Description = "DescriptionDescriptionDescriptionDescriptionDescriptionDescription",
+                Price = 100,
+                ThumbnailUrl = "url",
+                Title = ""
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Title");
+        }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenPriceDontGrather0()
+        {
+            var validator = new UpdateCourseCommandValidator();
+            var query = new UpdateCourseCommand
+            {
+                Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"),
+                CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
+                Description = "DescriptionDescriptionDescriptionDescriptionDescriptionDescription",
+                Price = 0,
+                ThumbnailUrl = "url",
+                Title = "Title"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Price");
+        }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenDescriptionDontGrather50Characters()
+        {
+            var validator = new UpdateCourseCommandValidator();
+            var query = new UpdateCourseCommand
+            {
+                Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"),
+                CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
+                Description = "Description",
+                Price = 100,
+                ThumbnailUrl = "url",
+                Title = "Title"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Description");
+        }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenTitleGrather100Characters()
+        {
+            var validator = new UpdateCourseCommandValidator();
+            var query = new UpdateCourseCommand
+            {
+                Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"),
+                CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
+                Description = "DescriptionDescriptionDescriptionDescriptionDescriptionDescription",
+                Price = 100,
+                ThumbnailUrl = "url",
+                Title = "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Title");
+        }
     }
 }

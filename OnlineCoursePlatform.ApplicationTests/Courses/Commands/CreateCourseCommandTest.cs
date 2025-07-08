@@ -55,7 +55,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenTitleEmpty()
         {
-            var validator = new CreateCourseValidator();
+            var validator = new CreateCourseCommandValidator();
             var query = new CreateCourseCommand
             {
                 CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
@@ -75,7 +75,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenPriceDontGrather0()
         {
-            var validator = new CreateCourseValidator();
+            var validator = new CreateCourseCommandValidator();
             var query = new CreateCourseCommand
             {
                 CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
@@ -95,7 +95,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenDescriptionDontGrather50Characters()
         {
-            var validator = new CreateCourseValidator();
+            var validator = new CreateCourseCommandValidator();
             var query = new CreateCourseCommand
             {
                 CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),
@@ -115,7 +115,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenTitleGrather100Characters()
         {
-            var validator = new CreateCourseValidator();
+            var validator = new CreateCourseCommandValidator();
             var query = new CreateCourseCommand
             {
                 CategoryId = Guid.Parse("7d4f7640-21b2-46c4-a311-0f426812386b"),

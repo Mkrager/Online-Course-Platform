@@ -2,9 +2,9 @@
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse
 {
-    public class CreateCourseValidator : AbstractValidator<CreateCourseCommand>
+    public class CreateCourseCommandValidator : AbstractValidator<CreateCourseCommand>
     {
-        public CreateCourseValidator()
+        public CreateCourseCommandValidator()
         {
             RuleFor(p => p.Title)
                 .NotNull()
