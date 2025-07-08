@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -50,5 +51,42 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
             createdLesson.CourseId.ShouldBe(courseId);
         }
 
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenTitleGratherThan100()
+        {
+            var validator = new CreateLessonCommandValidator();
+            var query = new CreateLessonCommand
+            {
+                CourseId = Guid.Parse("c3e5468c-a2f9-4853-8ac1-5f8d098dd2c8"),
+                Order = 1,
+                Description = "Description",
+                Title = "TitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitleTitle",
+                VideoUrl = "videoUrl"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Title");
+        }
+
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenOrderDontGratherThan0()
+        {
+            var validator = new CreateLessonCommandValidator();
+            var query = new CreateLessonCommand
+            {
+                CourseId = Guid.Parse("c3e5468c-a2f9-4853-8ac1-5f8d098dd2c8"),
+                Order = 0,
+                Description = "Description",
+                Title = "Title",
+                VideoUrl = "videoUrl"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "Order");
+        }
     }
 }
