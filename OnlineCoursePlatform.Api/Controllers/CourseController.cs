@@ -31,7 +31,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getCourseDetailQuery));
         }
 
-        [HttpGet("[action]/{categoryId}", Name = "GetCourseByCategoryId")]
+        [HttpGet("by-category/{categoryId}", Name = "GetCourseByCategoryId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<CoursesByCategoryVm>>> GetCourseByCategoryId(Guid categoryId)

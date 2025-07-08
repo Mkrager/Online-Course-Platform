@@ -102,7 +102,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<TestViewModel>> GetTestByLessonId(Guid lessonId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/lesson/{lessonId}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/by-lesson/{lessonId}");
 
             var response = await _httpClient.SendAsync(request);
 

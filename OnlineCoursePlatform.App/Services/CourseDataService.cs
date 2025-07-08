@@ -144,7 +144,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<CourseListViewModel>> GetCoursesByCategoryId(Guid categoryId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Course/GetCourseByCategoryId/{categoryId}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Course/by-category/{categoryId}");
 
             var response = await _httpClient.SendAsync(request);
 

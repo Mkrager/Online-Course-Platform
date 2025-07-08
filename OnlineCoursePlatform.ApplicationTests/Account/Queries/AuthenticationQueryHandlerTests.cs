@@ -37,7 +37,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Account.Queries
             var result = await handler.Handle(authenticationQuery, CancellationToken.None);
 
             Assert.NotNull(result);
-            Assert.IsType<AuthenticationResponse>(result);
+            Assert.IsType<AuthenticationVm>(result);
         }
     }
 }

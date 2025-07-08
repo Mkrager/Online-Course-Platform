@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
-        [HttpGet("allwithcourses", Name = "GetCategoriesWithCourses")]
+        [HttpGet("with-courses", Name = "GetCategoriesWithCourses")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult<List<CategoryListVm>>> GetCategoriesWithCourses()

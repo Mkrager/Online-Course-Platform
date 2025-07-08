@@ -9,14 +9,14 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class TestAttemptController(IMediator mediator) : Controller
     {
-        [HttpPost]
+        [HttpPost(Name = "StartAttempt")]
         public async Task<ActionResult<Guid>> StartAttempt([FromBody] StartAttemptCommand startAttemptCommand)
         {
             var id = await mediator.Send(startAttemptCommand);
             return Ok(id);
         }
 
-        [HttpPut]
+        [HttpPut(Name = "EndAttempt")]
         public async Task<ActionResult> EndAttempt([FromBody] EndAttemptCommand endAttemptCommand)
         {
             await mediator.Send(endAttemptCommand);

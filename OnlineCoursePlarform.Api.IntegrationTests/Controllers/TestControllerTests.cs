@@ -59,7 +59,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             var lessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49");
 
-            var response = await client.GetAsync($"/api/test/lesson/{lessonId}");
+            var response = await client.GetAsync($"/api/test/by-lesson/{lessonId}");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 

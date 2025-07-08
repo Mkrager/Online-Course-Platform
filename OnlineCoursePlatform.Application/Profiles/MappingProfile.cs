@@ -89,7 +89,7 @@ namespace OnlineCoursePlatform.Application.Profiles
 
             CreateMap<RegistrationRequest, RegistrationCommand>().ReverseMap();
             CreateMap<AuthenticationRequest, AuthenticationQuery>().ReverseMap();
-            CreateMap<AuthenticationRequest, AuthenticationVm>();
+            CreateMap<AuthenticationResponse, AuthenticationVm>();
         }
     }
 }

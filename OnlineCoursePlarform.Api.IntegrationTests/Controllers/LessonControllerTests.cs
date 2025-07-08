@@ -55,7 +55,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             Guid lessonId = Guid.Parse("9c7f3d18-2c1e-4f37-9843-b25b6f1bfe49");
 
-            var response = await client.GetAsync($"/api/Lesson/GetLessonById/{lessonId}");
+            var response = await client.GetAsync($"/api/Lesson/{lessonId}");
 
             response.EnsureSuccessStatusCode();
 
@@ -79,7 +79,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             Guid courseId = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1");
 
-            var response = await client.GetAsync($"/api/lesson/{courseId}");
+            var response = await client.GetAsync($"/api/lesson/by-course/{courseId}");
 
             response.EnsureSuccessStatusCode();
 
@@ -122,7 +122,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
 
-            var updateLessonResponse = await client.GetAsync($"/api/Lesson/GetLessonById/{lessonId}");
+            var updateLessonResponse = await client.GetAsync($"/api/Lesson/{lessonId}");
 
             updateLessonResponse.EnsureSuccessStatusCode();
 

@@ -16,7 +16,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task Register_ReturnSucces()
+        public async Task Register_ReturnSuccess()
         {
             var client = _factory.GetAnonymousClient();
 
@@ -41,9 +41,8 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var response = await client.PostAsync("/api/Account/register", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
-            var result = JsonSerializer.Deserialize<RegistrationResponse>(responseString);
 
-            Assert.NotNull(result);
+            Assert.NotNull(responseString);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 

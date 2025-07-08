@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<UserDetailsResponse> GetUserDetails(string userId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/User/GetUserDetails/{userId}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/User/{userId}");
 
             var response = await _httpClient.SendAsync(request);
 

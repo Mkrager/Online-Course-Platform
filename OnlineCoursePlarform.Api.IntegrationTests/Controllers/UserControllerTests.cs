@@ -22,7 +22,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 
             string userId = "7610e790-11fa-4a5c-8b90-0d5fa64dc59d";
 
-            var response = await client.GetAsync($"/api/User/GetUserDetails/{userId}");
+            var response = await client.GetAsync($"/api/User/{userId}");
 
             response.EnsureSuccessStatusCode();
 

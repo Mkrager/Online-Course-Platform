@@ -9,7 +9,7 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class UserController(IMediator mediator) : Controller
     {
-        [HttpGet("[action]/{id}", Name = "GetUserDetails")]
+        [HttpGet("{id}", Name = "GetUserDetails")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserDetailsResponse>> GetUserDetails(string id)

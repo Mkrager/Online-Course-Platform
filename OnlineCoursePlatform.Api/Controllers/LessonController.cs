@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
-        [HttpGet("[action]/{id}", Name = "GetLessonById")]
+        [HttpGet("{id}", Name = "GetLessonById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<LessonDetailVm>> GetLessonById(Guid id)
@@ -29,7 +29,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getLessonDetailQuery));
         }
 
-        [HttpGet("{courseId}", Name = "GetCourseLessons")]
+        [HttpGet("by-course/{courseId}", Name = "GetCourseLessons")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<CourseLessonListVm>>> GetCourseLessons(Guid courseId)

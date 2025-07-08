@@ -42,7 +42,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         {
             var client = _factory.GetAnonymousClient();
 
-            var response = await client.GetAsync("/api/category/allwithcourses");
+            var response = await client.GetAsync("/api/category/with-courses");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 

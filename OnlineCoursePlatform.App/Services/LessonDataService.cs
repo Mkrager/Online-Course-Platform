@@ -102,7 +102,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<LessonViewModel>> GetCourseLessons(Guid courseId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/lesson/{courseId}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/lesson/by-course/{courseId}");
 
             var response = await _httpClient.SendAsync(request);
 
@@ -120,7 +120,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<LessonViewModel> GetLessonById(Guid id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Lesson/GetLessonById/{id}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Lesson/{id}");
 
             var response = await _httpClient.SendAsync(request);
 
