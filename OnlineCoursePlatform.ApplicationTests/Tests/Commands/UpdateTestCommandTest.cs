@@ -129,7 +129,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         }
 
         [Fact]
-        public async Task Validator_ShouldHaveError_WhenQuestionDontHaveCorrectAnswerEmpty()
+        public async Task Validator_ShouldHaveError_WhenQuestionDontHaveCorrectAnswer()
         {
             var validator = new UpdateTestCommandValidator();
             var query = new UpdateTestCommand()

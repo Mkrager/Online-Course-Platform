@@ -23,7 +23,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<RegistrationResponse>> RegisterAsync(RegistrationRequest request)
+        public async Task<ActionResult<string>> RegisterAsync(RegistrationRequest request)
         {
             var dtos = await mediator.Send(new RegistrationCommand() 
             { 
