@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OnlineCoursePlatform.Application.DTOs.Authentication;
 using OnlineCoursePlatform.Application.Features.Account.Commands.Registration;
+using OnlineCoursePlatform.Application.Features.Account.Queries.Authentication;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.DeleteCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
@@ -85,6 +86,9 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<UserAnswer, UserAnswerDto>().ReverseMap();
 
             CreateMap<RegistrationRequest, RegistrationCommand>().ReverseMap();
+            CreateMap<AuthenticationRequest, AuthenticationQuery>().ReverseMap();
+            CreateMap<AuthenticationRequest, AuthenticationVm>().ReverseMap();
+
         }
     }
 }

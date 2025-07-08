@@ -1,29 +1,27 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.DTOs.Authentication;
 
 namespace OnlineCoursePlatform.Application.Features.Account.Queries.Authentication
 {
-    public class AuthenticationQueryHandler : IRequestHandler<AuthenticationQuery, AuthenticationResponse>
+    public class AuthenticationQueryHandler : IRequestHandler<AuthenticationQuery, AuthenticationVm>
     {
         private readonly IAuthenticationService _authenticationService;
+        private readonly IMapper _mapper;
 
-        public AuthenticationQueryHandler(IAuthenticationService authenticationService)
+        public AuthenticationQueryHandler(IAuthenticationService authenticationService, IMapper mapper)
         {
             _authenticationService = authenticationService;
+            _mapper = mapper;
         }
 
-        public async Task<AuthenticationResponse> Handle(AuthenticationQuery request, CancellationToken cancellationToken)
-        {
-            var authenticationRequest = new AuthenticationRequest
-            {
-                Email = request.Email,
-                Password = request.Password
-            };
+        public async Task<AuthenticationVm> Handle(AuthenticationQuery request, CancellationToken cancellationToken)
+        {           
+            var authentication = await _authenticationService
+                .AuthenticateAsync(_mapper.Map<AuthenticationRequest>(request));
 
-            var authentication = await _authenticationService.AuthenticateAsync(authenticationRequest);
-
-            return authentication;
+            return _mapper.Map<AuthenticationVm>(authentication);
         }
     }
 }
