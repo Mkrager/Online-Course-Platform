@@ -15,13 +15,16 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCours
                 .NotNull()
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .MinimumLength(50).WithMessage("{PropertyName} must not less 50 characters.");
+
             RuleFor(p => p.Price)
                 .NotNull()
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0);
+
             RuleFor(p => p.ThumbnailUrl)
                 .NotEmpty()
                 .NotNull().WithMessage("{PropertyName} is required.");
+
             RuleFor(p => p.CategoryId)
                 .NotEmpty()
                 .NotNull().WithMessage("{PropertyName} is required.");
