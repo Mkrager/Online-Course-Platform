@@ -34,8 +34,6 @@ namespace OnlineCoursePlatform.Application.Profiles
     {
         public MappingProfile()
         {
-            //TODO: disable reverse mapping for ID
-
             CreateMap<Course, CourseListVm>().ReverseMap();
             CreateMap<Course, CourseDetailVm>().ReverseMap();
             CreateMap<Course, CategoryCourseDto>().ReverseMap();
@@ -43,8 +41,9 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Course, UserCourseVm>().ReverseMap();
 
             CreateMap<Course, CreateCourseCommand>().ReverseMap();
-            CreateMap<Course, UpdateCourseCommand>().ReverseMap();
-            CreateMap<Course, DeleteCourseCommand>().ReverseMap();
+            CreateMap<Course, UpdateCourseCommand>().ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<Course, DeleteCourseCommand>();
 
             CreateMap<Category, CategoryListVm>().ReverseMap();
             CreateMap<Category, CategoryDto>().ReverseMap();
@@ -53,14 +52,15 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Category, UserCategoryDto>().ReverseMap();
 
             CreateMap<Category, CreateCategoryCommand>().ReverseMap();
-            CreateMap<Category, DeleteCategoryCommand>().ReverseMap();
+            CreateMap<Category, DeleteCategoryCommand>();
 
             CreateMap<Test, TestDetailVm>().ReverseMap();
             CreateMap<Test, LessonTestListVm>().ReverseMap();
 
             CreateMap<Test, CreateTestCommand>().ReverseMap();
-            CreateMap<Test, UpdateTestCommand>().ReverseMap();
-            CreateMap<Test, DeleteTestCommand>().ReverseMap();
+            CreateMap<Test, UpdateTestCommand>().ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<Test, DeleteTestCommand>();
 
             CreateMap<Answer, AnswerDto>().ReverseMap();
             CreateMap<Answer, AnswerDetailDto>().ReverseMap();
@@ -77,18 +77,19 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Lesson, LessonDetailVm>().ReverseMap();
 
             CreateMap<Lesson, CreateLessonCommand>().ReverseMap();
-            CreateMap<Lesson, UpdateLessonCommand>().ReverseMap();
-            CreateMap<Lesson, DeleteLessonCommand>().ReverseMap();
+            CreateMap<Lesson, UpdateLessonCommand>().ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<Lesson, DeleteLessonCommand>();
 
             CreateMap<TestAttempt, StartAttemptCommand>().ReverseMap();
-            CreateMap<TestAttempt, EndAttemptCommand>().ReverseMap();
+            CreateMap<TestAttempt, EndAttemptCommand>().ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
 
             CreateMap<UserAnswer, UserAnswerDto>().ReverseMap();
 
             CreateMap<RegistrationRequest, RegistrationCommand>().ReverseMap();
             CreateMap<AuthenticationRequest, AuthenticationQuery>().ReverseMap();
-            CreateMap<AuthenticationRequest, AuthenticationVm>().ReverseMap();
-
+            CreateMap<AuthenticationRequest, AuthenticationVm>();
         }
     }
 }
