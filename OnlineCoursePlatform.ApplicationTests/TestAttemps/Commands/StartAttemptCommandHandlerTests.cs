@@ -34,21 +34,20 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             {
                 IsCompleted = false,
                 TestId = Guid.NewGuid(),
-                StartTime = DateTime.UtcNow,
                 UserId = "newUserId"
             };
 
             await handler.Handle(command, CancellationToken.None);
 
-            var allCourses = await _mockTestAttemptRepository.Object.ListAllAsync();
-            allCourses.Count.ShouldBe(3);
+            var allAttempt = await _mockTestAttemptRepository.Object.ListAllAsync();
+            allAttempt.Count.ShouldBe(3);
 
-            var createdCourse = allCourses.FirstOrDefault(a => a.UserId == command.UserId && a.UserId == command.UserId);
-            createdCourse.ShouldNotBeNull();
-            createdCourse.IsCompleted.ShouldBe(command.IsCompleted);
-            createdCourse.TestId.ShouldBe(command.TestId);
-            createdCourse.StartTime.ShouldBeInRange(command.StartTime - TimeSpan.FromSeconds(1), command.StartTime + TimeSpan.FromSeconds(1)); 
-            createdCourse.UserId.ShouldBe(command.UserId);
+            var createdAttempt = allAttempt.FirstOrDefault(a => a.UserId == command.UserId && a.UserId == command.UserId);
+            createdAttempt.ShouldNotBeNull();
+            createdAttempt.IsCompleted.ShouldBe(command.IsCompleted);
+            createdAttempt.TestId.ShouldBe(command.TestId);
+            createdAttempt.StartTime.ShouldBeInRange(createdAttempt.StartTime - TimeSpan.FromSeconds(1), createdAttempt.StartTime + TimeSpan.FromSeconds(1));
+            createdAttempt.UserId.ShouldBe(command.UserId);
         }
 
         [Fact]
@@ -60,7 +59,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
                 TestId = Guid.Empty,
                 IsCompleted = false,
                 UserId = "someUserId",
-                StartTime = DateTime.UtcNow
             };
 
             var result = await validator.ValidateAsync(query);

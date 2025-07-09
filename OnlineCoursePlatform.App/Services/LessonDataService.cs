@@ -10,7 +10,6 @@ namespace OnlineCoursePlatform.App.Services
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptions;
 
-
         public LessonDataService(HttpClient httpClient)
         {
             _httpClient = httpClient;

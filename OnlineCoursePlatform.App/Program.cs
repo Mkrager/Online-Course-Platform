@@ -24,7 +24,7 @@ builder.Services.AddScoped<ICategoryDataService, CategoryDataService>();
 builder.Services.AddScoped<ILevelDataService, LevelDataService>();
 builder.Services.AddScoped<ILessonDataService, LessonDataService>();
 builder.Services.AddScoped<ITestDataService, TestDataService>();
-
+builder.Services.AddScoped<ITestAttemptDataService, TestAttemptDataService>();
 
 builder.Services.AddControllersWithViews();
 

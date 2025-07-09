@@ -1,5 +1,4 @@
-﻿using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
-using OnlineCoursePlatform.Domain.Entities;
+﻿using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
