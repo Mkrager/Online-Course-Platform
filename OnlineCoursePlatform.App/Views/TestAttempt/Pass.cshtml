@@ -1,26 +1,33 @@
-﻿<div class="test-form">
-    <h2>Example Title</h2>
+﻿@using OnlineCoursePlatform.App.ViewModels.Test;
+@model TestViewModel
 
-    <form id="testSubmissionForm">
-        <div class="question">
-            <div class="question-header">
-                <strong>1. Example question</strong>
+<div class="test-form">
+    <h2>@Model.Title</h2>
+
+    <form id="testSubmissionForm" method="post">
+        @for (int i = 0; i < Model.Questions.Count; i++)
+        {
+            var question = Model.Questions[i];
+            <div class="question">
+                <div class="question-header">
+                    <strong>@question.Text</strong>
+                </div>
+
+                @for (int j = 0; j < question.Answers.Count; j++)
+                {
+                    var answer = question.Answers[j];
+                    var inputId = $"q{i}_a{j}";
+                    <div class="answer">
+                        <input type="radio"
+                               name="Answers[@i].SelectedAnswerId"
+                               id="@inputId"
+                               value="@answer.Id" />
+                        <label for="@inputId">@answer.Text</label>
+                    </div>
+                }
             </div>
-            <div class="answers">
-                <div class="answer">
-                    <input type="radio" name="question1" id="q1a1" value="a">
-                    <label for="q1a1">Example answer</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" name="question1" id="q1a2" value="b">
-                    <label for="q1a2">Example answer</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" name="question1" id="q1a3" value="c">
-                    <label for="q1a3">Example answer</label>
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn-submit">Завершити тест</button>
+        }
+
+        <button type="submit" class="btn-submit">End test</button>
     </form>
 </div>
