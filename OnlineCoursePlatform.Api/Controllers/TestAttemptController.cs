@@ -22,6 +22,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpPut(Name = "EndAttempt")]
         public async Task<ActionResult> EndAttempt([FromBody] EndAttemptCommand endAttemptCommand)
         {
+            foreach (var answer in endAttemptCommand.UserAnswerDto)
+            {
+                answer.UserId = currentUserService.UserId;
+            }
+
             await mediator.Send(endAttemptCommand);
             return NoContent();
         }

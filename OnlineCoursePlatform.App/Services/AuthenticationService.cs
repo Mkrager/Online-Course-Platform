@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Net.Http.Headers;
 
 namespace OnlineCoursePlatform.App.Services
 {

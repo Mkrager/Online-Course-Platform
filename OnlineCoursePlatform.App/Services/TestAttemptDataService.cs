@@ -22,9 +22,38 @@ namespace OnlineCoursePlatform.App.Services
             _authenticationService = authenticationService;
         }
 
-        public Task<ApiResponse<Guid>> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel)
+        public async Task<ApiResponse<Guid>> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/TestAttempt")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(endAttemptViewModel), Encoding.UTF8, "application/json")
+                };
+
+                string accessToken = _authenticationService.GetAccessToken();
+
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var lessonId = JsonSerializer.Deserialize<Guid>(responseContent);
+
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, lessonId);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
+            }
         }
 
         public async Task<ApiResponse<Guid>> StartTestAttempt(StartTestAttemptViewModel startAttemptViewModel)
