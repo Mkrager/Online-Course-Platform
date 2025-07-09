@@ -1,10 +1,6 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.Authenticate;
 @using OnlineCoursePlatform.App.Middlewares;
 
-@{
-    var userId = User.FindFirst("uid")?.Value;
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +20,7 @@
             <a href="#">About</a>
             @if (User.Identity != null && User.Identity.IsAuthenticated)
             {
-                <a asp-controller="account" asp-action="overview" asp-route-userId="@userId">Account</a>
+                <a asp-controller="account" asp-action="overview">Account</a>
             }
             else
             {

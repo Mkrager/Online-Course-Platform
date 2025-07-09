@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.User;
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
@@ -8,19 +9,25 @@ namespace OnlineCoursePlatform.App.Services
     {
         private readonly HttpClient _httpClient;
         private readonly JsonSerializerOptions _jsonOptions;
+        private readonly IAuthenticationService _authenticationService;
 
-        public UserDataServcie(HttpClient httpClient)
+        public UserDataServcie(HttpClient httpClient, IAuthenticationService authenticationService)
         {
             _httpClient = httpClient;
             _jsonOptions = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
+            _authenticationService = authenticationService;
         }
 
-        public async Task<UserDetailsResponse> GetUserDetails(string userId)
+        public async Task<UserDetailsResponse> GetUserDetails()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/User/{userId}");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/User/");
+
+            var accessToken = _authenticationService.GetAccessToken();
+
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
             var response = await _httpClient.SendAsync(request);
 

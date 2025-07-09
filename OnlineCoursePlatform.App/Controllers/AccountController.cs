@@ -14,9 +14,9 @@ namespace OnlineCoursePlatform.App.Controllers
 
         //Pererobiti shob userId bravsya s beku
         [HttpGet]
-        public async Task<IActionResult> Overview(string userId)
+        public async Task<IActionResult> Overview()
         {
-            var user = await _userDataService.GetUserDetails(userId);
+            var user = await _userDataService.GetUserDetails();
             return View(user);
         }
     }
