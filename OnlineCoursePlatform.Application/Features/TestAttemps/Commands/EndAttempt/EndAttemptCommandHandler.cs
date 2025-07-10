@@ -28,6 +28,7 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAtte
 
             testAttemptToUpdate.EndTime = DateTime.UtcNow;
             testAttemptToUpdate.UserAnswers = _mapper.Map<List<UserAnswer>>(request.UserAnswerDto);
+            testAttemptToUpdate.IsCompleted = true;
 
             var result = await _userAnswerRepository.PopulateIsCorrectAsync(testAttemptToUpdate.UserAnswers.ToList());
 

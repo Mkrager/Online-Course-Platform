@@ -15,14 +15,28 @@ namespace OnlineCoursePlatform.App.Controllers
             _testAttemptDataService = testAttemptDataService;
         }
 
-        public async Task<IActionResult> Pass(Guid id)
+        [HttpGet]
+        public async Task<IActionResult> StartTest(Guid id)
         {
             var test = await _testDataService.GetTestById(id);
-            await _testAttemptDataService.StartTestAttempt(new StartTestAttemptViewModel()
+            var attemptId = await _testAttemptDataService.StartTestAttempt(new StartTestAttemptViewModel()
             {
                 TestId = id
             });
-            return View(test);
+            return View(new TestAttemptViewModel()
+            {
+                AttemptId = attemptId.Data,
+                TestViewModel = test
+            });
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> EndTest([FromBody] EndTestAttemptViewModel model)
+        {
+            var result = await _testAttemptDataService.EndTestAttempt(model);
+            var redirectUrl = Url.Action("Overview", "Account");
+
+            return Ok(new { redirectUrl });
         }
     }
 }

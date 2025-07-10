@@ -22,7 +22,7 @@ namespace OnlineCoursePlatform.App.Services
             _authenticationService = authenticationService;
         }
 
-        public async Task<ApiResponse<Guid>> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel)
+        public async Task<ApiResponse> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel)
         {
             try
             {
@@ -38,21 +38,17 @@ namespace OnlineCoursePlatform.App.Services
                 var response = await _httpClient.SendAsync(request);
 
                 if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var lessonId = JsonSerializer.Deserialize<Guid>(responseContent);
-
-                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, lessonId);
+                { 
+                    return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
                 var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
-                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
             {
-                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
         }
 

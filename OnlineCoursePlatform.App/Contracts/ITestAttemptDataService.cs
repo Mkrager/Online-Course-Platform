@@ -6,6 +6,6 @@ namespace OnlineCoursePlatform.App.Contracts
     public interface ITestAttemptDataService
     {
         Task<ApiResponse<Guid>> StartTestAttempt(StartTestAttemptViewModel startAttemptViewModel);
-        Task<ApiResponse<Guid>> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel);
+        Task<ApiResponse> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel);
     }
 }
