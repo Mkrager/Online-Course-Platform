@@ -56,7 +56,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (newCourse.IsSuccess)
             {
-                return RedirectToAction("Overview", "Account", new { userId = User.FindFirst("uid")?.Value });
+                return RedirectToAction("Overview", "Account");
             }
 
             TempData["Message"] = HandleErrors.HandleResponse<Guid>(newCourse);
@@ -92,12 +92,12 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (result.IsSuccess)
             {
-                return Json(new { redirectToUrl = Url.Action("Overview", "Account", new { userId = User.FindFirst("uid")?.Value }) });
+                return Json(new { redirectToUrl = Url.Action("Overview", "Account") });
             }
 
             TempData["Message"] = HandleErrors.HandleResponse(result);
 
-            return Json(new { redirectToUrl = Url.Action("Update", "Course", new { id = courseDetailViewModel.Id }) });
+            return Json(new { redirectToUrl = Url.Action("Update", "Course") });
         }
 
         [HttpGet]
@@ -112,11 +112,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var result = await _courseDataService.DeleteCourse(id);
 
-            var userId = User.FindFirst("uid")?.Value;
-
-            var redirectUrl = Url.Action("Overview", "Account", new { userId = userId });
-
-            return Json(new { redirectUrl });
+            return Json(new { redirectUrl = Url.Action("Overview", "Account") });
         }
     }
 }
