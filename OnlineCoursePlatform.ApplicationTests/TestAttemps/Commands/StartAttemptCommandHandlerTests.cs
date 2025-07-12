@@ -32,7 +32,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 
             var command = new StartAttemptCommand
             {
-                IsCompleted = false,
                 TestId = Guid.NewGuid(),
                 UserId = "newUserId"
             };
@@ -44,7 +43,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 
             var createdAttempt = allAttempt.FirstOrDefault(a => a.UserId == command.UserId && a.UserId == command.UserId);
             createdAttempt.ShouldNotBeNull();
-            createdAttempt.IsCompleted.ShouldBe(command.IsCompleted);
             createdAttempt.TestId.ShouldBe(command.TestId);
             createdAttempt.StartTime.ShouldBeInRange(createdAttempt.StartTime - TimeSpan.FromSeconds(1), createdAttempt.StartTime + TimeSpan.FromSeconds(1));
             createdAttempt.UserId.ShouldBe(command.UserId);
@@ -57,7 +55,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             var query = new StartAttemptCommand()
             {
                 TestId = Guid.Empty,
-                IsCompleted = false,
                 UserId = "someUserId",
             };
 

@@ -60,7 +60,6 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
                         AnswerId = Guid.Parse("5cd711f0-cc43-4b7f-b6a3-d7f4c208b38a"),
                         UserId = "someUserId",
                         QuestionId = Guid.Parse("a1783ff1-7a2b-4d7a-84a5-c453be4c0f90"),
-                        IsCorrect = true,
                     }
                 }
             };

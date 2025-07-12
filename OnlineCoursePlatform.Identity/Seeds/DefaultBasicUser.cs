@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using OnlineCoursePlatform.Domain.Enums;
+using OnlineCoursePlatform.Application.Constants;
 using OnlineCoursePlatform.Identity.Models;
 
 namespace OnlineCoursePlatform.Identity.Seeds
@@ -23,7 +23,7 @@ namespace OnlineCoursePlatform.Identity.Seeds
                 if (user == null)
                 {
                     await userManager.CreateAsync(defaultUser, "Pa$$word123!");
-                    await userManager.AddToRoleAsync(defaultUser, Roles.Default.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Roles.Default);
                 }
             }
         }

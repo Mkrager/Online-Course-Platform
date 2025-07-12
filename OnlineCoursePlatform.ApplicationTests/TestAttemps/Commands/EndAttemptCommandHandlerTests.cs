@@ -38,7 +38,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
                 {
                     new UserAnswerDto()
                     {
-                        IsCorrect = true,
                     }
                 }
             };
@@ -78,7 +77,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
                 {
                     new UserAnswerDto()
                     {
-                        IsCorrect = false,
                         AnswerId = Guid.Parse("c51522a2-3297-4052-987e-8f7458d920a2"),
                         QuestionId = Guid.Parse("03b8c36c-ad34-4834-896e-df534c5739b5"),
                         UserId = "someUserId"
@@ -104,7 +102,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
                 {
                     new UserAnswerDto()
                     {
-                        IsCorrect = false,
                         AnswerId = Guid.Parse("c51522a2-3297-4052-987e-8f7458d920a2"),
                         QuestionId = Guid.Empty,
                         UserId = "someUserId"
