@@ -23,8 +23,7 @@ namespace OnlineCoursePlatform.Identity
             services.AddDbContext<OnlineCoursePlatformIdentityDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("OnlineCoursePlatformIdentityConnectionString"),
                 b => b.MigrationsAssembly(typeof(OnlineCoursePlatformIdentityDbContext).Assembly.FullName)));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<OnlineCoursePlatformIdentityDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<OnlineCoursePlatformIdentityDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IUserService, UserService>();
