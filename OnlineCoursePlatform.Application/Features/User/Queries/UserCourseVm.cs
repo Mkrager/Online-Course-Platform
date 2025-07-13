@@ -1,6 +1,4 @@
-﻿using OnlineCoursePlatform.Domain.Entities;
-
-namespace OnlineCoursePlatform.Application.Features.User.Queries
+﻿namespace OnlineCoursePlatform.Application.Features.User.Queries
 {
     public class UserCourseVm
     {

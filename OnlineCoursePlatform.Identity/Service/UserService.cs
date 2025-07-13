@@ -22,10 +22,13 @@ namespace OnlineCoursePlatform.Identity.Service
                 throw new ArgumentNullException(nameof(user), "User not found.");
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
+
             UserDetailsResponse userDetailsResponse = new UserDetailsResponse()
             {
                 Email = user.Email,
-                UserName = user.UserName
+                UserName = user.UserName,
+                Roles = roles.ToList()
             };
 
             return userDetailsResponse;
