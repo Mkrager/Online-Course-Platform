@@ -1,0 +1,18 @@
+﻿@using OnlineCoursePlatform.App.Middlewares
+@model OnlineCoursePlatform.App.ViewModels.Course.CourseListViewModel
+
+<div class="course-card">
+    <h3 class="title">@Model.Title</h3>
+    <p class="author">@Model.CreatedBy</p>
+
+    <div class="category-section">
+        <span class="category">@Model.Category.Name</span>
+    </div>
+
+    <div class="course-info">
+        <span class="level">@Model.Level.Name</span>
+        <span class="duration">@Model.Duration</span>
+        <span class="date">@DateFormatter.ToShortDate(Model.CreatedDate)</span>
+        <button class="buy-btn">Buy</button>
+    </div>
+</div>
