@@ -5,6 +5,7 @@ using OnlineCoursePlatform.Api.Middlewares;
 using OnlineCoursePlatform.Identity;
 using OnlineCoursePlatform.Api.Services;
 using OnlineCoursePlatform.Application.Contracts;
+using OnlineCoursePlatform.Infrastructure;
 
 namespace OnlineCoursePlatform.Api
 {
@@ -18,6 +19,7 @@ namespace OnlineCoursePlatform.Api
             builder.Services.AddApplicationServices();
             builder.Services.AddIdentityServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddInfrastructureServices(builder.Configuration);
 
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 

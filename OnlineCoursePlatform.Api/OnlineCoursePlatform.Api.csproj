@@ -20,6 +20,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\OnlineCoursePlatform.Application\OnlineCoursePlatform.Application.csproj" />
 		<ProjectReference Include="..\OnlineCoursePlatform.Identity\OnlineCoursePlatform.Identity.csproj" />
+		<ProjectReference Include="..\OnlineCoursePlatform.Infrastructure\OnlineCoursePlatform.Infrastructure.csproj" />
 		<ProjectReference Include="..\OnlineCoursePlatform.Persistence\OnlineCoursePlatform.Persistence.csproj" />
 	</ItemGroup>
 
