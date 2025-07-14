@@ -22,7 +22,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Features\Levels\Commands\" />
-	  <Folder Include="Features\PayPal\Commands\" />
 	  <Folder Include="Features\PayPal\Queries\" />
 	  <Folder Include="Features\Questions\Commands\" />
 	  <Folder Include="Features\TestAttemps\Queries\" />
