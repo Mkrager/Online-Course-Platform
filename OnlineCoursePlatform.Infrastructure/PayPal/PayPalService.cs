@@ -22,25 +22,6 @@ namespace OnlineCoursePlatform.Infrastructure.PayPal
             _cache = cache;
         }
 
-        public async Task<string> GetAccessTokenAsync()
-        {
-            if (_cache.TryGetValue("PayPalToken", out string token)) return token;
-
-            var client = _httpClientFactory.CreateClient();
-            var credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_settings.ClientId}:{_settings.Secret}"));
-
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
-
-            var content = new StringContent("grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
-            var response = await client.PostAsync($"{_settings.BaseUrl}/v1/oauth2/token", content);
-            var result = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
-
-            token = result.RootElement.GetProperty("access_token").GetString();
-            var expiresIn = result.RootElement.GetProperty("expires_in").GetInt32();
-
-            _cache.Set("PayPalToken", token, TimeSpan.FromSeconds(expiresIn - 60));
-            return token;
-        }
 
         public async Task<string> CreateOrderAsync(decimal amount, string returnUrl, string cancelUrl)
         {
@@ -109,6 +90,25 @@ namespace OnlineCoursePlatform.Infrastructure.PayPal
             var status = doc.RootElement.GetProperty("status").GetString();
 
             return status == "COMPLETED";
+        }
+        private async Task<string> GetAccessTokenAsync()
+        {
+            if (_cache.TryGetValue("PayPalToken", out string token)) return token;
+
+            var client = _httpClientFactory.CreateClient();
+            var credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_settings.ClientId}:{_settings.Secret}"));
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
+
+            var content = new StringContent("grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
+            var response = await client.PostAsync($"{_settings.BaseUrl}/v1/oauth2/token", content);
+            var result = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+
+            token = result.RootElement.GetProperty("access_token").GetString();
+            var expiresIn = result.RootElement.GetProperty("expires_in").GetInt32();
+
+            _cache.Set("PayPalToken", token, TimeSpan.FromSeconds(expiresIn - 60));
+            return token;
         }
     }
 }

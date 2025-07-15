@@ -1,5 +1,6 @@
 ﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
+using OnlineCoursePlatform.Application.Contracts.Infrastructure;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.DTOs.Authentication;
 using OnlineCoursePlatform.Domain.Entities;
@@ -324,5 +325,14 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             return mockService;
         }
 
+        public static Mock<IPayPalService> GetPayPalService()
+        {
+            var mockService = new Mock<IPayPalService>();
+
+            mockService.Setup(service => service.CreateOrderAsync(It.IsAny<decimal>(), It.IsAny<string>(), It.IsAny<string>()))
+                .ReturnsAsync("some-url");
+
+            return mockService;
+        }
     }
 }
