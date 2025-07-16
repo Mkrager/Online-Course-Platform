@@ -61,7 +61,6 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         public async Task CheckIsCategoryNameUnique_ReturnsFalseWhenNotUnique()
         {
             var category1Id = Guid.NewGuid();
-            var category2Id = Guid.NewGuid();
 
             var category1 = new Category { Id = category1Id, Name = "TestName" };
 
