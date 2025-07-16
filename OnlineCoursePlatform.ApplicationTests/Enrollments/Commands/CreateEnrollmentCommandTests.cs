@@ -5,14 +5,13 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Profiles;
-using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
 {
     public class CreateEnrollmentCommandTests
     {
-        private readonly Mock<IAsyncRepository<Enrollment>> _mockEnrollmentRepository;
+        private readonly Mock<IEnrollmentRepository> _mockEnrollmentRepository;
         private readonly Mock<ICurrentUserService> _currentUserService;
         private readonly IMapper _mapper;
 

@@ -336,11 +336,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             return mockService;
         }
 
-        public static Mock<IAsyncRepository<Enrollment>> GetEnrollmentRepository()
+        public static Mock<IEnrollmentRepository> GetEnrollmentRepository()
         {
             var enrollments = new List<Enrollment>();
 
-            var mockRepository = new Mock<IAsyncRepository<Enrollment>>();
+            var mockRepository = new Mock<IEnrollmentRepository>();
 
             mockRepository.Setup(repo => repo.ListAllAsync())
                 .ReturnsAsync(enrollments);
