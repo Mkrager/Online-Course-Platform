@@ -240,16 +240,16 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
         {
             var testAttempts = new List<TestAttempt>
             {
-                new TestAttempt 
-                { 
-                    Id = Guid.Parse("9f2b5c3e-6d3e-4c9f-9b57-3a8c4f0b1207"), 
-                    IsCompleted = true, 
-                    StartTime = DateTime.UtcNow, 
+                new TestAttempt
+                {
+                    Id = Guid.Parse("9f2b5c3e-6d3e-4c9f-9b57-3a8c4f0b1207"),
+                    IsCompleted = true,
+                    StartTime = DateTime.UtcNow,
                     EndTime = DateTime.UtcNow.AddMinutes(50),
                     UserId = "testUserId",
                     TestId = Guid.Parse("1d4a7b91-2e1f-4df6-9268-91f3f9f253b4")
                 },
-                new TestAttempt 
+                new TestAttempt
                 {
                     Id = Guid.Parse("b7f2e0c8-6e03-4bfc-9d9a-94d8b49aa0f2"),
                     IsCompleted = false,
@@ -338,7 +338,15 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
         public static Mock<IEnrollmentRepository> GetEnrollmentRepository()
         {
-            var enrollments = new List<Enrollment>();
+            var enrollments = new List<Enrollment>()
+            {
+                new Enrollment()
+                {
+                    Id = Guid.Parse("ea836e17-a3be-44ef-8d38-870633446b26"),
+                    CourseId = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
+                    StudentId = "someUserId"
+                }
+            };
 
             var mockRepository = new Mock<IEnrollmentRepository>();
 
@@ -351,6 +359,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     enrollments.Add(enrollment);
                     return enrollment;
                 });
+
+            mockRepository.Setup(repo => repo.IsUserEnrolledInCourseAsync(It.IsAny<string>(), It.IsAny<Guid>()))
+                .ReturnsAsync((string userId, Guid courseId) => enrollments.Any(c => c.StudentId == userId && c.CourseId == courseId));
 
             return mockRepository;
         }

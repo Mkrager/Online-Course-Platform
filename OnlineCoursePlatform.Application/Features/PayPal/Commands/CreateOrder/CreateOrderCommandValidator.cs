@@ -14,6 +14,10 @@ namespace OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder
                 .NotEmpty()
                 .WithMessage("CourseId is required");
 
+            RuleFor(r => r.UserId)
+                .NotEmpty()
+                .WithMessage("Empty user");
+
             RuleFor(x => x)
                 .MustAsync(async (model, cancellationToken) =>
                     !await IsUserEnrolledInCourse(model.UserId, model.CourseId, cancellationToken))
