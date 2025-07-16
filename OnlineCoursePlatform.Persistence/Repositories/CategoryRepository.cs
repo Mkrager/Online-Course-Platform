@@ -16,10 +16,10 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             return allCategories;
         }
 
-        public Task<bool> IsCategoryNameUnique(string name)
+        public async Task<bool> IsCategoryNameUnique(string name)
         {
-            var matches =  _dbContext.Categories.Any(x => x.Name.Equals(name));
-            return Task.FromResult(!matches);
+            var matches = await _dbContext.Categories.AnyAsync(x => x.Name.Equals(name));
+            return !matches;
         }
     }
 }
