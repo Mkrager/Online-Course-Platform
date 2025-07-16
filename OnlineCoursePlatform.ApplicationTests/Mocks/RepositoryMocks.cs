@@ -1,4 +1,5 @@
 ﻿using Moq;
+using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
@@ -331,6 +332,35 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             mockService.Setup(service => service.CreateOrderAsync(It.IsAny<decimal>(), It.IsAny<string>(), It.IsAny<string>()))
                 .ReturnsAsync("some-url");
+
+            return mockService;
+        }
+
+        public static Mock<IAsyncRepository<Enrollment>> GetEnrollmentRepository()
+        {
+            var enrollments = new List<Enrollment>();
+
+            var mockRepository = new Mock<IAsyncRepository<Enrollment>>();
+
+            mockRepository.Setup(repo => repo.ListAllAsync())
+                .ReturnsAsync(enrollments);
+
+            mockRepository.Setup(repo => repo.AddAsync(It.IsAny<Enrollment>()))
+                .ReturnsAsync((Enrollment enrollment) =>
+                {
+                    enrollments.Add(enrollment);
+                    return enrollment;
+                });
+
+            return mockRepository;
+        }
+
+        public static Mock<ICurrentUserService> GetCurrentUserService()
+        {
+            var mockService = new Mock<ICurrentUserService>();
+
+            mockService.Setup(service => service.UserId)
+                .Returns("test-userId");
 
             return mockService;
         }

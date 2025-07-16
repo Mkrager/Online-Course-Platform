@@ -12,6 +12,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
+using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
@@ -90,6 +91,8 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<RegistrationRequest, RegistrationCommand>().ReverseMap();
             CreateMap<AuthenticationRequest, AuthenticationQuery>().ReverseMap();
             CreateMap<AuthenticationResponse, AuthenticationVm>();
+
+            CreateMap<Enrollment, CreateEnrollmentCommand>().ReverseMap();
         }
     }
 }
