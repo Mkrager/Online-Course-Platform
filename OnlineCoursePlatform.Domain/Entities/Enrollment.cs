@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
         public Guid CourseId { get; set; }
-        //public string StudentId { get; set; } = string.Empty;
+        public string StudentId { get; set; } = string.Empty;
         public DateTime EnrolledAt { get; set; }
         public int Progress { get; set; }
 
