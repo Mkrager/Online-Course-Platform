@@ -29,6 +29,7 @@
 	<ItemGroup>
 	  <Folder Include="Enrollments\Queries\" />
 	  <Folder Include="Levels\Commands\" />
+	  <Folder Include="Payment\Queries\" />
 	  <Folder Include="PayPal\Queries\" />
 	  <Folder Include="TestAttemps\Queries\" />
 	</ItemGroup>

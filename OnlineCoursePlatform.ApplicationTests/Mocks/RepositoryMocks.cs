@@ -375,5 +375,30 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             return mockService;
         }
+
+        public static Mock<IAsyncRepository<Payment>> GetPaymantRepository()
+        {
+            var payments = new List<Payment>()
+            {
+                new Payment()
+                {
+                    Id = Guid.Parse("4f50d45e-f395-4688-a55f-c64e06649572")
+                }
+            };
+            
+            var mockRepository = new Mock<IAsyncRepository<Payment>>();
+
+            mockRepository.Setup(repo => repo.ListAllAsync())
+                .ReturnsAsync(payments);
+
+            mockRepository.Setup(repo => repo.AddAsync(It.IsAny<Payment>()))
+                .ReturnsAsync((Payment payment) =>
+                {
+                    payments.Add(payment);
+                    return payment;
+                });
+
+            return mockRepository;
+        }
     }
 }

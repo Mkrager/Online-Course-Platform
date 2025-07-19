@@ -38,12 +38,12 @@ namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
 
             await handler.Handle(command, CancellationToken.None);
 
-            var allCourses = await _mockEnrollmentRepository.Object.ListAllAsync();
-            allCourses.Count.ShouldBe(2);
+            var allEnrollments = await _mockEnrollmentRepository.Object.ListAllAsync();
+            allEnrollments.Count.ShouldBe(2);
 
-            var createdCourse = allCourses.FirstOrDefault(a => a.CourseId == command.CourseId);
-            createdCourse.ShouldNotBeNull();
-            createdCourse.CourseId.ShouldBe(command.CourseId);
+            var createdEnrollment = allEnrollments.FirstOrDefault(a => a.CourseId == command.CourseId);
+            createdEnrollment.ShouldNotBeNull();
+            createdEnrollment.CourseId.ShouldBe(command.CourseId);
         }
     }
 }

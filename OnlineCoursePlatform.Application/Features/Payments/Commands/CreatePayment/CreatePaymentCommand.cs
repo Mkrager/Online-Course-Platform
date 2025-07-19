@@ -5,7 +5,7 @@ namespace OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePaym
     public class CreatePaymentCommand : IRequest<Guid>
     {
         public string UserId { get; set; } = string.Empty;
-        public string OrderId { get; set; } = string.Empty;
+        public string PayPalOrderId { get; set; } = string.Empty;
         public string PayerId { get; set; } = string.Empty;
     }
 }
