@@ -22,7 +22,6 @@ namespace OnlineCoursePlatform.Infrastructure.PayPal
             _cache = cache;
         }
 
-
         public async Task<string> CreateOrderAsync(decimal amount, string returnUrl, string cancelUrl)
         {
             var client = _httpClientFactory.CreateClient();
