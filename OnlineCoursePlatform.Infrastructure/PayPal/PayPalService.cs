@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text;
+using OnlineCoursePlatform.Application.DTOs.PayPal;
 
 namespace OnlineCoursePlatform.Infrastructure.PayPal
 {
@@ -22,7 +23,7 @@ namespace OnlineCoursePlatform.Infrastructure.PayPal
             _cache = cache;
         }
 
-        public async Task<string> CreateOrderAsync(decimal amount, string returnUrl, string cancelUrl)
+        public async Task<CreateOrderResponse> CreateOrderAsync(decimal amount, string returnUrl, string cancelUrl)
         {
             var client = _httpClientFactory.CreateClient();
             var token = await GetAccessTokenAsync();
@@ -54,12 +55,18 @@ namespace OnlineCoursePlatform.Infrastructure.PayPal
             var response = await client.PostAsync($"{_settings.BaseUrl}/v2/checkout/orders", content);
             var responseData = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
 
+            string orderId = responseData.RootElement.GetProperty("id").GetString();
+
             var approveLink = responseData.RootElement.GetProperty("links")
                 .EnumerateArray()
                 .First(x => x.GetProperty("rel").GetString() == "approve")
                 .GetProperty("href").GetString();
+            return new CreateOrderResponse()
+            {
+                OrderId = orderId,
+                RedirectUrl = approveLink
+            };
 
-            return approveLink;
         }
 
         public async Task<bool> CaptureOrderAsync(string orderId)

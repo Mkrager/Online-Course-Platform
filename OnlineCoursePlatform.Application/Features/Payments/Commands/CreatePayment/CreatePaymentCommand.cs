@@ -6,6 +6,6 @@ namespace OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePaym
     {
         public string UserId { get; set; } = string.Empty;
         public string PayPalOrderId { get; set; } = string.Empty;
-        public string PayerId { get; set; } = string.Empty;
+        public Guid CourseId { get; set; }
     }
 }
