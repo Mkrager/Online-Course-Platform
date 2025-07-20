@@ -1,9 +1,12 @@
-﻿using Moq;
+﻿using MediatR;
+using Moq;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.DTOs.Authentication;
+using OnlineCoursePlatform.Application.DTOs.PayPal;
+using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Mocks
@@ -331,7 +334,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             var mockService = new Mock<IPayPalService>();
 
             mockService.Setup(service => service.CreateOrderAsync(It.IsAny<decimal>(), It.IsAny<string>(), It.IsAny<string>()))
-                .ReturnsAsync("some-url");
+                .ReturnsAsync(new CreateOrderResponse()
+                {
+                    OrderId = "orderId",
+                    RedirectUrl = "redirectUrl"
+                });
 
             return mockService;
         }
@@ -399,6 +406,17 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                 });
 
             return mockRepository;
+        }
+
+        public static Mock<IMediator> GetMediatorService()
+        {
+            var mediator = new Mock<IMediator>();
+
+            mediator
+                .Setup(m => m.Send(It.IsAny<CreatePaymentCommand>(), default))
+                .ReturnsAsync(Guid.NewGuid());
+
+            return mediator;
         }
     }
 }

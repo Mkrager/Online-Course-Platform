@@ -33,7 +33,8 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var result = await mediator.Send(new CaptureOrderCommand()
             {
-                OrderId = token
+                OrderId = token,
+                PayerId = payerId
             });
 
             return Ok(result);

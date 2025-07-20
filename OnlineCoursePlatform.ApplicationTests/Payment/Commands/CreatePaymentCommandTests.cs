@@ -32,7 +32,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
             var command = new CreatePaymentCommand
             {
                 PayPalOrderId = "orderId",
-                PayerId = "payerId",
                 UserId = "userId"
             };
 
@@ -41,10 +40,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
             var allPayments = await _mockPaymentRepository.Object.ListAllAsync();
             allPayments.Count.ShouldBe(2);
 
-            var createdPayment = allPayments.FirstOrDefault(a => a.PayPalOrderId == command.PayPalOrderId && a.PayerId == command.PayerId);
+            var createdPayment = allPayments.FirstOrDefault(a => a.PayPalOrderId == command.PayPalOrderId && a.UserId == command.UserId);
             createdPayment.ShouldNotBeNull();
             createdPayment.PayPalOrderId.ShouldBe(command.PayPalOrderId);
-            createdPayment.PayerId.ShouldBe(command.PayerId);
+            createdPayment.PayerId.ShouldBe(command.UserId);
         }
     }
 }
