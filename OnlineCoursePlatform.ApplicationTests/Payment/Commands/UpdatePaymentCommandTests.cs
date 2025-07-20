@@ -2,17 +2,18 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
+using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 using OnlineCoursePlatform.Application.Profiles;
 using Shouldly;
 
-namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
+namespace OnlineCoursePlatform.Application.UnitTests.Payment.Commands
 {
-    public class CreatePaymentCommandTests
+    public class UpdatePaymentCommandTests
     {
         private readonly Mock<IAsyncRepository<OnlineCoursePlatform.Domain.Entities.Payment>> _mockPaymentRepository;
         private readonly IMapper _mapper;
 
-        public CreatePaymentCommandTests()
+        public UpdatePaymentCommandTests()
         {
             _mockPaymentRepository = Mocks.RepositoryMocks.GetPaymantRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
@@ -23,25 +24,26 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
         }
 
         [Fact]
-        public async Task Should_Create_Payment_Successfully()
+        public async Task Should_Update_Payment_Successfully()
         {
-            var handler = new CreatePaymentCommandHandler(_mapper, _mockPaymentRepository.Object);
+            var handler = new UpdatePaymentCommandHandler(_mapper, _mockPaymentRepository.Object);
 
-            var command = new CreatePaymentCommand
+            var command = new UpdatePaymentCommand
             {
-                PayPalOrderId = "orderId",
-                UserId = "userId"
+                Id = Guid.Parse("4f50d45e-f395-4688-a55f-c64e06649572"),
+                PayerId = "sdadwd",
+                Status = "Completed"
             };
 
             await handler.Handle(command, CancellationToken.None);
 
             var allPayments = await _mockPaymentRepository.Object.ListAllAsync();
-            allPayments.Count.ShouldBe(2);
 
-            var createdPayment = allPayments.FirstOrDefault(a => a.PayPalOrderId == command.PayPalOrderId && a.UserId == command.UserId);
+            var createdPayment = allPayments.FirstOrDefault(a => a.PayerId == command.PayerId && a.Id == command.Id);
             createdPayment.ShouldNotBeNull();
-            createdPayment.PayPalOrderId.ShouldBe(command.PayPalOrderId);
-            createdPayment.PayerId.ShouldBe(command.UserId);
+            createdPayment.PayerId.ShouldBe(command.PayerId);
+            createdPayment.Status.ShouldBe(command.Status);
         }
+
     }
 }
