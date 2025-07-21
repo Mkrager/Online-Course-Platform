@@ -1,8 +1,9 @@
-﻿namespace OnlineCoursePlatform.Domain.Entities
+﻿using OnlineCoursePlatform.Domain.Common;
+
+namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class TestAttempt
+    public class TestAttempt : BaseEntity
     {
-        public Guid Id { get; set; }
         public string UserId { get; set; } = string.Empty;
         public Guid TestId { get; set; }
         public DateTime StartTime { get; set; }

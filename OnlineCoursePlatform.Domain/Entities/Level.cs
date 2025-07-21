@@ -1,8 +1,9 @@
-﻿namespace OnlineCoursePlatform.Domain.Entities
+﻿using OnlineCoursePlatform.Domain.Common;
+
+namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class Level
+    public class Level : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int Order { get; set; }
 

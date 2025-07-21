@@ -1,8 +1,9 @@
-﻿namespace OnlineCoursePlatform.Domain.Entities
+﻿using OnlineCoursePlatform.Domain.Common;
+
+namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class Certificate
+    public class Certificate : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid EnrollmentId { get; set; }
         public string CertificateUrl { get; set; } = string.Empty;
         public DateTime IssuedAt { get; set; }

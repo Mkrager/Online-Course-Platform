@@ -1,8 +1,9 @@
-﻿namespace OnlineCoursePlatform.Domain.Entities
+﻿using OnlineCoursePlatform.Domain.Common;
+
+namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class Answer
+    public class Answer : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid QuestionId { get; set; }
         public string Text { get; set; } = string.Empty;
         public bool IsCorrect { get; set; }

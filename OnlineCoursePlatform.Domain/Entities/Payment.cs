@@ -1,8 +1,9 @@
-﻿namespace OnlineCoursePlatform.Domain.Entities
+﻿using OnlineCoursePlatform.Domain.Common;
+
+namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class Payment
+    public class Payment : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid CourseId { get; set; }
         public string PayPalOrderId { get; set; } = string.Empty;
         public string PayerId { get; set; } = string.Empty;
