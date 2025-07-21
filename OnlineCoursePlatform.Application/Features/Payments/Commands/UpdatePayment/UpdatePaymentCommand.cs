@@ -6,6 +6,7 @@ namespace OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePaym
     {
         public Guid Id { get; set; }
         public string PayerId { get; set; } = string.Empty;
+        public string PayPalOrderId { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
     }
 }
