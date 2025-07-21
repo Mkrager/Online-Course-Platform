@@ -23,10 +23,8 @@ namespace OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateE
             var enrollmentToCreate = _mapper.Map<Enrollment>(request);
 
             enrollmentToCreate.EnrolledAt = DateTime.UtcNow;
-            enrollmentToCreate.StudentId = _currentUserService.UserId;
 
             var enrollment = await _enrollmentRepository.AddAsync(enrollmentToCreate);
-
             return enrollment.Id;
         }
     }

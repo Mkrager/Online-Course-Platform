@@ -2,7 +2,6 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder;
 
 namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
@@ -12,13 +11,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
         private readonly Mock<IPayPalService> _mockPayPalService;
         private readonly Mock<ICourseRepository> _mockCourseRepository;
         private readonly Mock<IEnrollmentRepository> _mockEnrollmentRepository;
-        private readonly Mock<IMediator> _mockMediatorService;
         public CreateOrderCommandTests()
         {
             _mockPayPalService = Mocks.RepositoryMocks.GetPayPalService();
             _mockCourseRepository = Mocks.RepositoryMocks.GetCourseRepository();
             _mockEnrollmentRepository = Mocks.RepositoryMocks.GetEnrollmentRepository();
-            _mockMediatorService = Mocks.RepositoryMocks.GetMediatorService();
         }
 
         [Fact]
@@ -26,8 +23,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
         {
             var handler = new CreateOrderCommandHandler(
                 _mockPayPalService.Object, 
-                _mockCourseRepository.Object,
-                _mockMediatorService.Object);
+                _mockCourseRepository.Object);
 
             var createOrderCommand = new CreateOrderCommand()
             {

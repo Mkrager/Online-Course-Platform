@@ -2,10 +2,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
+using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 using OnlineCoursePlatform.Application.Features.PayPal.Commands.CaptureOrder;
 using OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder;
+using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -25,7 +27,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             });
 
             var baseUrl = configuration["App:BaseUrl"];
-            var returnUrl = $"{baseUrl}/api/paypal/capture-order?paymentId={paymentId}";
+            var returnUrl = $"{baseUrl}/api/paypal/capture-order?paymentId={paymentId}&courseId={courseId}&userId={userId}";
             var cancelUrl = $"{baseUrl}/api/payment/cancel";
 
             var result = await mediator.Send(new CreateOrderCommand()
@@ -39,19 +41,38 @@ namespace OnlineCoursePlatform.Api.Controllers
             await mediator.Send(new UpdatePaymentCommand()
             {
                 Id = paymentId,
-                PayPalOrderId = result.OrderId
+                PayPalOrderId = result.OrderId,
+                Status = OrderStatus.Pending
             });
 
             return Ok(new { url = result.RedirectUrl });
         }
 
         [HttpGet("capture-order", Name = "CaptureOrder")]
-        public async Task<IActionResult> CaptureOrder([FromQuery] Guid paymentId, [FromQuery] string token, [FromQuery] string payerId)
+        public async Task<IActionResult> CaptureOrder(
+            [FromQuery] string userId,
+            [FromQuery] Guid paymentId, 
+            [FromQuery] Guid courseId, 
+            [FromQuery] string token, 
+            [FromQuery] string payerId)
         {
             var result = await mediator.Send(new CaptureOrderCommand()
             {
                 OrderId = token,
                 PayerId = payerId
+            });
+
+            await mediator.Send(new UpdatePaymentCommand()
+            {
+                Id = paymentId,
+                PayerId = payerId,
+                Status = OrderStatus.Completed
+            });
+
+            await mediator.Send(new CreateEnrollmentCommand()
+            {
+                CourseId = courseId,
+                StudentId = userId
             });
 
             return Ok(result);

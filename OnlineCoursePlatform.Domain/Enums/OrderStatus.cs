@@ -3,6 +3,7 @@
     public enum OrderStatus
     {
         Created,
+        Pending,
         Completed,
         Canceled,
         Failed

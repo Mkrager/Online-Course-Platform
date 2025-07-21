@@ -423,16 +423,5 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             return mockRepository;
         }
-
-        public static Mock<IMediator> GetMediatorService()
-        {
-            var mediator = new Mock<IMediator>();
-
-            mediator
-                .Setup(m => m.Send(It.IsAny<CreatePaymentCommand>(), default))
-                .ReturnsAsync(Guid.NewGuid());
-
-            return mediator;
-        }
     }
 }

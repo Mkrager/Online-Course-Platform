@@ -12,8 +12,6 @@ namespace OnlineCoursePlatform.Application.Features.PayPal.Commands.CaptureOrder
         }
         public async Task<bool> Handle(CaptureOrderCommand request, CancellationToken cancellationToken)
         {
-
-
             return await _payPalService.CaptureOrderAsync(request.OrderId);
         }
     }
