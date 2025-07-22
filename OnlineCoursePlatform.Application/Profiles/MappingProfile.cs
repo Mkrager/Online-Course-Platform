@@ -21,6 +21,7 @@ using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail;
 using OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
+using OnlineCoursePlatform.Application.Features.Payments.Queries.GetPaymentDetail;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
@@ -97,7 +98,10 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Enrollment, CreateEnrollmentCommand>().ReverseMap();
 
             CreateMap<Payment, CreatePaymentCommand>().ReverseMap();
-            CreateMap<Payment, UpdatePaymentCommand>().ReverseMap();
+            CreateMap<Payment, UpdatePaymentCommand>().ReverseMap()
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<Payment, PaymentDetailVm>().ReverseMap();
         }
     }
 }
