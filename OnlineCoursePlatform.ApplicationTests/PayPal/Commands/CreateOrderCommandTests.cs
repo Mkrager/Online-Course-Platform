@@ -36,7 +36,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
             var result = await handler.Handle(createOrderCommand, CancellationToken.None);
 
             Assert.NotNull(result);
-            Assert.IsType<string>(result);
+            Assert.IsType<CreateOrderResponse>(result);
         }
 
         [Fact]

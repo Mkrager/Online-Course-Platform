@@ -383,7 +383,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             return mockService;
         }
 
-        public static Mock<IAsyncRepository<OnlineCoursePlatform.Domain.Entities.Payment>> GetPaymantRepository()
+        public static Mock<IAsyncRepository<OnlineCoursePlatform.Domain.Entities.Payment>> GetPaymentRepository()
         {
             var payments = new List<OnlineCoursePlatform.Domain.Entities.Payment>()
             {
@@ -420,6 +420,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid id) => payments.FirstOrDefault(x => x.Id == id));
+
+            mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid id) => payments.FirstOrDefault(x => x.Id == id));
+
 
             return mockRepository;
         }

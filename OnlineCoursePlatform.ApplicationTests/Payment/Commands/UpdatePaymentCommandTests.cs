@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payment.Commands
 
         public UpdatePaymentCommandTests()
         {
-            _mockPaymentRepository = Mocks.RepositoryMocks.GetPaymantRepository();
+            _mockPaymentRepository = Mocks.RepositoryMocks.GetPaymentRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -32,7 +32,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payment.Commands
             {
                 Id = Guid.Parse("4f50d45e-f395-4688-a55f-c64e06649572"),
                 PayerId = "sdadwd",
-                Status = "Completed"
             };
 
             await handler.Handle(command, CancellationToken.None);
@@ -42,7 +41,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payment.Commands
             var createdPayment = allPayments.FirstOrDefault(a => a.PayerId == command.PayerId && a.Id == command.Id);
             createdPayment.ShouldNotBeNull();
             createdPayment.PayerId.ShouldBe(command.PayerId);
-            //createdPayment.Status.ShouldBe(command.Status);
         }
 
     }

@@ -14,7 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
 
         public CreatePaymentCommandTests()
         {
-            _mockPaymentRepository = Mocks.RepositoryMocks.GetPaymantRepository();
+            _mockPaymentRepository = Mocks.RepositoryMocks.GetPaymentRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -41,7 +41,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
             var createdPayment = allPayments.FirstOrDefault(a => a.PayPalOrderId == command.PayPalOrderId && a.UserId == command.UserId);
             createdPayment.ShouldNotBeNull();
             createdPayment.PayPalOrderId.ShouldBe(command.PayPalOrderId);
-            createdPayment.PayerId.ShouldBe(command.UserId);
+            createdPayment.UserId.ShouldBe(command.UserId);
         }
     }
 }
