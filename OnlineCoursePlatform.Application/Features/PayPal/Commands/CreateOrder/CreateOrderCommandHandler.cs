@@ -29,7 +29,7 @@ namespace OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder
 
             return new CreateOrderResponse()
             {
-                OrderId = result.OrderId,
+                PayPalOrderId = result.OrderId,
                 RedirectUrl = result.RedirectUrl
             };
         }

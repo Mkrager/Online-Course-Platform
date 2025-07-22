@@ -4,6 +4,7 @@
     {
         public Guid Id { get; set; }
         public Guid CourseId { get; set; }
+        public string PayPalOrderId { get; set; } = string.Empty;
         public string UserId { get; set; } = string.Empty;
     }
 }
