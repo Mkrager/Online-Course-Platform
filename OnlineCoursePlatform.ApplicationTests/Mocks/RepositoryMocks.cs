@@ -373,16 +373,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             return mockRepository;
         }
 
-        public static Mock<ICurrentUserService> GetCurrentUserService()
-        {
-            var mockService = new Mock<ICurrentUserService>();
-
-            mockService.Setup(service => service.UserId)
-                .Returns("test-userId");
-
-            return mockService;
-        }
-
         public static Mock<IAsyncRepository<OnlineCoursePlatform.Domain.Entities.Payment>> GetPaymentRepository()
         {
             var payments = new List<OnlineCoursePlatform.Domain.Entities.Payment>()

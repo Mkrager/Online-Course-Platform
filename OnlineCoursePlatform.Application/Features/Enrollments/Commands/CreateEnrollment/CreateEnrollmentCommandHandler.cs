@@ -9,13 +9,11 @@ namespace OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateE
     public class CreateEnrollmentCommandHandler : IRequestHandler<CreateEnrollmentCommand, Guid>
     {
         private readonly IAsyncRepository<Enrollment> _enrollmentRepository;
-        private readonly ICurrentUserService _currentUserService;
         private readonly IMapper _mapper;
-        public CreateEnrollmentCommandHandler(IAsyncRepository<Enrollment> enrollmentRepository, IMapper mapper, ICurrentUserService currentUserService)
+        public CreateEnrollmentCommandHandler(IAsyncRepository<Enrollment> enrollmentRepository, IMapper mapper)
         {
             _enrollmentRepository = enrollmentRepository;
             _mapper = mapper;
-            _currentUserService = currentUserService;
         }
 
         public async Task<Guid> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)

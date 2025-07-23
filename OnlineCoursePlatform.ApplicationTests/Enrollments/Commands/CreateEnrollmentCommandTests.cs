@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Moq;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Profiles;
 using Shouldly;
@@ -12,13 +10,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
     public class CreateEnrollmentCommandTests
     {
         private readonly Mock<IEnrollmentRepository> _mockEnrollmentRepository;
-        private readonly Mock<ICurrentUserService> _currentUserService;
         private readonly IMapper _mapper;
 
         public CreateEnrollmentCommandTests()
         {
             _mockEnrollmentRepository = Mocks.RepositoryMocks.GetEnrollmentRepository();
-            _currentUserService = Mocks.RepositoryMocks.GetCurrentUserService();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -29,7 +25,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
         [Fact]
         public async Task Should_Create_Enrollment_Successfully()
         {
-            var handler = new CreateEnrollmentCommandHandler(_mockEnrollmentRepository.Object, _mapper, _currentUserService.Object);
+            var handler = new CreateEnrollmentCommandHandler(_mockEnrollmentRepository.Object, _mapper);
 
             var command = new CreateEnrollmentCommand
             {

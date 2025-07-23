@@ -166,17 +166,30 @@ namespace OnlineCoursePlatform.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedDate = DateTime.Now;
+                        entry.Entity.CreatedDate = DateTime.UtcNow;
                         entry.Entity.CreatedBy = _currentUserService.UserId;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastModifiedDate = DateTime.Now;
+                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
                         entry.Entity.LastModifiedBy = _currentUserService.UserId;
                         break;
                 }
             }
+
+            foreach (var entry in ChangeTracker.Entries<TimestampedEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedAt = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
             return base.SaveChangesAsync(cancellationToken);
         }
-
     }
 }
