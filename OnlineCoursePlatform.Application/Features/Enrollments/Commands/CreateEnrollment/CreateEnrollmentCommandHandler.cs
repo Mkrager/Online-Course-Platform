@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
@@ -19,8 +18,6 @@ namespace OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateE
         public async Task<Guid> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)
         {
             var enrollmentToCreate = _mapper.Map<Enrollment>(request);
-
-            enrollmentToCreate.EnrolledAt = DateTime.UtcNow;
 
             var enrollment = await _enrollmentRepository.AddAsync(enrollmentToCreate);
             return enrollment.Id;

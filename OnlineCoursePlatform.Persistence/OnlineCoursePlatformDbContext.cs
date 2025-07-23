@@ -43,6 +43,10 @@ namespace OnlineCoursePlatform.Persistence
                 .HasForeignKey(ua => ua.QuestionId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Enrollment>()
+                .Property(e => e.CreatedAt)
+                .HasColumnName("EnrolledAt");
+
             var testCategory1Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a3");
             var testCategory2Id = Guid.Parse("6f4c7e59-74c7-41c5-9fa7-4b75b7d9f3a4");
 
@@ -152,7 +156,7 @@ namespace OnlineCoursePlatform.Persistence
             modelBuilder.Entity<TestAttempt>().HasData(new TestAttempt
             {
                 Id = Guid.Parse("d45f7a9e-3a01-4c64-9f86-cde3e55ebc36"),
-                StartTime = DateTime.Now,
+                StartTime = new DateTime(2025, 7, 23),
                 IsCompleted = false,
                 TestId = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
                 UserId = "someUserId",              
