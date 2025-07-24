@@ -1,8 +1,9 @@
 ﻿using OnlineCoursePlatform.Domain.Common;
+using OnlineCoursePlatform.Domain.Common.Interfaces;
 
 namespace OnlineCoursePlatform.Domain.Entities
 {
-    public class TestAttempt : BaseEntity
+    public class TestAttempt : BaseEntity, IHasUserId
     {
         public string UserId { get; set; } = string.Empty;
         public Guid TestId { get; set; }

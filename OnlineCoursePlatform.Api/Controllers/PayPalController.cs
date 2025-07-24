@@ -19,11 +19,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpPost("create-order", Name = "CreateOrder")]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
-            var userId = currentUserService.UserId;
+            //var userId = currentUserService.UserId;
 
             var paymentId = await mediator.Send(new CreatePaymentCommand()
             {
-                UserId = userId,
+                //UserId = userId,
                 CourseId = courseId
             });
 
@@ -36,7 +36,7 @@ namespace OnlineCoursePlatform.Api.Controllers
                 CancelUrl = cancelUrl,
                 ReturnUrl = returnUrl,
                 CourseId = courseId,
-                UserId = userId
+                //UserId = userId
             });
 
             await mediator.Send(new UpdatePaymentCommand()
