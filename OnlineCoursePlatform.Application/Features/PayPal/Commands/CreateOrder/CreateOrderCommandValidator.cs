@@ -7,11 +7,9 @@ namespace OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder
     public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
     {
         private readonly IEnrollmentRepository _enrollmentRepository;
-        private readonly ICurrentUserService _currentUserService;
-        public CreateOrderCommandValidator(IEnrollmentRepository enrollmentRepository, ICurrentUserService currentUserService)
+        public CreateOrderCommandValidator(IEnrollmentRepository enrollmentRepository)
         {
             _enrollmentRepository = enrollmentRepository;
-            _currentUserService = currentUserService;
 
             RuleFor(r => r.CourseId)
                 .NotEmpty()
@@ -19,7 +17,7 @@ namespace OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder
 
             RuleFor(x => x)
                 .MustAsync(async (model, cancellationToken) =>
-                    !await IsUserEnrolledInCourse(_currentUserService.UserId, model.CourseId, cancellationToken))
+                    !await IsUserEnrolledInCourse(model.UserId, model.CourseId, cancellationToken))
                 .WithMessage("You already bought this course");
         }
 

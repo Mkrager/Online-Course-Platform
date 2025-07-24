@@ -14,14 +14,14 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PayPalController(IMediator mediator, IConfiguration configuration) : Controller
+    public class PayPalController(IMediator mediator, IConfiguration configuration, ICurrentUserService _currentUserService) : Controller
     {
         [HttpPost("create-order", Name = "CreateOrder")]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
             var paymentId = await mediator.Send(new CreatePaymentCommand()
             {
-                CourseId = courseId
+                CourseId = courseId,
             });
 
             var baseUrl = configuration["App:BaseUrl"];
@@ -33,6 +33,7 @@ namespace OnlineCoursePlatform.Api.Controllers
                 CancelUrl = cancelUrl,
                 ReturnUrl = returnUrl,
                 CourseId = courseId,
+                UserId = _currentUserService.UserId
             });
 
             await mediator.Send(new UpdatePaymentCommand()
