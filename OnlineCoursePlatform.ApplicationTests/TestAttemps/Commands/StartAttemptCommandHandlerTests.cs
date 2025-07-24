@@ -33,7 +33,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             var command = new StartAttemptCommand
             {
                 TestId = Guid.NewGuid(),
-                UserId = "newUserId"
             };
 
             await handler.Handle(command, CancellationToken.None);
@@ -41,11 +40,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             var allAttempt = await _mockTestAttemptRepository.Object.ListAllAsync();
             allAttempt.Count.ShouldBe(3);
 
-            var createdAttempt = allAttempt.FirstOrDefault(a => a.UserId == command.UserId && a.UserId == command.UserId);
+            var createdAttempt = allAttempt.FirstOrDefault(a => a.TestId == command.TestId);
             createdAttempt.ShouldNotBeNull();
             createdAttempt.TestId.ShouldBe(command.TestId);
             createdAttempt.StartTime.ShouldBeInRange(createdAttempt.StartTime - TimeSpan.FromSeconds(1), createdAttempt.StartTime + TimeSpan.FromSeconds(1));
-            createdAttempt.UserId.ShouldBe(command.UserId);
         }
 
         [Fact]
@@ -55,7 +53,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
             var query = new StartAttemptCommand()
             {
                 TestId = Guid.Empty,
-                UserId = "someUserId",
             };
 
             var result = await validator.ValidateAsync(query);

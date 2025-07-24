@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Common;
+using OnlineCoursePlatform.Domain.Common.Interfaces;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Persistence
@@ -189,6 +190,16 @@ namespace OnlineCoursePlatform.Persistence
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            foreach (var entry in ChangeTracker.Entries<IHasUserId>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.UserId = _currentUserService.UserId;
                         break;
                 }
             }

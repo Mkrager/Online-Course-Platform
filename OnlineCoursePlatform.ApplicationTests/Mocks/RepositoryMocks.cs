@@ -417,5 +417,15 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             return mockRepository;
         }
+
+        public static Mock<ICurrentUserService> GetCurrentUserService()
+        {
+            var mockService = new Mock<ICurrentUserService>();
+
+            mockService.Setup(service => service.UserId)
+                .Returns("someUserId");
+
+            return mockService;
+        }
     }
 }

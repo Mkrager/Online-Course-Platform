@@ -6,10 +6,6 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAtte
     {
         public UserAnswerDtoValidator()
         {
-            RuleFor(r => r.UserId)
-                .NotNull().WithMessage("Empty user")
-                .NotEmpty().WithMessage("Empty user");
-
             RuleFor(r => r.AnswerId)
                 .NotNull().WithMessage("Empty answer")
                 .NotEmpty().WithMessage("Empty answer");

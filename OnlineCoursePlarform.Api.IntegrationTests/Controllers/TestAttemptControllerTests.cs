@@ -27,7 +27,6 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             var startAttemptCommand = new StartAttemptCommand
             {
                 TestId = Guid.Parse("1f5a4c21-2c9b-4b4e-bcb9-36b770a742d0"),
-                UserId = "SomeUserId"
             };
 
             var content = new StringContent(

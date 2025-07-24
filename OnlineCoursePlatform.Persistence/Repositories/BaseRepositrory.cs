@@ -29,8 +29,12 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         }
         public async Task UpdateAsync(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            try
+            {
+                _dbContext.Entry(entity).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+            }
+            catch(Exception ex) { }
         }
 
         public async Task DeleteAsync(T entity)
