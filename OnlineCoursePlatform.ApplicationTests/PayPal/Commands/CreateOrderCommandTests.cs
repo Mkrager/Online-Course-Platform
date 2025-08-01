@@ -44,7 +44,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenCourseIdEmpty()
         {
-            var validator = new CreateOrderCommandValidator(_mockEnrollmentRepository.Object, _mockCurrentUserService.Object);
+            var validator = new CreateOrderCommandValidator(_mockEnrollmentRepository.Object);
             var query = new CreateOrderCommand
             {
                 CancelUrl = "cancel-url",
@@ -61,12 +61,13 @@ namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenUserAlreadyEnrolledInCourse()
         {
-            var validator = new CreateOrderCommandValidator(_mockEnrollmentRepository.Object, _mockCurrentUserService.Object);
+            var validator = new CreateOrderCommandValidator(_mockEnrollmentRepository.Object);
             var query = new CreateOrderCommand
             {
                 CancelUrl = "cancel-url",
                 ReturnUrl = "return-url",
                 CourseId = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
+                UserId = "someUserId"
             };
 
             var result = await validator.ValidateAsync(query);

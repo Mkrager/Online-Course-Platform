@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder
