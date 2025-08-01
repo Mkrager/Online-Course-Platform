@@ -3,6 +3,7 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
@@ -14,7 +15,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
 
         public CreateEnrollmentCommandTests()
         {
-            _mockEnrollmentRepository = Mocks.RepositoryMocks.GetEnrollmentRepository();
+            _mockEnrollmentRepository = EnrollmentRepositoryMock.GetEnrollmentRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

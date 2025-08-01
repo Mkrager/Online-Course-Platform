@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -16,7 +15,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
 
         public CreateLessonCommandTest()
         {
-            _mockLessonRepository = RepositoryMocks.GetLessonRepository();
+            _mockLessonRepository = LessonRepositoryMock.GetLessonRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

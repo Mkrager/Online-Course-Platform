@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
-using OnlineCoursePlatform.Application.DTOs.Authentication;
 using OnlineCoursePlatform.Application.Features.Account.Queries.Authentication;
 using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Account.Queries
 {
@@ -14,8 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Account.Queries
 
         public AuthenticationQueryHandlerTests()
         {
-            _mockAuthenticationService = Mocks.RepositoryMocks.GetAuthenticationService();
-
+            _mockAuthenticationService = AuthenticationServiceMock.GetAuthenticationService();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

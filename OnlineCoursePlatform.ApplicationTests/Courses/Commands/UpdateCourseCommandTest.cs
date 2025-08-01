@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
-using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
@@ -17,7 +15,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
 
         public UpdateCourseCommandTest()
         {
-            _mockCourseRepository = RepositoryMocks.GetCourseRepository();
+            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

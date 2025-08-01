@@ -16,8 +16,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 
         public StartAttemptCommandHandlerTests()
         {
-            _mockTestAttemptRepository = RepositoryMocks.GetTestAttemptRepository();
-
+            _mockTestAttemptRepository = TestAttemptRepositoryMock.GetTestAttemptRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

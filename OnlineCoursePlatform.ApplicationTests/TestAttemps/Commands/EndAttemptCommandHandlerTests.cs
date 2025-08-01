@@ -2,8 +2,8 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
-using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
 using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
@@ -17,8 +17,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 
         public EndAttemptCommandHandlerTests()
         {
-            _mockTestAttemptRepository = Mocks.RepositoryMocks.GetTestAttemptRepository();
-            _mockUserAnswerRepository = Mocks.RepositoryMocks.GetUserAnswerRepository();
+            _mockTestAttemptRepository = TestAttemptRepositoryMock.GetTestAttemptRepository();
+            _mockUserAnswerRepository = UserAnswerRepositoryMock.GetUserAnswerRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

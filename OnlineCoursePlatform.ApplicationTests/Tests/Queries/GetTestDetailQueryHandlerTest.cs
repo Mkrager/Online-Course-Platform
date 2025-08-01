@@ -12,11 +12,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Queries
     public class GetTestDetailQueryHandlerTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<ITestRepository> _testRepository;
+        private readonly Mock<ITestRepository> _mockTestRepository;
 
         public GetTestDetailQueryHandlerTest()
         {
-            _testRepository = RepositoryMocks.GetTestRepository();
+            _mockTestRepository = TestRepositoryMock.GetTestRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -28,7 +28,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Queries
         public async Task GetTestListWithQuestionAndAnswer_RetursnListOfTests()
         {
 
-            var handler = new GetTestDetailQueryHandler(_mapper, _testRepository.Object);
+            var handler = new GetTestDetailQueryHandler(_mapper, _mockTestRepository.Object);
 
             var result = await handler.Handle(new GetTestDetailQuery() { Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee") }, CancellationToken.None);
 

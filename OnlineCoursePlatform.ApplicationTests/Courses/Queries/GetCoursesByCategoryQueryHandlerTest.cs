@@ -14,8 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Courses.Queries
 
         public GetCoursesByCategoryQueryHandlerTest()
         {
-            _mockCourseRepository = RepositoryMocks.GetCourseRepository();
-
+            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

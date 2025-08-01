@@ -14,7 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         private readonly Mock<ILessonRepository> _mockLessonRepository;
         public DeleteLessonCommandTest()
         {
-            _mockLessonRepository = RepositoryMocks.GetLessonRepository();
+            _mockLessonRepository = LessonRepositoryMock.GetLessonRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

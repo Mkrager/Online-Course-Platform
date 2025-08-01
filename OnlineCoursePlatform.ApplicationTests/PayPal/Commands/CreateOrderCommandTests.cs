@@ -1,9 +1,8 @@
-﻿using MediatR;
-using Moq;
-using OnlineCoursePlatform.Application.Contracts;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 
 namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
 {
@@ -12,13 +11,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.PayPal.Commands
         private readonly Mock<IPayPalService> _mockPayPalService;
         private readonly Mock<ICourseRepository> _mockCourseRepository;
         private readonly Mock<IEnrollmentRepository> _mockEnrollmentRepository;
-        private readonly Mock<ICurrentUserService> _mockCurrentUserService;
         public CreateOrderCommandTests()
         {
-            _mockPayPalService = Mocks.RepositoryMocks.GetPayPalService();
-            _mockCourseRepository = Mocks.RepositoryMocks.GetCourseRepository();
-            _mockEnrollmentRepository = Mocks.RepositoryMocks.GetEnrollmentRepository();
-            _mockCurrentUserService = Mocks.RepositoryMocks.GetCurrentUserService();
+            _mockPayPalService = PayPalServiceMock.GetPayPalService();
+            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
+            _mockEnrollmentRepository = EnrollmentRepositoryMock.GetEnrollmentRepository();
         }
 
         [Fact]

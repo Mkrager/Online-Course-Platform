@@ -3,6 +3,7 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Features.Account.Commands.Registration;
 using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Mocks;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Account.Commands
 {
@@ -13,8 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Account.Commands
 
         public RegistrationCommandHandlerTests()
         {
-            _mockAuthenticationService = Mocks.RepositoryMocks.GetAuthenticationService();
-
+            _mockAuthenticationService = AuthenticationServiceMock.GetAuthenticationService();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

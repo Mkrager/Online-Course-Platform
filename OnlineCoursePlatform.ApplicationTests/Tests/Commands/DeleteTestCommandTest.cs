@@ -15,8 +15,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 
         public DeleteTestCommandTest()
         {
-            _mockTestRepository = RepositoryMocks.GetTestRepository();
-
+            _mockTestRepository = TestRepositoryMock.GetTestRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();

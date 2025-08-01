@@ -12,11 +12,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.Levels.Queries
     public class GetLevelsListQueryHandlerTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<Level>> _mockLLevelRepository;
+        private readonly Mock<IAsyncRepository<Level>> _mockLevelRepository;
 
         public GetLevelsListQueryHandlerTest()
         {
-            _mockLLevelRepository = RepositoryMocks.GetLevelRepository();
+            _mockLevelRepository = LevelRepositoryMock.GetLevelRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -27,7 +27,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Levels.Queries
         [Fact]
         public async Task GetLevelList_ReturnsListOfLevels()
         {
-            var handler = new GetLevelsListQueryHandler(_mapper, _mockLLevelRepository.Object);
+            var handler = new GetLevelsListQueryHandler(_mapper, _mockLevelRepository.Object);
 
             var result = await handler.Handle(new GetLevelsListQuery(), CancellationToken.None);
 

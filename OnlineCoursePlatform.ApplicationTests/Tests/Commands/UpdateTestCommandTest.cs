@@ -16,8 +16,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 
         public UpdateTestCommandTest()
         {
-            _testRepository = RepositoryMocks.GetTestRepository();
-
+            _testRepository = TestRepositoryMock.GetTestRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
