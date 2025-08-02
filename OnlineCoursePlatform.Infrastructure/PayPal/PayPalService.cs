@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
-using OnlineCoursePlatform.Infrastructure.Configuration;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text.Json;

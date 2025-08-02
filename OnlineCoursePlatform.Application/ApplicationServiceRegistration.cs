@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineCoursePlatform.Application.Behaviours;
+using OnlineCoursePlatform.Application.Contracts.Services;
+using OnlineCoursePlatform.Application.Services;
 using System.Reflection;
 
 namespace OnlineCoursePlatform.Application
@@ -13,6 +15,8 @@ namespace OnlineCoursePlatform.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<ICheckoutService, CheckoutService>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));

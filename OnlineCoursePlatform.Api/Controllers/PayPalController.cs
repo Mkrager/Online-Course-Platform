@@ -1,49 +1,21 @@
-﻿using Azure.Core;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
-using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
-using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
-using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
-using OnlineCoursePlatform.Application.Features.Payments.Queries.GetPaymentDetail;
-using OnlineCoursePlatform.Application.Features.PayPal.Commands.CaptureOrder;
-using OnlineCoursePlatform.Application.Features.PayPal.Commands.CreateOrder;
-using OnlineCoursePlatform.Domain.Enums;
+using OnlineCoursePlatform.Application.Contracts.Services;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PayPalController(IMediator mediator, IConfiguration configuration, ICurrentUserService _currentUserService) : Controller
+    public class PayPalController(ICurrentUserService _currentUserService, ICheckoutService checkoutService) : Controller
     {
         [HttpPost("create-order", Name = "CreateOrder")]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
-            var paymentId = await mediator.Send(new CreatePaymentCommand()
-            {
-                CourseId = courseId,
-            });
+            var userId = _currentUserService.UserId;
 
-            var baseUrl = configuration["App:BaseUrl"];
-            var returnUrl = $"{baseUrl}/api/paypal/capture-order?paymentId={paymentId}";
-            var cancelUrl = $"{baseUrl}/api/payment/cancel";
+            var redirectUrl = await checkoutService.CreateOrderAsync(courseId, userId);
 
-            var result = await mediator.Send(new CreateOrderCommand()
-            {
-                CancelUrl = cancelUrl,
-                ReturnUrl = returnUrl,
-                CourseId = courseId,
-                UserId = _currentUserService.UserId
-            });
-
-            await mediator.Send(new UpdatePaymentCommand()
-            {
-                Id = paymentId,
-                PayPalOrderId = result.PayPalOrderId,
-                Status = OrderStatus.Pending
-            });
-
-            return Ok(new { url = result.RedirectUrl });
+            return Ok(new { url = redirectUrl });
         }
 
         [HttpGet("capture-order", Name = "CaptureOrder")]
@@ -52,31 +24,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             [FromQuery] string token, 
             [FromQuery] string payerId)
         {
-            var payment = await mediator.Send(new GetPaymentDetailQuery()
-            {
-                Id = paymentId
-            });
-
-            var result = await mediator.Send(new CaptureOrderCommand()
-            {
-                OrderId = token,
-                PayerId = payerId
-            });
-
-            await mediator.Send(new UpdatePaymentCommand()
-            {
-                Id = paymentId,
-                PayerId = payerId,
-                Status = OrderStatus.Completed,
-                PayPalOrderId = payment.PayPalOrderId
-            });
-
-            await mediator.Send(new CreateEnrollmentCommand()
-            {
-                CourseId = payment.CourseId,
-                StudentId = payment.UserId
-            });
-
+            var result = await checkoutService.CaptureOrderAsync(paymentId, token, payerId);
             return Ok(result);
         }
     }

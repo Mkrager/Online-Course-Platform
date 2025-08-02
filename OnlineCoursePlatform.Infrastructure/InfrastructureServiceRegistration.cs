@@ -11,6 +11,7 @@ namespace OnlineCoursePlatform.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IPayPalService, PayPalService>();
+            services.AddTransient<IBaseUrlProvider, BaseUrlProvider>();
 
             services.AddHttpClient();
             services.AddMemoryCache();

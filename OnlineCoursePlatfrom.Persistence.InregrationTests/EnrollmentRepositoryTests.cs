@@ -48,6 +48,5 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var result = await _repository.IsUserEnrolledInCourseAsync("testUserID", courseId);
             Assert.True(result);
         }
-
     }
 }

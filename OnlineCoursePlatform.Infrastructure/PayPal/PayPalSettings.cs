@@ -1,4 +1,4 @@
-﻿namespace OnlineCoursePlatform.Infrastructure.Configuration
+﻿namespace OnlineCoursePlatform.Infrastructure.PayPal
 {
     public class PayPalSettings
     {
