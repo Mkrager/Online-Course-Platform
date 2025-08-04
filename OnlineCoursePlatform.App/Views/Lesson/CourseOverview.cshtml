@@ -32,19 +32,4 @@ else
 }
 
 
-<script>
-    function deleteLesson(lessonId) {
-        $.ajax({
-            url: '@Url.Action("Delete", "Lesson")/' + lessonId,
-            type: 'DELETE',
-            dataType: 'json',
-            success: function (response) {
-                window.location.href = response.redirectUrl;
-            },
-            error: function (xhr, status, error) {
-                console.error('Error:', error);
-                alert('Error');
-            }
-        });
-    }
-</script>
+<script src="~/js/lesson/deleteLesson.js"></script>
