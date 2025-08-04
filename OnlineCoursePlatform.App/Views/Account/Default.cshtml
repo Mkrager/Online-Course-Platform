@@ -28,7 +28,6 @@
                         <p class="course-description">Category: @course.Category.Name</p>
                         <p class="course-description">Price: @course.Price</p>
 
-
                         <div class="course-actions">
                             <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">View lessons</a>
                         </div>
@@ -39,21 +38,3 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    function deleteCourse(courseId) {
-        $.ajax({
-            url: '@Url.Action("Delete", "Course")/' + courseId,
-            type: 'DELETE',
-            dataType: 'json',
-            success: function (response) {
-                window.location.href = response.redirectUrl;
-            },
-            error: function (xhr, status, error) {
-                console.error('Error:', error);
-                alert('Error');
-            }
-        });
-    }
-</script>

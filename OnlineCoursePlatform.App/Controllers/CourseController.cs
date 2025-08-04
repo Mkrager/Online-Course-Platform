@@ -56,7 +56,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (newCourse.IsSuccess)
             {
-                return RedirectToAction("Overview", "Account");
+                return RedirectToAction("RedirectToAccount", "Account");
             }
 
             TempData["Message"] = HandleErrors.HandleResponse<Guid>(newCourse);
@@ -92,7 +92,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (result.IsSuccess)
             {
-                return Json(new { redirectToUrl = Url.Action("Overview", "Account") });
+                return Json(new { redirectToUrl = Url.Action("RedirectToAccount", "Account") });
             }
 
             TempData["Message"] = HandleErrors.HandleResponse(result);
@@ -112,7 +112,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var result = await _courseDataService.DeleteCourse(id);
 
-            return Json(new { redirectUrl = Url.Action("Overview", "Account") });
+            return Json(new { redirectUrl = Url.Action("RedirectToAccount", "Account") });
         }
     }
 }
