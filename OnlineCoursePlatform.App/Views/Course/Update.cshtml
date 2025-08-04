@@ -13,6 +13,8 @@
 
     <div asp-validation-summary="All" class="error-text"></div>
 
+    <input asp-for="Id" hidden value="@Model.Id" />
+
     <div class="input-group">
         <label asp-for="Title"></label>
         <input asp-for="Title" value="@Model.Title" />
@@ -69,33 +71,4 @@
     <button type="button" class="btn-submit" onclick="updateCourse()">Update Course</button>
 </form>
 
-@section Scripts {
-    <script>
-        function updateCourse() {
-            const form = document.getElementById('updateCourseForm');
-            const formData = new FormData(form);
-
-            $.ajax({
-                url: '@Url.Action("Update", "Course")',
-                type: 'PUT',
-                data: formData,
-                processData: false,
-                contentType: false,
-                        success: function (response) {
-                    if (response.redirectToUrl) {
-                        window.location.href = response.redirectToUrl;
-                    }
-                    else{
-                         for (var key in response.errors) {
-                            var errorMessage = response.errors[key];
-                            $('#' + key).next('.error-text').text(errorMessage);
-                        }
-                    }
-                },
-                error: function (xhr) {
-                    console.log(xhr.responseText);
-                }
-            });
-        }
-    </script>
-}
+<script src="~/js/updateCourse.js"></script>
