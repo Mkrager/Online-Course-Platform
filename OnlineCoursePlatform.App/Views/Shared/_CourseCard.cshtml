@@ -13,42 +13,8 @@
         <span class="level">@Model.Level.Name</span>
         <span class="duration">@Model.Duration</span>
         <span class="date">@DateFormatter.ToShortDate(Model.CreatedDate)</span>
-        <button type="button" class="buy-btn" data-course-id="@Model.Id">Buy</button>
+        <button type="button" class="buy-btn" onclick="createOrder('@Model.Id')">Buy</button>
     </div>
 </div>
 
-<script>
-    document.querySelectorAll('.buy-btn').forEach(button => {
-        button.addEventListener('click', async (e) => {
-            const courseId = button.getAttribute('data-course-id');
-
-            try {
-                const response = await fetch('/PayPal/CreateOrder?courseId=' + courseId, {
-                    method: 'POST'
-                });
-
-                if (response.ok) {
-                    const result = await response.json();
-
-                    if (result.isSuccess) {
-                        console.log('Opening PayPal window...');
-                        window.open(
-                            result.data,
-                            '_blank',
-                            'width=1000,height=800,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes'
-                        );
-                    } else {
-                        alert('Error: ' + result.errorText);
-                    }
-                } else {
-                    alert('HTTP Error: ' + response.status);
-                }
-
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error occured');
-            }
-        });
-    });
-</script>
-
+<script src="~/js/paypal/createOrder.js"></script>
