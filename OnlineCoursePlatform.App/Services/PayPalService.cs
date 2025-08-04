@@ -1,9 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Services;
-using OnlineCoursePlatform.App.ViewModels.Course;
-using System.Net.Http;
+using OnlineCoursePlatform.App.ViewModels.PayPal;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
@@ -27,8 +24,7 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/paypal/create-order/{courseId}");
-
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/paypal/create-order?courseId={courseId}");
                 string accessToken = _authenticationService.GetAccessToken();
 
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
@@ -40,9 +36,9 @@ namespace OnlineCoursePlatform.App.Services
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
 
-                    var url = JsonSerializer.Deserialize<string>(responseContent);
+                    var result = JsonSerializer.Deserialize<CreateOrderResponse>(responseContent, _jsonOptions);
 
-                    return new ApiResponse<string>(System.Net.HttpStatusCode.OK, url);
+                    return new ApiResponse<string>(System.Net.HttpStatusCode.OK, result.Url);
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
