@@ -1,4 +1,4 @@
-﻿let questionCount = 0;
+﻿let questionCount = document.querySelectorAll('.question').length;
 function addQuestion() {
     const index = questionCount++;
     const questionBlock = document.createElement('div');
