@@ -15,7 +15,6 @@
     <input type="hidden" asp-for="Id" value="@Model.Id" />
     <input type="hidden" asp-for="CourseId" value="@Model.CourseId" />
 
-
     <div class="input-group">
         <label asp-for="Title"></label>
         <input asp-for="Title" value="@Model.Title" />
@@ -37,33 +36,4 @@
     <button type="button" class="btn-submit" onclick="updateLesson()">Update Course</button>
 </form>
 
-@section Scripts {
-    <script>
-        function updateLesson() {
-            const form = document.getElementById('updateLessonForm');
-            const formData = new FormData(form);
-
-            $.ajax({
-                url: '@Url.Action("Update", "Lesson")',
-                type: 'PUT',
-                data: formData,
-                processData: false,
-                contentType: false,
-                        success: function (response) {
-                    if (response.redirectToUrl) {
-                        window.location.href = response.redirectToUrl;
-                    }
-                    else{
-                         for (var key in response.errors) {
-                            var errorMessage = response.errors[key];
-                            $('#' + key).next('.error-text').text(errorMessage);
-                        }
-                    }
-                },
-                error: function (xhr) {
-                    console.log(xhr.responseText);
-                }
-            });
-        }
-    </script>
-}
+<script src="~/js/lesson/updateLesson.js"></script>
