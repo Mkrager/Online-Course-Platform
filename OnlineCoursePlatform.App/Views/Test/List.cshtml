@@ -31,20 +31,4 @@ else
     </div>
 }
 
-
-<script>
-    function deleteTest(testId) {
-        $.ajax({
-            url: '@Url.Action("Delete", "Test")/' + testId,
-            type: 'DELETE',
-            dataType: 'json',
-            success: function (response) {
-                window.location.href = response.redirectUrl;
-            },
-            error: function (xhr, status, error) {
-                console.error('Error:', error);
-                alert('Error');
-            }
-        });
-    }
-</script>
+<script src="~/js/test/deleteTest.js"></script>
