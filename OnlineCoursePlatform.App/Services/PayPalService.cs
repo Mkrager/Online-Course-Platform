@@ -51,11 +51,11 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public async Task<ApiResponse<bool>> CaptureOrderAsync(string orderId)
+        public async Task<ApiResponse<bool>> CaptureOrderAsync(Guid paymentId, string token, string payerId)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/paypal/capture-order/{orderId}");
+                var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/paypal/capture-order?paymentId={paymentId}&token={token}&payerId={payerId}");
 
                 var response = await _httpClient.SendAsync(request);
 

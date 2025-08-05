@@ -2,7 +2,6 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
 using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;

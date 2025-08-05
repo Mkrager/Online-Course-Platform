@@ -17,5 +17,25 @@ namespace OnlineCoursePlatform.App.Controllers
             var url = await _payPalService.CreateOrderAsync(courseId);
             return Ok(url);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> CaptureOrder(
+            [FromQuery] Guid paymentId,
+            [FromQuery] string token,
+            [FromQuery] string payerId)
+        {
+            var result = await _payPalService.CaptureOrderAsync(paymentId, token, payerId);
+            
+            if(result.IsSuccess)
+                return RedirectToAction("PaymentSuccess", "PayPal");
+
+            return View(result.ErrorText);
+        }
+
+        [HttpGet]
+        public IActionResult PaymentSuccess()
+        {
+            return View();
+        }
     }
 }
