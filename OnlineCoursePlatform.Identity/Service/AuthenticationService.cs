@@ -67,7 +67,7 @@ namespace OnlineCoursePlatform.Identity.Service
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 UserName = request.UserName,
-                EmailConfirmed = true
+                EmailConfirmed = true,
             };
 
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);

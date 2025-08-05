@@ -8,11 +8,34 @@ namespace OnlineCoursePlatform.Identity.Service
     public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-
-        public UserService(UserManager<ApplicationUser> userManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
+
+        public async Task AssignRoleAsync(string userId, string roleName)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new ArgumentNullException(nameof(user), "User not found.");
+
+            if (!await _roleManager.RoleExistsAsync(roleName))
+                throw new Exception($"Role '{roleName}' doesn't exist.");
+
+            var alreadyInRole = await _userManager.IsInRoleAsync(user, roleName);
+            if (alreadyInRole)
+                throw new Exception($"User is already in role '{roleName}'.");
+
+            var result = await _userManager.AddToRoleAsync(user, roleName);
+            if (!result.Succeeded)
+            {
+                var errors = string.Join("; ", result.Errors.Select(e => e.Description));
+                throw new Exception($"Failed to add role: {errors}");
+            }
+        }
+
         public async Task<UserDetailsResponse> GetUserDetails(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
