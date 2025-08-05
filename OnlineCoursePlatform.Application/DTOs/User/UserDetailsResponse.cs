@@ -1,4 +1,4 @@
-﻿using OnlineCoursePlatform.Application.Features.User.Queries;
+﻿using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
 
 namespace OnlineCoursePlatform.Application.DTOs.User
 {

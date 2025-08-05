@@ -4,7 +4,7 @@ namespace OnlineCoursePlatform.Application.Contracts.Identity
 {
     public interface IUserService
     {
-        Task<UserDetailsResponse> GetUserDetails(string userId);
+        Task<UserDetailsResponse> GetUserDetailsAsync(string userId);
         Task AssignRoleAsync(string userId, string roleName);
     }
 }

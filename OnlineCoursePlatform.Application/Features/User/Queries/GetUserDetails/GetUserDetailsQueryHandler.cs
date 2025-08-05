@@ -4,7 +4,7 @@ using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.DTOs.User;
 
-namespace OnlineCoursePlatform.Application.Features.User.Queries
+namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
 {
     public class GetUserDetailsQueryHandler : IRequestHandler<GetUserDetailsQuery, UserDetailsResponse>
     {
@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.Features.User.Queries
         }
         public async Task<UserDetailsResponse> Handle(GetUserDetailsQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userService.GetUserDetails(request.Id);
+            var user = await _userService.GetUserDetailsAsync(request.Id);
 
             var courses = await _courseRepository.GetCoursesByUserId(request.Id);
 

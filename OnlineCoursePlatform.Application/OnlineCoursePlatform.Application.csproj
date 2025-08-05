@@ -26,7 +26,6 @@
 	  <Folder Include="Features\PayPal\Queries\" />
 	  <Folder Include="Features\Questions\Commands\" />
 	  <Folder Include="Features\TestAttemps\Queries\" />
-	  <Folder Include="Features\User\Commands\" />
 	</ItemGroup>
 
 </Project>

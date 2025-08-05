@@ -15,12 +15,13 @@ namespace OnlineCoursePlatform.Identity.Service
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
-
-        public AuthenticationService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings)
+        private readonly IUserService _userService;
+        public AuthenticationService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, IUserService userService)
         {
             _jwtSettings = jwtSettings.Value;
             _userManager = userManager;
             _signInManager = signInManager;
+            _userService = userService;
         }
 
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
@@ -78,6 +79,7 @@ namespace OnlineCoursePlatform.Identity.Service
 
                 if (result.Succeeded)
                 {
+                    await _userService.AssignRoleAsync(user.Id, "Default");
                     return user.Id;
                 }
                 else

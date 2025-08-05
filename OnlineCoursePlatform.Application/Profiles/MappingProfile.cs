@@ -29,7 +29,7 @@ using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsList;
-using OnlineCoursePlatform.Application.Features.User.Queries;
+using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Profiles

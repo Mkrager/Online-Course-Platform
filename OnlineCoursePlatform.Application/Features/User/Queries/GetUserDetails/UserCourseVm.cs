@@ -1,4 +1,4 @@
-﻿namespace OnlineCoursePlatform.Application.Features.User.Queries
+﻿namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
 {
     public class UserCourseVm
     {

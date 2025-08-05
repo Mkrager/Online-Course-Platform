@@ -36,7 +36,7 @@ namespace OnlineCoursePlatform.Identity.Service
             }
         }
 
-        public async Task<UserDetailsResponse> GetUserDetails(string userId)
+        public async Task<UserDetailsResponse> GetUserDetailsAsync(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
 

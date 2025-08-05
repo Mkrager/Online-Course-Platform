@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OnlineCoursePlatform.Application.DTOs.User;
 
-namespace OnlineCoursePlatform.Application.Features.User.Queries
+namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
 {
     public class GetUserDetailsQuery : IRequest<UserDetailsResponse>
     {
