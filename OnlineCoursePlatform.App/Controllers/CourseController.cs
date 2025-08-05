@@ -19,13 +19,13 @@ namespace OnlineCoursePlatform.App.Controllers
             _levelDataService = levelDataService;
         }
 
-        public async Task<SelectList> Categories()
+        private async Task<SelectList> Categories()
         {
             var categories = await _categoryDataService.GetAllCategories();
             var categoryList = new SelectList(categories, "Id", "Name");
             return categoryList;
         }
-        public async Task<SelectList> Levels()
+        private async Task<SelectList> Levels()
         {
             var levels = await _levelDataService.GetAllLevels();
             var levelList = new SelectList(levels, "Id", "Name");
@@ -56,7 +56,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (newCourse.IsSuccess)
             {
-                return RedirectToAction("RedirectToAccount", "Account");
+                return RedirectToAction("Profile", "Account");
             }
 
             TempData["Message"] = HandleErrors.HandleResponse<Guid>(newCourse);
@@ -92,7 +92,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (result.IsSuccess)
             {
-                return Json(new { redirectToUrl = Url.Action("RedirectToAccount", "Account") });
+                return Json(new { redirectToUrl = Url.Action("Profile", "Account") });
             }
 
             TempData["Message"] = HandleErrors.HandleResponse(result);
@@ -112,7 +112,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var result = await _courseDataService.DeleteCourse(id);
 
-            return Json(new { redirectUrl = Url.Action("RedirectToAccount", "Account") });
+            return Json(new { redirectUrl = Url.Action("Profile", "Account") });
         }
     }
 }

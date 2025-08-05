@@ -34,7 +34,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> EndTest([FromBody] EndTestAttemptViewModel model)
         {
             var result = await _testAttemptDataService.EndTestAttempt(model);
-            var redirectUrl = Url.Action("RedirectToAccount", "Account");
+            var redirectUrl = Url.Action("Profile", "Account");
 
             return Ok(new { redirectUrl });
         }

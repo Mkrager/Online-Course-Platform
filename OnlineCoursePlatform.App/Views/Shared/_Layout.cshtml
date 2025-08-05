@@ -20,7 +20,7 @@
             <a href="#">About</a>
             @if (User.Identity != null && User.Identity.IsAuthenticated)
             {
-                <a asp-controller="account" asp-action="redirectToAccount">Account</a>
+                <a asp-controller="account" asp-action="profile">Account</a>
             }
             else
             {
