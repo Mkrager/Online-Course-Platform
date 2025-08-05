@@ -10,7 +10,7 @@ namespace OnlineCoursePlatform.Application.Features.User.Commands.AssignRole
                 .NotEmpty().WithMessage("UserId must not be empty");
 
             RuleFor(r => r.RoleName)
-                .NotEmpty().WithMessage("UserId must not be empty");
+                .NotEmpty().WithMessage("RoleName must not be empty");
         }
     }
 }
