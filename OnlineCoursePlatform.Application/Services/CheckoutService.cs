@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
 using OnlineCoursePlatform.Application.Contracts.Services;
+using OnlineCoursePlatform.Application.DTOs.PayPal;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
@@ -48,23 +49,23 @@ namespace OnlineCoursePlatform.Application.Services
 
             return result.RedirectUrl;
         }
-        public async Task<bool> CaptureOrderAsync(Guid paymentId, string token, string payerId)
+        public async Task<bool> CaptureOrderAsync(CaptureOrderRequest captureOrderRequest)
         {
             var payment = await _mediator.Send(new GetPaymentDetailQuery()
             {
-                Id = paymentId
+                Id = captureOrderRequest.PaymentId
             });
 
             var result = await _mediator.Send(new CaptureOrderCommand()
             {
-                OrderId = token,
-                PayerId = payerId
+                OrderId = captureOrderRequest.Token,
+                PayerId = captureOrderRequest.PayerId
             });
 
             await _mediator.Send(new UpdatePaymentCommand()
             {
-                Id = paymentId,
-                PayerId = payerId,
+                Id = captureOrderRequest.PaymentId,
+                PayerId = captureOrderRequest.PayerId,
                 Status = OrderStatus.Completed,
                 PayPalOrderId = payment.PayPalOrderId
             });

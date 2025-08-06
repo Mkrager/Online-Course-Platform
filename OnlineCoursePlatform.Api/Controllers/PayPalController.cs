@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Services;
+using OnlineCoursePlatform.Application.DTOs.PayPal;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
+using OnlineCoursePlatform.Application.Features.PayPal.Commands.CaptureOrder;
 using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -25,12 +27,9 @@ namespace OnlineCoursePlatform.Api.Controllers
         }
 
         [HttpPost("capture-order", Name = "CaptureOrder")]
-        public async Task<IActionResult> CaptureOrder(
-            [FromQuery] Guid paymentId, 
-            [FromQuery] string token, 
-            [FromQuery] string payerId)
+        public async Task<IActionResult> CaptureOrder(CaptureOrderRequest captureOrderRequest)
         {
-            var result = await checkoutService.CaptureOrderAsync(paymentId, token, payerId);
+            var result = await checkoutService.CaptureOrderAsync(captureOrderRequest);
             return Ok(result);
         }
 

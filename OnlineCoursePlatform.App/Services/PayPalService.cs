@@ -52,11 +52,14 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public async Task<ApiResponse<bool>> CaptureOrderAsync(Guid paymentId, string token, string payerId)
+        public async Task<ApiResponse<bool>> CaptureOrderAsync(CaptureOrderRequest captureOrderRequest)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/paypal/capture-order?paymentId={paymentId}&token={token}&payerId={payerId}");
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/paypal/capture-order")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(captureOrderRequest), Encoding.UTF8, "application/json")
+                };
 
                 var response = await _httpClient.SendAsync(request);
 
@@ -85,8 +88,7 @@ namespace OnlineCoursePlatform.App.Services
                 var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/paypal/cancel")
                 {
                     Content = new StringContent(JsonSerializer.Serialize(cancelOrderViewModel), Encoding.UTF8, "application/json")
-                }
-                ;
+                };
 
                 var response = await _httpClient.SendAsync(request);
 

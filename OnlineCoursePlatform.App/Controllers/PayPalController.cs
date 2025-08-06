@@ -25,7 +25,12 @@ namespace OnlineCoursePlatform.App.Controllers
             [FromQuery] string token,
             [FromQuery] string payerId)
         {
-            var result = await _payPalService.CaptureOrderAsync(paymentId, token, payerId);
+            var result = await _payPalService.CaptureOrderAsync(new CaptureOrderRequest()
+            {
+                PayerId = payerId,
+                PaymentId = paymentId,
+                Token = token
+            });
             
             if(result.IsSuccess)
                 return RedirectToAction("PaymentSuccess", "PayPal");
