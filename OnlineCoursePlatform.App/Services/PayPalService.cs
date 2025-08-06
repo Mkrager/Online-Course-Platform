@@ -55,7 +55,7 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/paypal/capture-order?paymentId={paymentId}&token={token}&payerId={payerId}");
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/paypal/capture-order?paymentId={paymentId}&token={token}&payerId={payerId}");
 
                 var response = await _httpClient.SendAsync(request);
 
@@ -74,6 +74,30 @@ namespace OnlineCoursePlatform.App.Services
             catch (Exception ex)
             {
                 return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, ex.Message);
+            }
+        }
+
+        public async Task<ApiResponse> CancelOrderAsync(Guid paymentId)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/paypal/cancel?paymentId={paymentId}");
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    return new ApiResponse(System.Net.HttpStatusCode.OK);
+                }
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
         }
     }

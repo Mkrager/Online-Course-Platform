@@ -6,6 +6,5 @@
         Pending,
         Completed,
         Canceled,
-        Failed
     }
 }

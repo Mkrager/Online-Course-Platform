@@ -37,5 +37,21 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Cancel([FromQuery] Guid paymentId)
+        {
+            var result = await _payPalService.CancelOrderAsync(paymentId);
+            if (result.IsSuccess)
+                return RedirectToAction("CancelPayment", "PayPal");
+
+            return View(result.ErrorText);
+        }
+
+        [HttpGet]
+        public IActionResult CancelPayment()
+        {
+            return View();
+        }
     }
 }

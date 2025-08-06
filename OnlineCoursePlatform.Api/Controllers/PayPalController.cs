@@ -1,24 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Services;
+using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PayPalController(ICurrentUserService _currentUserService, ICheckoutService checkoutService) : Controller
+    public class PayPalController(
+        ICurrentUserService currentUserService, 
+        ICheckoutService checkoutService,
+        IMediator mediator) : Controller
     {
         [HttpPost("create-order", Name = "CreateOrder")]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
-            var userId = _currentUserService.UserId;
+            var userId = currentUserService.UserId;
 
             var redirectUrl = await checkoutService.CreateOrderAsync(courseId, userId);
 
             return Ok(new { url = redirectUrl });
         }
 
-        [HttpGet("capture-order", Name = "CaptureOrder")]
+        [HttpPost("capture-order", Name = "CaptureOrder")]
         public async Task<IActionResult> CaptureOrder(
             [FromQuery] Guid paymentId, 
             [FromQuery] string token, 
@@ -26,6 +31,18 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var result = await checkoutService.CaptureOrderAsync(paymentId, token, payerId);
             return Ok(result);
+        }
+
+        [HttpPatch("cancel", Name = "CancelOrder")]
+        public async Task<IActionResult> Cancel([FromQuery] Guid paymentId)
+        {
+            var result = await mediator.Send(new UpdatePaymentCommand()
+            {
+                Id = paymentId,
+                Status = Domain.Enums.OrderStatus.Canceled
+            });
+
+            return NoContent();
         }
     }
 }

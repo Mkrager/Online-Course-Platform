@@ -6,5 +6,6 @@ namespace OnlineCoursePlatform.App.Contracts
     {
         Task<ApiResponse<string>> CreateOrderAsync(Guid courseId);
         Task<ApiResponse<bool>> CaptureOrderAsync(Guid paymentId, string token, string payerId);
+        Task<ApiResponse> CancelOrderAsync(Guid paymentId);
     }
 }

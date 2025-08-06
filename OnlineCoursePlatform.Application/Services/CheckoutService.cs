@@ -28,8 +28,8 @@ namespace OnlineCoursePlatform.Application.Services
             });
 
             var baseUrl = _baseUrlProvider.BaseUrl;
-            var returnUrl = $"{baseUrl}/paypal/CaptureOrder?paymentId={paymentId}";
-            var cancelUrl = $"{baseUrl}/payment/cancel";
+            var returnUrl = $"{baseUrl}/paypal/captureOrder?paymentId={paymentId}";
+            var cancelUrl = $"{baseUrl}/paypal/cancel?paymentId={paymentId}";
 
             var result = await _mediator.Send(new CreateOrderCommand()
             {
