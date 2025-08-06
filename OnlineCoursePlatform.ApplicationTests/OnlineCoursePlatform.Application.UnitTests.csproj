@@ -31,7 +31,6 @@
 	  <Folder Include="Levels\Commands\" />
 	  <Folder Include="PayPal\Queries\" />
 	  <Folder Include="TestAttemps\Queries\" />
-	  <Folder Include="User\Commands\" />
 	</ItemGroup>
 
 </Project>

@@ -17,6 +17,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     Email = "test@gmai.com"
                 });
 
+            mockService.Setup(service => service.AssignRoleAsync(It.IsAny<string>(), It.IsAny<string>()));
+
             return mockService;
         }
     }
