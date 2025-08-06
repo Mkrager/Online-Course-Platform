@@ -1,6 +1,7 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.PayPal;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
@@ -77,11 +78,15 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public async Task<ApiResponse> CancelOrderAsync(Guid paymentId)
+        public async Task<ApiResponse> CancelOrderAsync(CancelOrderViewModel cancelOrderViewModel)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/paypal/cancel?paymentId={paymentId}");
+                var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/paypal/cancel")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(cancelOrderViewModel), Encoding.UTF8, "application/json")
+                }
+                ;
 
                 var response = await _httpClient.SendAsync(request);
 

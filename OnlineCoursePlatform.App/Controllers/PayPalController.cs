@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.ViewModels.PayPal;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -29,7 +30,7 @@ namespace OnlineCoursePlatform.App.Controllers
             if(result.IsSuccess)
                 return RedirectToAction("PaymentSuccess", "PayPal");
 
-            return View(result.ErrorText);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -41,11 +42,15 @@ namespace OnlineCoursePlatform.App.Controllers
         [HttpGet]
         public async Task<IActionResult> Cancel([FromQuery] Guid paymentId)
         {
-            var result = await _payPalService.CancelOrderAsync(paymentId);
+            var result = await _payPalService.CancelOrderAsync(new CancelOrderViewModel
+            {
+                Id = paymentId
+            });
+
             if (result.IsSuccess)
                 return RedirectToAction("CancelPayment", "PayPal");
 
-            return View(result.ErrorText);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

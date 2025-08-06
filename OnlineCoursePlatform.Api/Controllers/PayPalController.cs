@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Services;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
+using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -34,13 +35,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         }
 
         [HttpPatch("cancel", Name = "CancelOrder")]
-        public async Task<IActionResult> Cancel([FromQuery] Guid paymentId)
+        public async Task<IActionResult> Cancel(UpdatePaymentCommand updatePaymentCommand)
         {
-            var result = await mediator.Send(new UpdatePaymentCommand()
-            {
-                Id = paymentId,
-                Status = Domain.Enums.OrderStatus.Canceled
-            });
+            updatePaymentCommand.Status = OrderStatus.Canceled;
+
+            var result = await mediator.Send(updatePaymentCommand);
 
             return NoContent();
         }
