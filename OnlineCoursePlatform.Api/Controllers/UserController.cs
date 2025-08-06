@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getUserDetailQuery));
         }
 
-        [HttpPost("assign-role", Name = "AssignRole")]
+        [HttpPut("assign-role", Name = "AssignRole")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
