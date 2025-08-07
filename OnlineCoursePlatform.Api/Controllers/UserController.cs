@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByUser;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
 using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole;
 using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
 
@@ -33,6 +33,8 @@ namespace OnlineCoursePlatform.Api.Controllers
         public async Task<ActionResult<UserDetailsVm>> GetDefaultUserDetails()
         {
             var getUserDetailQuery = new GetUserDetailsQuery() { Id = currentUserService.UserId };
+
+
             return Ok(await mediator.Send(getUserDetailQuery));
         }
 

@@ -3,7 +3,7 @@ using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 
-namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByUser
+namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher
 {
     public class GetCoursesByTeacherQueryHandler : IRequestHandler<GetCoursesByTeacherQuery, List<CourseListVm>>
     {

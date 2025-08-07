@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.User;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -17,8 +18,23 @@ namespace OnlineCoursePlatform.App.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            var user = await _userDataService.GetUserDetails();
-            return View(user);
+            var roles = User.Claims
+                            .Where(c => c.Type == ClaimTypes.Role)
+                            .Select(c => c.Value)
+                            .ToList();
+
+            object viewModel;
+
+            if (roles.Contains("Teacher"))
+            {
+                viewModel = await _userDataService.GetTeacherDetailsAsync();
+            }
+            else
+            {
+                viewModel = await _userDataService.GetBasicUser();
+            }
+
+            return View("Profile", viewModel);
         }
     }
 }

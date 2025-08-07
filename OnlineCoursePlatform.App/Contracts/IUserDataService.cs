@@ -4,6 +4,7 @@ namespace OnlineCoursePlatform.App.Contracts
 {
     public interface IUserDataService
     {
-        Task<UserDetailsResponse> GetUserDetails();
+        Task<UserDetailsResponse> GetTeacherDetailsAsync();
+        Task<UserDetailsResponse> GetDefaultUserDetailsAsync();
     }
 }

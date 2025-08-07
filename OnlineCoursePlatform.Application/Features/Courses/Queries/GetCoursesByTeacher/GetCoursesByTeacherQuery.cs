@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 
-namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByUser
+namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher
 {
     public class GetCoursesByTeacherQuery : IRequest<List<CourseListVm>>
     {

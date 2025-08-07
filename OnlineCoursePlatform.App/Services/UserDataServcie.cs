@@ -21,9 +21,9 @@ namespace OnlineCoursePlatform.App.Services
             _authenticationService = authenticationService;
         }
 
-        public async Task<UserDetailsResponse> GetUserDetails()
+        public async Task<UserDetailsResponse> GetDefaultUserDetailsAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/User/");
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/user/default");
 
             var accessToken = _authenticationService.GetAccessToken();
 
