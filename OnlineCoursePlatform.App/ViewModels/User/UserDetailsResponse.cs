@@ -9,6 +9,5 @@ namespace OnlineCoursePlatform.App.ViewModels.User
 
         public List<string> Roles { get; set; } = default!;
         public List<CourseListViewModel> Courses { get; set; } = default!;
-
     }
 }
