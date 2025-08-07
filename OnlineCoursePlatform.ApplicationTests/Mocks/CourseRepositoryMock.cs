@@ -15,8 +15,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"), 
                     Title = "test", 
                     Description = "test", 
-                    Price = 100, ThumbnailUrl = 
-                    "test", 
+                    Price = 100, 
+                    ThumbnailUrl = "test", 
                     CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a262-2f2b197b4c6a") 
                 },
                 new Course 
@@ -26,6 +26,25 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     Description = "test2", 
                     Price = 200,
                     ThumbnailUrl = "test2" 
+                },
+                new Course
+                {
+                    Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b21e8"),
+                    Title = "test3",
+                    Description = "test4",
+                    Price = 100, 
+                    ThumbnailUrl = "test",
+                    CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a261-2f2b197b4c6a"),
+                    CreatedBy = "id"
+                },
+                new Course
+                {
+                    Id = Guid.Parse("b8c3f27a-7b28-5ae6-94c2-91fdc33b77e2"),
+                    Title = "test2",
+                    Description = "test5",
+                    Price = 200,
+                    ThumbnailUrl = "test2",
+                    CreatedBy = "id"
                 }
             };
 
@@ -66,6 +85,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             mockRepository.Setup(r => r.GetCoursesByCategoryId(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid categoryId) => courses.Where(x => x.CategoryId == categoryId).ToList());
+
+            mockRepository.Setup(r => r.GetCoursesByUserId(It.IsAny<string>()))
+                .ReturnsAsync((string userId) => courses.Where(x => x.CreatedBy == userId).ToList());
+
 
             return mockRepository;
         }
