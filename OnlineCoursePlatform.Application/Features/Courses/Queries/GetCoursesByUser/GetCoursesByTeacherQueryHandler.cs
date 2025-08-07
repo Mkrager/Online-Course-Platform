@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByUser
 {
-    public class GetCoursesByTeacherQueryHandler : IRequestHandler<GetCoursesByTeacherQuery, List<CourseByTeacherVm>>
+    public class GetCoursesByTeacherQueryHandler : IRequestHandler<GetCoursesByTeacherQuery, List<CourseListVm>>
     {
         private readonly IMapper _mapper;
         private readonly ICourseRepository _courseRepository;
@@ -14,11 +15,11 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesBy
             _courseRepository = courseRepository;
             _mapper = mapper;
         }
-        public async Task<List<CourseByTeacherVm>> Handle(GetCoursesByTeacherQuery request, CancellationToken cancellationToken)
+        public async Task<List<CourseListVm>> Handle(GetCoursesByTeacherQuery request, CancellationToken cancellationToken)
         {
             var courses = await _courseRepository.GetCoursesByUserId(request.UserId);
 
-            return _mapper.Map<List<CourseByTeacherVm>>(courses);
+            return _mapper.Map<List<CourseListVm>>(courses);
         }
     }
 }

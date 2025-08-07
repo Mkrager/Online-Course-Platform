@@ -1,4 +1,5 @@
-﻿using OnlineCoursePlatform.Domain.Entities;
+﻿using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
 {
@@ -7,7 +8,7 @@ namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
 
-        public Course Courses { get; set; } = default!;
+        public List<CourseListVm> Courses { get; set; } = default!;
         public List<string> Roles { get; set; } = default!;
     }
 }
