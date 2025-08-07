@@ -1,8 +1,6 @@
-﻿using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
-
-namespace OnlineCoursePlatform.Application.DTOs.User
+﻿namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
 {
-    public class UserDetailsResponse
+    public class UserDetailsVm
     {
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;

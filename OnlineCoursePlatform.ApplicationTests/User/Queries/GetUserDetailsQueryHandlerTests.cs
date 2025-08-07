@@ -11,12 +11,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.User.Queries
     public class GetUserDetailsQueryHandlerTests
     {
         private readonly Mock<IUserService> _mockUserService;
-        private readonly Mock<ICourseRepository> _mockCourseRepository;
         private readonly IMapper _mapper;
         public GetUserDetailsQueryHandlerTests()
         {
             _mockUserService = UserServiceMock.GetUserService();
-            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -27,7 +25,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.User.Queries
         [Fact]
         public async Task GetUserDetails_ReturnsUserDetailsResponse()
         {
-            var handler = new GetUserDetailsQueryHandler(_mockCourseRepository.Object, _mockUserService.Object, _mapper);
+            System.Diagnostics.Debugger.Launch();
+            var handler = new GetUserDetailsQueryHandler(_mockUserService.Object, _mapper);
 
             var result = await handler.Handle(new GetUserDetailsQuery() { Id = "id" }, CancellationToken.None);
 

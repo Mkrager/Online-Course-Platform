@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using OnlineCoursePlatform.Application.DTOs.Authentication;
+using OnlineCoursePlatform.Application.DTOs.User;
 using OnlineCoursePlatform.Application.Features.Account.Commands.Registration;
 using OnlineCoursePlatform.Application.Features.Account.Queries.Authentication;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
@@ -42,7 +43,6 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Course, CourseDetailVm>().ReverseMap();
             CreateMap<Course, CategoryCourseDto>().ReverseMap();
             CreateMap<Course, CoursesByCategoryVm>().ReverseMap();
-            CreateMap<Course, UserCourseVm>().ReverseMap();
 
             CreateMap<Course, CreateCourseCommand>().ReverseMap();
             CreateMap<Course, UpdateCourseCommand>().ReverseMap()
@@ -53,7 +53,6 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CourseByCategoryDto>().ReverseMap();
             CreateMap<Category, CategoryCourseListVm>().ReverseMap();
-            CreateMap<Category, UserCategoryDto>().ReverseMap();
 
             CreateMap<Category, CreateCategoryCommand>().ReverseMap();
             CreateMap<Category, DeleteCategoryCommand>();
@@ -75,7 +74,6 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Level, LevelListVm>().ReverseMap();
             CreateMap<Level, LevelDto>().ReverseMap();
             CreateMap<Level, CourseByCategoryLevelDto>().ReverseMap();
-            CreateMap<Level, UserLevelDto>().ReverseMap();
 
             CreateMap<Lesson, CourseLessonListVm>().ReverseMap();
             CreateMap<Lesson, LessonDetailVm>().ReverseMap();
@@ -102,6 +100,8 @@ namespace OnlineCoursePlatform.Application.Profiles
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
 
             CreateMap<Payment, PaymentDetailVm>().ReverseMap();
+
+            CreateMap<UserDetailsResponse, UserDetailsVm>().ReverseMap();
         }
     }
 }
