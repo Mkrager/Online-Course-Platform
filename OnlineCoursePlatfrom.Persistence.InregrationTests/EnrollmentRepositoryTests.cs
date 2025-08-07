@@ -35,9 +35,9 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var enrollmentId = Guid.NewGuid();
             var courseId = Guid.Parse("d9659c7e-c8ea-418f-a8c6-b51c1ad4ca80");
 
-            var enrollment1 = new Enrollment 
-            { 
-                Id = enrollmentId, 
+            var enrollment1 = new Enrollment
+            {
+                Id = enrollmentId,
                 StudentId = "testUserID",
                 CourseId = courseId,
             };
@@ -48,5 +48,36 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var result = await _repository.IsUserEnrolledInCourseAsync("testUserID", courseId);
             Assert.True(result);
         }
+
+        [Fact]
+        public async Task GetEnrollmentWithCoursesByStudentId_ShouldReturnListOfEnrollment()
+        {
+            var courseId = Guid.NewGuid();
+
+            var course = new Course 
+            { 
+                Id = courseId 
+            };
+
+            _dbContext.Courses.Add(course);
+            await _dbContext.SaveChangesAsync();
+
+            var enrollment = new Enrollment
+            {
+                Id = Guid.NewGuid(),
+                StudentId = "123",
+                CourseId = courseId
+            };
+
+            _dbContext.Enrollments.Add(enrollment);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.GetStudentEnrollmentsWithCoursesAsync("123");
+
+            Assert.NotNull(result);
+            Assert.NotNull(result[0].Course);
+            Assert.Equal(1, result.Count);
+        }
+
     }
 }

@@ -10,6 +10,14 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
+        public async Task<List<Enrollment>> GetStudentEnrollmentsWithCoursesAsync(string studentId)
+        {
+            return await _dbContext.Enrollments
+                .Include(x => x.Course)
+                .Where(s => s.StudentId == studentId)
+                .ToListAsync();
+        }
+
         public async Task<bool> IsUserEnrolledInCourseAsync(string userId, Guid courseId)
         {
             var matches = await _dbContext.Enrollments.AnyAsync(x => x.StudentId == userId && x.CourseId == courseId);
