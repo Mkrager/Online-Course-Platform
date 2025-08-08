@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
+using OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrollmentsByStudent;
 using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole;
 using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
 
@@ -16,7 +17,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserDetailsVm>> GetTeacherDetails()
         {
-            var userId = currentUserService.UserId; 
+            var userId = currentUserService.UserId;
 
             var getUserDetailQuery = new GetUserDetailsQuery() { Id = userId };
 
@@ -32,10 +33,15 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserDetailsVm>> GetDefaultUserDetails()
         {
+            var userId = currentUserService.UserId;
+
             var getUserDetailQuery = new GetUserDetailsQuery() { Id = currentUserService.UserId };
 
+            var result = await mediator.Send(getUserDetailQuery);
 
-            return Ok(await mediator.Send(getUserDetailQuery));
+            result.Enrollments = await mediator.Send(new GetEnrollmentsByStudentQuery() { UserId = userId });
+
+            return Ok(result);
         }
 
         [HttpPut("assign-role", Name = "AssignRole")]
