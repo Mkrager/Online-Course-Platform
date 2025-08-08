@@ -53,7 +53,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCourseLessons(courseId);
+            var result = await _repository.GetLessonsByCourseIdAsync(courseId);
 
             Assert.NotNull(result);
 

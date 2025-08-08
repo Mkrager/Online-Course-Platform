@@ -17,7 +17,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsLi
 
         public async Task<List<LessonTestListVm>> Handle(GetLessonTestsQuery request, CancellationToken cancellationToken)
         {
-            var allLessonTests = await _testRepository.GetTestsByLessonId(request.LessonId);
+            var allLessonTests = await _testRepository.GetTestsByLessonIdAsync(request.LessonId);
 
             return _mapper.Map<List<LessonTestListVm>>(allLessonTests);
         }

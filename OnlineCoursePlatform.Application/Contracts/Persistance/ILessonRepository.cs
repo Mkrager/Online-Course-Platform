@@ -4,6 +4,6 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
     public interface ILessonRepository : IAsyncRepository<Lesson>
     {
-        Task<List<Lesson>> GetCourseLessons(Guid courseId);
+        Task<List<Lesson>> GetLessonsByCourseIdAsync(Guid courseId);
     }
 }

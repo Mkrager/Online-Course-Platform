@@ -17,7 +17,7 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesBy
 
         public async Task<List<CoursesByCategoryVm>> Handle(GetCoursesByCategoryQuery request, CancellationToken cancellationToken)
         {
-            var allCourses = await _courseRepository.GetCoursesByCategoryId(request.CategoryId);
+            var allCourses = await _courseRepository.GetCoursesByCategoryIdAsync(request.CategoryId);
 
             return _mapper.Map<List<CoursesByCategoryVm>>(allCourses);
         }

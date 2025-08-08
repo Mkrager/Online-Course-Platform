@@ -21,7 +21,7 @@ namespace OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCa
 
         private async Task<bool> CategoryNameUnique(string name, CancellationToken token)
         {
-            return await _categoryRepository.IsCategoryNameUnique(name);
+            return await _categoryRepository.IsCategoryNameUniqueAsync(name);
         }
 
     }

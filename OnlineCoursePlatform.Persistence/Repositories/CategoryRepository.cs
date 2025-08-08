@@ -10,13 +10,13 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
-        public async Task<List<Category>> GetCategoriesWithCourses()
+        public async Task<List<Category>> GetCategoriesWithCoursesAsync()
         {
             var allCategories = await _dbContext.Categories.Include(x => x.Courses).ToListAsync();
             return allCategories;
         }
 
-        public async Task<bool> IsCategoryNameUnique(string name)
+        public async Task<bool> IsCategoryNameUniqueAsync(string name)
         {
             var matches = await _dbContext.Categories.AnyAsync(x => x.Name.Equals(name));
             return !matches;

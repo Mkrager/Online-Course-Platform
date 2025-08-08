@@ -16,7 +16,7 @@ namespace OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrol
         }
         public async Task<List<StudentEnrollmentsListVm>> Handle(GetEnrollmentsByStudentQuery request, CancellationToken cancellationToken)
         {
-            var enrollemts = await _enrollmentRepository.GetStudentEnrollmentsWithCoursesAsync(request.UserId);
+            var enrollemts = await _enrollmentRepository.GetEnrollmentsByStudentIdWithCoursesAsync(request.UserId);
 
             return _mapper.Map<List<StudentEnrollmentsListVm>>(enrollemts);
         }

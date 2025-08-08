@@ -72,7 +72,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Enrollments.Add(enrollment);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetStudentEnrollmentsWithCoursesAsync("123");
+            var result = await _repository.GetEnrollmentsByStudentIdWithCoursesAsync("123");
 
             Assert.NotNull(result);
             Assert.NotNull(result[0].Course);

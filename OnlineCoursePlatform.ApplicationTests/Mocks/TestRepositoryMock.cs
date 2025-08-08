@@ -43,9 +43,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Test>()))
                 .Callback((Test test) => tests.Remove(test));
 
-            mockRepository.Setup(repo => repo.GetTestWithQuestionsAndAnswers(It.IsAny<Guid>())).ReturnsAsync((Guid id) => tests.FirstOrDefault(x => x.Id == id));
+            mockRepository.Setup(repo => repo.GetTestWithQuestionsAndAnswersAsync(It.IsAny<Guid>())).ReturnsAsync((Guid id) => tests.FirstOrDefault(x => x.Id == id));
 
-            mockRepository.Setup(repo => repo.GetTestsByLessonId(It.IsAny<Guid>())).ReturnsAsync((Guid lessonId) => tests.Where(t => t.LessonId == lessonId).ToList());
+            mockRepository.Setup(repo => repo.GetTestsByLessonIdAsync(It.IsAny<Guid>())).ReturnsAsync((Guid lessonId) => tests.Where(t => t.LessonId == lessonId).ToList());
 
             return mockRepository;
         }

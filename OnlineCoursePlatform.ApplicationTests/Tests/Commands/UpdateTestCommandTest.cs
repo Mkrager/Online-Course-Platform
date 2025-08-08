@@ -57,7 +57,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 
             var result = await handler.Handle(command, CancellationToken.None);
 
-            var updatedTest = await _testRepository.Object.GetTestWithQuestionsAndAnswers(Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"));
+            var updatedTest = await _testRepository.Object.GetTestWithQuestionsAndAnswersAsync(Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"));
 
             updatedTest.ShouldNotBeNull();
             updatedTest.Title.ShouldBe("updTitle");

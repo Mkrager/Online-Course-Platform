@@ -53,7 +53,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     return enrollment;
                 });
 
-            mockRepository.Setup(repo => repo.GetStudentEnrollmentsWithCoursesAsync(It.IsAny<string>()))
+            mockRepository.Setup(repo => repo.GetEnrollmentsByStudentIdWithCoursesAsync(It.IsAny<string>()))
                 .ReturnsAsync((string studentId) => enrollments.Where(x => x.StudentId == studentId).ToList());
 
             mockRepository.Setup(repo => repo.IsUserEnrolledInCourseAsync(It.IsAny<string>(), It.IsAny<Guid>()))

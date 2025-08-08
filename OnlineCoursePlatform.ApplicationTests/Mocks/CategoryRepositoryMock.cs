@@ -43,9 +43,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Category>()))
                 .Callback((Category category) => categories.Remove(category));
 
-            mockRepository.Setup(repo => repo.GetCategoriesWithCourses()).ReturnsAsync(categories);
+            mockRepository.Setup(repo => repo.GetCategoriesWithCoursesAsync()).ReturnsAsync(categories);
 
-            mockRepository.Setup(repo => repo.IsCategoryNameUnique(It.IsAny<string>()))
+            mockRepository.Setup(repo => repo.IsCategoryNameUniqueAsync(It.IsAny<string>()))
                 .ReturnsAsync((string name) => !categories.Any(c => c.Name == name));
 
             return mockRepository;

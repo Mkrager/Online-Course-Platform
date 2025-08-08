@@ -42,5 +42,10 @@ namespace OnlineCoursePlatform.App.Services
 
             return new UserDetailsResponse();
         }
+
+        public Task<UserDetailsResponse> GetTeacherDetailsAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

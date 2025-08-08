@@ -10,7 +10,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
-        public async Task<List<Course>> GetAllWithCategoryAndLevel()
+        public async Task<List<Course>> GetCoursesWithCategoryAndLevelAsync()
         {
             return await _dbContext.Courses
                 .Include(c => c.Category)
@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<Course>> GetCoursesByCategoryId(Guid categoryId)
+        public async Task<List<Course>> GetCoursesByCategoryIdAsync(Guid categoryId)
         {
             return await _dbContext.Courses
                 .Include(c => c.Category)
@@ -28,7 +28,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<Course>> GetCoursesByUserId(string userId)
+        public async Task<List<Course>> GetCoursesByUserIdAsync(string userId)
         {
             return await _dbContext.Courses
                 .Include(c => c.Category)

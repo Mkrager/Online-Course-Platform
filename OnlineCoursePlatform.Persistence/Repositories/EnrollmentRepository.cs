@@ -10,7 +10,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
-        public async Task<List<Enrollment>> GetStudentEnrollmentsWithCoursesAsync(string studentId)
+        public async Task<List<Enrollment>> GetEnrollmentsByStudentIdWithCoursesAsync(string studentId)
         {
             return await _dbContext.Enrollments
                 .Include(x => x.Course)

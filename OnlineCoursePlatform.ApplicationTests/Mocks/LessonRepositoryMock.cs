@@ -45,7 +45,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Lesson>()))
                 .Callback((Lesson lesson) => lessons.Remove(lesson));
 
-            mockRepository.Setup(r => r.GetCourseLessons(It.IsAny<Guid>()))
+            mockRepository.Setup(r => r.GetLessonsByCourseIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid courseId) => lessons.Where(x => x.CourseId == courseId).ToList());
 
             return mockRepository;

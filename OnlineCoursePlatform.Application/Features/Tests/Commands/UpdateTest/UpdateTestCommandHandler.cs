@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest
 
         public async Task<Unit> Handle(UpdateTestCommand request, CancellationToken cancellationToken)
         {
-            var testToUpdate = await _testRepository.GetTestWithQuestionsAndAnswers(request.Id);
+            var testToUpdate = await _testRepository.GetTestWithQuestionsAndAnswersAsync(request.Id);
 
             if (testToUpdate == null)
                 throw new NotFoundException(nameof(Test), request.Id);

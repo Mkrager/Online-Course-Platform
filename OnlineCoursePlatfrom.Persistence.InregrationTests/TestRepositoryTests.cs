@@ -48,7 +48,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Questions.AddRange(questionTest1, questionTest2);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetTestWithQuestionsAndAnswers(testId);
+            var result = await _repository.GetTestWithQuestionsAndAnswersAsync(testId);
 
             Assert.NotNull(result);
             Assert.Equal(result.Title, "Test");
@@ -81,7 +81,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Tests.Add(test);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetTestsByLessonId(lessonId);
+            var result = await _repository.GetTestsByLessonIdAsync(lessonId);
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList
 {
@@ -17,7 +16,7 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesLi
 
         public async Task<List<CourseListVm>> Handle(GetCoursesListQuery request, CancellationToken cancellationToken)
         {
-            var allCourses = await _courseRepository.GetAllWithCategoryAndLevel();
+            var allCourses = await _courseRepository.GetCoursesWithCategoryAndLevelAsync();
 
             return _mapper.Map<List<CourseListVm>>(allCourses);
         }

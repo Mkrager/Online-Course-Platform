@@ -48,7 +48,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.AddRange(courseTest1, courseTest2);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCategoriesWithCourses();
+            var result = await _repository.GetCategoriesWithCoursesAsync();
 
             Assert.NotNull(result);
             Assert.Single(result);
@@ -67,7 +67,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Categories.Add(category1);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.IsCategoryNameUnique("TestName");
+            var result = await _repository.IsCategoryNameUniqueAsync("TestName");
             Assert.False(result);
         }
 
@@ -82,7 +82,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Categories.Add(category1);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.IsCategoryNameUnique("TestName");
+            var result = await _repository.IsCategoryNameUniqueAsync("TestName");
             Assert.True(result);
         }
     }

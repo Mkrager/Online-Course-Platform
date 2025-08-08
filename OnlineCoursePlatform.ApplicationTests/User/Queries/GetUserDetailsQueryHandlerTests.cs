@@ -25,7 +25,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.User.Queries
         [Fact]
         public async Task GetUserDetails_ReturnsUserDetailsResponse()
         {
-            System.Diagnostics.Debugger.Launch();
             var handler = new GetUserDetailsQueryHandler(_mockUserService.Object, _mapper);
 
             var result = await handler.Handle(new GetUserDetailsQuery() { Id = "id" }, CancellationToken.None);

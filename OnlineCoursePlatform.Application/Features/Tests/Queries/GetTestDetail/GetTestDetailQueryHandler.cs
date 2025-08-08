@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail
 
         public async Task<TestDetailVm> Handle(GetTestDetailQuery request, CancellationToken cancellationToken)
         {
-            var test = await _testRepository.GetTestWithQuestionsAndAnswers(request.Id);
+            var test = await _testRepository.GetTestWithQuestionsAndAnswersAsync(request.Id);
 
             if (test == null)
             {

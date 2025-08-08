@@ -4,7 +4,7 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
     public interface ICategoryRepository : IAsyncRepository<Category>
     {
-        Task<List<Category>> GetCategoriesWithCourses();
-        Task<bool> IsCategoryNameUnique(string name); 
+        Task<List<Category>> GetCategoriesWithCoursesAsync();
+        Task<bool> IsCategoryNameUniqueAsync(string name); 
     }
 }

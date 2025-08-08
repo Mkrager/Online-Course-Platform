@@ -65,7 +65,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.Add(course);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursesByUserId(_currentUserId);
+            var result = await _repository.GetCoursesByUserIdAsync(_currentUserId);
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);
@@ -111,7 +111,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.AddRange(course1, course2, course3);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursesByCategoryId(categoryId);
+            var result = await _repository.GetCoursesByCategoryIdAsync(categoryId);
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
@@ -155,7 +155,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.Add(course);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetAllWithCategoryAndLevel();
+            var result = await _repository.GetCoursesWithCategoryAndLevelAsync();
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);

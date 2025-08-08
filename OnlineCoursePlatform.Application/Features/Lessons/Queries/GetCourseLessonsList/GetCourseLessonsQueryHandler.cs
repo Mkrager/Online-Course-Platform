@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLes
         }
         public async Task<List<CourseLessonListVm>> Handle(GetCourseLessonsQuery request, CancellationToken cancellationToken)
         {
-            var lessons = await _lessonRepository.GetCourseLessons(request.CourseId);
+            var lessons = await _lessonRepository.GetLessonsByCourseIdAsync(request.CourseId);
             return _mapper.Map<List<CourseLessonListVm>>(lessons);
         }
     }

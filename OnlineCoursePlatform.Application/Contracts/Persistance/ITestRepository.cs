@@ -4,7 +4,7 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
     public interface ITestRepository : IAsyncRepository<Test>
     {
-        Task<Test> GetTestWithQuestionsAndAnswers(Guid id);
-        Task<List<Test>> GetTestsByLessonId(Guid lessonId);
+        Task<Test> GetTestWithQuestionsAndAnswersAsync(Guid id);
+        Task<List<Test>> GetTestsByLessonIdAsync(Guid lessonId);
     }
 }

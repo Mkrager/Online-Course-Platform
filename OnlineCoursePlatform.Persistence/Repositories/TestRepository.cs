@@ -10,13 +10,13 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
-        public async Task<Test> GetTestWithQuestionsAndAnswers(Guid id)
+        public async Task<Test> GetTestWithQuestionsAndAnswersAsync(Guid id)
         {
             var testWithQuestionAndAnswer = await _dbContext.Tests.Include(x => x.Questions).ThenInclude(x => x.Answers).FirstOrDefaultAsync(t => t.Id == id);
             return testWithQuestionAndAnswer;
         }
 
-        public async Task<List<Test>> GetTestsByLessonId(Guid lessonId)
+        public async Task<List<Test>> GetTestsByLessonIdAsync(Guid lessonId)
         {
             var userTests = await _dbContext.Tests.Where(u => u.LessonId == lessonId).ToListAsync();
             return userTests;
