@@ -14,6 +14,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
+using OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrollmentsByStudent;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
@@ -92,6 +93,7 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<AuthenticationResponse, AuthenticationVm>();
 
             CreateMap<Enrollment, CreateEnrollmentCommand>().ReverseMap();
+            CreateMap<Enrollment, StudentEnrollmentsListVm>().ReverseMap();
 
             CreateMap<Payment, CreatePaymentCommand>().ReverseMap();
             CreateMap<Payment, UpdatePaymentCommand>().ReverseMap()

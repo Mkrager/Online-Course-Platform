@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByUser;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
@@ -30,7 +31,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Courses.Queries
 
             var result = await handler.Handle(new GetCoursesByTeacherQuery() { UserId = "id"}, CancellationToken.None);
 
-            result.ShouldBeOfType<List<CourseByTeacherVm>>();
+            result.ShouldBeOfType<List<CourseListVm>>();
 
             result.Count.ShouldBe(2);
         }
