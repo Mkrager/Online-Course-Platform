@@ -32,7 +32,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Queries
 
             result.ShouldBeOfType<List<CourseListVm>>();
 
-            result.Count.ShouldBe(2);
+            result.Count.ShouldBe(4);
         }
     }
 }

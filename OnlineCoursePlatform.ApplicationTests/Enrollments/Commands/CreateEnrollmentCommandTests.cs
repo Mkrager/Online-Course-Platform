@@ -36,7 +36,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Enrollments.Commands
             await handler.Handle(command, CancellationToken.None);
 
             var allEnrollments = await _mockEnrollmentRepository.Object.ListAllAsync();
-            allEnrollments.Count.ShouldBe(2);
+            allEnrollments.Count.ShouldBe(4);
 
             var createdEnrollment = allEnrollments.FirstOrDefault(a => a.CourseId == command.CourseId);
             createdEnrollment.ShouldNotBeNull();

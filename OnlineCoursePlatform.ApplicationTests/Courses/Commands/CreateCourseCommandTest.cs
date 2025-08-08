@@ -40,7 +40,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
             await handler.Handle(command, CancellationToken.None);
 
             var allCourses = await _mockCourseRepository.Object.ListAllAsync();
-            allCourses.Count.ShouldBe(3);
+            allCourses.Count.ShouldBe(5);
 
             var createdCourse = allCourses.FirstOrDefault(a => a.Title == command.Title && a.Price == command.Price);
             createdCourse.ShouldNotBeNull();
