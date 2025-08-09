@@ -19,25 +19,14 @@
         <div class="courses-section">
             <h3>Purchased courses</h3>
             <div class="course-list">
-                @foreach (var course in Model.Courses)
+                @foreach (var enrollments in Model.Enrollments)
                 {
                     <div class="course-item">
-                        <h4>@course.Title</h4>
-                        <p class="course-description">@course.Description</p>
-                        <p class="course-description">Level: @course.Level.Name</p>
-                        <p class="course-description">Category: @course.Category.Name</p>
-                        <p class="course-description">Price: @course.Price</p>
-
-
-                        <div class="course-actions">
-                            <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>
-                            <a asp-controller="Course" asp-action="Update" asp-route-id="@course.Id" class="btn-edit">Edit</a>
-                            <a class="btn-delete" onclick="deleteCourse('@course.Id')">Delete</a>
-                        </div>
-
+                        <h4>Progress: @enrollments.Progress</h4>
+                        @enrollments.Course.Title
+                        @enrollments.Course.Level
                     </div>
                 }
-                <a asp-controller="Course" asp-action="Create" class="btn-add-course">Create New Course</a>
             </div>
         </div>
     </div>
