@@ -8,6 +8,7 @@ namespace OnlineCoursePlatform.App.ViewModels.User
         public string Email { get; set; } = string.Empty;
 
         public List<string> Roles { get; set; } = default!;
+        public List<StudentEnrollmentsListVm> Enrollments { get; set; } = default!;
         public List<CourseListViewModel> Courses { get; set; } = default!;
     }
 }
