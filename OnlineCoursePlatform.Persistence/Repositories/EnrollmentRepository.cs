@@ -14,6 +14,9 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
             return await _dbContext.Enrollments
                 .Include(x => x.Course)
+                    .ThenInclude(x => x.Level)
+                .Include(x => x.Course)
+                    .ThenInclude(x => x.Category)
                 .Where(s => s.StudentId == studentId)
                 .ToListAsync();
         }
