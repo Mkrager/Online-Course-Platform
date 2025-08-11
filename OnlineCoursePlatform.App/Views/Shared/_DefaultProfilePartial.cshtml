@@ -22,10 +22,15 @@
                 @foreach (var enrollments in Model.Enrollments)
                 {
                     <div class="course-item">
-                        <h4>Progress: @enrollments.Progress</h4>
-                        @enrollments.Course.Title
-                        @enrollments.Course.Level.Name
-                        @enrollments.Course.Category.Name
+                        <h4>Course: @enrollments.Course.Title</h4>
+                        <p class="course-description">Description: @enrollments.Course.Description</p>
+                        <p class="course-description">Level: @enrollments.Course.Level.Name</p>
+                        <p class="course-description">Category: @enrollments.Course.Category.Name</p>
+                        <p class="course-description">Progress: @enrollments.Progress</p>
+
+                        <div class="course-actions">
+                            <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@enrollments.Course.Id" class="btn-lessons">Lessons</a>
+                        </div>
                     </div>
                 }
             </div>
