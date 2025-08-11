@@ -42,7 +42,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Answers");
+                    b.ToTable("Answers", (string)null);
 
                     b.HasData(
                         new
@@ -78,7 +78,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -115,7 +115,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("EnrollmentId");
 
-                    b.ToTable("Certificates");
+                    b.ToTable("Certificates", (string)null);
                 });
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Course", b =>
@@ -169,7 +169,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("LevelId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
 
                     b.HasData(
                         new
@@ -229,7 +229,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Enrollments");
+                    b.ToTable("Enrollments", (string)null);
                 });
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Lesson", b =>
@@ -275,7 +275,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
 
                     b.HasData(
                         new
@@ -317,7 +317,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Levels");
+                    b.ToTable("Levels", (string)null);
 
                     b.HasData(
                         new
@@ -372,7 +372,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Question", b =>
@@ -392,7 +392,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("TestId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
 
                     b.HasData(
                         new
@@ -420,7 +420,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Tests");
+                    b.ToTable("Tests", (string)null);
 
                     b.HasData(
                         new
@@ -463,7 +463,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("TestId");
 
-                    b.ToTable("TestAttempts");
+                    b.ToTable("TestAttempts", (string)null);
 
                     b.HasData(
                         new
@@ -506,7 +506,7 @@ namespace OnlineCoursePlatform.Persistence.Migrations
 
                     b.HasIndex("TestAttemptId");
 
-                    b.ToTable("UserAnswers");
+                    b.ToTable("UserAnswers", (string)null);
                 });
 
             modelBuilder.Entity("OnlineCoursePlatform.Domain.Entities.Answer", b =>

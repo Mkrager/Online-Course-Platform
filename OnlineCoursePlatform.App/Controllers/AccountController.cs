@@ -18,14 +18,9 @@ namespace OnlineCoursePlatform.App.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            var roles = User.Claims
-                            .Where(c => c.Type == ClaimTypes.Role)
-                            .Select(c => c.Value)
-                            .ToList();
-
             object viewModel;
-
-            if (roles.Contains("Teacher"))
+            
+            if(User.IsInRole("Teacher"))
             {
                 viewModel = await _userDataService.GetTeacherDetailsAsync();
             }

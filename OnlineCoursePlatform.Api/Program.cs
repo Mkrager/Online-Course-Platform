@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using OnlineCoursePlatform.Api;
 using OnlineCoursePlatform.Identity.Models;
+using OnlineCoursePlatform.Identity.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +18,10 @@ using (var scope = app.Services.CreateScope())
         var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-        await OnlineCoursePlatform.Identity.Seeds.DefaultRoles.SeedAsync(userManager, roleManager);
-        await OnlineCoursePlatform.Identity.Seeds.DefaultSuperAdmin.SeedAsync(userManager, roleManager);
-        await OnlineCoursePlatform.Identity.Seeds.DefaultBasicUser.SeedAsync(userManager, roleManager);
+        await DefaultRoles.SeedAsync(userManager, roleManager);
+        await DefaultSuperAdmin.SeedAsync(userManager, roleManager);
+        await DefaultBasicUser.SeedAsync(userManager, roleManager);
+        await DefaultTeacherUser.SeedAsync(userManager, roleManager);
     }
     catch (Exception ex)
     {

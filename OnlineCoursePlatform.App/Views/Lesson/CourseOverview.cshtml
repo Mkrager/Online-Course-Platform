@@ -12,24 +12,35 @@
                     <span>@lesson.Order. @lesson.Title</span>
 
                     <div class="lesson-actions">
-                        <a asp-controller="Lesson" asp-action="update" asp-route-id="@lesson.Id" class="btn-edit">Edit</a>
+                        @if (User.IsInRole("Teacher"))
+                        {
+                            <a asp-controller="Lesson" asp-action="update" asp-route-id="@lesson.Id" class="btn-edit">Edit</a>
+                            <a asp-controller="Test" asp-action="List" asp-route-lessonId="@lesson.Id" class="btn-add-test">Tests</a>
+                            <a class="btn-delete" onclick="deleteLesson('@lesson.Id')">Delete</a>
+                        }
+
                         <a asp-controller="Lesson" asp-action="details" asp-route-id="@lesson.Id" class="btn-view-lesson">View lesson</a>
-                        <a asp-controller="Test" asp-action="List" asp-route-lessonId="@lesson.Id" class="btn-add-test">Tests</a>
-                        <a class="btn-delete" onclick="deleteLesson('@lesson.Id')">Delete</a>
                     </div>
                 </div>
             }
         </div>
-        <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
+
+        @if (User.IsInRole("Teacher"))
+        {
+            <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
+        }
     </div>
 }
 else
 {
     <div class="lessons-section">
         <h2>No lessons available</h2>
-        <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
+
+        @if (User.IsInRole("Teacher"))
+        {
+            <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
+        }
     </div>
 }
-
 
 <script src="~/js/lesson/deleteLesson.js"></script>

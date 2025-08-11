@@ -27,7 +27,7 @@
                         <p class="course-description">Level: @enrollments.Course.Level.Name</p>
                         <p class="course-description">Category: @enrollments.Course.Category.Name</p>
                         <p class="course-description">Progress: @enrollments.Progress</p>
-
+                        
                         <div class="course-actions">
                             <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@enrollments.Course.Id" class="btn-lessons">Lessons</a>
                         </div>
