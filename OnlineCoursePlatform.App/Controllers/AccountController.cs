@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.ViewModels.User;
-using System.Security.Claims;
-using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Controllers
 {

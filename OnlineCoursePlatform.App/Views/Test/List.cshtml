@@ -12,22 +12,32 @@
                     <span>@test.Title</span>
 
                     <div class="lesson-actions">
+                        @*TODO: find answer why IsInRole doesn't work *@
+                        @if (User.FindFirst("roles").Value == "Teacher")
+                        {
+                            <a asp-controller="test" asp-action="update" asp-route-id="@test.Id" class="btn-edit">Edit</a>
+                            <a class="btn-delete" onclick="deleteTest('@test.Id')">Delete</a>
+                        }
                         @* <a asp-controller="Lesson" asp-action="details" asp-route-id="@lesson.Id" class="btn-view-lesson">View lesson</a> *@
-                        <a asp-controller="test" asp-action="update" asp-route-id="@test.Id" class="btn-edit">Edit</a>
                         <a asp-controller="testAttempt" asp-action="StartTest" asp-route-id="@test.Id" class="btn-edit">Pass</a>
-                        <a class="btn-delete" onclick="deleteTest('@test.Id')">Delete</a>
                     </div>
                 </div>
             }
         </div>
-        <a asp-controller="Test" asp-action="Create" asp-route-lessonId="@Model.LessonId" class="btn-add">Add test</a>
+        @if (User.FindFirst("roles").Value == "Teacher")
+        {
+            <a asp-controller="Test" asp-action="Create" asp-route-lessonId="@Model.LessonId" class="btn-add">Add test</a>
+        }
     </div>
 }
 else
 {
     <div class="lessons-section">
         <h2>No test available</h2>
-        <a asp-controller="Test" asp-action="Create" asp-route-lessonId="@Model.LessonId" class="btn-add">Add test</a>
+        @if (User.FindFirst("roles").Value == "Teacher")
+        {
+            <a asp-controller="Test" asp-action="Create" asp-route-lessonId="@Model.LessonId" class="btn-add">Add test</a>
+        }
     </div>
 }
 
