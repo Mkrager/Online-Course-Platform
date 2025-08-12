@@ -31,7 +31,6 @@
                             <p class="course-description">Category: @course.Category.Name</p>
                             <p class="course-description">Price: @course.Price</p>
 
-
                             <div class="course-actions">
                                 <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>
                                 <a asp-controller="Course" asp-action="Update" asp-route-id="@course.Id" class="btn-edit">Edit</a>

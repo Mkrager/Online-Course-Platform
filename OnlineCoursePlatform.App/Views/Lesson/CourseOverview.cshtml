@@ -12,7 +12,7 @@
                     <span>@lesson.Order. @lesson.Title</span>
 
                     <div class="lesson-actions">
-                        @if (User.IsInRole("Teacher"))
+                        @if (User.FindFirst("roles").Value == "Teacher")
                         {
                             <a asp-controller="Lesson" asp-action="update" asp-route-id="@lesson.Id" class="btn-edit">Edit</a>
                             <a asp-controller="Test" asp-action="List" asp-route-lessonId="@lesson.Id" class="btn-add-test">Tests</a>
@@ -25,7 +25,7 @@
             }
         </div>
 
-        @if (User.IsInRole("Teacher"))
+        @if (User.FindFirst("roles").Value == "Teacher")
         {
             <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
         }
@@ -36,7 +36,7 @@ else
     <div class="lessons-section">
         <h2>No lessons available</h2>
 
-        @if (User.IsInRole("Teacher"))
+        @if (User.FindFirst("roles").Value == "Teacher")
         {
             <a asp-controller="lesson" asp-action="add" asp-route-courseId="@Model.CourseId" class="btn-add">Add lesson</a>
         }
