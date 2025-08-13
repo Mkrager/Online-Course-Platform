@@ -14,11 +14,10 @@
         <label asp-for="Title"></label>
         <span asp-validation-for="Title" class="error-text"></span>
         <input asp-for="Title" />
-
     </div>
 
-    <input type="hidden" asp-for="Id" value="@Model.Id" />
-    <input type="hidden" asp-for="LessonId" value="@Model.LessonId" />
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="LessonId" />
 
     <div id="questions">
         @for (int i = 0; i < Model.Questions.Count; i++)
@@ -26,7 +25,7 @@
             <div class="question" data-index="@i">
                 <div class="question-header">
                     <input type="text" name="Questions[@i].Text" value="@Model.Questions[i].Text" placeholder="Question Text" />
-                    <span onclick="toggleQuestion(@i)"><ion-icon name="caret-down-outline"></ion-icon></span>
+                    <span class="toggle" onclick="toggleQuestion(@i)"><ion-icon name="caret-down-outline"></ion-icon></span>
                 </div>
                 <div class="answers">
                     @for (int j = 0; j < Model.Questions[i].Answers.Count; j++)
@@ -34,19 +33,40 @@
                         <div class="answer">
                             <input type="checkbox" name="Questions[@i].Answers[@j].IsCorrect" value="true" @(Model.Questions[i].Answers[j].IsCorrect ? "checked" : "") />
                             <input type="text" name="Questions[@i].Answers[@j].Text" value="@Model.Questions[i].Answers[j].Text" placeholder="Answer Option" />
+                            <button type="button" class="btn btn-danger delete-answer" onclick="removeAnswer(this)">Delete Answer</button>
                         </div>
                     }
-                    <button type="button" class="btn" onclick="addAnswer(@i, this)">+ Add Answer</button>
-                    <button type="button" class="btn btn-danger" onclick="removeQuestion(this)">Delete Question</button>
+                    <button type="button" class="btn add-answer" onclick="addAnswer(@i, this)">+ Add Answer</button>
+                    <button type="button" class="btn btn-danger delete-question" onclick="removeQuestion(this)">Delete Question</button>
                 </div>
             </div>
         }
     </div>
 
     <button type="button" class="btn" onclick="addQuestion()">+ Add Question</button>
-
     <button type="button" class="btn" onclick="updateTest()">Save Changes</button>
 </form>
+
+<template id="question-template">
+    <div class="question" data-index="">
+        <div class="question-header">
+            <input type="text" placeholder="Question Text" />
+            <span class="toggle"><ion-icon name="caret-down-outline"></ion-icon></span>
+        </div>
+        <div class="answers">
+            <button type="button" class="btn add-answer">+ Add Answer</button>
+            <button type="button" class="btn btn-danger delete-question">Delete Question</button>
+        </div>
+    </div>
+</template>
+
+<template id="answer-template">
+    <div class="answer">
+        <input type="checkbox" value="true" />
+        <input type="text" placeholder="Answer Option" />
+        <button type="button" class="btn btn-danger delete-answer">Delete Answer</button>
+    </div>
+</template>
 
 <script src="~/js/test/createTestMenu.js"></script>
 <script src="~/js/test/updateTest.js"></script>
