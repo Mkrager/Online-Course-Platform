@@ -842,9 +842,6 @@ h2 {
     margin-bottom: 12px;
 }
 
-.btn-danger {
-    background-color: #c0392b;
-}
 
 input[type="text"] {
     width: 100%;
@@ -865,4 +862,20 @@ input[type="text"] {
     text-align: center;
     font-size: 30px;
     font-weight: 600;
+}
+
+.btn-danger {
+/*  mb important  */
+    background-color: #c0392b;
+}
+
+.btn-pass {
+    background-color: steelblue;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
