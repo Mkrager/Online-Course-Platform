@@ -22,6 +22,7 @@ using (var scope = app.Services.CreateScope())
         await DefaultSuperAdmin.SeedAsync(userManager, roleManager);
         await DefaultBasicUser.SeedAsync(userManager, roleManager);
         await DefaultTeacherUser.SeedAsync(userManager, roleManager);
+        await DefaultModeratorUser.SeedAsync(userManager, roleManager);
     }
     catch (Exception ex)
     {
