@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.PublishCourse
 {
@@ -18,7 +19,7 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.PublishCour
             var course = await _courseRepository.GetByIdAsync(request.Id);
 
             if (course == null)
-                throw new NotFoundException(nameof(course), request.Id);
+                throw new NotFoundException(nameof(Course), request.Id);
 
             await _courseRepository.UpdateIsPublishedAsync(course, true);
 
