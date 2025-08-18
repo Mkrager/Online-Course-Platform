@@ -89,6 +89,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.GetCoursesByUserIdAsync(It.IsAny<string>()))
                 .ReturnsAsync((string userId) => courses.Where(x => x.CreatedBy == userId).ToList());
 
+            mockRepository.Setup(r => r.UpdateIsPublishedAsync(It.IsAny<Course>(), It.IsAny<bool>()))
+                .Callback((Course course, bool isPublish) =>
+                {
+                    course.IsPublished = isPublish;
+                });
 
             return mockRepository;
         }
