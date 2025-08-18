@@ -36,5 +36,11 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .Where(c => c.CreatedBy == userId)
                 .ToListAsync();
         }
+
+        public async Task UpdateIsPublishedAsync(Course course, bool isPublished)
+        {
+            course.IsPublished = isPublished;
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }
