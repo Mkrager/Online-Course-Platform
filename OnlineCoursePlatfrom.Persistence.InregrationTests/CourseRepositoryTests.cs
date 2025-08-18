@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+﻿using Microsoft.EntityFrameworkCore;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
@@ -159,6 +157,25 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public async Task UpdateIsPublishedAsync_ShouldUpdateIsPublishedProperty()
+        {
+            var course = new Course 
+            { 
+                Title = "Name", 
+                CreatedDate = DateTime.UtcNow,
+                IsPublished = false
+            };
+
+            await _repository.AddAsync(course);
+
+            await _repository.UpdateIsPublishedAsync(course, true);
+
+            var updatedCourse = await _dbContext.Courses.FindAsync(course.Id);
+            Assert.NotNull(updatedCourse);
+            Assert.True(updatedCourse.IsPublished);
         }
     }
 }
