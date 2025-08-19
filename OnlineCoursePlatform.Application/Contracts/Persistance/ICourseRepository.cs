@@ -6,7 +6,7 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
     {
         Task<List<Course>> GetCoursesByUserIdAsync(string userId);
         Task<List<Course>> GetCoursesByCategoryIdAsync(Guid categoryId);
-        Task<List<Course>> GetCoursesWithCategoryAndLevelAsync();
+        Task<List<Course>> GetCoursesWithCategoryAndLevelAsync(bool onlyPublished = false);
         Task UpdateIsPublishedAsync(Course course, bool isPublished);
     }
 }

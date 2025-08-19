@@ -10,12 +10,19 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
         }
 
-        public async Task<List<Course>> GetCoursesWithCategoryAndLevelAsync()
+        public async Task<List<Course>> GetCoursesWithCategoryAndLevelAsync(bool onlyPublished = false)
         {
-            return await _dbContext.Courses
-                .Include(c => c.Category)
-                .Include(c => c.Level)
-                .ToListAsync();
+            var query = _dbContext.Courses
+                    .Where(r => r.IsPublished)
+                    .Include(c => c.Category)
+                    .Include(c => c.Level)
+                    .AsQueryable();
+
+            if (onlyPublished)
+                query = query.Where(r => r.IsPublished);
+
+
+            return await query.ToListAsync();
         }
 
         public async Task<List<Course>> GetCoursesByCategoryIdAsync(Guid categoryId)
@@ -42,5 +49,6 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             course.IsPublished = isPublished;
             await _dbContext.SaveChangesAsync();
         }
+
     }
 }

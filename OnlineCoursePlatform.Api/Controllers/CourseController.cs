@@ -24,6 +24,19 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
+        [HttpGet("/published", Name = "GetAllCourses")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<List<CourseListVm>>> GetPublishedCourses()
+        {
+            var dtos = await mediator.Send(new GetCoursesListQuery() 
+            {
+                OnlyPublished = true
+            });
+
+            return Ok(dtos);
+        }
+
         [HttpGet("{id}", Name = "GetCourseById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
