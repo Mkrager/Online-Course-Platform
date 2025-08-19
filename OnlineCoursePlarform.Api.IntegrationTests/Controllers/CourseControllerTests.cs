@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlarform.Api.IntegrationTests.Base;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.PublishCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
@@ -7,7 +8,6 @@ using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using System.Net;
 using System.Text;
 using System.Text.Json;
-using Xunit.Abstractions;
 
 namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
 {
@@ -163,5 +163,28 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
             Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
 
+        [Fact]
+        public async Task PublishCourse_ReturnsNoContent()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var id = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1");
+
+            var response = await client.PatchAsync($"/api/course/{id}/publish", new StringContent(""));
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task UnPublishCourse_ReturnsNoContent()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var id = Guid.Parse("7e1e9e74-905f-4ad6-8f8d-26ab9dd98ec1");
+
+            var response = await client.PatchAsync($"/api/course/{id}/unpublish", new StringContent(""));
+
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
     }
 }
