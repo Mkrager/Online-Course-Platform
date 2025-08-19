@@ -119,9 +119,9 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 
 
         [Fact]
-        public async Task GetAllWithCategoryAndLevel_ShouldReturnAllCourses()
+        public async Task GetAllCoursesWithCategoryAndLevel_ShouldReturnAllCourses()
         {
-            var courseId = Guid.NewGuid();
+            System.Diagnostics.Debugger.Launch();
 
             var categoryId = Guid.NewGuid();
 
@@ -144,19 +144,91 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 
             var course = new Course
             {
-                Id = courseId,
+                Id = Guid.NewGuid(),
                 CategoryId = categoryId,
-                Title = "TestCourse",
+                Level = level
+            };
+
+            var course2 = new Course
+            {
+                Id = Guid.NewGuid(),
+                CategoryId = categoryId,
+                Level = level
+            };
+
+            var course3 = new Course
+            {
+                Id = Guid.NewGuid(),
+                CategoryId = categoryId,
                 Level = level
             };
 
             _dbContext.Courses.Add(course);
+            _dbContext.Courses.Add(course2);
+            _dbContext.Courses.Add(course3);
             await _dbContext.SaveChangesAsync();
 
             var result = await _repository.GetCoursesWithCategoryAndLevelAsync();
 
             Assert.NotNull(result);
-            Assert.Equal(1, result.Count);
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public async Task GetOnlyPublishedCoursesWithCategoryAndLevel_ShouldReturnAllCourses()
+        {
+            var categoryId = Guid.NewGuid();
+
+            var levelId = Guid.NewGuid();
+
+            var level = new Level
+            {
+                Name = "Test",
+                Id = levelId
+            };
+
+            var category = new Category
+            {
+                Id = categoryId,
+                Name = "Test",
+            };
+
+            _dbContext.Categories.Add(category);
+            await _dbContext.SaveChangesAsync();
+
+            var course = new Course
+            {
+                Id = Guid.NewGuid(),
+                CategoryId = categoryId,
+                Level = level
+            };
+
+            var course2 = new Course
+            {
+                Id = Guid.NewGuid(),
+                CategoryId = categoryId,
+                Level = level,
+                IsPublished = true
+            };
+
+            var course3 = new Course
+            {
+                Id = Guid.NewGuid(),
+                CategoryId = categoryId,
+                Title = "TestCourse",
+                Level = level,
+                IsPublished = true
+            };
+
+            _dbContext.Courses.Add(course);
+            _dbContext.Courses.Add(course2);
+            _dbContext.Courses.Add(course3);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.GetCoursesWithCategoryAndLevelAsync(true);
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
         }
 
         [Fact]

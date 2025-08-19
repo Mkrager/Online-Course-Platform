@@ -24,7 +24,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
-        [HttpGet("/published", Name = "GetAllCourses")]
+        [HttpGet("published", Name = "GetPublishedCourses")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult<List<CourseListVm>>> GetPublishedCourses()
