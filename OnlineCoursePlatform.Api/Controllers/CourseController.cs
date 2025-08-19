@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.PublishCourse;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.UnPublishCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
@@ -68,5 +70,26 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
+        [HttpPatch("{id}/publish", Name = "PublishCourse")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> PublishCourse(Guid id)
+        {
+            var publishCourseCommand = new PublishCourseCommand() { Id = id };
+            await mediator.Send(publishCourseCommand);
+            return NoContent();
+        }
+
+        [HttpPatch("{id}/unpublish", Name = "UnPublishCourse")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> UnPublishCourse(Guid id)
+        {
+            var unPublishCourseCommand = new UnPublishCourseCommand() { Id = id };
+            await mediator.Send(unPublishCourseCommand);
+            return NoContent();
+        }
     }
 }
