@@ -23,9 +23,7 @@ namespace OnlineCoursePlarform.Api.IntegrationTests.Controllers
         {
             var client = _factory.GetAnonymousClient();
 
-            string userId = "7610e790-11fa-4a5c-8b90-0d5fa64dc59d";
-
-            var response = await client.GetAsync($"/api/User/{userId}");
+            var response = await client.GetAsync($"/api/User/teacher/");
 
             response.EnsureSuccessStatusCode();
 
