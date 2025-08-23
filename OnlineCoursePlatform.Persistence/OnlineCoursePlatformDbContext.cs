@@ -3,6 +3,7 @@ using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Common;
 using OnlineCoursePlatform.Domain.Common.Interfaces;
 using OnlineCoursePlatform.Domain.Entities;
+using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Persistence
 {
@@ -160,50 +161,62 @@ namespace OnlineCoursePlatform.Persistence
                 StartTime = new DateTime(2025, 7, 23),
                 IsCompleted = false,
                 TestId = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
-                UserId = "someUserId",              
+                UserId = "someUserId",
             });
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            var now = DateTime.UtcNow;
+            var userId = _currentUserService.UserId;
+
+            foreach (var entry in ChangeTracker.Entries())
             {
-                switch (entry.State)
+                if (entry.Entity is AuditableEntity auditable)
                 {
-                    case EntityState.Added:
-                        entry.Entity.CreatedDate = DateTime.UtcNow;
-                        entry.Entity.CreatedBy = _currentUserService.UserId;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
-                        entry.Entity.LastModifiedBy = _currentUserService.UserId;
-                        break;
+                    if (entry.State == EntityState.Added)
+                    {
+                        auditable.CreatedDate = now;
+                        auditable.CreatedBy = userId;
+                    }
+                    else if (entry.State == EntityState.Modified)
+                    {
+                        auditable.LastModifiedDate = now;
+                        auditable.LastModifiedBy = userId;
+                    }
+                }
+
+                if (entry.Entity is TimestampedEntity timestamped)
+                {
+                    if (entry.State == EntityState.Added)
+                        timestamped.CreatedAt = now;
+                    else if (entry.State == EntityState.Modified)
+                        timestamped.LastModifiedDate = now;
+                }
+
+                if (entry.Entity is IHasUserId userEntity && entry.State == EntityState.Added)
+                {
+                    userEntity.UserId = userId;
+                }
+
+                if (entry.Entity is CoursePublishRequest coursePublishRequest)
+                {
+                    if (entry.State == EntityState.Added)
+                    {
+                        coursePublishRequest.RequestedBy = userId;
+                        coursePublishRequest.RequestedDate = now;
+                        coursePublishRequest.Status = CoursePublishStatus.Pending;
+                    }
+                    else if (entry.State == EntityState.Modified)
+                    {
+                        if (coursePublishRequest.Status == CoursePublishStatus.Approved)
+                        {
+                            coursePublishRequest.ApprovedBy = userId;
+                            coursePublishRequest.ApprovedAt = now;
+                        }
+                    }
                 }
             }
-
-            foreach (var entry in ChangeTracker.Entries<TimestampedEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.CreatedAt = DateTime.UtcNow;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.LastModifiedDate = DateTime.UtcNow;
-                        break;
-                }
-            }
-
-            foreach (var entry in ChangeTracker.Entries<IHasUserId>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.UserId = _currentUserService.UserId;
-                        break;
-                }
-            }
-
             return base.SaveChangesAsync(cancellationToken);
         }
     }

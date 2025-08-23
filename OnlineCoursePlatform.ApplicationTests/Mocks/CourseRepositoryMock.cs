@@ -80,8 +80,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Course>()))
                 .Callback((Course course) => courses.Remove(course));
 
-            mockRepository.Setup(r => r.GetCoursesWithCategoryAndLevelAsync())
-                .ReturnsAsync(courses);
+            //mockRepository.Setup(r => r.GetCoursesWithCategoryAndLevelAsync(It.IsAny<bool>()))
+            //    .ReturnsAsync(courses);
 
             mockRepository.Setup(r => r.GetCoursesByCategoryIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid categoryId) => courses.Where(x => x.CategoryId == categoryId).ToList());

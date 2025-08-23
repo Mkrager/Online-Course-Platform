@@ -16,5 +16,6 @@ namespace OnlineCoursePlatform.Domain.Entities
         public Category Category { get; set; } = default!;
         public Level Level { get; set; } = default!;
         public ICollection<Lesson>? Lessons { get; set; }
+        public ICollection<CoursePublishRequest>? CoursePublishRequests { get; set; }
     }
 }
