@@ -10,29 +10,31 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
         {
             var courses = new List<Course>
             {
-                new Course 
+                new Course
                 {
-                    Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"), 
-                    Title = "test", 
-                    Description = "test", 
-                    Price = 100, 
-                    ThumbnailUrl = "test", 
-                    CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a262-2f2b197b4c6a") 
+                    Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
+                    Title = "test",
+                    Description = "test",
+                    Price = 100,
+                    ThumbnailUrl = "test",
+                    CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a262-2f2b197b4c6a"),
+                    IsPublished = true,
                 },
-                new Course 
-                { 
-                    Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"), 
-                    Title = "test2", 
-                    Description = "test2", 
+                new Course
+                {
+                    Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e2"),
+                    Title = "test2",
+                    Description = "test2",
                     Price = 200,
-                    ThumbnailUrl = "test2" 
+                    ThumbnailUrl = "test2",
+                    IsPublished = true,
                 },
                 new Course
                 {
                     Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b21e8"),
                     Title = "test3",
                     Description = "test4",
-                    Price = 100, 
+                    Price = 100,
                     ThumbnailUrl = "test",
                     CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a261-2f2b197b4c6a"),
                     CreatedBy = "id"
@@ -80,8 +82,14 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.DeleteAsync(It.IsAny<Course>()))
                 .Callback((Course course) => courses.Remove(course));
 
-            //mockRepository.Setup(r => r.GetCoursesWithCategoryAndLevelAsync(It.IsAny<bool>()))
-            //    .ReturnsAsync(courses);
+            mockRepository.Setup(r => r.GetCoursesWithCategoryAndLevelAsync(It.IsAny<bool>()))
+                .ReturnsAsync((bool isPublished) =>
+                {
+                    if (isPublished)
+                        return courses.Where(c => c.IsPublished).ToList();
+
+                    return courses;
+                });
 
             mockRepository.Setup(r => r.GetCoursesByCategoryIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid categoryId) => courses.Where(x => x.CategoryId == categoryId).ToList());

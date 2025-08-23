@@ -34,5 +34,17 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Queries
 
             result.Count.ShouldBe(4);
         }
+
+        [Fact]
+        public async Task GetOnlyPublishedCourseList_ReturnsListOfCourses()
+        {
+            var handler = new GetCoursesListQueryHandler(_mapper, _mockCourseRepository.Object);
+
+            var result = await handler.Handle(new GetCoursesListQuery() { OnlyPublished = true }, CancellationToken.None);
+
+            result.ShouldBeOfType<List<CourseListVm>>();
+
+            result.Count.ShouldBe(2);
+        }
     }
 }
