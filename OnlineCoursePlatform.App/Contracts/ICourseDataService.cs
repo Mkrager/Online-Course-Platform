@@ -11,6 +11,8 @@ namespace OnlineCoursePlatform.App.Contracts
         Task<ApiResponse<Guid>> CreateCourse(CourseDetailViewModel courseDetailViewModel);
         Task<ApiResponse> UpdateCourse(CourseDetailViewModel courseDetailViewModel);
         Task<ApiResponse> DeleteCourse(Guid id);
+        Task<ApiResponse> Publish(Guid id);
+        Task<ApiResponse> UnPublish(Guid id);
     }
 }
 
