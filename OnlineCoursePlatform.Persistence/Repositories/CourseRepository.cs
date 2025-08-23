@@ -13,7 +13,6 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         public async Task<List<Course>> GetCoursesWithCategoryAndLevelAsync(bool onlyPublished = false)
         {
             var query = _dbContext.Courses
-                    .Where(r => r.IsPublished)
                     .Include(c => c.Category)
                     .Include(c => c.Level)
                     .AsQueryable();
