@@ -121,8 +121,6 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         [Fact]
         public async Task GetAllCoursesWithCategoryAndLevel_ShouldReturnAllCourses()
         {
-            System.Diagnostics.Debugger.Launch();
-
             var categoryId = Guid.NewGuid();
 
             var levelId = Guid.NewGuid();
@@ -146,21 +144,24 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             {
                 Id = Guid.NewGuid(),
                 CategoryId = categoryId,
-                Level = level
+                Level = level,
+                IsPublished = true
             };
 
             var course2 = new Course
             {
                 Id = Guid.NewGuid(),
                 CategoryId = categoryId,
-                Level = level
+                Level = level,
+                IsPublished = true
             };
 
             var course3 = new Course
             {
                 Id = Guid.NewGuid(),
                 CategoryId = categoryId,
-                Level = level
+                Level = level,
+                IsPublished = false
             };
 
             _dbContext.Courses.Add(course);
@@ -171,7 +172,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var result = await _repository.GetCoursesWithCategoryAndLevelAsync();
 
             Assert.NotNull(result);
-            Assert.Equal(3, result.Count);
+            Assert.Equal(2, result.Count);
         }
 
         [Fact]
@@ -234,9 +235,9 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         [Fact]
         public async Task UpdateIsPublishedAsync_ShouldUpdateIsPublishedProperty()
         {
-            var course = new Course 
-            { 
-                Title = "Name", 
+            var course = new Course
+            {
+                Title = "Name",
                 CreatedDate = DateTime.UtcNow,
                 IsPublished = false
             };
