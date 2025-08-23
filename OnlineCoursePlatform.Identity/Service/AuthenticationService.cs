@@ -103,7 +103,7 @@ namespace OnlineCoursePlatform.Identity.Service
 
             for (int i = 0; i < roles.Count; i++)
             {
-                roleClaims.Add(new Claim("roles", roles[i]));
+                roleClaims.Add(new Claim(ClaimTypes.Role, roles[i]));
             }
 
             var claims = new[]

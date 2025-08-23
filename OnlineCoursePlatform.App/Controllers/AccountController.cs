@@ -17,7 +17,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             object viewModel;
 
-            if(User.FindFirst("roles").Value == "Teacher")
+            if(User.IsInRole("Teacher"))
             {
                 viewModel = await _userDataService.GetTeacherDetailsAsync();
             }
@@ -25,15 +25,6 @@ namespace OnlineCoursePlatform.App.Controllers
             {
                 viewModel = await _userDataService.GetDefaultUserDetailsAsync();
             }
-
-            //if(User.IsInRole("Teacher"))
-            //{
-            //    viewModel = await _userDataService.GetTeacherDetailsAsync();
-            //}
-            //else
-            //{
-            //    viewModel = await _userDataService.GetDefaultUserDetailsAsync();
-            //}
 
             return View("Profile", viewModel);
         }
