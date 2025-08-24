@@ -1,9 +1,8 @@
-﻿using OnlineCoursePlatform.Domain.Common;
-using OnlineCoursePlatform.Domain.Enums;
+﻿using OnlineCoursePlatform.Domain.Enums;
 
-namespace OnlineCoursePlatform.Domain.Entities
+namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList
 {
-    public class CoursePublishRequest : AuditableEntity
+    public class CoursePublishRequestsListVm
     {
         public Guid CourseId { get; set; }
         public string RequestedBy { get; set; } = string.Empty;
@@ -11,7 +10,5 @@ namespace OnlineCoursePlatform.Domain.Entities
         public string ApprovedBy { get; set; } = string.Empty;
         public DateTime ApprovedAt { get; set; }
         public CoursePublishStatus Status { get; set; }
-
-        public Course Course { get; set; } = default!;
     }
 }
