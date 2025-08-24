@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="CoursePublishRequests\Commands\" />
 	  <Folder Include="Levels\Commands\" />
 	  <Folder Include="PayPal\Queries\" />
 	  <Folder Include="TestAttemps\Queries\" />
