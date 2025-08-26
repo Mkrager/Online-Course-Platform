@@ -25,6 +25,13 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(repo => repo.ListAllAsync())
                 .ReturnsAsync(coursePublishRequests);
 
+            mockRepository.Setup(r => r.AddAsync(It.IsAny<CoursePublishRequest>()))
+                .ReturnsAsync((CoursePublishRequest coursePublishRequest) =>
+                {
+                    coursePublishRequests.Add(coursePublishRequest);
+                    return coursePublishRequest;
+                });
+
             return mockRepository;
         }
     }

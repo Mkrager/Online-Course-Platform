@@ -7,6 +7,7 @@ using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCatego
 using OnlineCoursePlatform.Application.Features.Categories.Commands.DeleteCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesListWithCourses;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
@@ -105,6 +106,7 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<UserDetailsResponse, UserDetailsVm>().ReverseMap();
 
             CreateMap<CoursePublishRequest, CoursePublishRequestsListVm>().ReverseMap();
+            CreateMap<CoursePublishRequest, CreateCoursePublishRequestCommand>().ReverseMap();
         }
     }
 }
