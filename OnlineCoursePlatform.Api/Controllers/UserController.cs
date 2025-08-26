@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
-using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrollmentsByStudent;
 using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole;
 using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
-using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
