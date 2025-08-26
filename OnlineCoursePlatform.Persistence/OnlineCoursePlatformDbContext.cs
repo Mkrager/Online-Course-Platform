@@ -28,6 +28,7 @@ namespace OnlineCoursePlatform.Persistence
         public DbSet<UserAnswer> UserAnswers { get; set; }
         public DbSet<TestAttempt> TestAttempts { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<CoursePublishRequest> CoursePublishRequests { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OnlineCoursePlatformDbContext).Assembly);

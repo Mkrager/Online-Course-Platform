@@ -4,7 +4,7 @@ using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Persistence.Repositories
 {
-    public class CoursePublishRequestRepository : BaseRepository<CoursePublishRequestRepository>, ICoursePublishRequestRepository
+    public class CoursePublishRequestRepository : BaseRepository<CoursePublishRequest>, ICoursePublishRequestRepository
     {
         public CoursePublishRequestRepository(OnlineCoursePlatformDbContext dbContext) : base(dbContext)
         {      
