@@ -78,6 +78,5 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             Assert.NotNull(result[0].Course);
             Assert.Equal(1, result.Count);
         }
-
     }
 }
