@@ -10,9 +10,10 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {      
         }
 
-        public async Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus)
+        public async Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? rejectReason = null)
         {
             coursePublishRequest.Status = newStatus;
+            coursePublishRequest.RejectReason = rejectReason;
             await _dbContext.SaveChangesAsync();
         }
     }

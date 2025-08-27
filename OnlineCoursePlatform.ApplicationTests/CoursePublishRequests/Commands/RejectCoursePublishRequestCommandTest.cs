@@ -1,29 +1,31 @@
 ﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.RejectCourse;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Enums;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Commands
 {
-    public class CancelCoursePublishRequestCommandTest
+    public class RejectCoursePublishRequestCommandTest
     {
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
 
-        public CancelCoursePublishRequestCommandTest()
+        public RejectCoursePublishRequestCommandTest()
         {
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
         }
 
         [Fact]
-        public async Task CanceleCourseRequest_ValidCommand_UpdatesStatusPropertySuccessfully()
+        public async Task RejectCourseRequest_ValidCommand_UpdatesStatusPropertySuccessfully()
         {
-            var handler = new CancelCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
+            var handler = new RejectCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
 
-            var command = new CancelCoursePublishRequestCommand()
+            var command = new RejectCoursePublishRequestCommand()
             {
-                Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6")
+                Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6"),
+                RejectReason = "reason"
             };
 
             var result = await handler.Handle(command, CancellationToken.None);
@@ -33,7 +35,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
             var updCoursePublishRequests = coursePublishRequests.FirstOrDefault(a => a.Id == command.Id);
             updCoursePublishRequests.ShouldNotBeNull();
             updCoursePublishRequests.Id.ShouldBe(command.Id);
-            updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Canceled);
+            updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Rejected);
+            updCoursePublishRequests.RejectReason.ShouldBe("reason");
         }
+
     }
 }

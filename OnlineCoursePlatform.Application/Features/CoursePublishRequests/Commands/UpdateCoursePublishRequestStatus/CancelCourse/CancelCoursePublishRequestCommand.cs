@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CancelCourse
+namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
 {
     public class CancelCoursePublishRequestCommand : IRequest
     {

@@ -5,6 +5,6 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
     public interface ICoursePublishRequestRepository : IAsyncRepository<CoursePublishRequest>
     {
-        Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus);
+        Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? rejectReason = null);
     }
 }

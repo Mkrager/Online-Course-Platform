@@ -4,7 +4,7 @@ using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 
-namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CancelCourse
+namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
 {
     public class CancelCoursePublishRequestCommandHandler : IRequestHandler<CancelCoursePublishRequestCommand>
     {
