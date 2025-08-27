@@ -1,31 +1,28 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.ApproveCourse;
-using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CancelCourse;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
-using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Commands
 {
-    public class ApproveCoursePublishRequestCommandTest
+    public class CancelCoursePublishRequestCommandTest
     {
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
 
-        public ApproveCoursePublishRequestCommandTest()
+        public CancelCoursePublishRequestCommandTest()
         {
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
         }
 
         [Fact]
-        public async Task AproveCourseRequest_ValidCommand_UpdatesStatusPropertySuccessfully()
+        public async Task CanceleCourseRequest_ValidCommand_UpdatesStatusPropertySuccessfully()
         {
-            var handler = new ApproveCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
+            var handler = new CancelCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
 
-            var command = new ApproveCoursePublishRequestCommand()
+            var command = new CancelCoursePublishRequestCommand()
             {
                 Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6")
             };
@@ -37,7 +34,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
             var updCoursePublishRequests = coursePublishRequests.FirstOrDefault(a => a.Id == command.Id);
             updCoursePublishRequests.ShouldNotBeNull();
             updCoursePublishRequests.Id.ShouldBe(command.Id);
-            updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Approved);
+            updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Canceled);
         }
     }
 }
