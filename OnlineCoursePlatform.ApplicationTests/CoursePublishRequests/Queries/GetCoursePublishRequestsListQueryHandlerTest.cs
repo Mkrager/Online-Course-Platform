@@ -2,10 +2,8 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
-using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
-using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queries
@@ -13,7 +11,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queri
     public class GetCoursePublishRequestsListQueryHandlerTest
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<CoursePublishRequest>> _mockCoursePublishRequestRepository;
+        private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
 
         public GetCoursePublishRequestsListQueryHandlerTest()
         {

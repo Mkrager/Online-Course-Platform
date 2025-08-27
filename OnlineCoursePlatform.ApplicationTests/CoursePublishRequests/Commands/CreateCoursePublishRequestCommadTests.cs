@@ -5,7 +5,6 @@ using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCatego
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
-using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Commands
@@ -13,7 +12,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
     public class CreateCoursePublishRequestCommadTests
     {
         private readonly IMapper _mapper;
-        private readonly Mock<IAsyncRepository<CoursePublishRequest>> _mockCoursePublishRequestRepository;
+        private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
 
         public CreateCoursePublishRequestCommadTests()
         {

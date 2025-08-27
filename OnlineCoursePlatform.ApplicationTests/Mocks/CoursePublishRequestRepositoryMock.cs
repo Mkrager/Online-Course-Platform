@@ -1,18 +1,20 @@
 ﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
+using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 {
     public class CoursePublishRequestRepositoryMock
     {
-        public static Mock<IAsyncRepository<CoursePublishRequest>> GetCoursePublishRequest()
+        public static Mock<ICoursePublishRequestRepository> GetCoursePublishRequest()
         {
             var coursePublishRequests = new List<CoursePublishRequest>()
             {
                 new CoursePublishRequest()
                 {
                     Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6"),
+                    Status = CoursePublishStatus.Pending
                 },
                 new CoursePublishRequest()
                 {
@@ -20,7 +22,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                 }
             };
 
-            var mockRepository = new Mock<IAsyncRepository<CoursePublishRequest>>();
+            var mockRepository = new Mock<ICoursePublishRequestRepository>();
 
             mockRepository.Setup(repo => repo.ListAllAsync())
                 .ReturnsAsync(coursePublishRequests);
@@ -31,6 +33,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     coursePublishRequests.Add(coursePublishRequest);
                     return coursePublishRequest;
                 });
+
+            mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid id) => coursePublishRequests.FirstOrDefault(x => x.Id == id));
+
 
             return mockRepository;
         }
