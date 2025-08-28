@@ -54,9 +54,25 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         {
             var courseId = Guid.NewGuid();
 
+            var level = new Level
+            {
+                Id = Guid.NewGuid()
+            };
+
+            var category = new Category
+            {
+                Id = Guid.NewGuid()
+            };
+
+            _dbContext.Levels.Add(level);
+            _dbContext.Categories.Add(category);
+            await _dbContext.SaveChangesAsync();
+
             var course = new Course 
             { 
-                Id = courseId 
+                Id = courseId,
+                Level = level,
+                Category = category
             };
 
             _dbContext.Courses.Add(course);
@@ -66,7 +82,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             {
                 Id = Guid.NewGuid(),
                 StudentId = "123",
-                CourseId = courseId,
+                CourseId = courseId
             };
 
             _dbContext.Enrollments.Add(enrollment);
