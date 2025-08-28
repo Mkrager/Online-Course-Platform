@@ -66,7 +66,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             {
                 Id = Guid.NewGuid(),
                 StudentId = "123",
-                CourseId = courseId
+                CourseId = courseId,
             };
 
             _dbContext.Enrollments.Add(enrollment);
@@ -76,7 +76,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 
             Assert.NotNull(result);
             Assert.NotNull(result[0].Course);
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
     }
 }

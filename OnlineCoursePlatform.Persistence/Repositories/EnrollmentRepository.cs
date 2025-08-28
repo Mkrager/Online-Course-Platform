@@ -13,11 +13,11 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         public async Task<List<Enrollment>> GetEnrollmentsByStudentIdWithCoursesAsync(string studentId)
         {
             return await _dbContext.Enrollments
+                .Where(s => s.StudentId == studentId)
                 .Include(x => x.Course)
                     .ThenInclude(x => x.Level)
                 .Include(x => x.Course)
                     .ThenInclude(x => x.Category)
-                .Where(s => s.StudentId == studentId)
                 .ToListAsync();
         }
 
