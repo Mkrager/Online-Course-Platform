@@ -25,7 +25,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
             RuleFor(p => p.CategoryId)
                 .NotEmpty()
                 .NotNull().WithMessage("{PropertyName} is required.");
-
         }
     }
 }

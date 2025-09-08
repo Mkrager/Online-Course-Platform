@@ -32,6 +32,5 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
             var allCourses = await _mockCourseRepository.Object.ListAllAsync();
             allCourses.Count.ShouldBe(3);
         }
-
     }
 }

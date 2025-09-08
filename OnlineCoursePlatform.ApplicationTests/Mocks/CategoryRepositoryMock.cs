@@ -12,7 +12,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             {
                 new Category { Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee"), Name = "TestCategory1" },
                 new Category { Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"), Name = "TestCategory2" }
-
             };
 
             var mockRepository = new Mock<ICategoryRepository>();

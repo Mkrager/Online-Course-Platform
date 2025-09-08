@@ -1,5 +1,4 @@
 ﻿using OnlineCoursePlatform.Application.Contracts;
-using System.Security.Claims;
 
 namespace OnlineCoursePlatform.Api.Services
 {

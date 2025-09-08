@@ -34,7 +34,7 @@ namespace OnlineCoursePlatform.Application.Behaviours
             if (failures.Any())
             {
                 var result = new ValidationResult(failures);
-                throw new OnlineCoursePlatform.Application.Exceptions.ValidationException(result);
+                throw new Exceptions.ValidationException(result);
             }
 
             return await next();

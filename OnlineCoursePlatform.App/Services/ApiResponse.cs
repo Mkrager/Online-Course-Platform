@@ -29,5 +29,4 @@ namespace OnlineCoursePlatform.App.Services
             ErrorText = errorText;
         }
     }
-
 }

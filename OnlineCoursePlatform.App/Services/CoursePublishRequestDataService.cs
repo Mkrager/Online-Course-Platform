@@ -1,6 +1,8 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
@@ -19,6 +21,41 @@ namespace OnlineCoursePlatform.App.Services
                 PropertyNameCaseInsensitive = true
             };
             _authenticationService = authenticationService;
+        }
+
+        public async Task<ApiResponse<Guid>> CreateCourseRequest(CoursePublishRequestListViewModel coursePublishRequestViewModel)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/coursepublishrequest")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(coursePublishRequestViewModel), Encoding.UTF8, "application/json")
+                };
+
+                string accessToken = _authenticationService.GetAccessToken();
+
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                var response = await _httpClient.SendAsync(request);
+
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
+
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseId);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
+            }
         }
 
         public async Task<List<CoursePublishRequestListViewModel>> GetAllCoursePublishRequests()

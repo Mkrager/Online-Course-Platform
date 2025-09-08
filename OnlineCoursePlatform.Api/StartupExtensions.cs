@@ -59,7 +59,6 @@ namespace OnlineCoursePlatform.Api
 
             app.UseCors("Open");
 
-
             app.MapControllers();
 
             return app;
@@ -107,6 +106,5 @@ namespace OnlineCoursePlatform.Api
                 });
             });
         }
-
     }
 }

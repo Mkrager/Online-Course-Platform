@@ -17,7 +17,6 @@ namespace OnlineCoursePlatform.Application.Features.Account.Commands.Registratio
 
         public async Task<string> Handle(RegistrationCommand request, CancellationToken cancellationToken)
         {
-
             var register = await _authenticationService
                 .RegisterAsync(_mapper.Map<RegistrationRequest>(request));
 

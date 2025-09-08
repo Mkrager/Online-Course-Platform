@@ -2,7 +2,6 @@
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Persistence.Repositories;
 using OnlineCoursePlatform.Persistence;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts;
 

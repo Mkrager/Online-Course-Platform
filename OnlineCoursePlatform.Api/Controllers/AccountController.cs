@@ -36,6 +36,5 @@ namespace OnlineCoursePlatform.Api.Controllers
 
             return Ok(dtos);
         }
-
     }
 }
