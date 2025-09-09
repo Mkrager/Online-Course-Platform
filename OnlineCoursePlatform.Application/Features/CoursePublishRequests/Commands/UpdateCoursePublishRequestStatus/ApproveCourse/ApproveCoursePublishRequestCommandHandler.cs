@@ -9,10 +9,12 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
     public class ApproveCoursePublishRequestCommandHandler : IRequestHandler<ApproveCoursePublishRequestCommand>
     {
         private readonly ICoursePublishRequestRepository _coursePublishRequestRepository;
-        
-        public ApproveCoursePublishRequestCommandHandler(ICoursePublishRequestRepository coursePublishRequestRepository)
+        private readonly ICourseRepository _courseRepository;
+
+        public ApproveCoursePublishRequestCommandHandler(ICoursePublishRequestRepository coursePublishRequestRepository, ICourseRepository courseRepository)
         {
             _coursePublishRequestRepository = coursePublishRequestRepository;
+            _courseRepository = courseRepository;
         }
         public async Task<Unit> Handle(ApproveCoursePublishRequestCommand request, CancellationToken cancellationToken)
         {
@@ -22,6 +24,13 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
                 throw new NotFoundException(nameof(CoursePublishRequest), request.Id);
 
             await _coursePublishRequestRepository.UpdateStatusAsync(coursePublishRequest, CoursePublishStatus.Approved);
+
+            var course = await _courseRepository.GetByIdAsync(coursePublishRequest.CourseId);
+
+            if (course == null)
+                throw new NotFoundException(nameof(Course), coursePublishRequest.CourseId);
+
+            await _courseRepository.UpdateIsPublishedAsync(course, true);
 
             return Unit.Value;
         }

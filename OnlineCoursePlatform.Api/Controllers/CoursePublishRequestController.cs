@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -14,6 +15,13 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var id = await mediator.Send(createCoursePublishRequestCommand);
             return Ok(id);
+        }
+
+        [HttpPut(Name = "ApproveCoursePublishRequest")]
+        public async Task<ActionResult<Guid>> Approve([FromBody] ApproveCoursePublishRequestCommand approveCoursePublishRequestCommand)
+        {
+            await mediator.Send(approveCoursePublishRequestCommand);
+            return NoContent();
         }
 
         [HttpGet(Name = "GetAllCoursesRequests")]

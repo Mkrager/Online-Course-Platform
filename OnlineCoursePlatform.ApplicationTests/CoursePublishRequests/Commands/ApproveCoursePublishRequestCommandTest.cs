@@ -10,16 +10,17 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
     public class ApproveCoursePublishRequestCommandTest
     {
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
-
+        private readonly Mock<ICourseRepository> _mockCourseRepository;
         public ApproveCoursePublishRequestCommandTest()
         {
+            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
         }
 
         [Fact]
         public async Task AproveCourseRequest_ValidCommand_UpdatesStatusPropertySuccessfully()
         {
-            var handler = new ApproveCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
+            var handler = new ApproveCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object, _mockCourseRepository.Object);
 
             var command = new ApproveCoursePublishRequestCommand()
             {
@@ -34,6 +35,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
             updCoursePublishRequests.ShouldNotBeNull();
             updCoursePublishRequests.Id.ShouldBe(command.Id);
             updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Approved);
+
+            var course = await _mockCourseRepository.Object.GetByIdAsync(Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b21e8"));
+            course.IsPublished.ShouldBeTrue();
         }
     }
 }

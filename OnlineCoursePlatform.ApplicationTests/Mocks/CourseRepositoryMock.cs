@@ -37,7 +37,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     Price = 100,
                     ThumbnailUrl = "test",
                     CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a261-2f2b197b4c6a"),
-                    CreatedBy = "id"
+                    CreatedBy = "id",
+                    IsPublished = false
                 },
                 new Course
                 {
