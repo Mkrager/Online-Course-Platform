@@ -1,0 +1,49 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+@model List<CoursePublishRequestListViewModel>
+
+<div class="category-list-container">
+    <h2>Course Publish Requests</h2>
+    <p>Here you can approve or reject requests to publish courses.</p>
+
+    <div class="card-container">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var request in Model)
+            {
+                <div class="course-card">
+                    <h3 class="title">Course ID: @request.CourseId</h3>
+
+                    <div class="category-section">
+                        <span class="category">Requested By: @request.RequestedBy</span>
+                        <span class="category">Date: @request.RequestedDate.ToShortDateString()</span>
+                    </div>
+
+                    @if (request.Status == CoursePublishStatus.Approved)
+                    {
+                        <p class="author">Approved By: @request.ApprovedBy (@request.ApprovedAt.ToShortDateString())</p>
+                    }
+                    else
+                    {
+                        <p class="author">Status: @request.Status</p>
+                    }
+
+                    <div class="course-actions">
+                        <form asp-action="Approve" asp-controller="CoursePublishRequest" method="post">
+                            <input type="hidden" name="Id" value="@request.CourseId" />
+                            <button type="submit" class="btn-pass">Approve</button>
+                        </form>
+
+                        <form asp-action="Reject" asp-controller="CoursePublishRequest" method="post">
+                            <input type="hidden" name="Id" value="@request.CourseId" />
+                            <button type="submit" class="btn-danger">Reject</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No requests pending.</p>
+        }
+    </div>
+</div>

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Middlewares;
-using OnlineCoursePlatform.App.Services;
+
 namespace OnlineCoursePlatform.App.Controllers
 {
     public class CoursePublishRequestController : Controller
@@ -11,6 +10,13 @@ namespace OnlineCoursePlatform.App.Controllers
         public CoursePublishRequestController(ICoursePublishRequestDataService coursePublishRequestDataService)
         {
             _coursePublishRequestDataService = coursePublishRequestDataService;
+        }
+
+        public async Task<IActionResult> List()
+        {
+            var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests();
+
+            return View(coursePublishRequests);
         }
     }
 }
