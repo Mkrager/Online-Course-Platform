@@ -4,7 +4,6 @@ using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
-using System.Runtime.CompilerServices;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -13,10 +12,10 @@ namespace OnlineCoursePlatform.App.Controllers
         private readonly ICourseDataService _courseDataService;
         private readonly ICategoryDataService _categoryDataService;
         private readonly ILevelDataService _levelDataService;
-        private readonly ICoursePublishRequestDataService _coursePublishRequestDataService
+        private readonly ICoursePublishRequestDataService _coursePublishRequestDataService;
         public CourseController(
-            ICourseDataService courseDataService, 
-            ICategoryDataService categoryDataService, 
+            ICourseDataService courseDataService,
+            ICategoryDataService categoryDataService,
             ILevelDataService levelDataService,
             ICoursePublishRequestDataService coursePublishRequestDataService)
         {
@@ -63,15 +62,18 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (newCourse.IsSuccess)
             {
-                await _coursePublishRequestDataService.CreateCourseRequest(new CoursePublishRequestListViewModel()
-                {
-                    CourseId = newCourse.Data
-                });
+                var result = await _coursePublishRequestDataService.CreateCourseRequest(newCourse.Data);
 
-                return RedirectToAction("Profile", "Account");
+                if (result.IsSuccess)
+                    return RedirectToAction("Profile", "Account");
+
+                TempData["Message"] = HandleErrors.HandleResponse(result);
+            }
+            else
+            {
+                TempData["Message"] = HandleErrors.HandleResponse(newCourse);
             }
 
-            TempData["Message"] = HandleErrors.HandleResponse<Guid>(newCourse);
             TempData["Categories"] = await Categories();
             TempData["Levels"] = await Levels();
 

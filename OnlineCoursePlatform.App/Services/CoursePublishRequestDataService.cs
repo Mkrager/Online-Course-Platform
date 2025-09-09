@@ -39,9 +39,9 @@ namespace OnlineCoursePlatform.App.Services
                 {
                     var responseContent = await response.Content.ReadAsStringAsync();
 
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
+                    var courseRequestId = JsonSerializer.Deserialize<Guid>(responseContent);
 
-                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseId);
+                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseRequestId);
                 }
 
                 var errorContent = await response.Content.ReadAsStringAsync();
