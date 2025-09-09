@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.ViewModels.Course;
+using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
+using System.Runtime.CompilerServices;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -11,12 +13,17 @@ namespace OnlineCoursePlatform.App.Controllers
         private readonly ICourseDataService _courseDataService;
         private readonly ICategoryDataService _categoryDataService;
         private readonly ILevelDataService _levelDataService;
-
-        public CourseController(ICourseDataService courseDataService, ICategoryDataService categoryDataService, ILevelDataService levelDataService)
+        private readonly ICoursePublishRequestDataService _coursePublishRequestDataService
+        public CourseController(
+            ICourseDataService courseDataService, 
+            ICategoryDataService categoryDataService, 
+            ILevelDataService levelDataService,
+            ICoursePublishRequestDataService coursePublishRequestDataService)
         {
             _courseDataService = courseDataService;
             _categoryDataService = categoryDataService;
             _levelDataService = levelDataService;
+            _coursePublishRequestDataService = coursePublishRequestDataService;
         }
 
         private async Task<SelectList> Categories()
@@ -56,6 +63,11 @@ namespace OnlineCoursePlatform.App.Controllers
 
             if (newCourse.IsSuccess)
             {
+                await _coursePublishRequestDataService.CreateCourseRequest(new CoursePublishRequestListViewModel()
+                {
+                    CourseId = newCourse.Data
+                });
+
                 return RedirectToAction("Profile", "Account");
             }
 

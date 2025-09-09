@@ -10,10 +10,13 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class CoursePublishRequestController(IMediator mediator) : Controller
     {
-        [HttpPost(Name = "AddCoursePublishrequest")]
-        public async Task<ActionResult<Guid>> Create([FromBody] CreateCoursePublishRequestCommand createCoursePublishRequestCommand)
+        [HttpPost("{id}",Name = "AddCoursePublishRequest")]
+        public async Task<ActionResult<Guid>> Create(Guid courseId)
         {
-            var id = await mediator.Send(createCoursePublishRequestCommand);
+            var id = await mediator.Send(new CreateCoursePublishRequestCommand()
+            {
+                CourseId = courseId
+            });
             return Ok(id);
         }
 

@@ -26,10 +26,9 @@ namespace OnlineCoursePlatform.App.Controllers
                 return RedirectToAction("Profile", "Account");
             }
 
-            TempData["Message"] = HandleErrors.HandleResponse<Guid>(newCourse);
+            TempData["Message"] = HandleErrors.HandleResponse(newCourse);
 
             return View();
         }
-
     }
 }

@@ -22,14 +22,11 @@ namespace OnlineCoursePlatform.App.Services
             _authenticationService = authenticationService;
         }
 
-        public async Task<ApiResponse<Guid>> CreateCourseRequest(CoursePublishRequestListViewModel coursePublishRequestViewModel)
+        public async Task<ApiResponse<Guid>> CreateCourseRequest(Guid courseId)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/coursepublishrequest")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(coursePublishRequestViewModel), Encoding.UTF8, "application/json")
-                };
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/coursepublishrequest/{courseId}");
 
                 string accessToken = _authenticationService.GetAccessToken();
 
