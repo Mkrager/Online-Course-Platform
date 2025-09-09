@@ -17,10 +17,13 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
-        [HttpPut(Name = "ApproveCoursePublishRequest")]
-        public async Task<ActionResult<Guid>> Approve([FromBody] ApproveCoursePublishRequestCommand approveCoursePublishRequestCommand)
+        [HttpPut("approve/{id}", Name = "ApproveCoursePublishRequest")]
+        public async Task<ActionResult<Guid>> Approve(Guid id)
         {
-            await mediator.Send(approveCoursePublishRequestCommand);
+            await mediator.Send(new ApproveCoursePublishRequestCommand()
+            {
+                Id = id
+            });
             return NoContent();
         }
 

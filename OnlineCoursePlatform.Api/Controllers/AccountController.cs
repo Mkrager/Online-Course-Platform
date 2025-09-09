@@ -11,28 +11,17 @@ namespace OnlineCoursePlatform.Api.Controllers
     public class AccountController(IMediator mediator) : Controller
     {
         [HttpPost("authenticate")]
-        public async Task<ActionResult<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
+        public async Task<ActionResult<AuthenticationResponse>> AuthenticateAsync([FromBody] AuthenticationQuery request)
         {
-            var dtos = await mediator.Send(new AuthenticationQuery()
-            {
-                Email = request.Email,
-                Password = request.Password
-            });
+            var dtos = await mediator.Send(request);
 
             return Ok(dtos);
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<string>> RegisterAsync(RegistrationRequest request)
+        public async Task<ActionResult<string>> RegisterAsync([FromBody] RegistrationCommand request)
         {
-            var dtos = await mediator.Send(new RegistrationCommand() 
-            { 
-                UserName = request.UserName, 
-                Password = request.Password, 
-                Email = request.Email, 
-                FirstName = request.FirstName, 
-                LastName = request.LastName 
-            });
+            var dtos = await mediator.Send(request);
 
             return Ok(dtos);
         }
