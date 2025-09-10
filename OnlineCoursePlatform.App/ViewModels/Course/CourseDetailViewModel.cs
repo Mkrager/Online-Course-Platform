@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using OnlineCoursePlatform.App.ViewModels.Category;
+using OnlineCoursePlatform.App.ViewModels.Level;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineCoursePlatform.App.ViewModels.Course
 {
@@ -25,5 +27,7 @@ namespace OnlineCoursePlatform.App.ViewModels.Course
         [Required(ErrorMessage = "Image is required")]
         public string ThumbnailUrl { get; set; } = string.Empty;
         //public bool IsPublished { get; set; }
+        public CategoryViewModel Category { get; set; } = default!;
+        public LevelViewModel Level { get; set; } = default!;
     }
 }

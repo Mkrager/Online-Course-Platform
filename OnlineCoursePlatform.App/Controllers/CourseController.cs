@@ -115,6 +115,13 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var course = await _courseDataService.GetCourseById(id);
+            return View(course);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> CategoryCourses(Guid categoryId)
         {
             var courses = await _courseDataService.GetCoursesByCategoryId(categoryId);

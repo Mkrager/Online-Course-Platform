@@ -11,7 +11,7 @@
             foreach (var request in Model)
             {
                 <div class="course-card">
-                    <h3 class="title">Course ID: @request.CourseId</h3>
+                    <h3 class="title"> Course:<a asp-controller="course" asp-action="details" asp-route-id="@request.CourseId" class="btn-submit">View details</a></h3>
 
                     <div class="category-section">
                         <span class="category">Requested By: @request.RequestedBy</span>
@@ -35,7 +35,7 @@
 
                         <form asp-action="Reject" asp-controller="CoursePublishRequest" method="post">
                             <input type="hidden" name="Id" value="@request.CourseId" />
-                            <button type="submit" class="btn-danger">Reject</button>
+                            <button type="submit" class="btn btn-danger">Reject</button>
                         </form>
                     </div>
                 </div>

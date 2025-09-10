@@ -1,0 +1,14 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Course;
+@model CourseDetailViewModel
+
+<div class="course-item">
+    <h4>@Model.Title</h4>
+    <p class="course-description">@Model.Description</p>
+    @* <p class="course-description">Level: @Model.Level.Name</p> *@
+    @* <p class="course-description">Category: @Model.Category.Name</p> *@
+    <p class="course-description">Price: @Model.Price</p>
+
+    <div class="course-actions">
+        <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@Model.Id" class="btn-lessons">Lessons</a>
+    </div>
+</div>
