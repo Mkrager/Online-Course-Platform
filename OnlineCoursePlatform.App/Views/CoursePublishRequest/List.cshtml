@@ -5,37 +5,37 @@
     <h2>Course Publish Requests</h2>
     <p>Here you can approve or reject requests to publish courses.</p>
 
-    <div class="card-container">
+    <div class="course-request-container">
         @if (Model != null && Model.Any())
         {
             foreach (var request in Model)
             {
                 <div class="course-card">
-                    <h3 class="title"> Course:<a asp-controller="course" asp-action="details" asp-route-id="@request.CourseId" class="btn-submit">View details</a></h3>
+                    <h3 class="title"> Course:<a asp-controller="course" asp-action="details" asp-route-id="@request.CourseId" class="btn-submit btn-view-details">View details</a></h3>
 
                     <div class="category-section">
-                        <span class="category">Requested By: @request.RequestedBy</span>
+                        <span class="category">Requested By: @request.RequestedName</span>
                         <span class="category">Date: @request.RequestedDate.ToShortDateString()</span>
                     </div>
 
                     @if (request.Status == CoursePublishStatus.Approved)
                     {
-                        <p class="author">Approved By: @request.ApprovedBy (@request.ApprovedAt.ToShortDateString())</p>
+                        <p class="author">Approved By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
                     }
                     else
                     {
                         <p class="author">Status: @request.Status</p>
                     }
 
-                    <div class="course-actions">
+                    <div class="course-request-actions">
                         <form asp-action="Approve" asp-controller="CoursePublishRequest" method="post">
                             <input type="hidden" name="Id" value="@request.CourseId" />
-                            <button type="submit" class="btn-pass">Approve</button>
+                            <button type="submit" class="btn-lessons">Approve</button>
                         </form>
 
                         <form asp-action="Reject" asp-controller="CoursePublishRequest" method="post">
                             <input type="hidden" name="Id" value="@request.CourseId" />
-                            <button type="submit" class="btn btn-danger">Reject</button>
+                            <button type="submit" class="btn-lessons btn-danger">Reject</button>
                         </form>
                     </div>
                 </div>
