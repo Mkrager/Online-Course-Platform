@@ -1,4 +1,6 @@
-﻿namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail
+﻿using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
+
+namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail
 {
     public class CourseDetailVm
     {
@@ -9,5 +11,8 @@
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
         public string LevelId { get; set; } = string.Empty;
+
+        public CategoryDto Category { get; set; } = default!;
+        public LevelDto Level { get; set; } = default!;
     }
 }

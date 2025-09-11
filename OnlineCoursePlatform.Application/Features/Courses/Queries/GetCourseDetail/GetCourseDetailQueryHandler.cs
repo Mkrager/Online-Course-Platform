@@ -9,9 +9,9 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDet
     public class GetCourseDetailQueryHandler : IRequestHandler<GetCourseDetailQuery, CourseDetailVm>
     {
         private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Course> _courseRepository;
+        private readonly ICourseRepository _courseRepository;
 
-        public GetCourseDetailQueryHandler(IMapper mapper, IAsyncRepository<Course> courseRepository)
+        public GetCourseDetailQueryHandler(IMapper mapper, ICourseRepository courseRepository)
         {
             _courseRepository = courseRepository;
             _mapper = mapper;
@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDet
 
         public async Task<CourseDetailVm> Handle(GetCourseDetailQuery request, CancellationToken cancellationToken)
         {
-            var course = await _courseRepository.GetByIdAsync(request.Id);
+            var course = await _courseRepository.GetCourseByIdWithCategoryAndLevelAsync(request.Id);
 
             if (course == null)
             {
