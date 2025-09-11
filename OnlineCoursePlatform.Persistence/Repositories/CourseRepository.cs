@@ -49,5 +49,12 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<Course?> GetCourseByIdWithCategoryAndLevelAsync(Guid id)
+        {
+            return await _dbContext.Courses
+                .Include(r => r.Category)
+                .Include(c => c.Level)
+                .FirstOrDefaultAsync(r => r.Id == id);
+        }
     }
 }

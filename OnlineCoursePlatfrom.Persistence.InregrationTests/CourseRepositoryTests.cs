@@ -308,5 +308,47 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             Assert.NotNull(updatedCourse);
             Assert.True(updatedCourse.IsPublished);
         }
+
+        [Fact]
+        public async Task GetCourseByIdWithCategoryAndLevelAsync_ShouldReturnCourse_WhenCourseExists()
+        {
+            var categoryId = Guid.NewGuid();
+
+            var levelId = Guid.NewGuid();
+
+            var level = new Level
+            {
+                Name = "Test",
+                Id = levelId
+            };
+
+            var category = new Category
+            {
+                Id = categoryId,
+                Name = "Test",
+            };
+
+            _dbContext.Categories.Add(category);
+            await _dbContext.SaveChangesAsync();
+
+            var courseId = Guid.NewGuid();
+
+            var course = new Course
+            {
+                Id = courseId,
+                Title = "Course",
+                CreatedDate = DateTime.UtcNow,
+                Category = category,
+                Level = level
+            };
+            await _repository.AddAsync(course);
+
+            var result = await _repository.GetCourseByIdWithCategoryAndLevelAsync(courseId);
+
+            Assert.NotNull(result);
+            Assert.Equal(course.Title, result.Title);
+            Assert.NotNull(course.Category);
+            Assert.NotNull(course.Level);
+        }
     }
 }
