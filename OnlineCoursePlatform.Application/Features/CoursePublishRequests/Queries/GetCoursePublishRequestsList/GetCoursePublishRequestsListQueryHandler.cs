@@ -17,6 +17,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
         public async Task<List<CoursePublishRequestsListVm>> Handle(GetCoursePublishRequestsListQuery request, CancellationToken cancellationToken)
         {
             var coursePublishRequests = await _coursePublishRequestRepository.ListAllAsync();
+
             return _mapper.Map<List<CoursePublishRequestsListVm>>(coursePublishRequests);
         }
     }

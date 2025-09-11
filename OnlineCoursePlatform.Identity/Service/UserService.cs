@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.DTOs.User;
 using OnlineCoursePlatform.Identity.Models;
@@ -55,6 +56,16 @@ namespace OnlineCoursePlatform.Identity.Service
             };
 
             return userDetailsResponse;
+        }
+
+        public async Task<Dictionary<string, string>> GetUserNamesByIdsAsync(IEnumerable<string> userIds)
+        {
+            var users = await _userManager.Users
+                .Where(u => userIds.Contains(u.Id))
+                .Select(u => new { u.Id, u.UserName })
+                .ToListAsync();
+
+            return users.ToDictionary(u => u.Id, u => u.UserName);
         }
     }
 }
