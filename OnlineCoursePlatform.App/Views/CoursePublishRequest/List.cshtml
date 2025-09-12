@@ -22,20 +22,17 @@
                     {
                         <p class="author">Approved By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
                     }
+                    else if(request.Status == CoursePublishStatus.Rejected)
+                    {
+                        <p class="author">Rejected By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
+                    }
                     else
                     {
                         <p class="author">Status: @request.Status</p>
 
                         <div class="course-request-actions">
-                            <form asp-action="Approve" asp-controller="CoursePublishRequest" method="post">
-                                <input type="hidden" name="Id" value="@request.Id" />
-                                <button type="submit" class="btn-lessons">Approve</button>
-                            </form>
-
-                            <form asp-action="Reject" asp-controller="CoursePublishRequest" method="post">
-                                <input type="hidden" name="Id" value="@request.Id" />
-                                <button type="submit" class="btn-lessons btn-danger">Reject</button>
-                            </form>
+                            <button type="submit" class="btn-lessons" onclick="approveCourse('@request.Id')">Approve</button>
+                            <button type="submit" class="btn-lessons btn-danger" onclick="rejectCourse('@request.Id')">Reject</button>
                         </div>
                     }
                 </div>
@@ -47,3 +44,5 @@
         }
     </div>
 </div>
+
+<script src="~/js/coursePublishRequest/updateCourseRequestStatus.js"></script>

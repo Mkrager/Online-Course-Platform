@@ -6,6 +6,7 @@ namespace OnlineCoursePlatform.App.Contracts
     public interface ICoursePublishRequestDataService
     {
         Task<ApiResponse> ApproveCourseRequest(Guid id);
+        Task<ApiResponse> RejectCourseRequest(Guid id);
         Task<ApiResponse<Guid>> CreateCourseRequest(Guid id);
         Task<List<CoursePublishRequestListViewModel>> GetAllCoursePublishRequests();
     }

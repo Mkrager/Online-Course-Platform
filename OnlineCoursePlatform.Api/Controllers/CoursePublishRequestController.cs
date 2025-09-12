@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.RejectCourse;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -24,6 +25,16 @@ namespace OnlineCoursePlatform.Api.Controllers
         public async Task<ActionResult<Guid>> Approve(Guid id)
         {
             await mediator.Send(new ApproveCoursePublishRequestCommand()
+            {
+                Id = id
+            });
+            return NoContent();
+        }
+
+        [HttpPut("reject/{id}", Name = "RejectCoursePublishRequest")]
+        public async Task<ActionResult<Guid>> Reject(Guid id)
+        {
+            await mediator.Send(new RejectCoursePublishRequestCommand()
             {
                 Id = id
             });
