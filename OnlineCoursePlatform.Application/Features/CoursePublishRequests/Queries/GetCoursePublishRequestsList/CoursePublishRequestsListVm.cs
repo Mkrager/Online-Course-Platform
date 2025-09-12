@@ -4,6 +4,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
 {
     public class CoursePublishRequestsListVm
     {
+        public Guid Id { get; set; }
         public Guid CourseId { get; set; }
         public string RequestedBy { get; set; } = string.Empty;
         public string RequestedName { get; set; } = string.Empty;

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
+using OnlineCoursePlatform.Application.Features.Courses.Commands.PublishCourse;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 
@@ -9,12 +10,13 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
     public class ApproveCoursePublishRequestCommandHandler : IRequestHandler<ApproveCoursePublishRequestCommand>
     {
         private readonly ICoursePublishRequestRepository _coursePublishRequestRepository;
-        private readonly ICourseRepository _courseRepository;
-
-        public ApproveCoursePublishRequestCommandHandler(ICoursePublishRequestRepository coursePublishRequestRepository, ICourseRepository courseRepository)
+        private readonly IMediator _mediator;
+        public ApproveCoursePublishRequestCommandHandler(
+            ICoursePublishRequestRepository coursePublishRequestRepository,
+            IMediator mediator)
         {
             _coursePublishRequestRepository = coursePublishRequestRepository;
-            _courseRepository = courseRepository;
+            _mediator = mediator;
         }
         public async Task<Unit> Handle(ApproveCoursePublishRequestCommand request, CancellationToken cancellationToken)
         {
@@ -25,12 +27,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
 
             await _coursePublishRequestRepository.UpdateStatusAsync(coursePublishRequest, CoursePublishStatus.Approved);
 
-            var course = await _courseRepository.GetByIdAsync(coursePublishRequest.CourseId);
-
-            if (course == null)
-                throw new NotFoundException(nameof(Course), coursePublishRequest.CourseId);
-
-            await _courseRepository.UpdateIsPublishedAsync(course, true);
+            await _mediator.Send(new PublishCourseCommand() { Id = coursePublishRequest.CourseId });
 
             return Unit.Value;
         }

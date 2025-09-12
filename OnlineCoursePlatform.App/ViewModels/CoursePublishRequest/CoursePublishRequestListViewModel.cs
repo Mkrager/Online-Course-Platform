@@ -2,6 +2,7 @@
 {
     public class CoursePublishRequestListViewModel
     {
+        public Guid Id { get; set; }
         public Guid CourseId { get; set; }
         public string RequestedBy { get; set; } = string.Empty;
         public DateTime RequestedDate { get; set; }

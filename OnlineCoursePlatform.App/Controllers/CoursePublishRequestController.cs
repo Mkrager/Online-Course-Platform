@@ -12,6 +12,15 @@ namespace OnlineCoursePlatform.App.Controllers
             _coursePublishRequestDataService = coursePublishRequestDataService;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Approve(Guid id)
+        {
+            await _coursePublishRequestDataService.ApproveCourseRequest(id);
+            return RedirectToAction("List", "CoursePublishRequest");
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> List()
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests();

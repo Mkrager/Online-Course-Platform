@@ -160,20 +160,6 @@ namespace OnlineCoursePlatform.App.Services
             return new List<CourseListViewModel>();
         }
 
-        public async Task<ApiResponse> Publish(Guid id)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/course/{id}/publish");
-
-            var response = await _httpClient.SendAsync(request);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return new ApiResponse(System.Net.HttpStatusCode.OK);
-            }
-
-            return new ApiResponse(System.Net.HttpStatusCode.NoContent);
-        }
-
         public async Task<ApiResponse> UnPublish(Guid id)
         {
             var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/course/{id}/unpublish");
@@ -187,6 +173,5 @@ namespace OnlineCoursePlatform.App.Services
 
             return new ApiResponse(System.Net.HttpStatusCode.NoContent);
         }
-
     }
 }

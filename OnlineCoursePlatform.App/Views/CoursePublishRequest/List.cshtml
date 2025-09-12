@@ -25,19 +25,19 @@
                     else
                     {
                         <p class="author">Status: @request.Status</p>
+
+                        <div class="course-request-actions">
+                            <form asp-action="Approve" asp-controller="CoursePublishRequest" method="post">
+                                <input type="hidden" name="Id" value="@request.Id" />
+                                <button type="submit" class="btn-lessons">Approve</button>
+                            </form>
+
+                            <form asp-action="Reject" asp-controller="CoursePublishRequest" method="post">
+                                <input type="hidden" name="Id" value="@request.Id" />
+                                <button type="submit" class="btn-lessons btn-danger">Reject</button>
+                            </form>
+                        </div>
                     }
-
-                    <div class="course-request-actions">
-                        <form asp-action="Approve" asp-controller="CoursePublishRequest" method="post">
-                            <input type="hidden" name="Id" value="@request.CourseId" />
-                            <button type="submit" class="btn-lessons">Approve</button>
-                        </form>
-
-                        <form asp-action="Reject" asp-controller="CoursePublishRequest" method="post">
-                            <input type="hidden" name="Id" value="@request.CourseId" />
-                            <button type="submit" class="btn-lessons btn-danger">Reject</button>
-                        </form>
-                    </div>
                 </div>
             }
         }

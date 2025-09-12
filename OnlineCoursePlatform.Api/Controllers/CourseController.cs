@@ -83,17 +83,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{id}/publish", Name = "PublishCourse")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType]
-        public async Task<ActionResult> PublishCourse(Guid id)
-        {
-            var publishCourseCommand = new PublishCourseCommand() { Id = id };
-            await mediator.Send(publishCourseCommand);
-            return NoContent();
-        }
-
         [HttpPatch("{id}/unpublish", Name = "UnPublishCourse")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -126,7 +126,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var courses = await _courseDataService.GetCoursesByCategoryId(categoryId);
             return View(courses);
-        }
+        }        
 
         [HttpDelete]
         public async Task<IActionResult> Delete(Guid id)
