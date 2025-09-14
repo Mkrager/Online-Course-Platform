@@ -66,7 +66,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var result = await _repository.GetCoursesByUserIdAsync(_currentUserId);
 
             Assert.NotNull(result);
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
         }
 
         [Fact]
