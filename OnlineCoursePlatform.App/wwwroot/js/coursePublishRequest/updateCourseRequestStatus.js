@@ -18,10 +18,15 @@
         }
     });
 }
-function rejectCourse(id) {
+function rejectCourse(id, rejectReason) {
     $.ajax({
-        url: `/coursePublishRequest/reject/${id}`,
+        url: '/coursePublishRequest/reject/',
         type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            id: id,
+            rejectReason: rejectReason
+        }),
         success: function (response) {
             if (response.redirectToUrl) {
                 window.location.href = response.redirectToUrl;
@@ -38,3 +43,30 @@ function rejectCourse(id) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let currentRejectId = null;
+
+    function openRejectModal(requestId) {
+        currentRejectId = requestId;
+        document.getElementById("rejectModal").style.display = "flex";
+    }
+
+    function closeRejectModal() {
+        document.getElementById("rejectModal").style.display = "none";
+        document.getElementById("rejectReason").value = "";
+    }
+
+    document.getElementById("confirmReject").addEventListener("click", function () {
+        const reason = document.getElementById("rejectReason").value;
+        if (!reason.trim()) {
+            alert("Please enter a reason for rejection.");
+            return;
+        }
+        rejectCourse(currentRejectId, reason);
+        closeRejectModal();
+    });
+
+    window.openRejectModal = openRejectModal;
+    window.closeRejectModal = closeRejectModal;
+});

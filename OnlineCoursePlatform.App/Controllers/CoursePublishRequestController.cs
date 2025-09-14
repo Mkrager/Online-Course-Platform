@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -16,14 +17,14 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Approve(Guid id)
         {
             await _coursePublishRequestDataService.ApproveCourseRequest(id);
-            return RedirectToAction("List", "CoursePublishRequest");
+            return Ok(new { redirectToUrl = Url.Action("List", "CoursePublishRequest") });
         }
 
         [HttpPut]
-        public async Task<IActionResult> Reject(Guid id)
+        public async Task<IActionResult> Reject([FromBody] RejectCourseRequestDto rejectCourseRequestDto)
         {
-            await _coursePublishRequestDataService.RejectCourseRequest(id);
-            return RedirectToAction("List", "CoursePublishRequest");
+            await _coursePublishRequestDataService.RejectCourseRequest(rejectCourseRequestDto);
+            return Ok(new { redirectToUrl = Url.Action("List", "CoursePublishRequest") });
         }
 
 

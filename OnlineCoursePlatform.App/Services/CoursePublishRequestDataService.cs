@@ -85,11 +85,14 @@ namespace OnlineCoursePlatform.App.Services
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
         }        
-        public async Task<ApiResponse> RejectCourseRequest(Guid id)
+        public async Task<ApiResponse> RejectCourseRequest(RejectCourseRequestDto rejectCourseRequestDto)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/coursepublishrequest/reject/{id}");
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/coursepublishrequest/reject")
+                {
+                    Content = new StringContent(JsonSerializer.Serialize(rejectCourseRequestDto), Encoding.UTF8, "application/json")
+                };
 
                 string accessToken = _authenticationService.GetAccessToken();
 

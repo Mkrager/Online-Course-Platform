@@ -31,13 +31,10 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
-        [HttpPut("reject/{id}", Name = "RejectCoursePublishRequest")]
-        public async Task<ActionResult<Guid>> Reject(Guid id)
+        [HttpPut("reject", Name = "RejectCoursePublishRequest")]
+        public async Task<ActionResult<Guid>> Reject([FromBody] RejectCoursePublishRequestCommand rejectCoursePublishRequestCommand)
         {
-            await mediator.Send(new RejectCoursePublishRequestCommand()
-            {
-                Id = id
-            });
+            await mediator.Send(rejectCoursePublishRequestCommand);
             return NoContent();
         }
 

@@ -32,7 +32,7 @@
 
                         <div class="course-request-actions">
                             <button type="submit" class="btn-lessons" onclick="approveCourse('@request.Id')">Approve</button>
-                            <button type="submit" class="btn-lessons btn-danger" onclick="rejectCourse('@request.Id')">Reject</button>
+                            <button type="button" class="btn-lessons btn-danger" onclick="openRejectModal('@request.Id')">Reject</button>
                         </div>
                     }
                 </div>
@@ -46,3 +46,15 @@
 </div>
 
 <script src="~/js/coursePublishRequest/updateCourseRequestStatus.js"></script>
+
+<div id="rejectModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <h2>Reject Course</h2>
+        <p>Please provide a reason for rejection:</p>
+        <textarea id="rejectReason" class="modal-textarea"></textarea>
+        <div class="modal-actions">
+            <button class="btn-lessons" onclick="closeRejectModal()">Cancel</button>
+            <button class="btn-lessons btn-danger" id="confirmReject">Reject</button>
+        </div>
+    </div>
+</div>
