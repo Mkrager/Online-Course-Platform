@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
@@ -13,9 +14,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queri
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
+        private readonly Mock<IUserService> _mockUserService;
         public GetCoursePublishRequestsListQueryHandlerTest()
         {
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockUserService = UserServiceMock.GetUserService();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -26,7 +29,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queri
         [Fact]
         public async Task GeCoursePublishRequestList_ReturnsListOfCoursePublishRequests()
         {
-            var handler = new GetCoursePublishRequestsListQueryHandler(_mockCoursePublishRequestRepository.Object, _mapper);
+            var handler = new GetCoursePublishRequestsListQueryHandler(_mockCoursePublishRequestRepository.Object, _mapper, _mockUserService.Object);
 
             var result = await handler.Handle(new GetCoursePublishRequestsListQuery(), CancellationToken.None);
 

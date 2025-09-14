@@ -19,6 +19,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             mockService.Setup(service => service.AssignRoleAsync(It.IsAny<string>(), It.IsAny<string>()));
 
+            mockService.Setup(service => service.GetUserNamesByIdsAsync(It.IsAny<IEnumerable<string>>()))
+                .ReturnsAsync((IEnumerable<string> userIds) =>
+                    userIds.ToDictionary(id => id, id => $"User_{id}"));
+
             return mockService;
         }
     }

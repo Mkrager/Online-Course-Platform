@@ -92,6 +92,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     return courses;
                 });
 
+            mockRepository.Setup(r => r.GetCourseByIdWithCategoryAndLevelAsync(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid id) => courses.FirstOrDefault(c => c.Id == id));
+
             mockRepository.Setup(r => r.GetCoursesByCategoryIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid categoryId) => courses.Where(x => x.CategoryId == categoryId).ToList());
 

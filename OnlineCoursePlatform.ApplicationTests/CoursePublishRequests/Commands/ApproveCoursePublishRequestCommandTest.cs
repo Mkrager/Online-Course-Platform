@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using MediatR;
+using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -11,16 +12,18 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
     {
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
         private readonly Mock<ICourseRepository> _mockCourseRepository;
+        private readonly Mock<IMediator> _mockMediator;
         public ApproveCoursePublishRequestCommandTest()
         {
             _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockMediator = MediatorMock.GetMediator();
         }
 
         [Fact]
         public async Task AproveCourseRequest_ValidCommand_UpdatesStatusPropertySuccessfully()
         {
-            var handler = new ApproveCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object, _mockCourseRepository.Object);
+            var handler = new ApproveCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object, _mockMediator.Object);
 
             var command = new ApproveCoursePublishRequestCommand()
             {

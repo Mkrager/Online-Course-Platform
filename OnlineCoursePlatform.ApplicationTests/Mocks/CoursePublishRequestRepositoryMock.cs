@@ -40,6 +40,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid id) => coursePublishRequests.FirstOrDefault(x => x.Id == id));
 
+            mockRepository.Setup(r => r.GetCoursePublishRequestByUserIdAsync(It.IsAny<string>()))
+                .ReturnsAsync((string userId) => coursePublishRequests.Where(r => r.CreatedBy == userId).ToList());
+
             mockRepository.Setup(r => r.UpdateStatusAsync(It.IsAny<CoursePublishRequest>(), It.IsAny<CoursePublishStatus>(), It.IsAny<string?>()))
                 .Callback((CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? reason) =>
                 {
