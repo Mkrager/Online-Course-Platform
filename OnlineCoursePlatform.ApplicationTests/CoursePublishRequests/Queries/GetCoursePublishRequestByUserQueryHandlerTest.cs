@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Moq;
-using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestByUser;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -9,11 +9,11 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queries
 {
-    public class GetCoursePublishRequestsListQueryHandlerTest
+    public class GetCoursePublishRequestByUserQueryHandlerTest
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
-        public GetCoursePublishRequestsListQueryHandlerTest()
+        public GetCoursePublishRequestByUserQueryHandlerTest()
         {
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
             var configurationProvider = new MapperConfiguration(cfg =>
@@ -26,9 +26,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queri
         [Fact]
         public async Task GeCoursePublishRequestList_ReturnsListOfCoursePublishRequests()
         {
-            var handler = new GetCoursePublishRequestsListQueryHandler(_mockCoursePublishRequestRepository.Object, _mapper);
+            var handler = new GetCoursePublishRequestByUserQueryHandler(_mapper, _mockCoursePublishRequestRepository.Object);
 
-            var result = await handler.Handle(new GetCoursePublishRequestsListQuery(), CancellationToken.None);
+            var result = await handler.Handle(new GetCoursePublishRequestByUserQuery() { UserId = "userId"}, CancellationToken.None);
 
             result.ShouldBeOfType<List<CoursePublishRequestsListVm>>();
 
