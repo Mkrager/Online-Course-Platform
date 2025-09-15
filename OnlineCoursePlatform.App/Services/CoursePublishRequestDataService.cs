@@ -120,19 +120,23 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public async Task<List<CoursePublishRequestListViewModel>> GetAllCoursePublishRequests()
+        public async Task<List<CoursePublishRequestListViewModel>> GetAllCoursePublishRequests(CoursePublishStatus? status)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/coursePublishRequest");
+            var url = "https://localhost:7275/api/coursePublishRequest";
+            if (status.HasValue)
+            {
+                url += $"?status={status.Value}";
+            }
+
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
 
             var response = await _httpClient.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-
                 var courseRequestList = JsonSerializer.Deserialize<List<CoursePublishRequestListViewModel>>(responseContent, _jsonOptions);
-
-                return courseRequestList;
+                return courseRequestList ?? new List<CoursePublishRequestListViewModel>();
             }
 
             return new List<CoursePublishRequestListViewModel>();

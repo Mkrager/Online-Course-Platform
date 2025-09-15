@@ -18,6 +18,18 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<CoursePublishRequest>> GetCoursePublishRequestsAsync(CoursePublishStatus? status)
+        {
+            var query = _dbContext.CoursePublishRequests.AsQueryable();
+
+            if (status.HasValue)
+            {
+                query = query.Where(r => r.Status == status.Value);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? rejectReason = null)
         {
             coursePublishRequest.Status = newStatus;

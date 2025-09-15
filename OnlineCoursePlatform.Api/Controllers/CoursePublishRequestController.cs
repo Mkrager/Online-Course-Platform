@@ -6,6 +6,7 @@ using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.U
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.RejectCourse;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestByUser;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
+using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -43,9 +44,9 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpGet(Name = "GetAllCoursesRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<List<CoursePublishRequestsListVm>>> GetAllCoursesRequests()
+        public async Task<ActionResult<List<CoursePublishRequestsListVm>>> GetAllCoursesRequests([FromQuery] CoursePublishStatus? status)
         {
-            var dtos = await mediator.Send(new GetCoursePublishRequestsListQuery());
+            var dtos = await mediator.Send(new GetCoursePublishRequestsListQuery() { Status = status });
             return Ok(dtos);
         }
 

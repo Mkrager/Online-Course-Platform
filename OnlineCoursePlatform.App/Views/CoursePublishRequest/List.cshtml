@@ -22,9 +22,10 @@
                     {
                         <p class="author">Approved By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
                     }
-                    else if(request.Status == CoursePublishStatus.Rejected)
+                    else if (request.Status == CoursePublishStatus.Rejected)
                     {
                         <p class="author">Rejected By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
+                        <p class="author">Rejected reason: @request.RejectReason</p>
                     }
                     else
                     {
