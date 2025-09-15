@@ -9,5 +9,6 @@ namespace OnlineCoursePlatform.App.Contracts
         Task<ApiResponse> RejectCourseRequest(RejectCourseRequestDto rejectCourseRequestDto);
         Task<ApiResponse<Guid>> CreateCourseRequest(Guid id);
         Task<List<CoursePublishRequestListViewModel>> GetAllCoursePublishRequests();
+        Task<List<CoursePublishRequestListViewModel>> GetUserCoursePublishRequests();
     }
 }

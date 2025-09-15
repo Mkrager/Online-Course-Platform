@@ -12,6 +12,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
         public string ApprovedBy { get; set; } = string.Empty;
         public string ApprovedName {  get; set; } = string.Empty;
         public DateTime ApprovedAt { get; set; }
+        public string? RejectReason { get; set; }
         public CoursePublishStatus Status { get; set; }
     }
 }

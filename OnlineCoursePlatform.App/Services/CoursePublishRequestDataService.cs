@@ -137,5 +137,23 @@ namespace OnlineCoursePlatform.App.Services
 
             return new List<CoursePublishRequestListViewModel>();
         }
+
+        public async Task<List<CoursePublishRequestListViewModel>> GetUserCoursePublishRequests()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/coursePublishRequest/user");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                var courseRequestList = JsonSerializer.Deserialize<List<CoursePublishRequestListViewModel>>(responseContent, _jsonOptions);
+
+                return courseRequestList;
+            }
+
+            return new List<CoursePublishRequestListViewModel>();
+        }
     }
 }
