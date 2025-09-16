@@ -962,3 +962,7 @@ input[type="text"] {
     justify-content: flex-end;
     gap: 10px;
 }
+
+.courses-section-header {
+    margin-bottom: 20px;
+}

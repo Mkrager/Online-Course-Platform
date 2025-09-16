@@ -1,0 +1,21 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+@model List<CoursePublishRequestListViewModel>;
+
+<div class="category-list-container">
+    <h2>Your Course Publication Requests</h2>
+    <p>Here you can cancel your course publication requests.</p>
+
+    <div class="course-request-container" id="courseRequestContainer">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var request in Model)
+            {
+                @await Html.PartialAsync("_CoursePublishRequestCard", request)
+            }
+        }
+        else
+        {
+            <p>No requests pending.</p>
+        }
+    </div>
+</div>

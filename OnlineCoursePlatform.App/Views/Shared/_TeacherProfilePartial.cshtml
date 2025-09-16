@@ -17,8 +17,10 @@
         </div>
 
         <div class="courses-section">
-            <h3>Your Courses</h3>
-
+            <div class="courses-section-header">
+                <h3>Your Courses</h3>
+                <a asp-controller="CoursePublishRequest" asp-action="UserList" class="btn-edit">Course publish requests</a>
+            </div>
             @if (Model.Courses != null)
             {
                 <div class="course-list">

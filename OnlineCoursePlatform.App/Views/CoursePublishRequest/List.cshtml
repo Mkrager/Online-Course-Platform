@@ -5,38 +5,17 @@
     <h2>Course Publish Requests</h2>
     <p>Here you can approve or reject requests to publish courses.</p>
 
-    <div class="course-request-container">
+    <button class="btn-lessons" data-status="@CoursePublishStatus.Pending">Pending</button>
+    <button class="btn-lessons" data-status="@CoursePublishStatus.Approved">Approved</button>
+    <button class="btn-lessons" data-status="@CoursePublishStatus.Rejected">Rejected</button>
+
+
+    <div class="course-request-container" id="courseRequestContainer">
         @if (Model != null && Model.Any())
         {
             foreach (var request in Model)
             {
-                <div class="course-card">
-                    <h3 class="title"> Course:<a asp-controller="course" asp-action="details" asp-route-id="@request.CourseId" class="btn-submit btn-view-details">View details</a></h3>
-
-                    <div class="category-section">
-                        <span class="category">Requested By: @request.RequestedName</span>
-                        <span class="category">Date: @request.RequestedDate.ToShortDateString()</span>
-                    </div>
-
-                    @if (request.Status == CoursePublishStatus.Approved)
-                    {
-                        <p class="author">Approved By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
-                    }
-                    else if (request.Status == CoursePublishStatus.Rejected)
-                    {
-                        <p class="author">Rejected By: @request.ApprovedName (@request.ApprovedAt.ToShortDateString())</p>
-                        <p class="author">Rejected reason: @request.RejectReason</p>
-                    }
-                    else
-                    {
-                        <p class="author">Status: @request.Status</p>
-
-                        <div class="course-request-actions">
-                            <button type="submit" class="btn-lessons" onclick="approveCourse('@request.Id')">Approve</button>
-                            <button type="button" class="btn-lessons btn-danger" onclick="openRejectModal('@request.Id')">Reject</button>
-                        </div>
-                    }
-                </div>
+                @await Html.PartialAsync("_CoursePublishRequestCard", request)
             }
         }
         else

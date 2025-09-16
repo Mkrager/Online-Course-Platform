@@ -1,0 +1,30 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+@model CoursePublishRequestListViewModel
+
+<div class="course-card">
+    <h3 class="title">Course:<a asp-controller="course" asp-action="details" asp-route-id="@Model.CourseId" class="btn-submit btn-view-details">View details</a></h3>
+
+    <div class="category-section">
+        <span class="category">Requested By: @Model.RequestedName</span>
+        <span class="category">Date: @Model.RequestedDate.ToShortDateString()</span>
+    </div>
+
+    @if (Model.Status == CoursePublishStatus.Approved)
+    {
+        <p class="author">Approved By: @Model.ApprovedName (@Model.ApprovedAt.ToShortDateString())</p>
+    }
+    else if (Model.Status == CoursePublishStatus.Rejected)
+    {
+        <p class="author">Rejected By: @Model.ApprovedName (@Model.ApprovedAt.ToShortDateString())</p>
+        <p class="author">Rejected reason: @Model.RejectReason</p>
+    }
+    else
+    {
+        <p class="author">Status: @Model.Status</p>
+
+        <div class="course-request-actions">
+            <button type="submit" class="btn-lessons" onclick="approveCourse('@Model.Id')">Approve</button>
+            <button type="button" class="btn-lessons btn-danger" onclick="openRejectModal('@Model.Id')">Reject</button>
+        </div>
+    }
+</div>

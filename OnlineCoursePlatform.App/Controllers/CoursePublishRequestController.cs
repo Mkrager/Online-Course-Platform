@@ -29,11 +29,26 @@ namespace OnlineCoursePlatform.App.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> UserList()
         {
-            var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests();
+            var coursePublishRequests = await _coursePublishRequestDataService.GetUserCoursePublishRequests();
 
             return View(coursePublishRequests);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(null);
+
+            return View(coursePublishRequests);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ListFiltered([FromQuery] CoursePublishStatus? status)
+        {
+            var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(status);
+            return Ok(new { data = coursePublishRequests });
         }
     }
 }
