@@ -4,10 +4,11 @@
 <div class="category-list-container">
     <h2>Course Publish Requests</h2>
     <p>Here you can approve or reject requests to publish courses.</p>
-
-    <button class="btn-lessons" data-status="@CoursePublishStatus.Pending">Pending</button>
-    <button class="btn-lessons" data-status="@CoursePublishStatus.Approved">Approved</button>
-    <button class="btn-lessons" data-status="@CoursePublishStatus.Rejected">Rejected</button>
+    <div class="course-pulish-requests-actions">
+        <button class="btn-lessons" data-status="@CoursePublishStatus.Pending">Pending</button>
+        <button class="btn-lessons" data-status="@CoursePublishStatus.Approved">Approved</button>
+        <button class="btn-lessons" data-status="@CoursePublishStatus.Rejected">Rejected</button>
+    </div>
 
 
     <div class="course-request-container" id="courseRequestContainer">
