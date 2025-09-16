@@ -9,8 +9,8 @@ namespace OnlineCoursePlatform.Domain.Entities
         public string RequestedBy { get; set; } = string.Empty;
         public string? RejectReason { get; set; }
         public DateTime RequestedDate { get; set; }
-        public string ApprovedBy { get; set; } = string.Empty;
-        public DateTime ApprovedAt { get; set; }
+        public string ProcessedBy { get; set; } = string.Empty;
+        public DateTime ProcessedAt { get; set; }
         public CoursePublishStatus Status { get; set; }
 
         public Course Course { get; set; } = default!;

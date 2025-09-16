@@ -210,11 +210,10 @@ namespace OnlineCoursePlatform.Persistence
                     }
                     else if (entry.State == EntityState.Modified)
                     {
-                        if (coursePublishRequest.Status == CoursePublishStatus.Approved)
-                        {
-                            coursePublishRequest.ApprovedBy = userId;
-                            coursePublishRequest.ApprovedAt = now;
-                        }                     
+
+                        coursePublishRequest.ProcessedBy = userId;
+                        coursePublishRequest.ProcessedAt = now;
+
                     }
                 }
             }

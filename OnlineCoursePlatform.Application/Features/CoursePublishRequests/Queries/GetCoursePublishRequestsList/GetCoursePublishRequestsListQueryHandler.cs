@@ -21,7 +21,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
             var coursePublishRequests = await _coursePublishRequestRepository.GetCoursePublishRequestsAsync(request.Status);
 
             var userIds = coursePublishRequests
-                .SelectMany(c => new[] { c.RequestedBy, c.ApprovedBy })
+                .SelectMany(c => new[] { c.RequestedBy, c.ProcessedBy })
                 .Where(id => !string.IsNullOrEmpty(id))
                 .Distinct();
 
@@ -38,9 +38,9 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
                     ? userNamesMap[original.RequestedBy]
                     : original.RequestedBy;
 
-                mapped.ApprovedName = !string.IsNullOrEmpty(original.ApprovedBy) && userNamesMap.ContainsKey(original.ApprovedBy)
-                    ? userNamesMap[original.ApprovedBy]
-                    : original.ApprovedBy;
+                mapped.ApprovedName = !string.IsNullOrEmpty(original.ProcessedBy) && userNamesMap.ContainsKey(original.ProcessedBy)
+                    ? userNamesMap[original.ProcessedBy]
+                    : original.ProcessedBy;
             }
 
             return mappedCoursePublishRequests;
