@@ -38,7 +38,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
                     ? userNamesMap[original.RequestedBy]
                     : original.RequestedBy;
 
-                mapped.ApprovedName = !string.IsNullOrEmpty(original.ProcessedBy) && userNamesMap.ContainsKey(original.ProcessedBy)
+                mapped.ProcessedName = !string.IsNullOrEmpty(original.ProcessedBy) && userNamesMap.ContainsKey(original.ProcessedBy)
                     ? userNamesMap[original.ProcessedBy]
                     : original.ProcessedBy;
             }

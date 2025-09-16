@@ -69,9 +69,9 @@ function getFilteredCoursePublishRequests(status) {
                     let actionsHtml = '';
 
                     if (statusText === "Approved") {
-                        statusHtml = `<p class="author">Approved By: ${request.approvedName} (${new Date(request.approvedAt).toLocaleDateString()})</p>`;
+                        statusHtml = `<p class="author">Approved By: ${request.processedName} (${new Date(request.processedAt).toLocaleDateString()})</p>`;
                     } else if (statusText === "Rejected") {
-                        statusHtml = `<p class="author">Rejected By: ${request.approvedName} (${new Date(request.approvedAt).toLocaleDateString()})</p>
+                        statusHtml = `<p class="author">Rejected By: ${request.processedName} (${new Date(request.processedAt).toLocaleDateString()})</p>
                                       <p class="author">Rejected reason: ${request.rejectReason}</p>`;
                     } else {
                         statusHtml = `<p class="author">Status: ${statusText}</p>`;

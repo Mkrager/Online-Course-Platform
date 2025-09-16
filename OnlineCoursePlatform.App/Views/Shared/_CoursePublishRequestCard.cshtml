@@ -11,11 +11,11 @@
 
     @if (Model.Status == CoursePublishStatus.Approved)
     {
-        <p class="author">Approved By: @Model.ApprovedName (@Model.ApprovedAt.ToShortDateString())</p>
+        <p class="author">Approved By: @Model.ProcessedName (@Model.ProcessedAt.ToShortDateString())</p>
     }
     else if (Model.Status == CoursePublishStatus.Rejected)
     {
-        <p class="author">Rejected By: @Model.ApprovedName (@Model.ApprovedAt.ToShortDateString())</p>
+        <p class="author">Rejected By: @Model.ProcessedName (@Model.ProcessedAt.ToShortDateString())</p>
         <p class="author">Rejected reason: @Model.RejectReason</p>
     }
     else if (Model.Status == CoursePublishStatus.Canceled)
