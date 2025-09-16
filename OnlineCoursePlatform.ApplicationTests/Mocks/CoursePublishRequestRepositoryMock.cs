@@ -30,6 +30,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(repo => repo.ListAllAsync())
                 .ReturnsAsync(coursePublishRequests);
 
+
             mockRepository.Setup(r => r.AddAsync(It.IsAny<CoursePublishRequest>()))
                 .ReturnsAsync((CoursePublishRequest coursePublishRequest) =>
                 {
@@ -42,6 +43,15 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 
             mockRepository.Setup(r => r.GetCoursePublishRequestByUserIdAsync(It.IsAny<string>()))
                 .ReturnsAsync((string userId) => coursePublishRequests.Where(r => r.CreatedBy == userId).ToList());
+
+            mockRepository.Setup(repo => repo.GetCoursePublishRequestsAsync(It.IsAny<CoursePublishStatus?>()))
+                .ReturnsAsync((CoursePublishStatus? status) =>
+                {
+                    if (status.HasValue)
+                        return coursePublishRequests.Where(r => r.Status == status).ToList();
+
+                    return coursePublishRequests;
+                });
 
             mockRepository.Setup(r => r.UpdateStatusAsync(It.IsAny<CoursePublishRequest>(), It.IsAny<CoursePublishStatus>(), It.IsAny<string?>()))
                 .Callback((CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? reason) =>

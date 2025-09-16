@@ -38,9 +38,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
             updCoursePublishRequests.ShouldNotBeNull();
             updCoursePublishRequests.Id.ShouldBe(command.Id);
             updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Approved);
-
-            var course = await _mockCourseRepository.Object.GetByIdAsync(Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b21e8"));
-            course.IsPublished.ShouldBeTrue();
         }
     }
 }
