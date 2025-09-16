@@ -146,6 +146,10 @@ namespace OnlineCoursePlatform.App.Services
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/coursePublishRequest/user");
 
+            string accessToken = _authenticationService.GetAccessToken();
+
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
             var response = await _httpClient.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
@@ -158,6 +162,37 @@ namespace OnlineCoursePlatform.App.Services
             }
 
             return new List<CoursePublishRequestListViewModel>();
+        }
+
+        public async Task<ApiResponse> CancelCourseRequest(Guid id)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/coursepublishrequest/cancel/{id}");
+
+                string accessToken = _authenticationService.GetAccessToken();
+
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                var response = await _httpClient.SendAsync(request);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
+
+                    return new ApiResponse(System.Net.HttpStatusCode.OK);
+                }
+
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
+            }
         }
     }
 }

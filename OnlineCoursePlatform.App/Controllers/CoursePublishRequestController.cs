@@ -21,11 +21,19 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        public async Task<IActionResult> Cancel(Guid id)
+        {
+            await _coursePublishRequestDataService.CancelCourseRequest(id);
+            return Ok(new { redirectToUrl = Url.Action("List", "CoursePublishRequest") });
+        }
+        
+        [HttpPut]
         public async Task<IActionResult> Reject([FromBody] RejectCourseRequestDto rejectCourseRequestDto)
         {
             await _coursePublishRequestDataService.RejectCourseRequest(rejectCourseRequestDto);
             return Ok(new { redirectToUrl = Url.Action("List", "CoursePublishRequest") });
         }
+
 
 
         [HttpGet]

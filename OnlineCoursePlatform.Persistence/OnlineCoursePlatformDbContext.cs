@@ -214,7 +214,7 @@ namespace OnlineCoursePlatform.Persistence
                         {
                             coursePublishRequest.ApprovedBy = userId;
                             coursePublishRequest.ApprovedAt = now;
-                        }
+                        }                     
                     }
                 }
             }
