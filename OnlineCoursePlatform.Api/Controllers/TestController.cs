@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
@@ -12,7 +13,6 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class TestController(IMediator mediator) : Controller
     {
-
 
         [HttpGet("{id}", Name = "GetTestById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -32,6 +32,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getLessonTestQuery));
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost(Name = "AddTest")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -41,6 +42,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPut(Name = "UpdateTest")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -50,6 +52,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpDelete("{id}", Name = "DeleteTest")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.DeleteCategory;
@@ -29,6 +30,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost(Name = "AddCategory")]
         public async Task<ActionResult<Guid>> CreateCategory
             ([FromBody] CreateCategoryCommand createCategoryCommand)
@@ -37,6 +39,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(responce);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}", Name = "DeleteCategory")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -5,7 +5,6 @@ using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Services;
 using OnlineCoursePlatform.Application.DTOs.PayPal;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
-using OnlineCoursePlatform.Application.Features.PayPal.Commands.CaptureOrder;
 using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -17,6 +16,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         ICheckoutService checkoutService,
         IMediator mediator) : Controller
     {
+        [Authorize(Roles = "Default")]
         [HttpPost("create-order", Name = "CreateOrder")]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
@@ -27,6 +27,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(new { url = redirectUrl });
         }
 
+        [Authorize(Roles = "Default")]
         [HttpPost("capture-order", Name = "CaptureOrder")]
         public async Task<IActionResult> CaptureOrder(CaptureOrderRequest captureOrderRequest)
         {
@@ -34,6 +35,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Default")]
         [HttpPatch("cancel", Name = "CancelOrder")]
         public async Task<IActionResult> Cancel(UpdatePaymentCommand updatePaymentCommand)
         {

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
@@ -12,7 +13,7 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class LessonController(IMediator mediator) : Controller
     {
-
+        [Authorize(Roles = "Teacher")]
         [HttpPost(Name = "AddLesson")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateLessonCommand createLessonCommand)
         {
@@ -38,6 +39,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getCourseLessonsQuery));
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPut(Name = "UpdateLesson")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -48,6 +50,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpDelete("{id}", Name = "DeleteLesson")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

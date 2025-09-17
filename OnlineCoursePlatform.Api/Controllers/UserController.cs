@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
@@ -12,6 +13,7 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class UserController(IMediator mediator, ICurrentUserService currentUserService) : Controller
     {
+        [Authorize(Roles = "Teacher")]
         [HttpGet("teacher", Name = "GetTeacherDetails")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -28,6 +30,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Default")]
         [HttpGet("default", Name = "GetDefaultUserDetails")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -44,6 +47,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Moderator")]
         [HttpPut("assign-role", Name = "AssignRole")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

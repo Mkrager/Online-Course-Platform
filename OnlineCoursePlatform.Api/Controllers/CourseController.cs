@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
@@ -15,6 +16,7 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class CourseController(IMediator mediator) : Controller
     {
+        [Authorize(Roles = "Admin")]
         [HttpGet(Name = "GetAllCourses")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
@@ -55,6 +57,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(await mediator.Send(getCoursesByCategoryQuery));
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPost(Name = "AddCourse")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateCourseCommand createCourseCommand)
         {
@@ -62,6 +65,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPut(Name = "UpdateCourse")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -72,6 +76,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpDelete("{id}", Name = "DeleteCourse")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,6 +88,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpPatch("{id}/unpublish", Name = "UnPublishCourse")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

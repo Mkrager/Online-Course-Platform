@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
@@ -15,6 +16,7 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class CoursePublishRequestController(IMediator mediator, ICurrentUserService currentUserService) : Controller
     {
+        [Authorize(Roles = "Teacher")]
         [HttpPost("{courseId}", Name = "AddCoursePublishRequest")]
         public async Task<ActionResult<Guid>> Create(Guid courseId)
         {
@@ -25,6 +27,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
+        [Authorize(Roles = "Moderator")]
         [HttpPut("approve/{id}", Name = "ApproveCoursePublishRequest")]
         public async Task<ActionResult<Guid>> Approve(Guid id)
         {
@@ -35,6 +38,15 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Moderator")]
+        [HttpPut("reject", Name = "RejectCoursePublishRequest")]
+        public async Task<ActionResult<Guid>> Reject([FromBody] RejectCoursePublishRequestCommand rejectCoursePublishRequestCommand)
+        {
+            await mediator.Send(rejectCoursePublishRequestCommand);
+            return NoContent();
+        }
+
+        [Authorize(Roles = "Teacher")]
         [HttpPut("cancel/{id}", Name = "CancelCoursePublishRequest")]
         public async Task<ActionResult<Guid>> Cancel(Guid id)
         {
@@ -45,13 +57,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
-        [HttpPut("reject", Name = "RejectCoursePublishRequest")]
-        public async Task<ActionResult<Guid>> Reject([FromBody] RejectCoursePublishRequestCommand rejectCoursePublishRequestCommand)
-        {
-            await mediator.Send(rejectCoursePublishRequestCommand);
-            return NoContent();
-        }
-
+        [Authorize(Roles = "Moderator")]
         [HttpGet(Name = "GetAllCoursesRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
@@ -61,6 +67,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
+        [Authorize(Roles = "Teacher")]
         [HttpGet("user", Name = "GetUserCoursesRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]

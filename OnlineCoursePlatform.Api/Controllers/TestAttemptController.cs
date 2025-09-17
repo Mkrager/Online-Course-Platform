@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
@@ -9,6 +10,7 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class TestAttemptController(IMediator mediator) : Controller
     {
+        [Authorize(Roles = "Default")]
         [HttpPost(Name = "StartAttempt")]
         public async Task<ActionResult<Guid>> StartAttempt([FromBody] StartAttemptCommand startAttemptCommand)
         {
@@ -16,6 +18,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(id);
         }
 
+        [Authorize(Roles = "Default")]
         [HttpPut(Name = "EndAttempt")]
         public async Task<ActionResult> EndAttempt([FromBody] EndAttemptCommand endAttemptCommand)
         {
