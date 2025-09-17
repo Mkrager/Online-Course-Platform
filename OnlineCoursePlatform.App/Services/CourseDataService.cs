@@ -57,6 +57,23 @@ namespace OnlineCoursePlatform.App.Services
 
             return new List<CourseListViewModel>();
         }
+        public async Task<List<CourseListViewModel>> GetPublishedCourses()
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/course/published");
+
+            var response = await _httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                var courseList = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent, _jsonOptions);
+
+                return courseList;
+            }
+
+            return new List<CourseListViewModel>();
+        }
 
         public async Task<ApiResponse<Guid>> CreateCourse(CourseDetailViewModel courseDetailViewModel)
         {
@@ -173,5 +190,6 @@ namespace OnlineCoursePlatform.App.Services
 
             return new ApiResponse(System.Net.HttpStatusCode.NoContent);
         }
+
     }
 }

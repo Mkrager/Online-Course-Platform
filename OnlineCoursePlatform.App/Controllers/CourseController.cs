@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Middlewares;
 using OnlineCoursePlatform.App.ViewModels.Course;
-using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -42,7 +41,7 @@ namespace OnlineCoursePlatform.App.Controllers
         [HttpGet]
         public async Task<IActionResult> CoursesList()
         {
-            var courses = await _courseDataService.GetAllCourses();
+            var courses = await _courseDataService.GetPublishedCourses();
             return View(courses);
         }
 
