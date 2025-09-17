@@ -13,7 +13,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         //options.AccessDeniedPath = "/account/denied";
     });
 
-builder.Services.AddHttpClient();
+var baseUrl = builder.Configuration["App:BaseUrl"];
+
+builder.Services.AddHttpClient("ApiClient", client =>
+{
+    client.BaseAddress = new Uri(baseUrl);
+});
 
 builder.Services.AddHttpContextAccessor();
 
