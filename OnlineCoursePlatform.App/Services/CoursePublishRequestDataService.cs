@@ -1,40 +1,23 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class CoursePublishRequestDataService : ICoursePublishRequestDataService
+    public class CoursePublishRequestDataService : BaseDataService, ICoursePublishRequestDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-        private readonly IAuthenticationService _authenticationService;
-
-        public CoursePublishRequestDataService(HttpClient httpClient, IAuthenticationService authenticationService)
+        public CoursePublishRequestDataService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            _authenticationService = authenticationService;
         }
 
         public async Task<ApiResponse<Guid>> CreateCourseRequest(Guid courseId)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/coursepublishrequest/{courseId}");
-
-                string accessToken = _authenticationService.GetAccessToken();
-
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
-
+                var response = await _httpClient.PostAsync($"coursepublishrequest/{courseId}", null);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -59,14 +42,7 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/coursepublishrequest/approve/{id}");
-
-                string accessToken = _authenticationService.GetAccessToken();
-
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
-
+                var response = await _httpClient.PutAsync($"coursepublishrequest/approve/{id}", null);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -90,17 +66,36 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/coursepublishrequest/reject")
+                var content = new StringContent(
+                    JsonSerializer.Serialize(rejectCourseRequestDto),
+                    Encoding.UTF8,
+                    "application/json");
+
+                var response = await _httpClient.PutAsync($"coursepublishrequest/reject", content);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    Content = new StringContent(JsonSerializer.Serialize(rejectCourseRequestDto), Encoding.UTF8, "application/json")
-                };
+                    var responseContent = await response.Content.ReadAsStringAsync();
 
-                string accessToken = _authenticationService.GetAccessToken();
+                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
 
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                    return new ApiResponse(System.Net.HttpStatusCode.OK);
+                }
 
-                var response = await _httpClient.SendAsync(request);
-
+                var errorContent = await response.Content.ReadAsStringAsync();
+                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+        public async Task<ApiResponse> CancelCourseRequest(Guid id)
+        {
+            try
+            {
+                var response = await _httpClient.PutAsync($"coursepublishrequest/cancel/{id}", null);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -123,15 +118,13 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<CoursePublishRequestListViewModel>> GetAllCoursePublishRequests(CoursePublishStatus? status)
         {
-            var url = "https://localhost:7275/api/coursePublishRequest";
+            var url = "coursePublishRequest";
             if (status.HasValue)
             {
                 url += $"?status={status.Value}";
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
@@ -145,13 +138,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<CoursePublishRequestListViewModel>> GetUserCoursePublishRequests()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/coursePublishRequest/user");
-
-            string accessToken = _authenticationService.GetAccessToken();
-
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync("coursePublishRequest/user");
 
             if (response.IsSuccessStatusCode)
             {
@@ -165,35 +152,5 @@ namespace OnlineCoursePlatform.App.Services
             return new List<CoursePublishRequestListViewModel>();
         }
 
-        public async Task<ApiResponse> CancelCourseRequest(Guid id)
-        {
-            try
-            {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/coursepublishrequest/cancel/{id}");
-
-                string accessToken = _authenticationService.GetAccessToken();
-
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
-
-                    return new ApiResponse(System.Net.HttpStatusCode.OK);
-                }
-
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
     }
 }
