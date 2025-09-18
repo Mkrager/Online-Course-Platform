@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
+using OnlineCoursePlatform.App.Infrastructure.Api;
 
 namespace OnlineCoursePlatform.App.Services
 {
@@ -82,11 +84,6 @@ namespace OnlineCoursePlatform.App.Services
             {
                 return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, ex.Message);
             }
-        }
-
-        public string GetAccessToken()
-        {
-            return _httpContextAccessor.HttpContext.Request.Cookies["access_token"];
         }
 
         public Task Logout()

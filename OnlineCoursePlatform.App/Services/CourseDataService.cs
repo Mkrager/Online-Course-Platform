@@ -1,4 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Course;
 using System.Text;
 using System.Text.Json;

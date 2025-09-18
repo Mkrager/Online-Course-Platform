@@ -1,4 +1,4 @@
-﻿using OnlineCoursePlatform.App.Services;
+﻿using OnlineCoursePlatform.App.Infrastructure.Api;
 using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Contracts

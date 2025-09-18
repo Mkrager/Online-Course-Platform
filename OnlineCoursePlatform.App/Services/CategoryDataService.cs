@@ -1,29 +1,19 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Category;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class CategoryDataService : ICategoryDataService
+    public class CategoryDataService : BaseDataService, ICategoryDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-
-        public CategoryDataService(HttpClient httpClient)
+        public CategoryDataService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
         }
 
         public async Task<List<CategoryViewModel>> GetAllCategories()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/category");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"category");
 
             if (response.IsSuccessStatusCode)
             {
@@ -36,10 +26,5 @@ namespace OnlineCoursePlatform.App.Services
 
             return new List<CategoryViewModel>();
         }
-
-        //public async Task<List<>> GetCategoriesWithCourses()
-        //{
-
-        //}
     }
 }

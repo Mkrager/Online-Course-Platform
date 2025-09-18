@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace OnlineCoursePlatform.App.Services
+namespace OnlineCoursePlatform.App.Infrastructure.BaseServices
 {
     public abstract class BaseDataService
     {

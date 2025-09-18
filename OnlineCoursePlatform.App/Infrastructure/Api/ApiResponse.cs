@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace OnlineCoursePlatform.App.Services
+namespace OnlineCoursePlatform.App.Infrastructure.Api
 {
     public class ApiResponse<T>
     {

@@ -1,4 +1,4 @@
-﻿using OnlineCoursePlatform.App.Services;
+﻿using OnlineCoursePlatform.App.Infrastructure.Api;
 
 namespace OnlineCoursePlatform.App.Helpers
 {

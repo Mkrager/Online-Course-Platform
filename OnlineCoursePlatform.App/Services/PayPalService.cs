@@ -1,4 +1,5 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.Api;
 using OnlineCoursePlatform.App.ViewModels.PayPal;
 using System.Net.Http.Headers;
 using System.Text;
