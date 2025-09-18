@@ -1,28 +1,19 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Level;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class LevelDataService : ILevelDataService
+    public class LevelDataService : BaseDataService, ILevelDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-
-        public LevelDataService(HttpClient httpClient)
+        public LevelDataService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
         }
+
         public async Task<List<LevelViewModel>> GetAllLevels()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/level");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync("level");
 
             if (response.IsSuccessStatusCode)
             {

@@ -1,38 +1,24 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
+using OnlineCoursePlatform.App.ViewModels.Lesson;
 using OnlineCoursePlatform.App.ViewModels.PayPal;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class PayPalService : IPayPalService
+    public class PayPalService : BaseDataService, IPayPalService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-        private readonly IAuthenticationService _authenticationService;
-
-        public PayPalService(HttpClient httpClient, IAuthenticationService authenticationService)
+        public PayPalService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            _authenticationService = authenticationService;
         }
+
         public async Task<ApiResponse<string>> CreateOrderAsync(Guid courseId)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/paypal/create-order?courseId={courseId}");
-                string accessToken = _authenticationService.GetAccessToken();
-
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
-
+                var response = await _httpClient.PostAsync($"paypal/create-order?courseId={courseId}", null);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -57,12 +43,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/paypal/capture-order")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(captureOrderRequest), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(captureOrderRequest),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PostAsync("paypal/capture-order", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -86,12 +72,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/paypal/cancel")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(cancelOrderViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(cancelOrderViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PostAsync("paypal/cancel", content);
 
                 if (response.IsSuccessStatusCode)
                 {
