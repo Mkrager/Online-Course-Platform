@@ -1,32 +1,19 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Course;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class CourseDataService : ICourseDataService
+    public class CourseDataService : BaseDataService, ICourseDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-        private readonly IAuthenticationService _authenticationService;
-
-        public CourseDataService(HttpClient httpClient, IAuthenticationService authenticationService)
+        public CourseDataService(IHttpClientFactory httpClientFactory, IAuthenticationService authenticationService) : base(httpClientFactory, authenticationService)
         {
-            _httpClient = httpClient;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            _authenticationService = authenticationService;
         }
 
         public async Task<CourseDetailViewModel> GetCourseById(Guid id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/course/{id}");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"course/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -42,9 +29,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<CourseListViewModel>> GetAllCourses()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/course");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync("course");
 
             if (response.IsSuccessStatusCode)
             {
@@ -59,9 +44,9 @@ namespace OnlineCoursePlatform.App.Services
         }
         public async Task<List<CourseListViewModel>> GetPublishedCourses()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/course/published");
+            AddAuthHeader();
 
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync("course/published");
 
             if (response.IsSuccessStatusCode)
             {
@@ -79,17 +64,14 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/course")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(courseDetailViewModel), Encoding.UTF8, "application/json")
-                };
+                AddAuthHeader();
 
-                string accessToken = _authenticationService.GetAccessToken();
+                var content = new StringContent(
+                    JsonSerializer.Serialize(courseDetailViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
-
+                var response = await _httpClient.PostAsync("course", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -114,12 +96,14 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/course")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(courseDetailViewModel), Encoding.UTF8, "application/json")
-                };
+                AddAuthHeader();
 
-                var response = await _httpClient.SendAsync(request);
+                var content = new StringContent(
+                    JsonSerializer.Serialize(courseDetailViewModel),
+                    Encoding.UTF8,
+                    "application/json");
+
+                var response = await _httpClient.PutAsync("course", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -140,9 +124,9 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7275/api/course/{id}");
+                AddAuthHeader();
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.DeleteAsync($"course/{id}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -161,9 +145,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<CourseListViewModel>> GetCoursesByCategoryId(Guid categoryId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Course/by-category/{categoryId}");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"course/by-category/{categoryId}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -179,9 +161,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<ApiResponse> UnPublish(Guid id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Patch, $"https://localhost:7275/api/course/{id}/unpublish");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.PatchAsync($"course/{id}/unpublish", null);
 
             if (response.IsSuccessStatusCode)
             {
