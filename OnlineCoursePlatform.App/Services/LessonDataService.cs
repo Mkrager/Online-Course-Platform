@@ -1,35 +1,28 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Lesson;
 using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class LessonDataService : ILessonDataService
+    public class LessonDataService : BaseDataService, ILessonDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-
-        public LessonDataService(HttpClient httpClient)
+        public LessonDataService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
         }
 
         public async Task<ApiResponse<Guid>> CreateLesson(LessonViewModel lessonViewModel)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/lesson")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(lessonViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(lessonViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PostAsync("lesson", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -54,12 +47,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/lesson")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(lessonViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(lessonViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PutAsync("lesson", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -81,9 +74,7 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7275/api/lesson/{id}");
-
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.DeleteAsync($"lesson/{id}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,9 +93,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<LessonViewModel>> GetCourseLessons(Guid courseId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/lesson/by-course/{courseId}");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"lesson/by-course/{courseId}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -120,9 +109,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<LessonViewModel> GetLessonById(Guid id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/Lesson/{id}");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"Lesson/{id}");
 
             if (response.IsSuccessStatusCode)
             {
