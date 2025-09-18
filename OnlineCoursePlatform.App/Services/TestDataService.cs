@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.Test;
 using System.Text;
 using System.Text.Json;
@@ -25,12 +26,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/test")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(testViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(testViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PostAsync("test", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -64,9 +65,7 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Delete, $"https://localhost:7275/api/test/{id}");
-
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.DeleteAsync($"test/{id}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -85,9 +84,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<TestViewModel> GetTestById(Guid id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/{id}");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"test/{id}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -103,9 +100,7 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<List<TestViewModel>> GetTestByLessonId(Guid lessonId)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"https://localhost:7275/api/test/by-lesson/{lessonId}");
-
-            var response = await _httpClient.SendAsync(request);
+            var response = await _httpClient.GetAsync($"test/by-lesson/{lessonId}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -123,12 +118,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/test")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(testViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(testViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PutAsync("test", content);
 
                 if (response.IsSuccessStatusCode)
                 {
