@@ -9,32 +9,27 @@ using System.Security.Claims;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class AuthenticationService : Contracts.IAuthenticationService
+    public class AuthenticationService : BaseDataService, Contracts.IAuthenticationService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
 
-        public AuthenticationService(IHttpContextAccessor httpContextAccessor, HttpClient httpClient)
+        public AuthenticationService(
+            IHttpClientFactory httpClientFactory, 
+            IHttpContextAccessor httpContextAccessor) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
         }
 
         public async Task<ApiResponse<bool>> Authenticate(AuthenticateRequest request)
         {
             try
             {
-                var authenticationRequest = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7275/api/Account/authenticate")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(request),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(authenticationRequest);
+                var response = await _httpClient.PostAsync("account/authenticate", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -104,12 +99,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var registerRequest = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7275/api/account/register")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(request),
+                    Encoding.UTF8,
+                    "application/json");
 
-                var response = await _httpClient.SendAsync(registerRequest);
+                var response = await _httpClient.PostAsync("account/register", content);
 
                 if (response.IsSuccessStatusCode)
                 {

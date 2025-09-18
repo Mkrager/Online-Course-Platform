@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Middlewares;
+using OnlineCoursePlatform.App.Helpers;
 using OnlineCoursePlatform.App.ViewModels.Authenticate;
 
 namespace OnlineCoursePlatform.App.Controllers

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.Middlewares;
+using OnlineCoursePlatform.App.Helpers;
 using OnlineCoursePlatform.App.ViewModels.Course;
 
 namespace OnlineCoursePlatform.App.Controllers

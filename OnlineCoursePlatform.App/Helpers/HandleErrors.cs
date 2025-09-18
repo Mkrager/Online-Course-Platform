@@ -1,6 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Services;
 
-namespace OnlineCoursePlatform.App.Middlewares
+namespace OnlineCoursePlatform.App.Helpers
 {
     public static class HandleErrors
     {

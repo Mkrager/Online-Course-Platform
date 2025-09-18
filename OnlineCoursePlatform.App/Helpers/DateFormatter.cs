@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace OnlineCoursePlatform.App.Middlewares
+namespace OnlineCoursePlatform.App.Helpers
 {
     public static class DateFormatter
     {

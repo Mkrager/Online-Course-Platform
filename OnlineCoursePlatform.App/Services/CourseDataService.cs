@@ -7,7 +7,7 @@ namespace OnlineCoursePlatform.App.Services
 {
     public class CourseDataService : BaseDataService, ICourseDataService
     {
-        public CourseDataService(IHttpClientFactory httpClientFactory, IAuthenticationService authenticationService) : base(httpClientFactory, authenticationService)
+        public CourseDataService(IHttpClientFactory httpClientFactory, IAuthenticationService authenticationService) : base(httpClientFactory)
         {
         }
 
@@ -44,8 +44,6 @@ namespace OnlineCoursePlatform.App.Services
         }
         public async Task<List<CourseListViewModel>> GetPublishedCourses()
         {
-            AddAuthHeader();
-
             var response = await _httpClient.GetAsync("course/published");
 
             if (response.IsSuccessStatusCode)
@@ -64,8 +62,6 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                AddAuthHeader();
-
                 var content = new StringContent(
                     JsonSerializer.Serialize(courseDetailViewModel),
                     Encoding.UTF8,
@@ -96,8 +92,6 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                AddAuthHeader();
-
                 var content = new StringContent(
                     JsonSerializer.Serialize(courseDetailViewModel),
                     Encoding.UTF8,
@@ -124,8 +118,6 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                AddAuthHeader();
-
                 var response = await _httpClient.DeleteAsync($"course/{id}");
 
                 if (response.IsSuccessStatusCode)

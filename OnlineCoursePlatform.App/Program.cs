@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.HttpHandlers;
 using OnlineCoursePlatform.App.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,13 +14,6 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         //options.AccessDeniedPath = "/account/denied";
     });
 
-var baseUrl = builder.Configuration["App:BaseUrl"];
-
-builder.Services.AddHttpClient("ApiClient", client =>
-{
-    client.BaseAddress = new Uri(baseUrl);
-});
-
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<ICourseDataService, CourseDataService>();
@@ -32,6 +26,16 @@ builder.Services.AddScoped<ITestDataService, TestDataService>();
 builder.Services.AddScoped<ITestAttemptDataService, TestAttemptDataService>();
 builder.Services.AddScoped<IPayPalService, PayPalService>();
 builder.Services.AddScoped<ICoursePublishRequestDataService, CoursePublishRequestDataService>();
+builder.Services.AddScoped<ITokenProvider, TokenProvider>();
+
+builder.Services.AddTransient<AuthHeaderHandler>();
+
+var baseUrl = builder.Configuration["App:BaseUrl"];
+builder.Services.AddHttpClient("ApiClient", client =>
+{
+    client.BaseAddress = new Uri(baseUrl);
+})
+.AddHttpMessageHandler<AuthHeaderHandler>();
 
 builder.Services.AddControllersWithViews();
 
