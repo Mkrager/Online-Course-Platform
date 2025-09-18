@@ -1,45 +1,31 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.TestAttempt;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class TestAttemptDataService : ITestAttemptDataService
+    public class TestAttemptDataService : BaseDataService, ITestAttemptDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-        private readonly IAuthenticationService _authenticationService;
-
-        public TestAttemptDataService(HttpClient httpClient, IAuthenticationService authenticationService)
+        public TestAttemptDataService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            _authenticationService = authenticationService;
         }
 
         public async Task<ApiResponse> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel)
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Put, $"https://localhost:7275/api/TestAttempt")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(endAttemptViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(endAttemptViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                string accessToken = _authenticationService.GetAccessToken();
-
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PutAsync("testAttempt", content);
 
                 if (response.IsSuccessStatusCode)
-                { 
+                {
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
@@ -57,16 +43,12 @@ namespace OnlineCoursePlatform.App.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7275/api/TestAttempt")
-                {
-                    Content = new StringContent(JsonSerializer.Serialize(startAttemptViewModel), Encoding.UTF8, "application/json")
-                };
+                var content = new StringContent(
+                    JsonSerializer.Serialize(startAttemptViewModel),
+                    Encoding.UTF8,
+                    "application/json");
 
-                string accessToken = _authenticationService.GetAccessToken();
-
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-                var response = await _httpClient.SendAsync(request);
+                var response = await _httpClient.PostAsync("testAttempt", content);
 
                 if (response.IsSuccessStatusCode)
                 {

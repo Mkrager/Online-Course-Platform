@@ -1,7 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
-using OnlineCoursePlatform.App.ViewModels.Lesson;
 using OnlineCoursePlatform.App.ViewModels.PayPal;
 using System.Text;
 using System.Text.Json;
@@ -77,7 +76,7 @@ namespace OnlineCoursePlatform.App.Services
                     Encoding.UTF8,
                     "application/json");
 
-                var response = await _httpClient.PostAsync("paypal/cancel", content);
+                var response = await _httpClient.PatchAsync("paypal/cancel", content);
 
                 if (response.IsSuccessStatusCode)
                 {
