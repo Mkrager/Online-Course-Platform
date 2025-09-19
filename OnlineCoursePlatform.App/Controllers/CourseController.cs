@@ -38,7 +38,7 @@ namespace OnlineCoursePlatform.App.Controllers
             return levelList;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> CoursesList()
         {

@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
-        public IActionResult UnAthorizedHandel()
+        public IActionResult UnAuthorizedHandler()
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -24,6 +24,13 @@ namespace OnlineCoursePlatform.App.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult AccessDeniedHandler()
+        {
+            TempData["ErrorMessage"] = "You don't have access";
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
