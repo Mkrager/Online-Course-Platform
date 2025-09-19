@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -13,6 +14,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Profile()
         {
             object viewModel;

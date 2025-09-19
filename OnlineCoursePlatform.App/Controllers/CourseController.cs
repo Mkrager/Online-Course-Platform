@@ -38,7 +38,6 @@ namespace OnlineCoursePlatform.App.Controllers
             return levelList;
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> CoursesList()
         {
@@ -47,6 +46,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Create()
         {
             TempData["Categories"] = await Categories();
@@ -56,6 +56,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Create(CourseDetailViewModel courseDetailViewModel)
         {
             var newCourse = await _courseDataService.CreateCourse(courseDetailViewModel);
@@ -81,6 +82,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(Guid id)
         {
             var courseToUpdate = await _courseDataService.GetCourseById(id);
@@ -92,6 +94,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(CourseDetailViewModel courseDetailViewModel)
         {
             if (!ModelState.IsValid)
@@ -129,6 +132,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }        
 
         [HttpDelete]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _courseDataService.DeleteCourse(id);

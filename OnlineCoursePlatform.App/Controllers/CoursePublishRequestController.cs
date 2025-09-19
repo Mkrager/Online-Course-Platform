@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
 
@@ -14,6 +15,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Moderator")]
         public async Task<IActionResult> Approve(Guid id)
         {
             await _coursePublishRequestDataService.ApproveCourseRequest(id);
@@ -21,6 +23,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Cancel(Guid id)
         {
             await _coursePublishRequestDataService.CancelCourseRequest(id);
@@ -28,6 +31,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
         
         [HttpPut]
+        [Authorize(Roles = "Moderator")]
         public async Task<IActionResult> Reject([FromBody] RejectCourseRequestDto rejectCourseRequestDto)
         {
             await _coursePublishRequestDataService.RejectCourseRequest(rejectCourseRequestDto);
@@ -35,8 +39,8 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
 
-
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> UserList()
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetUserCoursePublishRequests();
@@ -45,6 +49,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Moderator")]
         public async Task<IActionResult> List()
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(null);
@@ -53,6 +58,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Moderator")]
         public async Task<IActionResult> ListFiltered([FromQuery] CoursePublishStatus? status)
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(status);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.TestAttempt;
 
@@ -16,6 +17,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> StartTest(Guid id)
         {
             var test = await _testDataService.GetTestById(id);
@@ -31,6 +33,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> EndTest([FromBody] EndTestAttemptViewModel model)
         {
             var result = await _testAttemptDataService.EndTestAttempt(model);

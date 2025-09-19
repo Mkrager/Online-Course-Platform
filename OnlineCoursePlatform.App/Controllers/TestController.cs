@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Helpers;
 using OnlineCoursePlatform.App.ViewModels.Test;
@@ -15,6 +16,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> List(Guid lessonId)
         {
             var tests = await _testDataService.GetTestByLessonId(lessonId);
@@ -29,6 +31,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Create(Guid lessonId)
         {
             var model = new TestViewModel()
@@ -40,6 +43,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Create(TestViewModel testViewModel)
         {
             var result = await _testDataService.CreateTest(testViewModel);
@@ -54,6 +58,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(Guid id)
         {
             var testToUpdate = await _testDataService.GetTestById(id);
@@ -61,6 +66,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(TestViewModel testViewModel)
          {
             var result = await _testDataService.UpdateTest(testViewModel);
@@ -75,6 +81,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _testDataService.DeleteTest(id);

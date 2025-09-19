@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Helpers;
-using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.Lesson;
 
 namespace OnlineCoursePlatform.App.Controllers
@@ -16,6 +16,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> CourseOverview(Guid courseId)
         {
             var courseLessons = await _lessonDataService.GetCourseLessons(courseId);
@@ -30,6 +31,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Details(Guid id)
         {
             var lesson = await _lessonDataService.GetLessonById(id);
@@ -37,6 +39,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Add(Guid courseId)
         {
             var model = new LessonViewModel
@@ -48,6 +51,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Add(LessonViewModel lessonViewModel)
         {
             var result = await _lessonDataService.CreateLesson(lessonViewModel);
@@ -63,6 +67,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(Guid id)
         {
             var lessonToUpdate = await _lessonDataService.GetLessonById(id);
@@ -70,6 +75,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(LessonViewModel lessonViewModel)
         {
             if (!ModelState.IsValid)
@@ -94,6 +100,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = await _lessonDataService.DeleteLesson(id);

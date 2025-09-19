@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.PayPal;
 
@@ -13,6 +14,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
             var url = await _payPalService.CreateOrderAsync(courseId);
@@ -20,6 +22,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> CaptureOrder(
             [FromQuery] Guid paymentId,
             [FromQuery] string token,
@@ -39,12 +42,14 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult PaymentSuccess()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Cancel([FromQuery] Guid paymentId)
         {
             var result = await _payPalService.CancelOrderAsync(new CancelOrderViewModel
@@ -59,6 +64,7 @@ namespace OnlineCoursePlatform.App.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult CancelPayment()
         {
             return View();
