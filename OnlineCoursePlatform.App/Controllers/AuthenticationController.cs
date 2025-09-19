@@ -14,6 +14,18 @@ namespace OnlineCoursePlatform.App.Controllers
             _authenticationService = authenticationService;
         }
 
+        [HttpGet]
+        public IActionResult UnAthorizedHandel()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                TempData["LoginErrorMessage"] = "You need to login to continue.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(AuthenticationViewModel request)
         {

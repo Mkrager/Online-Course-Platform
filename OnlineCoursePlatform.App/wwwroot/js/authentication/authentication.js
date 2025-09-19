@@ -21,3 +21,10 @@
         wrapper.classList.remove('active-popup');
     });
 });
+
+fetch('/some-protected-page')
+    .then(response => {
+        if (response.status === 401) {
+            document.querySelector('.wrapper')?.classList.add('active-popup');
+        }
+    });

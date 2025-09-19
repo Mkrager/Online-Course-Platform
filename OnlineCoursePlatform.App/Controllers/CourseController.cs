@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Helpers;
@@ -37,7 +38,7 @@ namespace OnlineCoursePlatform.App.Controllers
             return levelList;
         }
 
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> CoursesList()
         {

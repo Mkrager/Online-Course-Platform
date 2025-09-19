@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.HttpHandlers;
 using OnlineCoursePlatform.App.Services;
@@ -10,7 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        //options.LoginPath = "/account/login";
+        options.LoginPath = "/authentication/unAthorizedHandel";
         //options.AccessDeniedPath = "/account/denied";
     });
 
