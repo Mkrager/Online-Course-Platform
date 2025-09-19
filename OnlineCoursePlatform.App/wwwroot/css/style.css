@@ -532,6 +532,7 @@ h2 {
     white-space: normal;
     max-width: 100%;
     overflow-x: hidden;
+    padding: 2px;
 }
 
 .course-actions {
@@ -969,4 +970,20 @@ input[type="text"] {
 
 .course-pulish-requests-actions {
     margin: 10px;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9em;
+    margin-left: 2px;
+}
+
+.badge-yes {
+    background-color: #218838;
+}
+
+.badge-no {
+    background-color: #ac2222;
 }

@@ -1,25 +1,16 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.Api;
-using OnlineCoursePlatform.App.ViewModels.Course;
+using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Test;
 using System.Text;
 using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
-    public class TestDataService : ITestDataService
+    public class TestDataService : BaseDataService, ITestDataService
     {
-        private readonly HttpClient _httpClient;
-        private readonly JsonSerializerOptions _jsonOptions;
-
-        public TestDataService(HttpClient httpClient)
+        public TestDataService(IHttpClientFactory httpClientFactory) : base(httpClientFactory)
         {
-            _httpClient = httpClient;
-            _jsonOptions = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
         }
 
         public async Task<ApiResponse<Guid>> CreateTest(TestViewModel testViewModel)

@@ -14,6 +14,7 @@ namespace OnlineCoursePlatform.App.ViewModels.Course
         public DateTime CreatedDate { get; set; }
         public string? CreatedBy { get; set; }
         public TimeSpan Duration { get; set; }
+        public bool IsPublished { get; set; }
 
         public CategoryViewModel Category { get; set; } = default!;
         public LevelViewModel Level { get; set; } = default!;

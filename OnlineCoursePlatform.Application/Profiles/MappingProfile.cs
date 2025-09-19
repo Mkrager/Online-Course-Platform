@@ -14,6 +14,7 @@ using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCourseDetail;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByCategory;
+using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesList;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrollmentsByStudent;
@@ -46,6 +47,7 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<Course, CourseDetailVm>().ReverseMap();
             CreateMap<Course, CategoryCourseDto>().ReverseMap();
             CreateMap<Course, CoursesByCategoryVm>().ReverseMap();
+            CreateMap<Course, TeacherCourseDetailVm>().ReverseMap();
             CreateMap<Course, CreateCourseCommand>().ReverseMap();
             CreateMap<Course, UpdateCourseCommand>().ReverseMap()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());

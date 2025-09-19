@@ -32,6 +32,14 @@
                             <p class="course-description">Level: @course.Level.Name</p>
                             <p class="course-description">Category: @course.Category.Name</p>
                             <p class="course-description">Price: @course.Price</p>
+                            <p class="course-description">
+                                Published: <span class="badge @(course.IsPublished ? "badge-yes" : "badge-no")">
+                                    @(course.IsPublished ? "Yes" : "No")
+                                </span>
+                            </p>
+
+
+
 
                             <div class="course-actions">
                                 <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@course.Id" class="btn-lessons">Lessons</a>
