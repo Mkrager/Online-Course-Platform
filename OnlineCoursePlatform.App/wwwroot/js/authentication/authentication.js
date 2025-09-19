@@ -22,9 +22,8 @@
     });
 });
 
-fetch('/some-protected-page')
-    .then(response => {
-        if (response.status === 401) {
-            document.querySelector('.wrapper')?.classList.add('active-popup');
-        }
-    });
+const message = document.getElementById('errorAuthMessage').textContent.trim();
+
+if (message) {
+    document.querySelector('.wrapper')?.classList.add('active-popup');
+}

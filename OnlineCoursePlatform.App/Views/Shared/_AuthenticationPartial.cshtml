@@ -1,10 +1,6 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.Authenticate;
 @model AuthenticationViewModel;
 
-@{
-    var message = TempData["LoginErrorMessage"] as string;
-}
-
 <div class="wrapper">
     <span class="icon-close">
         <ion-icon name="close"></ion-icon>
@@ -12,7 +8,7 @@
     <div class="form-box login">
         <form asp-controller="Authentication" asp-action="Login" method="post" role="form" id="loginForm">
             <h2>Login</h2>
-            <h3 class="message">@message</h3>
+            <h3 id="errorAuthMessage" class="message">@TempData["LoginErrorMessage"]</h3>
 
             <div asp-validation-summary="All" class="error-text"></div>
 
@@ -47,7 +43,7 @@
     <div class="form-box register">
         <form asp-controller="Authentication" asp-action="Register" method="post" role="form" id="registerForm">
             <h2>Registration</h2>
-            <h3 class="message">@message</h3>
+            <h3 id="errorAuthMessage" class="message">@TempData["LoginErrorMessage"]</h3>
 
             <div asp-validation-summary="All" class="error-text"></div>
 
@@ -96,15 +92,5 @@
         </form>
     </div>
 </div>
-
-<script>
-    window.onload = function () {
-        const message = "@TempData["LoginErrorMessage"]";
-        if (message) {
-
-            document.querySelector('.wrapper')?.classList.add('active-popup');
-        }
-    }
-</script>
 
 <script src="~/js/authentication/authentication.js"></script>
