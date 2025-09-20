@@ -6,19 +6,28 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLes
     public class GetCourseLessonsQueryValidator : AbstractValidator<GetCourseLessonsQuery>
     {
         private readonly IEnrollmentRepository _enrollmentRepository;
-        public GetCourseLessonsQueryValidator(IEnrollmentRepository enrollmentRepository)
+        private readonly ICourseRepository _courseRepository;
+        public GetCourseLessonsQueryValidator(IEnrollmentRepository enrollmentRepository, ICourseRepository courseRepository)
         {
             _enrollmentRepository = enrollmentRepository;
+            _courseRepository = courseRepository;
 
             RuleFor(x => x)
                 .MustAsync(async (model, cancellationToken) =>
-                    await IsUserEnrolledInCourse(model.UserId, model.CourseId, cancellationToken))
+                    await HasAccessToCourse(model.UserId, model.CourseId, cancellationToken))
                 .WithMessage("You don't have access to this course");
         }
 
-        private async Task<bool> IsUserEnrolledInCourse(string userId, Guid courseId, CancellationToken token)
+        private async Task<bool> HasAccessToCourse(string userId, Guid courseId, CancellationToken token)
         {
-            return await _enrollmentRepository.IsUserEnrolledInCourseAsync(userId, courseId);
+            if (await _enrollmentRepository.IsUserEnrolledInCourseAsync(userId, courseId))
+                return true;
+
+            if (await _courseRepository.IsUserCourseTeacherAsync(userId, courseId))
+                return true;
+
+            return false;
         }
+
     }
 }
