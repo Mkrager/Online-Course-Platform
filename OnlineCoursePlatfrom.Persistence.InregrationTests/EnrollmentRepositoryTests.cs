@@ -30,7 +30,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
         }
 
         [Fact]
-        public async Task CheckIUserIdAndCategoryIdUnique_ReturnsTrueWhenUserHaveThisCourse()
+        public async Task CheckIsUserIdAndCourseIdUnique_ReturnsTrueWhenUserHaveThisCourse()
         {
             var enrollmentId = Guid.NewGuid();
             var courseId = Guid.Parse("d9659c7e-c8ea-418f-a8c6-b51c1ad4ca80");

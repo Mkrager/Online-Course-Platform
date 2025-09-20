@@ -350,5 +350,23 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             Assert.NotNull(course.Category);
             Assert.NotNull(course.Level);
         }
+
+        [Fact]
+        public async Task CheckIsCreatedByAndCourseIdUnique_ReturnsTrueWhenTeacgerCreateThisCourse()
+        {
+            var courseId = Guid.NewGuid();
+
+            var course = new Course
+            {
+                Id = courseId,
+            };
+
+            _dbContext.Courses.Add(course);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.IsUserCourseTeacherAsync("12300000-0000-0000-0000-000000000000", courseId);
+            Assert.True(result);
+        }
+
     }
 }

@@ -29,9 +29,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Courses.Queries
         {
             var handler = new GetCoursesByTeacherQueryHandler(_mapper, _mockCourseRepository.Object);
 
-            var result = await handler.Handle(new GetCoursesByTeacherQuery() { UserId = "id"}, CancellationToken.None);
+            var result = await handler.Handle(new GetCoursesByTeacherQuery() { UserId = "id" }, CancellationToken.None);
 
-            result.ShouldBeOfType<List<CourseListVm>>();
+            result.ShouldBeOfType<List<TeacherCourseDetailVm>>();
 
             result.Count.ShouldBe(2);
         }
