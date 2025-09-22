@@ -19,10 +19,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var courseDetails = JsonSerializer.Deserialize<CourseDetailViewModel>(responseContent, _jsonOptions);
-
+                var courseDetails = await DeserializeResponse<CourseDetailViewModel>(response);
                 return courseDetails;
             }
 
@@ -35,10 +32,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var courseList = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent, _jsonOptions);
-
+                var courseList = await DeserializeResponse<List<CourseListViewModel>>(response);
                 return courseList;
             }
 
@@ -50,10 +44,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var courseList = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent, _jsonOptions);
-
+                var courseList = await DeserializeResponse<List<CourseListViewModel>>(response);
                 return courseList;
             }
 
@@ -73,15 +64,11 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
-
+                    var courseId = await DeserializeResponse<Guid>(response);
                     return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseId);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -106,8 +93,7 @@ namespace OnlineCoursePlatform.App.Services
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -127,8 +113,7 @@ namespace OnlineCoursePlatform.App.Services
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -143,11 +128,8 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var courses = JsonSerializer.Deserialize<List<CourseListViewModel>>(responseContent, _jsonOptions);
-
-                return courses;
+                var courseList = await DeserializeResponse<List<CourseListViewModel>>(response);
+                return courseList;
             }
 
             return new List<CourseListViewModel>();

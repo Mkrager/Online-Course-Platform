@@ -21,15 +21,11 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var result = JsonSerializer.Deserialize<CreateOrderResponse>(responseContent, _jsonOptions);
-
+                    var result = await DeserializeResponse<CreateOrderResponse>(response);
                     return new ApiResponse<string>(System.Net.HttpStatusCode.OK, result.Url);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse<string>(System.Net.HttpStatusCode.BadRequest, string.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -51,14 +47,11 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var result = JsonSerializer.Deserialize<bool>(responseContent, _jsonOptions);
-
+                    var result = await DeserializeResponse<bool>(response);
                     return new ApiResponse<bool>(System.Net.HttpStatusCode.OK, result);
                 }
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -80,12 +73,10 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)

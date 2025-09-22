@@ -26,25 +26,12 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var testId = JsonSerializer.Deserialize<Guid>(responseContent);
-
+                    var testId = await DeserializeResponse<Guid>(response);
                     return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, testId);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-
-                var problemDetails = JsonSerializer.Deserialize<ValidationProblemDetails>(errorContent, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-
-                var allErrors = problemDetails?.Errors
-                    .SelectMany(e => e.Value)
-                    .ToList();
-
-                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, allErrors.FirstOrDefault());
+                var errorMessages = await DeserializeResponse<List<string>>(response);
+                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
             {
@@ -63,9 +50,8 @@ namespace OnlineCoursePlatform.App.Services
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessage = JsonSerializer.Deserialize<List<string>>(errorContent);
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessage.FirstOrDefault());
+                var errorMessages = await DeserializeResponse<List<string>>(response);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
             {
@@ -79,10 +65,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var content = await response.Content.ReadAsStringAsync();
-
-                var test = JsonSerializer.Deserialize<TestViewModel>(content, _jsonOptions);
-
+                var test = await DeserializeResponse<TestViewModel>(response);
                 return test;
             }
 
@@ -95,10 +78,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var content = await response.Content.ReadAsStringAsync();
-
-                var testsList = JsonSerializer.Deserialize<List<TestViewModel>>(content, _jsonOptions);
-
+                var testsList = await DeserializeResponse<List<TestViewModel>>(response);
                 return testsList;
             }
 
@@ -121,9 +101,8 @@ namespace OnlineCoursePlatform.App.Services
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errrorMessage = JsonSerializer.Deserialize<List<string>>(errorContent);
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errrorMessage.FirstOrDefault());
+                var errorMessages = await DeserializeResponse<List<string>>(response);
+                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
             {

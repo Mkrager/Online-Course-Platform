@@ -27,6 +27,5 @@ namespace OnlineCoursePlatform.App.Helpers
                 return response.ErrorText;
             }
         }
-
     }
 }

@@ -1,7 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Level;
-using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
@@ -17,10 +16,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var levelList = JsonSerializer.Deserialize<List<LevelViewModel>>(responseContent, _jsonOptions);
-
+                var levelList = await DeserializeResponse<List<LevelViewModel>>(response);
                 return levelList;
             }
 

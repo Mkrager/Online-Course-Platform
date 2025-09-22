@@ -35,10 +35,7 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var authenticationResponse = JsonSerializer.Deserialize<LoginResponse>(responseContent, _jsonOptions);
-
+                    var authenticationResponse = await DeserializeResponse<LoginResponse>(response);
 
                     var jwtToken = authenticationResponse?.Token;
 
@@ -73,11 +70,7 @@ namespace OnlineCoursePlatform.App.Services
                     }
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-
-                var errorMessages = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent) ??
-                                    new Dictionary<string, string> { { "error", errorContent } };
-
+                var errorMessages = await DeserializeResponse<Dictionary<string, string>>(response);
                 return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.GetValueOrDefault("error"));
             }
             catch (Exception ex)
@@ -108,11 +101,7 @@ namespace OnlineCoursePlatform.App.Services
                     return new ApiResponse<bool>(System.Net.HttpStatusCode.OK, true);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-
-                var errorMessages = JsonSerializer.Deserialize<Dictionary<string, string>>(errorContent) ??
-                                    new Dictionary<string, string> { { "error", errorContent } };
-
+                var errorMessages = await DeserializeResponse<Dictionary<string, string>>(response);
                 return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.GetValueOrDefault("error"));
             }
             catch (Exception ex)

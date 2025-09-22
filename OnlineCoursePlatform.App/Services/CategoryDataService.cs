@@ -1,7 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Category;
-using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
@@ -17,10 +16,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var categoryList = JsonSerializer.Deserialize<List<CategoryViewModel>>(responseContent, _jsonOptions);
-
+                var categoryList = await DeserializeResponse<List<CategoryViewModel>>(response);
                 return categoryList;
             }
 

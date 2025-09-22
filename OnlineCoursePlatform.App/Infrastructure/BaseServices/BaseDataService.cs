@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using OnlineCoursePlatform.App.Helpers;
+using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Infrastructure.BaseServices
 {
@@ -16,10 +17,28 @@ namespace OnlineCoursePlatform.App.Infrastructure.BaseServices
                 PropertyNameCaseInsensitive = true
             };
         }
-        protected async Task<T?> DeserializeResponse<T>(HttpResponseMessage response)
+        protected async Task<T?> DeserializeResponse<T>(HttpResponseMessage response, CancellationToken cancellationToken = default)
         {
-            var responseContent = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<T>(responseContent, _jsonOptions);
+            var content = await response.Content.ReadAsStringAsync(cancellationToken);
+
+            try
+            {
+                return JsonSerializer.Deserialize<T>(content, _jsonOptions);
+            }
+            catch (JsonException ex)
+            {
+                var errorMessage = JsonErrorHelper.GetErrorMessage(content);
+
+                return HandleError<T>(errorMessage);
+            }
+        }
+
+        private static T? HandleError<T>(string errorMessage)
+        {
+            if (typeof(T) == typeof(string))
+                return (T?)(object)errorMessage;
+
+            throw new InvalidOperationException(errorMessage);
         }
     }
 }

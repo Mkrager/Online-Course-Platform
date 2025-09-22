@@ -29,8 +29,7 @@ namespace OnlineCoursePlatform.App.Services
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -52,15 +51,11 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var lessonId = JsonSerializer.Deserialize<Guid>(responseContent);
-
+                    var lessonId = await DeserializeResponse<Guid>(response);
                     return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, lessonId);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)

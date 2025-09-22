@@ -21,15 +21,11 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var courseRequestId = JsonSerializer.Deserialize<Guid>(responseContent);
-
+                    var courseRequestId = await DeserializeResponse<Guid>(response);
                     return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, courseRequestId);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -46,22 +42,18 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
-
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
             {
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
             }
-        }        
+        }
+        
         public async Task<ApiResponse> RejectCourseRequest(RejectCourseRequestDto rejectCourseRequestDto)
         {
             try
@@ -75,15 +67,10 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
-
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -99,15 +86,10 @@ namespace OnlineCoursePlatform.App.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    var courseId = JsonSerializer.Deserialize<Guid>(responseContent);
-
                     return new ApiResponse(System.Net.HttpStatusCode.OK);
                 }
 
-                var errorContent = await response.Content.ReadAsStringAsync();
-                var errorMessages = JsonSerializer.Deserialize<List<string>>(errorContent);
+                var errorMessages = await DeserializeResponse<List<string>>(response);
                 return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
             }
             catch (Exception ex)
@@ -128,9 +110,8 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var courseRequestList = JsonSerializer.Deserialize<List<CoursePublishRequestListViewModel>>(responseContent, _jsonOptions);
-                return courseRequestList ?? new List<CoursePublishRequestListViewModel>();
+                var courseRequestList = await DeserializeResponse<List<CoursePublishRequestListViewModel>>(response);
+                return courseRequestList;
             }
 
             return new List<CoursePublishRequestListViewModel>();
@@ -142,10 +123,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var courseRequestList = JsonSerializer.Deserialize<List<CoursePublishRequestListViewModel>>(responseContent, _jsonOptions);
-
+                var courseRequestList = await DeserializeResponse<List<CoursePublishRequestListViewModel>>(response);
                 return courseRequestList;
             }
 

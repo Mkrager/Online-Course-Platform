@@ -1,7 +1,6 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.User;
-using System.Text.Json;
 
 namespace OnlineCoursePlatform.App.Services
 {
@@ -17,10 +16,7 @@ namespace OnlineCoursePlatform.App.Services
 
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                var userDetails = JsonSerializer.Deserialize<UserDetailsResponse>(responseContent, _jsonOptions);
-
+                var userDetails = await DeserializeResponse<UserDetailsResponse>(response);
                 return userDetails;
             }
 
@@ -35,7 +31,7 @@ namespace OnlineCoursePlatform.App.Services
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
 
-                var userDetails = JsonSerializer.Deserialize<UserDetailsResponse>(responseContent, _jsonOptions);
+                var userDetails = await DeserializeResponse<UserDetailsResponse>(response);
 
                 return userDetails;
             }
