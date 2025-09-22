@@ -1,21 +1,34 @@
 ﻿using FluentValidation;
+using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Common.Validators;
 using OnlineCoursePlatform.Application.Contracts.Application;
+using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt
 {
     public class StartAttemptCommandValidator : CourseAccessValidator<StartAttemptCommand>
     {
-        public StartAttemptCommandValidator(IPermissionService permissionService) : base(permissionService)
+        private readonly ICourseRepository _courseRepository;
+
+        public StartAttemptCommandValidator(IPermissionService permissionService, ICourseRepository courseRepository) : base(permissionService)
         {
+            _courseRepository = courseRepository;
+
             RuleFor(r => r.TestId)
                 .NotNull().WithMessage("Test doesn't exist")
                 .NotEmpty().WithMessage("Test doesn't exist");
         }
 
-        protected override Task<bool> HasAccess(StartAttemptCommand model, CancellationToken token)
+        protected override async Task<bool> HasAccess(StartAttemptCommand model, CancellationToken token)
         {
-            return _permissionService.HasUserCoursePermissionAsync(model.CourseId, model.UserId);
+            var courses = await _courseRepository.GetCoursesAsync(new CourseFilter() { TestId = model.TestId });
+
+            var course = courses.FirstOrDefault();
+            if (course == null)
+                return false;
+
+            return await _permissionService.HasUserCoursePermissionAsync(course.Id, model.UserId);
         }
     }
 }

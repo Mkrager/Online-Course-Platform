@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
@@ -24,12 +25,25 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<List<Course>> GetCoursesByCategoryIdAsync(Guid categoryId)
+        public async Task<List<Course>> GetCoursesAsync(CourseFilter filter)
         {
-            return await _dbContext.Courses
+            var query = _dbContext.Courses
                 .Include(c => c.Category)
                 .Include(c => c.Level)
-                .Where(c => c.CategoryId == categoryId)
+                .Include(c => c.Lessons)
+                    .ThenInclude(l => l.Tests)
+                .AsQueryable();
+
+            if (filter.CategoryId.HasValue)
+                query = query.Where(c => c.CategoryId == filter.CategoryId.Value);
+
+            if (filter.LessonId.HasValue)
+                query = query.Where(c => c.Lessons.Any(l => l.Id == filter.LessonId.Value));
+
+            if (filter.TestId.HasValue)
+                query = query.Where(c => c.Lessons.Any(l => l.Tests.Any(t => t.Id == filter.TestId.Value)));
+
+            return await query
                 .OrderBy(c => c.CreatedDate)
                 .ToListAsync();
         }

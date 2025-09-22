@@ -1,4 +1,5 @@
-﻿using OnlineCoursePlatform.Domain.Entities;
+﻿using OnlineCoursePlatform.Application.Common.Filters;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Contracts.Persistance
 {
@@ -7,7 +8,7 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
         Task<bool> IsUserCourseTeacherAsync(string userId, Guid courseId);
         Task<List<Course>> GetCoursesByUserIdAsync(string userId);
         Task<Course?> GetCourseByIdWithCategoryAndLevelAsync(Guid id);
-        Task<List<Course>> GetCoursesByCategoryIdAsync(Guid categoryId);
+        Task<List<Course>> GetCoursesAsync(CourseFilter filter);
         Task<List<Course>> GetCoursesWithCategoryAndLevelAsync(bool onlyPublished = false);
         Task UpdateIsPublishedAsync(Course course, bool isPublished);
     }

@@ -12,5 +12,6 @@ namespace OnlineCoursePlatform.Domain.Entities
         public TimeSpan Duration { get; set; }
 
         public Course Course { get; set; } = default!;
+        public ICollection<Test> Tests { get; set; } = new List<Test>();
     }
 }
