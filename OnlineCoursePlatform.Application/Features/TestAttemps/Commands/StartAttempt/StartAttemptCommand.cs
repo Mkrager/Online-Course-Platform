@@ -5,5 +5,6 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAt
     public class StartAttemptCommand : IRequest<Guid>
     {
         public Guid TestId { get; set; }
+        public string UserId { get; set; } = string.Empty;
     }
 }

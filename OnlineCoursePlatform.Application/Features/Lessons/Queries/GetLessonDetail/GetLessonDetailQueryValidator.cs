@@ -1,11 +1,12 @@
 ﻿using OnlineCoursePlatform.Application.Common.Validators;
 using OnlineCoursePlatform.Application.Contracts.Application;
+using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
 
-namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList
+namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail
 {
-    public class GetCourseLessonsQueryValidator : CourseAccessValidator<GetCourseLessonsQuery>
+    public class GetLessonDetailQueryValidator : CourseAccessValidator<GetCourseLessonsQuery>
     {
-        public GetCourseLessonsQueryValidator(IPermissionService permissionService) : base(permissionService)
+        public GetLessonDetailQueryValidator(IPermissionService permissionService) : base(permissionService)
         {
         }
 
