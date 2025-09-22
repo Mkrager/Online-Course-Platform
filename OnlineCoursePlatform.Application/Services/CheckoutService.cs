@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Infrastructure;
-using OnlineCoursePlatform.Application.Contracts.Services;
 using OnlineCoursePlatform.Application.DTOs.PayPal;
 using OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;

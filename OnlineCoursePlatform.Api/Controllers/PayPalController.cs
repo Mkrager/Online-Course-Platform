@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
-using OnlineCoursePlatform.Application.Contracts.Services;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.DTOs.PayPal;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 using OnlineCoursePlatform.Domain.Enums;

@@ -1,6 +1,6 @@
 ﻿using OnlineCoursePlatform.Application.DTOs.PayPal;
 
-namespace OnlineCoursePlatform.Application.Contracts.Services
+namespace OnlineCoursePlatform.Application.Contracts.Application
 {
     public interface ICheckoutService
     {
