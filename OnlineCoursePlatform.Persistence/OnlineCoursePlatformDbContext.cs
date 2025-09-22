@@ -1,19 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineCoursePlatform.Application.Contracts;
-using OnlineCoursePlatform.Domain.Common;
-using OnlineCoursePlatform.Domain.Common.Interfaces;
 using OnlineCoursePlatform.Domain.Entities;
-using OnlineCoursePlatform.Domain.Enums;
+using OnlineCoursePlatform.Persistence.Interceptors;
 
 namespace OnlineCoursePlatform.Persistence
 {
     public class OnlineCoursePlatformDbContext : DbContext
     {
-        private readonly ICurrentUserService _currentUserService;
-        public OnlineCoursePlatformDbContext(DbContextOptions<OnlineCoursePlatformDbContext> options, ICurrentUserService currentUserService)
+        private readonly AuditableEntitySaveChangesInterceptor _auditableInterceptor;
+        public OnlineCoursePlatformDbContext(DbContextOptions<OnlineCoursePlatformDbContext> options, AuditableEntitySaveChangesInterceptor auditableInterceptor)
             : base(options)
         {
-            _currentUserService = currentUserService;
+            _auditableInterceptor = auditableInterceptor;
         }
 
         public DbSet<Course> Courses { get; set; }
@@ -29,6 +26,11 @@ namespace OnlineCoursePlatform.Persistence
         public DbSet<TestAttempt> TestAttempts { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<CoursePublishRequest> CoursePublishRequests { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.AddInterceptors(_auditableInterceptor);
+            base.OnConfiguring(optionsBuilder);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OnlineCoursePlatformDbContext).Assembly);
@@ -164,60 +166,6 @@ namespace OnlineCoursePlatform.Persistence
                 TestId = Guid.Parse("4a8c1a3f-7e1c-49d3-9bc1-1f8b38f1f3aa"),
                 UserId = "someUserId",
             });
-        }
-
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            var now = DateTime.UtcNow;
-            var userId = _currentUserService.UserId;
-
-            foreach (var entry in ChangeTracker.Entries())
-            {
-                if (entry.Entity is AuditableEntity auditable)
-                {
-                    if (entry.State == EntityState.Added)
-                    {
-                        auditable.CreatedDate = now;
-                        auditable.CreatedBy = userId;
-                    }
-                    else if (entry.State == EntityState.Modified)
-                    {
-                        auditable.LastModifiedDate = now;
-                        auditable.LastModifiedBy = userId;
-                    }
-                }
-
-                if (entry.Entity is TimestampedEntity timestamped)
-                {
-                    if (entry.State == EntityState.Added)
-                        timestamped.CreatedAt = now;
-                    else if (entry.State == EntityState.Modified)
-                        timestamped.LastModifiedDate = now;
-                }
-
-                if (entry.Entity is IHasUserId userEntity && entry.State == EntityState.Added)
-                {
-                    userEntity.UserId = userId;
-                }
-
-                if (entry.Entity is CoursePublishRequest coursePublishRequest)
-                {
-                    if (entry.State == EntityState.Added)
-                    {
-                        coursePublishRequest.RequestedBy = userId;
-                        coursePublishRequest.RequestedDate = now;
-                        coursePublishRequest.Status = CoursePublishStatus.Pending;
-                    }
-                    else if (entry.State == EntityState.Modified)
-                    {
-
-                        coursePublishRequest.ProcessedBy = userId;
-                        coursePublishRequest.ProcessedAt = now;
-
-                    }
-                }
-            }
-            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Persistence.Interceptors;
 using OnlineCoursePlatform.Persistence.Repositories;
 
 namespace OnlineCoursePlatform.Persistence
@@ -16,6 +17,8 @@ namespace OnlineCoursePlatform.Persistence
             ("OnlineCoursePlatformConnectionString")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+
+            services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITestRepository, TestRepository>();
