@@ -9,9 +9,9 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLes
         {
         }
 
-        protected override Task<bool> HasAccess(GetCourseLessonsQuery model, CancellationToken token)
+        protected override async Task<bool> HasAccess(GetCourseLessonsQuery model, CancellationToken token)
         {
-            return _permissionService.HasUserCoursePermissionAsync(model.CourseId, model.UserId);
+            return await _permissionService.HasUserCoursePermissionAsync(model.CourseId, model.UserId);
         }
     }
 }

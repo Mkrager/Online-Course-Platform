@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest;
@@ -11,7 +12,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController(IMediator mediator) : Controller
+    public class TestController(IMediator mediator, ICurrentUserService currentUserService) : Controller
     {
 
         [HttpGet("{id}", Name = "GetTestById")]
@@ -19,7 +20,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<TestDetailVm>> GetTestById(Guid id)
         {
-            var getCourseDetailQuery = new GetTestDetailQuery() { Id = id };
+            var getCourseDetailQuery = new GetTestDetailQuery()
+            {
+                Id = id,
+                UserId = currentUserService.UserId
+            };
             return Ok(await mediator.Send(getCourseDetailQuery));
         }
 
@@ -28,7 +33,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<LessonTestListVm>>> GetTestByLessonId(Guid lessonId)
         {
-            var getLessonTestQuery = new GetLessonTestsQuery() { LessonId = lessonId };
+            var getLessonTestQuery = new GetLessonTestsQuery() 
+            {
+                LessonId = lessonId,
+                UserId = currentUserService.UserId
+            };
             return Ok(await mediator.Send(getLessonTestQuery));
         }
 
