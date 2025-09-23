@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
+using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Persistence;
+using OnlineCoursePlatform.Persistence.Interceptors;
 using OnlineCoursePlatform.Persistence.Repositories;
 
 namespace OnlineCoursePlatfrom.Persistence.InregrationTests
@@ -11,6 +13,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
     {
         private readonly OnlineCoursePlatformDbContext _dbContext;
         private readonly CourseRepository _repository;
+        private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
         private readonly Mock<ICurrentUserService> _currentUserServiceMock;
         private readonly string _currentUserId;
 
@@ -24,8 +27,8 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _currentUserServiceMock = new Mock<ICurrentUserService>();
             _currentUserServiceMock.Setup(m => m.UserId).Returns(_currentUserId);
 
-            _dbContext = new OnlineCoursePlatformDbContext(options, _currentUserServiceMock.Object);
-
+            _auditableEntitySaveChangesInterceptor = new AuditableEntitySaveChangesInterceptor(_currentUserServiceMock.Object);
+            _dbContext = new OnlineCoursePlatformDbContext(options, _auditableEntitySaveChangesInterceptor);
             _repository = new CourseRepository(_dbContext);
         }
 
@@ -109,12 +112,68 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.AddRange(course1, course2, course3);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursesByCategoryIdAsync(categoryId);
+            var result = await _repository.GetCoursesAsync(new CourseFilter() { CategoryId = categoryId });
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
             Assert.All(result, c => Assert.Equal(categoryId, c.CategoryId));
             Assert.Equal(course1.Id, result.First().Id);
+        }
+
+        [Fact]
+        public async Task GetCourseByLessonId_ShouldReturnCoursesOfGivenCategory()
+        {
+            var categoryId = Guid.NewGuid();
+            var lessonId = Guid.NewGuid();
+            var anotherCategoryId = Guid.NewGuid();
+            var level = new Level { Id = Guid.NewGuid(), Name = "Beginner" };
+
+            var category = new Category { Id = categoryId, Name = "Development" };
+            var anotherCategory = new Category { Id = anotherCategoryId, Name = "Business" };
+
+            _dbContext.Categories.AddRange(category, anotherCategory);
+            _dbContext.Levels.Add(level);
+
+            var course1 = new Course
+            {
+                Id = Guid.NewGuid(),
+                Title = "C# Basics",
+                CategoryId = categoryId,
+                Level = level
+            };
+
+            var course2 = new Course
+            {
+                Id = Guid.NewGuid(),
+                Title = "ASP.NET Core",
+                CategoryId = categoryId,
+                Level = level,
+                Lessons = new List<Lesson>()
+                {
+                    new Lesson()
+                    {
+                        Id = lessonId,
+                        CourseId = course1.Id,
+                    }
+                }
+            };
+
+            var course3 = new Course
+            {
+                Id = Guid.NewGuid(),
+                Title = "Business Basics",
+                CategoryId = anotherCategoryId,
+                Level = level
+            };
+
+            _dbContext.Courses.AddRange(course1, course2, course3);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.GetCoursesAsync(new CourseFilter() { LessonId = lessonId });
+
+            Assert.NotNull(result);
+            Assert.Single(result);
+            Assert.All(result, c => Assert.Equal(lessonId, c.Lessons.First().Id));
         }
 
 

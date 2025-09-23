@@ -3,6 +3,7 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Persistence;
+using OnlineCoursePlatform.Persistence.Interceptors;
 using OnlineCoursePlatform.Persistence.Repositories;
 
 namespace OnlineCoursePlatfrom.Persistence.InregrationTests
@@ -10,6 +11,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
     public class BaseRepositoryTests
     {
         private readonly OnlineCoursePlatformDbContext _dbContext;
+        private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
         private readonly BaseRepository<Course> _repository;
         private readonly Mock<ICurrentUserService> _currentUserServiceMock;
         private readonly string _currentUserId;
@@ -24,7 +26,9 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _currentUserServiceMock = new Mock<ICurrentUserService>();
             _currentUserServiceMock.Setup(m => m.UserId).Returns(_currentUserId);
 
-            _dbContext = new OnlineCoursePlatformDbContext(options, _currentUserServiceMock.Object);
+            _auditableEntitySaveChangesInterceptor = new AuditableEntitySaveChangesInterceptor(_currentUserServiceMock.Object);
+            _dbContext = new OnlineCoursePlatformDbContext(options, _auditableEntitySaveChangesInterceptor);
+
             _repository = new BaseRepository<Course>(_dbContext);
         }
 
