@@ -25,26 +25,13 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<List<Course>> GetCoursesAsync(CourseFilter filter)
+        public async Task<List<Course>> GetCoursesByCategoryAsync(Guid categoryId)
         {
-            var query = _dbContext.Courses
+
+            return await _dbContext.Courses
                 .Include(c => c.Category)
                 .Include(c => c.Level)
-                .Include(c => c.Lessons)
-                    .ThenInclude(l => l.Tests)
-                .AsQueryable();
-
-            if (filter.CategoryId.HasValue)
-                query = query.Where(c => c.CategoryId == filter.CategoryId.Value);
-
-            if (filter.LessonId.HasValue)
-                query = query.Where(c => c.Lessons.Any(l => l.Id == filter.LessonId.Value));
-
-            if (filter.TestId.HasValue)
-                query = query.Where(c => c.Lessons.Any(l => l.Tests.Any(t => t.Id == filter.TestId.Value)));
-
-            return await query
-                .OrderBy(c => c.CreatedDate)
+                .Where(r => r.CategoryId == categoryId)
                 .ToListAsync();
         }
 
@@ -75,6 +62,24 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         {
             var matches = await _dbContext.Courses.AnyAsync(x => x.CreatedBy == userId && x.Id == courseId);
             return matches;
+        }
+
+        public async Task<Course?> GetCourseAsync(CourseFilter filter)
+        {
+            var query = _dbContext.Courses
+                .Include(c => c.Category)
+                .Include(c => c.Level)
+                .Include(c => c.Lessons)
+                    .ThenInclude(l => l.Tests)
+                .AsQueryable();
+
+            if (filter.LessonId.HasValue)
+                return await query.FirstOrDefaultAsync(c => c.Lessons.Any(l => l.Id == filter.LessonId.Value));
+
+            if (filter.TestId.HasValue)
+                return await query.FirstOrDefaultAsync(c => c.Lessons.Any(l => l.Tests.Any(t => t.Id == filter.TestId.Value)));
+
+            return null;
         }
     }
 }

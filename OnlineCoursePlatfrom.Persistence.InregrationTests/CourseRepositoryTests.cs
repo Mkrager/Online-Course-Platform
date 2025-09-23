@@ -112,7 +112,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.AddRange(course1, course2, course3);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursesAsync(new CourseFilter() { CategoryId = categoryId });
+            var result = await _repository.GetCoursesByCategoryAsync(categoryId);
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
@@ -169,11 +169,10 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.Courses.AddRange(course1, course2, course3);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursesAsync(new CourseFilter() { LessonId = lessonId });
+            var result = await _repository.GetCourseAsync(new CourseFilter() { LessonId = lessonId });
 
             Assert.NotNull(result);
-            Assert.Single(result);
-            Assert.All(result, c => Assert.Equal(lessonId, c.Lessons.First().Id));
+            Assert.Equal(lessonId, result.Lessons.First().Id);
         }
 
 

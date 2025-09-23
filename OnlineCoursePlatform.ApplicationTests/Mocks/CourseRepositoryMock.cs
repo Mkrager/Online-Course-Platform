@@ -1,4 +1,6 @@
-﻿using Moq;
+﻿using EmptyFiles;
+using Moq;
+using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
@@ -39,6 +41,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     CategoryId = Guid.Parse("2d6e6fbe-3d9f-4a75-a261-2f2b197b4c6a"),
                     CreatedBy = "id",
                     IsPublished = false
+
                 },
                 new Course
                 {
@@ -95,8 +98,23 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.GetCourseByIdWithCategoryAndLevelAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid id) => courses.FirstOrDefault(c => c.Id == id));
 
-            mockRepository.Setup(r => r.GetCoursesByCategoryIdAsync(It.IsAny<Guid>()))
-                .ReturnsAsync((Guid categoryId) => courses.Where(x => x.CategoryId == categoryId).ToList());
+            mockRepository.Setup(r => r.GetCoursesByCategoryAsync(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid categoryId) => courses.Where(r => r.CategoryId == categoryId).ToList());
+
+            mockRepository.Setup(r => r.GetCourseAsync(It.IsAny<CourseFilter>()))
+                .ReturnsAsync((CourseFilter courseFilter) => 
+                {
+                    if (courseFilter.LessonId.HasValue)
+                    {
+                        return courses.FirstOrDefault(c => c.Lessons.Any(l => l.Id == courseFilter.LessonId.Value));
+                    }
+                    else if (courseFilter.TestId.HasValue)
+                    {
+                        return courses.FirstOrDefault(c => c.Lessons.Any(l => l.Tests.Any(t => t.Id == courseFilter.TestId.Value)));
+                    }
+
+                    return null;
+                });
 
             mockRepository.Setup(r => r.GetCoursesByUserIdAsync(It.IsAny<string>()))
                 .ReturnsAsync((string userId) => courses.Where(x => x.CreatedBy == userId).ToList());

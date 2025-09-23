@@ -8,7 +8,8 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
         Task<bool> IsUserCourseTeacherAsync(string userId, Guid courseId);
         Task<List<Course>> GetCoursesByUserIdAsync(string userId);
         Task<Course?> GetCourseByIdWithCategoryAndLevelAsync(Guid id);
-        Task<List<Course>> GetCoursesAsync(CourseFilter filter);
+        Task<List<Course>> GetCoursesByCategoryAsync(Guid categoryId);
+        Task<Course?> GetCourseAsync(CourseFilter filter);
         Task<List<Course>> GetCoursesWithCategoryAndLevelAsync(bool onlyPublished = false);
         Task UpdateIsPublishedAsync(Course course, bool isPublished);
     }

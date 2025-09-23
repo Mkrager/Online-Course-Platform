@@ -22,9 +22,8 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAt
 
         protected override async Task<bool> HasAccess(StartAttemptCommand model, CancellationToken token)
         {
-            var courses = await _courseRepository.GetCoursesAsync(new CourseFilter() { TestId = model.TestId });
+            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { TestId = model.TestId });
 
-            var course = courses.FirstOrDefault();
             if (course == null)
                 return false;
 
