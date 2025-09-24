@@ -10,5 +10,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
         public Guid CategoryId { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
+        public string UserId { get; set; } = string.Empty;
     }
 }

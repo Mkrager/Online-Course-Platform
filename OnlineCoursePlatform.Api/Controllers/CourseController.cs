@@ -14,7 +14,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController(IMediator mediator) : Controller
+    public class CourseController(IMediator mediator, ICurrentUserService currentUserService) : Controller
     {
         [Authorize(Roles = "Admin")]
         [HttpGet(Name = "GetAllCourses")]
@@ -72,6 +72,8 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Update([FromBody] UpdateCourseCommand updateCourseCommand)
         {
+            updateCourseCommand.UserId = currentUserService.UserId;
+
             await mediator.Send(updateCourseCommand);
             return NoContent();
         }
@@ -83,7 +85,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var deleteCourseCommand = new DeleteCourseCommand() { Id = id };
+            var deleteCourseCommand = new DeleteCourseCommand() 
+            {
+                Id = id,
+                UserId = currentUserService.UserId
+            };
             await mediator.Send(deleteCourseCommand);
             return NoContent();
         }
@@ -95,7 +101,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> UnPublishCourse(Guid id)
         {
-            var unPublishCourseCommand = new UnPublishCourseCommand() { Id = id };
+            var unPublishCourseCommand = new UnPublishCourseCommand() 
+            { 
+                Id = id,
+                UserId = currentUserService.UserId
+            };
             await mediator.Send(unPublishCourseCommand);
             return NoContent();
         }

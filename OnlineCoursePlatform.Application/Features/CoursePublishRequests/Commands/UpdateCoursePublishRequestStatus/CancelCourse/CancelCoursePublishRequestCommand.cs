@@ -5,5 +5,6 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
     public class CancelCoursePublishRequestCommand : IRequest
     {
         public Guid Id { get; set; }
+        public string UserId { get; set; } = string.Empty;
     }
 }

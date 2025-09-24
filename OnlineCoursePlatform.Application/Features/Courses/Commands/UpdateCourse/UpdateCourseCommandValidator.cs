@@ -1,10 +1,12 @@
 ﻿using FluentValidation;
+using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse
 {
-    public class UpdateCourseCommandValidator : AbstractValidator<UpdateCourseCommand>
+    public class UpdateCourseCommandValidator : AccessValidator<UpdateCourseCommand>
     {
-        public UpdateCourseCommandValidator()
+        public UpdateCourseCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
         {
             RuleFor(p => p.Title)
                 .NotNull()
@@ -25,6 +27,11 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
             RuleFor(p => p.CategoryId)
                 .NotEmpty()
                 .NotNull().WithMessage("{PropertyName} is required.");
+        }
+
+        protected override async Task<bool> HasAccess(UpdateCourseCommand model, CancellationToken token)
+        {
+            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, model.Id);
         }
     }
 }
