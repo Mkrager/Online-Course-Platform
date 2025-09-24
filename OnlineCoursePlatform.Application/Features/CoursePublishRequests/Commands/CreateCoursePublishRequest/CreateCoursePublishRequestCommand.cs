@@ -5,5 +5,6 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
     public class CreateCoursePublishRequestCommand : IRequest<Guid>
     {
         public Guid CourseId { get; set; }
+        public string UserId { get; set; } = string.Empty;
     }
 }

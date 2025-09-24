@@ -78,6 +78,9 @@ namespace OnlineCoursePlatform.Persistence.Repositories
 
             if (filter.TestId.HasValue)
                 return await query.FirstOrDefaultAsync(c => c.Lessons.Any(l => l.Tests.Any(t => t.Id == filter.TestId.Value)));
+            
+            if (filter.CoursePublishRequestId.HasValue)
+                return await query.FirstOrDefaultAsync(c => c.CoursePublishRequests.Any(l => l.Id == filter.CoursePublishRequestId.Value);
 
             return null;
         }

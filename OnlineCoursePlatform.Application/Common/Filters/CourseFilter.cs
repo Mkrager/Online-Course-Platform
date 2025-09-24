@@ -4,5 +4,6 @@
     {
         public Guid? LessonId { get; set; }
         public Guid? TestId { get; set; }
+        public Guid? CoursePublishRequestId { get; set; }
     }
 }
