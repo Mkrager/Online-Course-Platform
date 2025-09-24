@@ -1,18 +1,28 @@
-﻿using OnlineCoursePlatform.Application.Common.Validators;
+﻿using OnlineCoursePlatform.Application.Common.Filters;
+using OnlineCoursePlatform.Application.Common.Validators;
 using OnlineCoursePlatform.Application.Contracts.Application;
-using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
+using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Exceptions;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail
 {
-    public class GetLessonDetailQueryValidator : CourseAccessValidator<GetCourseLessonsQuery>
+    public class GetLessonDetailQueryValidator : CourseAccessValidator<GetLessonDetailQuery>
     {
-        public GetLessonDetailQueryValidator(IPermissionService permissionService) : base(permissionService)
+        private readonly ICourseRepository _courseRepository;
+        public GetLessonDetailQueryValidator(IPermissionService permissionService, ICourseRepository courseRepository) : base(permissionService)
         {
+            _courseRepository = courseRepository;
         }
 
-        protected override Task<bool> HasAccess(GetCourseLessonsQuery model, CancellationToken token)
+        protected override async Task<bool> HasAccess(GetLessonDetailQuery model, CancellationToken token)
         {
-            return _permissionService.HasUserCoursePermissionAsync(model.CourseId, model.UserId);
+            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { LessonId = model.Id });
+
+            if (course == null)
+                throw new NotFoundException(nameof(Course), model.Id);
+
+                return await _permissionService.HasUserCoursePermissionAsync(course.Id, model.UserId);
         }
     }
 }

@@ -51,6 +51,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> UpdateLesson([FromBody] UpdateLessonCommand updateLessonCommand)
         {
+            updateLessonCommand.UserId = currentUserService.UserId;
             await mediator.Send(updateLessonCommand);
             return NoContent();
         }
@@ -62,7 +63,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> DeleteLesson(Guid id)
         {
-            var deleteLessonCommand = new DeleteLessonCommand() { Id = id };
+            var deleteLessonCommand = new DeleteLessonCommand() 
+            { 
+                Id = id,
+                UserId = currentUserService.UserId
+            };
             await mediator.Send(deleteLessonCommand);
             return NoContent();
         }

@@ -10,6 +10,6 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesso
         public string VideoUrl { get; set; } = string.Empty;
         public int Order { get; set; }
         public TimeSpan Duration { get; set; }
-
+        public string UserId { get; set; } = string.Empty;
     }
 }

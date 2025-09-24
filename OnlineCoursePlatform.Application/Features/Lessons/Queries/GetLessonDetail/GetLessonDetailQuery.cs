@@ -5,5 +5,6 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDet
     public class GetLessonDetailQuery : IRequest<LessonDetailVm>
     {
         public Guid Id { get; set; }
+        public string UserId { get; set; } = string.Empty;
     }
 }

@@ -38,7 +38,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var userId = currentUserService.UserId;
 
-            var getUserDetailQuery = new GetUserDetailsQuery() { Id = currentUserService.UserId };
+            var getUserDetailQuery = new GetUserDetailsQuery() { Id = userId };
 
             var result = await mediator.Send(getUserDetailQuery);
 
