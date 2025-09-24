@@ -1,19 +1,41 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.User
 @model UserDetailsResponse;
 
-@if (Model.Roles.Contains("Admin"))
-{
-    @await Html.PartialAsync("_AdminProfilePartial", Model)
-}
-else if (Model.Roles.Contains("Moderator"))
-{
-    @await Html.PartialAsync("_ModeratorProfilePartial", Model)
-}
-else if (Model.Roles.Contains("Teacher"))
-{
-    @await Html.PartialAsync("_TeacherProfilePartial", Model)
-}
-else
-{
-    @await Html.PartialAsync("_DefaultProfilePartial", Model)
-}
+<div class="account-container">
+    <div class="account-header">
+        <h2>Welcome, @Model.UserName</h2>
+        <p>Manage your profile and courses easily.</p>
+    </div>
+
+    <div class="account-details">
+        <div class="profile-section">
+            <img src="/lib/img/profile.jpg" alt="Profile Picture" class="profile-image">
+            <div class="user-info">
+                <p>Email: @Model.Email</p>
+            </div>
+
+            <div class="account-actions">
+                <button class="btn-edit">Edit Profile</button>
+                <a class="btn-edit btn-danger" asp-controller="Authentication" asp-action="Logout">Logout</a>
+            </div>
+        </div>
+
+        @if (Model.Roles.Contains("Admin"))
+        {
+            @await Html.PartialAsync("_AdminProfilePartial", Model)
+        }
+        else if (Model.Roles.Contains("Moderator"))
+        {
+            @await Html.PartialAsync("_ModeratorProfilePartial", Model)
+        }
+        else if (Model.Roles.Contains("Teacher"))
+        {
+            @await Html.PartialAsync("_TeacherProfilePartial", Model)
+        }
+        else
+        {
+            @await Html.PartialAsync("_DefaultProfilePartial", Model)
+        }
+
+    </div>
+</div>

@@ -79,10 +79,10 @@ namespace OnlineCoursePlatform.App.Services
             }
         }
 
-        public Task Logout()
+        public async Task Logout()
         {
+            await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             _httpContextAccessor.HttpContext.Response.Cookies.Delete("access_token");
-            return Task.CompletedTask;
         }
 
         public async Task<ApiResponse<bool>> Register(RegistrationRequest request)

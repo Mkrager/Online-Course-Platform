@@ -987,3 +987,10 @@ input[type="text"] {
 .badge-no {
     background-color: #ac2222;
 }
+
+.account-actions {
+    display: flex;
+    gap: 13px;
+    margin-top: 5px;
+    justify-content: center;
+}

@@ -1,30 +1,12 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.User
 @model UserDetailsResponse;
 
-<div class="account-container">
-    <div class="account-header">
-        <h2>Welcome, @Model.UserName</h2>
-        <p>Manage your profile and courses easily.</p>
-    </div>
-
-    <div class="account-details">
-        <div class="profile-section">
-            <img src="/lib/img/profile.jpg" alt="Profile Picture" class="profile-image">
-            <div class="user-info">
-                <p>Email: @Model.Email</p>
-            </div>
-            <button class="btn-edit">Edit Profile</button>
-        </div>
-
-        <div class="course-item">
-            <div class="course-actions">
-                <a asp-controller="" asp-action="" asp-route-some="" class="btn-lessons">Teachers requests</a>
-                <a asp-controller="coursePublishRequest" asp-action="list" class="btn-pass">Courses requests</a>
-                <a asp-controller="" asp-action="" asp-route-some="" class="btn-delete">Сomplaints</a>
-                <a asp-controller="" asp-action="" asp-route-some="" class="btn-add-test">Block user</a>
-                <a asp-controller="" asp-action="" asp-route-some="" class="btn-edit">Edit course</a>
-            </div>
-        </div>
-
+<div class="course-item">
+    <div class="course-actions">
+        <a asp-controller="" asp-action="" asp-route-some="" class="btn-lessons">Teachers requests</a>
+        <a asp-controller="coursePublishRequest" asp-action="list" class="btn-pass">Courses requests</a>
+        <a asp-controller="" asp-action="" asp-route-some="" class="btn-delete">Сomplaints</a>
+        <a asp-controller="" asp-action="" asp-route-some="" class="btn-add-test">Block user</a>
+        <a asp-controller="" asp-action="" asp-route-some="" class="btn-edit">Edit course</a>
     </div>
 </div>

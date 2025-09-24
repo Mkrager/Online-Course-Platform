@@ -51,13 +51,20 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Register(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Register(request.RegistrationRequest);
-            TempData["LoginErrorMessage"] = HandleErrors.HandleResponse<bool>(result, "Success");
+            TempData["LoginErrorMessage"] = HandleErrors.HandleResponse(result, "Success");
 
             if (result.IsSuccess)
             {
                 return RedirectToAction("Index", "Home");
             }
 
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _authenticationService.Logout();
             return RedirectToAction("Index", "Home");
         }
     }
