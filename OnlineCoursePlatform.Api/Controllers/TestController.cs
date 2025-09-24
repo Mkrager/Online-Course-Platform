@@ -57,6 +57,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UpdateTest([FromBody] UpdateTestCommand updateTestCommand)
         {
+            updateTestCommand.UserId = currentUserService.UserId;
             await mediator.Send(updateTestCommand);
             return NoContent();
         }
@@ -68,7 +69,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> DeleteTest(Guid id)
         {
-            var deleteTestCommand = new DeleteTestCommand() { Id = id };
+            var deleteTestCommand = new DeleteTestCommand() 
+            { 
+                Id = id,
+                UserId = currentUserService.UserId
+            };
             await mediator.Send(deleteTestCommand);
             return NoContent();
         }
