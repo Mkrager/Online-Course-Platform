@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Moq;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
 using OnlineCoursePlatform.Application.Profiles;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
@@ -13,10 +13,14 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
+        private readonly Mock<ICourseRepository> _mockCourseRepository;
+        private readonly Mock<IPermissionService> _mockPermissionService;
 
         public CreateCoursePublishRequestCommadTests()
         {
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockPermissionService = PermissiomServiceMock.GetPermissionService();
+            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
             var configurationProvider = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<MappingProfile>();
@@ -47,7 +51,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
         [Fact]
         public async void Validator_ShouldHaveError_WhenCourseIdEmpty()
         {
-            var validator = new CreateCoursePublishRequestValidator();
+            var validator = new CreateCoursePublishRequestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateCoursePublishRequestCommand
             {
                 CourseId = Guid.Empty,
