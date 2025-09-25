@@ -3,25 +3,20 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
 {
-    public class UpdatePaymentCommandTests
+    public class UpdatePaymentCommandTests : TestBase
     {
         private readonly Mock<IAsyncRepository<Payment>> _mockPaymentRepository;
-        private readonly IMapper _mapper;
 
         public UpdatePaymentCommandTests()
         {
             _mockPaymentRepository = PaymentRepositoryMock.GetPaymentRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

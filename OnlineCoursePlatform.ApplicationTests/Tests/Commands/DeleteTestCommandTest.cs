@@ -1,27 +1,19 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 {
-    public class DeleteTestCommandTest
+    public class DeleteTestCommandTest : TestBase
     {
         private readonly Mock<ITestRepository> _mockTestRepository;
-        private readonly IMapper _mapper;
 
         public DeleteTestCommandTest()
         {
             _mockTestRepository = TestRepositoryMock.GetTestRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

@@ -1,26 +1,18 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Categories.Commands
 {
-    public class CreateCategoryCommandTest
+    public class CreateCategoryCommandTest : TestBase
     {
-        private readonly IMapper _mapper;
         private readonly Mock<ICategoryRepository> _mockCategoryRepository;
-
         public CreateCategoryCommandTest()
         {
             _mockCategoryRepository = CategoryRepositoryMock.GetCategoryRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

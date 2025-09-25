@@ -1,27 +1,19 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Payments.Queries.GetPaymentDetail;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Payments.Queries
 {
-    public class GetPaymentCommandTests
+    public class GetPaymentCommandTests : TestBase
     {
-        private readonly IMapper _mapper;
         private readonly Mock<IAsyncRepository<Payment>> _mockPaymentRepository;
 
         public GetPaymentCommandTests()
         {
             _mockPaymentRepository = PaymentRepositoryMock.GetPaymentRepository();
-            var configurationProveder = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = configurationProveder.CreateMapper();
         }
 
         [Fact]

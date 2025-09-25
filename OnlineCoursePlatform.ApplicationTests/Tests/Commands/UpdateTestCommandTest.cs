@@ -1,28 +1,20 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 {
-    public class UpdateTestCommandTest
+    public class UpdateTestCommandTest : AccessValidatorBaseTest
     {
-        private readonly IMapper _mapper;
         private readonly Mock<ITestRepository> _testRepository;
 
         public UpdateTestCommandTest()
         {
             _testRepository = TestRepositoryMock.GetTestRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]
@@ -76,7 +68,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionEmpty()
         {
-            var validator = new UpdateTestCommandValidator();
+            var validator = new UpdateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateTestCommand()
             {
                 Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"),
@@ -93,7 +85,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenTitleEmpty()
         {
-            var validator = new UpdateTestCommandValidator();
+            var validator = new UpdateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateTestCommand()
             {
                 Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"),
@@ -130,7 +122,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionDontHaveCorrectAnswer()
         {
-            var validator = new UpdateTestCommandValidator();
+            var validator = new UpdateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateTestCommand()
             {
                 Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"),
@@ -167,7 +159,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionsHasEmptyValue()
         {
-            var validator = new UpdateTestCommandValidator();
+            var validator = new UpdateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateTestCommand()
             {
                 Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"),
@@ -199,7 +191,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionsHasEmptyAnswers()
         {
-            var validator = new UpdateTestCommandValidator();
+            var validator = new UpdateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateTestCommand()
             {
                 Id = Guid.Parse("c1e9a0b2-5f3d-4427-8a3f-6db42c948ce4"),

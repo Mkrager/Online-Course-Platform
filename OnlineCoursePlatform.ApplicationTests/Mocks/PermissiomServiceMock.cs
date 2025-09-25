@@ -12,6 +12,9 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.HasUserCoursePermissionAsync(It.IsAny<Guid>(), It.IsAny<string>()))
                 .ReturnsAsync(true);
 
+            mockRepository.Setup(r => r.UserHasPrivilegedRole(It.IsAny<List<string>>()))
+                .Returns(true);
+
             return mockRepository;
         }
     }

@@ -1,25 +1,18 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
 {
-    public class DeleteLessonCommandTest
+    public class DeleteLessonCommandTest : TestBase
     {
-        private readonly IMapper _mapper;
         private readonly Mock<ILessonRepository> _mockLessonRepository;
         public DeleteLessonCommandTest()
         {
             _mockLessonRepository = LessonRepositoryMock.GetLessonRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

@@ -1,25 +1,18 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLessonsList;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Queries
 {
-    public class GetCourseLessonsQueryHandlerTest
+    public class GetCourseLessonsQueryHandlerTest : TestBase
     {
         private readonly Mock<ILessonRepository> _mockLessonRepository;
-        private readonly IMapper _mapper;
         public GetCourseLessonsQueryHandlerTest()
         {
             _mockLessonRepository = LessonRepositoryMock.GetLessonRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

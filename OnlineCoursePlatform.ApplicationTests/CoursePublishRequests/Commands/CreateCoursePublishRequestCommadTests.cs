@@ -1,31 +1,19 @@
-﻿using AutoMapper;
-using Moq;
-using OnlineCoursePlatform.Application.Contracts.Application;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Commands
 {
-    public class CreateCoursePublishRequestCommadTests
+    public class CreateCoursePublishRequestCommadTests : AccessValidatorBaseTest
     {
-        private readonly IMapper _mapper;
         private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
-        private readonly Mock<ICourseRepository> _mockCourseRepository;
-        private readonly Mock<IPermissionService> _mockPermissionService;
 
         public CreateCoursePublishRequestCommadTests()
         {
             _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
-            _mockPermissionService = PermissiomServiceMock.GetPermissionService();
-            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

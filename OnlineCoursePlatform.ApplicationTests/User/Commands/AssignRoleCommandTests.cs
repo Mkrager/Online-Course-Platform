@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
-using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;

@@ -1,25 +1,17 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
-using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 
 namespace OnlineCoursePlatform.Application.UnitTests.User.Queries
 {
-    public class GetUserDetailsQueryHandlerTests
+    public class GetUserDetailsQueryHandlerTests : TestBase
     {
         private readonly Mock<IUserService> _mockUserService;
-        private readonly IMapper _mapper;
         public GetUserDetailsQueryHandlerTests()
         {
             _mockUserService = UserServiceMock.GetUserService();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

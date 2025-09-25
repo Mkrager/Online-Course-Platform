@@ -2,26 +2,19 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsList;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Queries
 {
-    public class GetLessonTestsQueryHandlerTest
+    public class GetLessonTestsQueryHandlerTest : TestBase
     {
-        private readonly IMapper _mapper;
         private readonly Mock<ITestRepository> _mockTestRepository;
 
         public GetLessonTestsQueryHandlerTest()
         {
             _mockTestRepository = TestRepositoryMock.GetTestRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

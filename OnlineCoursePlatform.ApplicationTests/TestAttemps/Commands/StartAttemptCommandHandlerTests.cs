@@ -1,32 +1,20 @@
-﻿using AutoMapper;
-using Moq;
-using OnlineCoursePlatform.Application.Contracts.Application;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 {
-    public class StartAttemptCommandHandlerTests
+    public class StartAttemptCommandHandlerTests : AccessValidatorBaseTest
     {
-        private readonly IMapper _mapper;
         private readonly Mock<IAsyncRepository<TestAttempt>> _mockTestAttemptRepository;
-        private readonly Mock<ICourseRepository> _mockCourseRepository;
-        private readonly Mock<IPermissionService> _mockPermissionService;
 
         public StartAttemptCommandHandlerTests()
         {
             _mockTestAttemptRepository = TestAttemptRepositoryMock.GetTestAttemptRepository();
-            _mockCourseRepository = CourseRepositoryMock.GetCourseRepository();
-            _mockPermissionService = PermissiomServiceMock.GetPermissionService();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]
@@ -53,7 +41,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenTestIdEmpty()
         {
-            var validator = new StartAttemptCommandValidator(_mockPermissionService.Object, _mockCourseRepository.Object);
+            var validator = new StartAttemptCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new StartAttemptCommand()
             {
                 TestId = Guid.Empty,

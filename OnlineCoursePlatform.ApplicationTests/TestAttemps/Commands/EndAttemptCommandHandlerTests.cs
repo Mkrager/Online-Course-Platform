@@ -1,17 +1,15 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
 {
-    public class EndAttemptCommandHandlerTests
+    public class EndAttemptCommandHandlerTests : TestBase
     {
-        private readonly IMapper _mapper;
         private readonly Mock<IAsyncRepository<TestAttempt>> _mockTestAttemptRepository;
         private readonly Mock<IUserAnswerRepository> _mockUserAnswerRepository;
 
@@ -19,11 +17,6 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
         {
             _mockTestAttemptRepository = TestAttemptRepositoryMock.GetTestAttemptRepository();
             _mockUserAnswerRepository = UserAnswerRepositoryMock.GetUserAnswerRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]

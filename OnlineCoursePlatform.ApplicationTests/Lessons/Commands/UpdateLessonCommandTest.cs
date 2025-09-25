@@ -1,28 +1,19 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
 {
-    public class UpdateLessonCommandTest
+    public class UpdateLessonCommandTest : AccessValidatorBaseTest
     {
         private readonly Mock<ILessonRepository> _mockLessonRepository;
-        private readonly IMapper _mapper;
 
         public UpdateLessonCommandTest()
         {
             _mockLessonRepository = LessonRepositoryMock.GetLessonRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]
@@ -52,7 +43,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenTitleEmpty()
         {
-            var validator = new UpdateLessonCommandValidator();
+            var validator = new UpdateLessonCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateLessonCommand
             {
                 Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
@@ -71,7 +62,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenTitleGratherThan100()
         {
-            var validator = new UpdateLessonCommandValidator();
+            var validator = new UpdateLessonCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateLessonCommand
             {
                 Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),
@@ -90,7 +81,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenOrderDontGratherThan0()
         {
-            var validator = new UpdateLessonCommandValidator();
+            var validator = new UpdateLessonCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new UpdateLessonCommand
             {
                 Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),

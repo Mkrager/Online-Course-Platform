@@ -1,26 +1,19 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.Categories.Queries.GetCategoriesList;
-using OnlineCoursePlatform.Application.Profiles;
+using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Categories.Queries
 {
-    public class GetCategoriesListQueryHandlerTest
+    public class GetCategoriesListQueryHandlerTest : TestBase
     {
-        private readonly IMapper _mapper;
         private readonly Mock<ICategoryRepository> _mockCategoryRepository;
 
         public GetCategoriesListQueryHandlerTest()
         {
             _mockCategoryRepository = CategoryRepositoryMock.GetCategoryRepository();
-            var configurationProvider = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<MappingProfile>();
-            });
-            _mapper = configurationProvider.CreateMapper();
         }
 
         [Fact]
