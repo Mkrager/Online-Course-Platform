@@ -12,5 +12,8 @@ namespace OnlineCoursePlatform.Api.Services
 
         public string UserId =>
             _contextAccessor.HttpContext.User.FindFirst("uid")?.Value;
+
+        public string UserRoles =>
+            _contextAccessor.HttpContext.User.FindFirst("role")?.Value;
     }
 }

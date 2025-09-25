@@ -1,20 +1,29 @@
 ﻿using FluentValidation;
-using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Common.Interfaces;
 
 namespace OnlineCoursePlatform.Application.Common.Validators
 {
-    public abstract class AccessValidator<T> : AbstractValidator<T>
+    public abstract class AccessValidator<T, TService> : AbstractValidator<T> where T : IUserRequest
     {
-        protected readonly ICourseRepository _courseRepository;
-        protected AccessValidator(ICourseRepository courseRepository)
+        protected readonly TService _service;
+
+        protected AccessValidator(TService service, string? errorMessage = null)
         {
-            _courseRepository = courseRepository;
+            _service = service;
 
             RuleFor(x => x)
                 .MustAsync(HasAccess)
-                .WithMessage("You don't have access");
+                .WithMessage(errorMessage ?? "You don't have access");
         }
 
-        protected abstract Task<bool> HasAccess(T model, CancellationToken token);
+        private async Task<bool> HasAccess(T model, CancellationToken token)
+        {
+
+            
+
+            return await HasAccessInternal(model, token);
+        }
+
+        protected abstract Task<bool> HasAccessInternal(T model, CancellationToken token);
     }
 }

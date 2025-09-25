@@ -1,39 +1,22 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.User
 @model UserDetailsResponse;
 
-<div class="account-container">
-    <div class="account-header">
-        <h2>Welcome, @Model.UserName</h2>
-        <p>Manage your profile and courses easily.</p>
-    </div>
+<div class="courses-section">
+    <h3>Purchased courses</h3>
+    <div class="course-list">
+        @foreach (var enrollments in Model.Enrollments)
+        {
+            <div class="course-item">
+                <h4>Course: @enrollments.Course.Title</h4>
+                <p class="course-description">Description: @enrollments.Course.Description</p>
+                <p class="course-description">Level: @enrollments.Course.Level.Name</p>
+                <p class="course-description">Category: @enrollments.Course.Category.Name</p>
+                <p class="course-description">Progress: @enrollments.Progress</p>
 
-    <div class="account-details">
-        <div class="profile-section">
-            <img src="/lib/img/profile.jpg" alt="Profile Picture" class="profile-image">
-            <div class="user-info">
-                <p>Email: @Model.Email</p>
+                <div class="course-actions">
+                    <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@enrollments.Course.Id" class="btn-lessons">Lessons</a>
+                </div>
             </div>
-            <button class="btn-edit">Edit Profile</button>
-        </div>
-
-        <div class="courses-section">
-            <h3>Purchased courses</h3>
-            <div class="course-list">
-                @foreach (var enrollments in Model.Enrollments)
-                {
-                    <div class="course-item">
-                        <h4>Course: @enrollments.Course.Title</h4>
-                        <p class="course-description">Description: @enrollments.Course.Description</p>
-                        <p class="course-description">Level: @enrollments.Course.Level.Name</p>
-                        <p class="course-description">Category: @enrollments.Course.Category.Name</p>
-                        <p class="course-description">Progress: @enrollments.Progress</p>
-                        
-                        <div class="course-actions">
-                            <a asp-controller="Lesson" asp-action="CourseOverview" asp-route-courseId="@enrollments.Course.Id" class="btn-lessons">Lessons</a>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
+        }
     </div>
 </div>
