@@ -7,22 +7,24 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetLessonDetail
 {
-    public class GetLessonDetailQueryValidator : CourseAccessValidator<GetLessonDetailQuery>
+    public class GetLessonDetailQueryValidator : AccessValidator<GetLessonDetailQuery, IPermissionService>
     {
         private readonly ICourseRepository _courseRepository;
-        public GetLessonDetailQueryValidator(IPermissionService permissionService, ICourseRepository courseRepository) : base(permissionService)
+
+        public GetLessonDetailQueryValidator(IPermissionService service, ICourseRepository courseRepository, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
             _courseRepository = courseRepository;
         }
 
-        protected override async Task<bool> HasAccess(GetLessonDetailQuery model, CancellationToken token)
+        protected override async Task<bool> HasAccessInternal(GetLessonDetailQuery model, CancellationToken token)
         {
             var course = await _courseRepository.GetCourseAsync(new CourseFilter() { LessonId = model.Id });
 
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.Id);
 
-                return await _permissionService.HasUserCoursePermissionAsync(course.Id, model.UserId);
+            return await _service.HasUserCoursePermissionAsync(course.Id, model.UserId);
         }
     }
 }

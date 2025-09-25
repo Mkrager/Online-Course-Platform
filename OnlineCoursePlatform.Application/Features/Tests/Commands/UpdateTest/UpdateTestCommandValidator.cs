@@ -8,13 +8,14 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest
 {
-    public class UpdateTestCommandValidator : AccessValidator<UpdateTestCommand>
+    public class UpdateTestCommandValidator : AccessValidator<UpdateTestCommand, ICourseRepository>
     {
-        public UpdateTestCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
+        public UpdateTestCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
             RuleFor(p => p.Title)
-            .NotEmpty()
-            .WithMessage("{PropertyName} is required.");
+                .NotEmpty()
+                .WithMessage("{PropertyName} is required.");
 
             RuleFor(p => p.Questions)
                 .NotNull().WithMessage("Questions list is required.");
@@ -29,14 +30,14 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest
                 .SetValidator(new QuestionDtoValidator());
         }
 
-        protected override async Task<bool> HasAccess(UpdateTestCommand model, CancellationToken token)
+        protected override async Task<bool> HasAccessInternal(UpdateTestCommand model, CancellationToken token)
         {
-            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { TestId = model.Id });
+            var course = await _service.GetCourseAsync(new CourseFilter() { TestId = model.Id });
 
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.Id);
 
-            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, course.Id);
+            return await _service.IsUserCourseTeacherAsync(model.UserId, course.Id);
         }
     }
 }

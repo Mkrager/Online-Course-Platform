@@ -4,9 +4,10 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse
 {
-    public class UpdateCourseCommandValidator : AccessValidator<UpdateCourseCommand>
+    public class UpdateCourseCommandValidator : AccessValidator<UpdateCourseCommand, ICourseRepository>
     {
-        public UpdateCourseCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
+        public UpdateCourseCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
             RuleFor(p => p.Title)
                 .NotNull()
@@ -29,9 +30,9 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
                 .NotNull().WithMessage("{PropertyName} is required.");
         }
 
-        protected override async Task<bool> HasAccess(UpdateCourseCommand model, CancellationToken token)
+        protected override async Task<bool> HasAccessInternal(UpdateCourseCommand model, CancellationToken token)
         {
-            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, model.Id);
+            return await _service.IsUserCourseTeacherAsync(model.UserId, model.Id);
         }
     }
 }

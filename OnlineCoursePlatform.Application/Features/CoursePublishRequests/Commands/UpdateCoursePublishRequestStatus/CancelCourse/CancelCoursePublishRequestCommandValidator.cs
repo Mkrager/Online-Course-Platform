@@ -6,20 +6,21 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
 {
-    internal class CancelCoursePublishRequestCommandValidator : AccessValidator<CancelCoursePublishRequestCommand>
+    public class CancelCoursePublishRequestCommandValidator : AccessValidator<CancelCoursePublishRequestCommand, ICourseRepository>
     {
-        public CancelCoursePublishRequestCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
+        public CancelCoursePublishRequestCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
         }
 
-        protected async override Task<bool> HasAccess(CancelCoursePublishRequestCommand model, CancellationToken token)
+        protected async override Task<bool> HasAccessInternal(CancelCoursePublishRequestCommand model, CancellationToken token)
         {
-            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { CoursePublishRequestId = model.Id });
+            var course = await _service.GetCourseAsync(new CourseFilter() { CoursePublishRequestId = model.Id });
 
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.Id);
 
-            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, course.Id);
+            return await _service.IsUserCourseTeacherAsync(model.UserId, course.Id);
         }
     }
 }

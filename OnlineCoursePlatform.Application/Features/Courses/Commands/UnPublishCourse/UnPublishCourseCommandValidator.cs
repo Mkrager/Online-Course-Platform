@@ -3,15 +3,16 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UnPublishCourse
 {
-    public class UnPublishCourseCommandValidator : AccessValidator<UnPublishCourseCommand>
+    public class UnPublishCourseCommandValidator : AccessValidator<UnPublishCourseCommand, ICourseRepository>
     {
-        public UnPublishCourseCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
+        public UnPublishCourseCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
         }
 
-        protected async override Task<bool> HasAccess(UnPublishCourseCommand model, CancellationToken token)
+        protected async override Task<bool> HasAccessInternal (UnPublishCourseCommand model, CancellationToken token)
         {
-            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, model.Id);   
+            return await _service.IsUserCourseTeacherAsync(model.UserId, model.Id);   
         }
     }
 }

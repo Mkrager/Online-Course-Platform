@@ -3,6 +3,6 @@
     public interface ICurrentUserService
     {
         public string UserId { get; }
-        public string UserRoles { get; }
+        public List<string> UserRoles { get; }
     }
 }

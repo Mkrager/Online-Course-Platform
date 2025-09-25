@@ -5,7 +5,8 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCours
 {
     public class DeleteCourseCommandValidator : AccessValidator<DeleteCourseCommand, ICourseRepository>
     {
-        public DeleteCourseCommandValidator(ICourseRepository service, string? errorMessage = null) : base(service, errorMessage)
+        public DeleteCourseCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
         }
 

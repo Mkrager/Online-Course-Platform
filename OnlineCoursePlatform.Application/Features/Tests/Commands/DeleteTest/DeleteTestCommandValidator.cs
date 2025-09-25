@@ -6,20 +6,21 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest
 {
-    public class DeleteTestCommandValidator : AccessValidator<DeleteTestCommand>
+    public class DeleteTestCommandValidator : AccessValidator<DeleteTestCommand, ICourseRepository>
     {
-        public DeleteTestCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
+        public DeleteTestCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
         }
 
-        protected override async Task<bool> HasAccess(DeleteTestCommand model, CancellationToken token)
+        protected override async Task<bool> HasAccessInternal(DeleteTestCommand model, CancellationToken token)
         {
-            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { TestId = model.Id });
+            var course = await _service.GetCourseAsync(new CourseFilter() { TestId = model.Id });
 
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.Id);
 
-            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, course.Id);
+            return await _service.IsUserCourseTeacherAsync(model.UserId, course.Id);
         }
     }
 }

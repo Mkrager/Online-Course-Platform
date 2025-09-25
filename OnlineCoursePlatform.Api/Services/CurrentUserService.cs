@@ -1,4 +1,5 @@
 ﻿using OnlineCoursePlatform.Application.Contracts;
+using System.Security.Claims;
 
 namespace OnlineCoursePlatform.Api.Services
 {
@@ -13,7 +14,7 @@ namespace OnlineCoursePlatform.Api.Services
         public string UserId =>
             _contextAccessor.HttpContext.User.FindFirst("uid")?.Value;
 
-        public string UserRoles =>
-            _contextAccessor.HttpContext.User.FindFirst("role")?.Value;
+        public List<string> UserRoles =>
+            _contextAccessor.HttpContext?.User.FindAll(ClaimTypes.Role).Select(c => c.Value).ToList();
     }
 }

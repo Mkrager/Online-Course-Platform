@@ -7,9 +7,10 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson
 {
-    public class UpdateLessonCommandValidator : AccessValidator<UpdateLessonCommand>
+    public class UpdateLessonCommandValidator : AccessValidator<UpdateLessonCommand, ICourseRepository>
     {
-        public UpdateLessonCommandValidator(ICourseRepository courseRepository) : base(courseRepository)
+        public UpdateLessonCommandValidator(ICourseRepository service, string? errorMessage = null) 
+            : base(service, errorMessage)
         {
             RuleFor(p => p.Title)
                 .NotNull()
@@ -27,14 +28,14 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesso
                 .NotEmpty().WithMessage("{PropertyName} is required.");
         }
 
-        protected override async Task<bool> HasAccess(UpdateLessonCommand model, CancellationToken token)
+        protected override async Task<bool> HasAccessInternal(UpdateLessonCommand model, CancellationToken token)
         {
-            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { LessonId = model.Id });
+            var course = await _service.GetCourseAsync(new CourseFilter() { LessonId = model.Id });
 
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.Id);
 
-            return await _courseRepository.IsUserCourseTeacherAsync(model.UserId, course.Id);
+            return await _service.IsUserCourseTeacherAsync(model.UserId, course.Id);
         }
     }
 }

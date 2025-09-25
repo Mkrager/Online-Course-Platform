@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using OnlineCoursePlatform.Application.Common.Interfaces;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse
 {
-    public class UpdateCourseCommand : IRequest
+    public class UpdateCourseCommand : IRequest, IUserRequest
     {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
@@ -10,6 +11,8 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
         public Guid CategoryId { get; set; }
         public decimal Price { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
+
         public string UserId { get; set; } = string.Empty;
+        public string UserRoles { get; set; } = string.Empty;
     }
 }

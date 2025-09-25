@@ -22,8 +22,6 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult<List<CourseListVm>>> GetAllCourses()
         {
-            var role = currentUserService.UserRoles;
-
             var dtos = await mediator.Send(new GetCoursesListQuery());
             return Ok(dtos);
         }
