@@ -1,15 +1,17 @@
 ﻿using FluentValidation;
 using OnlineCoursePlatform.Application.Common.Interfaces;
+using OnlineCoursePlatform.Application.Contracts.Application;
 
 namespace OnlineCoursePlatform.Application.Common.Validators
 {
     public abstract class AccessValidator<T, TService> : AbstractValidator<T> where T : IUserRequest
     {
         protected readonly TService _service;
-
-        protected AccessValidator(TService service, string? errorMessage = null)
+        protected readonly IPermissionService _permissionService;
+        protected AccessValidator(TService service, IPermissionService permissionService, string? errorMessage = null)
         {
             _service = service;
+            _permissionService = permissionService;
 
             RuleFor(x => x)
                 .MustAsync(HasAccess)
@@ -18,8 +20,10 @@ namespace OnlineCoursePlatform.Application.Common.Validators
 
         private async Task<bool> HasAccess(T model, CancellationToken token)
         {
+            var permission = _permissionService.UserHasPrivilegedRole(model.UserRoles);
 
-            
+            if (permission)
+                return true;
 
             return await HasAccessInternal(model, token);
         }

@@ -1,12 +1,13 @@
 ﻿using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse
 {
     public class DeleteCourseCommandValidator : AccessValidator<DeleteCourseCommand, ICourseRepository>
     {
-        public DeleteCourseCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public DeleteCourseCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
         }
 

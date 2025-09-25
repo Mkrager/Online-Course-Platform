@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
@@ -8,8 +9,8 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest
 {
     public class DeleteTestCommandValidator : AccessValidator<DeleteTestCommand, ICourseRepository>
     {
-        public DeleteTestCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public DeleteTestCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
         }
 

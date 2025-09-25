@@ -12,6 +12,6 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesso
         public int Order { get; set; }
         public TimeSpan Duration { get; set; }
         public string UserId { get; set; } = string.Empty;
-        public string UserRoles { get; set; } = string.Empty;
+        public List<string> UserRoles { get; set; } = default!;
     }
 }

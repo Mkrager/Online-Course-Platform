@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
@@ -9,8 +10,8 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesso
 {
     public class UpdateLessonCommandValidator : AccessValidator<UpdateLessonCommand, ICourseRepository>
     {
-        public UpdateLessonCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public UpdateLessonCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
             RuleFor(p => p.Title)
                 .NotNull()

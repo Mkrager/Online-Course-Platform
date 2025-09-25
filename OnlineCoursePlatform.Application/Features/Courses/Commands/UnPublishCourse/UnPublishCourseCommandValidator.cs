@@ -1,12 +1,13 @@
 ﻿using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UnPublishCourse
 {
     public class UnPublishCourseCommandValidator : AccessValidator<UnPublishCourseCommand, ICourseRepository>
     {
-        public UnPublishCourseCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public UnPublishCourseCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
         }
 

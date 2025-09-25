@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCourse
 {
     public class UpdateCourseCommandValidator : AccessValidator<UpdateCourseCommand, ICourseRepository>
     {
-        public UpdateCourseCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public UpdateCourseCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) : base(service, permissionService, errorMessage)
         {
             RuleFor(p => p.Title)
                 .NotNull()

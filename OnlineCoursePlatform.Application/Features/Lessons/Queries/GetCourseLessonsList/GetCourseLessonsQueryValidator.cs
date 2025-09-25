@@ -5,8 +5,8 @@ namespace OnlineCoursePlatform.Application.Features.Lessons.Queries.GetCourseLes
 {
     public class GetCourseLessonsQueryValidator : AccessValidator<GetCourseLessonsQuery, IPermissionService>
     {
-        public GetCourseLessonsQueryValidator(IPermissionService service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public GetCourseLessonsQueryValidator(IPermissionService service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
         }
 

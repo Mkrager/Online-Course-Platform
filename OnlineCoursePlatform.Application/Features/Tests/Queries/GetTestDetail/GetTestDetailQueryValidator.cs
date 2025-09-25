@@ -7,24 +7,20 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Queries.GetTestDetail
 {
-    public class GetTestDetailQueryValidator : AccessValidator<GetTestDetailQuery, IPermissionService>
+    public class GetTestDetailQueryValidator : AccessValidator<GetTestDetailQuery, ICourseRepository>
     {
-        private readonly ICourseRepository _courseRepository;
-
-        public GetTestDetailQueryValidator(IPermissionService service, ICourseRepository courseRepository, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public GetTestDetailQueryValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) : base(service, permissionService, errorMessage)
         {
-            _courseRepository = courseRepository;
         }
 
         protected async override Task<bool> HasAccessInternal(GetTestDetailQuery model, CancellationToken token)
         {
-            var course = await _courseRepository.GetCourseAsync(new CourseFilter() { TestId = model.Id });
+            var course = await _service.GetCourseAsync(new CourseFilter() { TestId = model.Id });
 
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.Id);
 
-            return await _service.HasUserCoursePermissionAsync(course.Id, model.UserId);
+            return await _permissionService.HasUserCoursePermissionAsync(course.Id, model.UserId);
         }
     }
 }

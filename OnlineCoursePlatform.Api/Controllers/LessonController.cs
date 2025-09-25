@@ -27,7 +27,12 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<LessonDetailVm>> GetLessonById(Guid id)
         {
-            var getLessonDetailQuery = new GetLessonDetailQuery() { Id = id };
+            var getLessonDetailQuery = new GetLessonDetailQuery() 
+            { 
+                Id = id,
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
+            };
             return Ok(await mediator.Send(getLessonDetailQuery));
         }
 
@@ -39,7 +44,8 @@ namespace OnlineCoursePlatform.Api.Controllers
             var getCourseLessonsQuery = new GetCourseLessonsQuery() 
             { 
                 CourseId = courseId,
-                UserId = currentUserService.UserId
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
             };
             return Ok(await mediator.Send(getCourseLessonsQuery));
         }
@@ -52,6 +58,8 @@ namespace OnlineCoursePlatform.Api.Controllers
         public async Task<ActionResult> UpdateLesson([FromBody] UpdateLessonCommand updateLessonCommand)
         {
             updateLessonCommand.UserId = currentUserService.UserId;
+            updateLessonCommand.UserRoles = currentUserService.UserRoles;
+
             await mediator.Send(updateLessonCommand);
             return NoContent();
         }
@@ -66,7 +74,8 @@ namespace OnlineCoursePlatform.Api.Controllers
             var deleteLessonCommand = new DeleteLessonCommand() 
             { 
                 Id = id,
-                UserId = currentUserService.UserId
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
             };
             await mediator.Send(deleteLessonCommand);
             return NoContent();

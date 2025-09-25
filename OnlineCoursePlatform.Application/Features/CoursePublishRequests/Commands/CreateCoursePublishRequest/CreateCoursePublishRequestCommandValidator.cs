@@ -1,13 +1,14 @@
 ﻿using FluentValidation;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 
 namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest
 {
     public class CreateCoursePublishRequestCommandValidator : AccessValidator<CreateCoursePublishRequestCommand, ICourseRepository>
     {
-        public CreateCoursePublishRequestCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public CreateCoursePublishRequestCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
             RuleFor(r => r.CourseId)
                 .NotEmpty().WithMessage("CourseId required");

@@ -28,7 +28,7 @@ namespace OnlineCoursePlatform.Application.Services
             if (roles == null || roles.Count == 0)
                 return false;
 
-            return roles.Contains("Admin") || roles.Contains("Moderator");
+            return roles.Contains("Moderator");
         }
     }
 }

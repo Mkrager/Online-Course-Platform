@@ -7,6 +7,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCours
     {
         public Guid Id { get; set; }
         public string UserId { get; set; } = string.Empty;
-        public string UserRoles { get; set; } = string.Empty;
+        public List<string> UserRoles { get; set; } = default!;
     }
 }

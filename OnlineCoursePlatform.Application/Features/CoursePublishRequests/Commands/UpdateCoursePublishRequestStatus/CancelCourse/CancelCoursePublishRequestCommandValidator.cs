@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
@@ -8,8 +9,8 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
 {
     public class CancelCoursePublishRequestCommandValidator : AccessValidator<CancelCoursePublishRequestCommand, ICourseRepository>
     {
-        public CancelCoursePublishRequestCommandValidator(ICourseRepository service, string? errorMessage = null) 
-            : base(service, errorMessage)
+        public CancelCoursePublishRequestCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
+            : base(service, permissionService, errorMessage)
         {
         }
 

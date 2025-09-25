@@ -8,6 +8,6 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Queries.GetUserTestsLi
         public Guid LessonId { get; set; }
 
         public string UserId { get; set; } = string.Empty;
-        public string UserRoles { get; set; } = string.Empty;
+        public List<string> UserRoles { get; set; } = default!;
     }
 }

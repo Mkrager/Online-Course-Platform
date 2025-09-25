@@ -23,7 +23,8 @@ namespace OnlineCoursePlatform.Api.Controllers
             var id = await mediator.Send(new CreateCoursePublishRequestCommand()
             {
                 CourseId = courseId,
-                UserId = currentUserService.UserId
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
             });
             return Ok(id);
         }
@@ -54,7 +55,8 @@ namespace OnlineCoursePlatform.Api.Controllers
             await mediator.Send(new CancelCoursePublishRequestCommand()
             {
                 Id = id,
-                UserId = currentUserService.UserId
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
             });
             return NoContent();
         }
@@ -69,6 +71,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(dtos);
         }
 
+        //TODO: Make get special user course reuqests
         [Authorize(Roles = "Teacher")]
         [HttpGet("user", Name = "GetUserCoursesRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]

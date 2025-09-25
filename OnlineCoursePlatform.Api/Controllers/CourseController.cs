@@ -73,6 +73,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         public async Task<ActionResult> Update([FromBody] UpdateCourseCommand updateCourseCommand)
         {
             updateCourseCommand.UserId = currentUserService.UserId;
+            updateCourseCommand.UserRoles = currentUserService.UserRoles;
 
             await mediator.Send(updateCourseCommand);
             return NoContent();
@@ -88,7 +89,8 @@ namespace OnlineCoursePlatform.Api.Controllers
             var deleteCourseCommand = new DeleteCourseCommand() 
             {
                 Id = id,
-                UserId = currentUserService.UserId
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
             };
             await mediator.Send(deleteCourseCommand);
             return NoContent();
@@ -104,7 +106,8 @@ namespace OnlineCoursePlatform.Api.Controllers
             var unPublishCourseCommand = new UnPublishCourseCommand() 
             { 
                 Id = id,
-                UserId = currentUserService.UserId
+                UserId = currentUserService.UserId,
+                UserRoles = currentUserService.UserRoles
             };
             await mediator.Send(unPublishCourseCommand);
             return NoContent();
