@@ -22,5 +22,13 @@ namespace OnlineCoursePlatform.Application.Services
 
             return false;
         }
+
+        public bool UserHasPrivilegedRole(List<string> roles)
+        {
+            if (roles == null || roles.Count == 0)
+                return false;
+
+            return roles.Contains("Admin") || roles.Contains("Moderator");
+        }
     }
 }
