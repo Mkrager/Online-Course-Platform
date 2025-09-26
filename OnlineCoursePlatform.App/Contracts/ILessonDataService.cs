@@ -5,10 +5,10 @@ namespace OnlineCoursePlatform.App.Contracts
 {
     public interface ILessonDataService
     {
-        Task<List<LessonViewModel>> GetCourseLessons(Guid courseId);
+        Task<ApiResponse<List<LessonViewModel>>> GetCourseLessons(Guid courseId);
         Task<ApiResponse<Guid>> CreateLesson(LessonViewModel lessonViewModel);
         Task<ApiResponse> DeleteLesson(Guid id);
         Task<ApiResponse> UpdateLesson(LessonViewModel lessonViewModel);
-        Task<LessonViewModel> GetLessonById(Guid id);
+        Task<ApiResponse<LessonViewModel>> GetLessonById(Guid id);
     }
 }
