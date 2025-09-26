@@ -42,7 +42,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> CoursesList()
         {
             var courses = await _courseDataService.GetPublishedCourses();
-            return View(courses);
+            return View(courses.Data);
         }
 
         [HttpGet]
@@ -121,14 +121,14 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Details(Guid id)
         {
             var course = await _courseDataService.GetCourseById(id);
-            return View(course);
+            return View(course.Data);
         }
 
         [HttpGet]
         public async Task<IActionResult> CategoryCourses(Guid categoryId)
         {
             var courses = await _courseDataService.GetCoursesByCategoryId(categoryId);
-            return View(courses);
+            return View(courses.Data);
         }        
 
         [HttpDelete]
