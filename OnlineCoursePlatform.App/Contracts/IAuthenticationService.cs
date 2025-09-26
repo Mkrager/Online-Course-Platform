@@ -6,8 +6,8 @@ namespace OnlineCoursePlatform.App.Contracts
 {
     public interface IAuthenticationService
     {
-        Task<ApiResponse<bool>> Authenticate(AuthenticateRequest request);
-        Task<ApiResponse<bool>> Register(RegistrationRequest request);
+        Task<ApiResponse> Authenticate(AuthenticateRequest request);
+        Task<ApiResponse> Register(RegistrationRequest request);
         Task Logout();
     }
 }

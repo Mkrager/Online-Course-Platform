@@ -37,7 +37,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Login(AuthenticationViewModel request)
         {
             var result = await _authenticationService.Authenticate(request.AuthenticateRequest);
-            TempData["LoginErrorMessage"] = HandleErrors.HandleResponse<bool>(result, "Success");
+            TempData["LoginErrorMessage"] = HandleErrors.HandleResponse(result, "Success");
 
             if (result.IsSuccess)
             {

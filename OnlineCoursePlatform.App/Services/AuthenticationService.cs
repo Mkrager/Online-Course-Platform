@@ -16,67 +16,53 @@ namespace OnlineCoursePlatform.App.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AuthenticationService(
-            IHttpClientFactory httpClientFactory, 
+            IHttpClientFactory httpClientFactory,
             IHttpContextAccessor httpContextAccessor) : base(httpClientFactory)
         {
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<ApiResponse<bool>> Authenticate(AuthenticateRequest request)
+        public async Task<ApiResponse> Authenticate(AuthenticateRequest request)
         {
-            try
-            {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(request),
-                    Encoding.UTF8,
-                    "application/json");
+            var content = new StringContent(
+                JsonSerializer.Serialize(request),
+                Encoding.UTF8,
+                "application/json");
 
-                var response = await _httpClient.PostAsync("account/authenticate", content);
+            var response = await _httpClient.PostAsync("account/authenticate", content);
 
-                if (response.IsSuccessStatusCode)
+            var apiResponse = await HandleResponse<LoginResponse>(response);
+
+            if (!apiResponse.IsSuccess || apiResponse.Data == null || string.IsNullOrEmpty(apiResponse.Data.Token))
+                return new ApiResponse(apiResponse.StatusCode, apiResponse.ErrorText ?? "Authentication failed");
+
+            var jwtToken = apiResponse.Data.Token;
+
+            var handler = new JwtSecurityTokenHandler();
+            var token = handler.ReadJwtToken(jwtToken);
+
+            var claims = token.Claims.ToList();
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await _httpContextAccessor.HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                principal,
+                new AuthenticationProperties
                 {
-                    var authenticationResponse = await DeserializeResponse<LoginResponse>(response);
+                    IsPersistent = true,
+                    ExpiresUtc = DateTime.UtcNow.AddDays(30)
+                });
 
-                    var jwtToken = authenticationResponse?.Token;
-
-                    if (!string.IsNullOrEmpty(jwtToken))
-                    {
-                        var handler = new JwtSecurityTokenHandler();
-                        var token = handler.ReadJwtToken(jwtToken);
-
-                        var claims = token.Claims.ToList();
-
-                        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                        var principal = new ClaimsPrincipal(identity);
-
-                        await _httpContextAccessor.HttpContext.SignInAsync(
-                            CookieAuthenticationDefaults.AuthenticationScheme,
-                            principal,
-                            new AuthenticationProperties
-                            {
-                                IsPersistent = true,
-                                ExpiresUtc = DateTime.UtcNow.AddDays(30)
-                            });
-
-                        _httpContextAccessor.HttpContext.Response.Cookies.Append("access_token", jwtToken, new CookieOptions
-                        {
-                            HttpOnly = true,
-                            Secure = true,
-                            SameSite = SameSiteMode.Strict,
-                            Expires = DateTime.UtcNow.AddDays(30)
-                        });
-
-                        return new ApiResponse<bool>(System.Net.HttpStatusCode.OK, true);
-                    }
-                }
-
-                var errorMessages = await DeserializeResponse<Dictionary<string, string>>(response);
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.GetValueOrDefault("error"));
-            }
-            catch (Exception ex)
+            _httpContextAccessor.HttpContext.Response.Cookies.Append("access_token", jwtToken, new CookieOptions
             {
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, ex.Message);
-            }
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
+                Expires = DateTime.UtcNow.AddDays(30)
+            });
+
+            return new ApiResponse(System.Net.HttpStatusCode.OK);
         }
 
         public async Task Logout()
@@ -85,29 +71,15 @@ namespace OnlineCoursePlatform.App.Services
             _httpContextAccessor.HttpContext.Response.Cookies.Delete("access_token");
         }
 
-        public async Task<ApiResponse<bool>> Register(RegistrationRequest request)
+        public async Task<ApiResponse> Register(RegistrationRequest request)
         {
-            try
-            {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(request),
-                    Encoding.UTF8,
-                    "application/json");
+            var content = new StringContent(
+                JsonSerializer.Serialize(request),
+                Encoding.UTF8,
+                "application/json");
 
-                var response = await _httpClient.PostAsync("account/register", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return new ApiResponse<bool>(System.Net.HttpStatusCode.OK, true);
-                }
-
-                var errorMessages = await DeserializeResponse<Dictionary<string, string>>(response);
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.GetValueOrDefault("error"));
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, ex.Message);
-            }
+            var response = await _httpClient.PostAsync("account/register", content);
+            return await HandleResponse(response);
         }
     }
 }
