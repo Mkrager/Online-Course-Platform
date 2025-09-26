@@ -1,4 +1,5 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.Api;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Category;
 
@@ -10,17 +11,10 @@ namespace OnlineCoursePlatform.App.Services
         {
         }
 
-        public async Task<List<CategoryViewModel>> GetAllCategories()
+        public async Task<ApiResponse<List<CategoryViewModel>>> GetAllCategories()
         {
             var response = await _httpClient.GetAsync($"category");
-
-            if (response.IsSuccessStatusCode)
-            {
-                var categoryList = await DeserializeResponse<List<CategoryViewModel>>(response);
-                return categoryList;
-            }
-
-            return new List<CategoryViewModel>();
+            return await HandleResponse<List<CategoryViewModel>>(response);
         }
     }
 }

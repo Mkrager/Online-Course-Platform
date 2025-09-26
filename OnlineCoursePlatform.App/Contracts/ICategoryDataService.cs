@@ -1,9 +1,10 @@
-﻿using OnlineCoursePlatform.App.ViewModels.Category;
+﻿using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.ViewModels.Category;
 
 namespace OnlineCoursePlatform.App.Contracts
 {
     public interface ICategoryDataService
     {
-        Task<List<CategoryViewModel>> GetAllCategories();
+        Task<ApiResponse<List<CategoryViewModel>>> GetAllCategories();
     }
 }
