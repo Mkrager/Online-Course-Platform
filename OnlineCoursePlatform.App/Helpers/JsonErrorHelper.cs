@@ -6,6 +6,9 @@ namespace OnlineCoursePlatform.App.Helpers
     {
         public static string GetErrorMessage(string json)
         {
+            if (string.IsNullOrWhiteSpace(json))
+                return "Unknown error";
+
             try
             {
                 using JsonDocument doc = JsonDocument.Parse(json);
@@ -22,43 +25,49 @@ namespace OnlineCoursePlatform.App.Helpers
                     return string.Join("; ", messages);
                 }
 
-                if (root.TryGetProperty("errors", out var errorsProp))
+                if (root.ValueKind == JsonValueKind.Object)
                 {
-                    var messages = new List<string>();
-
-                    foreach (var error in errorsProp.EnumerateObject())
+                    if (root.TryGetProperty("errors", out var errorsProp))
                     {
-                        foreach (var msg in error.Value.EnumerateArray())
+                        var messages = new List<string>();
+                        foreach (var error in errorsProp.EnumerateObject())
                         {
-                            messages.Add(msg.GetString());
+                            foreach (var msg in error.Value.EnumerateArray())
+                            {
+                                if (msg.ValueKind == JsonValueKind.String)
+                                    messages.Add(msg.GetString());
+                            }
                         }
+                        return string.Join("; ", messages);
                     }
 
-                    return string.Join("; ", messages);
+                    if (root.TryGetProperty("error", out var errorProp))
+                        return errorProp.ToString();
+
+                    if (root.TryGetProperty("message", out var messageProp))
+                        return messageProp.GetString();
+
+                    if (root.TryGetProperty("detail", out var detailProp))
+                        return detailProp.GetString();
+
+                    if (root.TryGetProperty("title", out var titleProp))
+                        return titleProp.GetString();
                 }
 
-                if (root.TryGetProperty("error", out var errorProp))
+                if (root.ValueKind == JsonValueKind.String)
                 {
-                    return errorProp.ToString();
-                }
-                else if (root.TryGetProperty("message", out var messageProp))
-                {
-                    return messageProp.GetString();
-                }
-                else if (root.TryGetProperty("detail", out var detailProp))
-                {
-                    return detailProp.GetString();
-                }
-                else if (root.TryGetProperty("title", out var titleProp))
-                {
-                    return titleProp.GetString();
+                    return root.GetString();
                 }
 
                 return json;
             }
+            catch (JsonException)
+            {
+                return json.Trim('"');
+            }
             catch
             {
-                return json;
+                return "Unexpected error occurred.";
             }
         }
     }

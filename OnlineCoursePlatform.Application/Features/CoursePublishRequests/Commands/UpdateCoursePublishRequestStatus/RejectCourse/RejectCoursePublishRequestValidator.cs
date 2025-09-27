@@ -6,6 +6,9 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
     {
         public RejectCoursePublishRequestValidator()
         {
+            RuleFor(r => r.Id)
+                .NotEmpty().WithMessage("Id must not be empty");
+
             RuleFor(r => r.RejectReason)
                 .NotEmpty().WithMessage("Reject reason must not be empty");
         }

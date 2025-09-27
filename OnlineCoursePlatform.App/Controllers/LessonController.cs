@@ -19,11 +19,17 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize]
         public async Task<IActionResult> CourseOverview(Guid courseId)
         {
-            var courseLessons = await _lessonDataService.GetCourseLessons(courseId);
+            var response = await _lessonDataService.GetCourseLessons(courseId);
+
+            if (!response.IsSuccess)
+            {
+                TempData["ErrorMessage"] = response.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
 
             var model = new CourseLessonsViewModel()
             {
-                Lessons = courseLessons,
+                Lessons = response.Data,
                 CourseId = courseId
             };
 
@@ -34,8 +40,15 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize]
         public async Task<IActionResult> Details(Guid id)
         {
-            var lesson = await _lessonDataService.GetLessonById(id);
-            return View(lesson);
+            var response = await _lessonDataService.GetLessonById(id);
+
+            if (!response.IsSuccess)
+            {
+                TempData["ErrorMessage"] = response.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(response.Data);
         }
 
         [HttpGet]

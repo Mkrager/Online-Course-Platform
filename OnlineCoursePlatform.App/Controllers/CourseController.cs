@@ -28,13 +28,13 @@ namespace OnlineCoursePlatform.App.Controllers
         private async Task<SelectList> Categories()
         {
             var categories = await _categoryDataService.GetAllCategories();
-            var categoryList = new SelectList(categories, "Id", "Name");
+            var categoryList = new SelectList(categories.Data, "Id", "Name");
             return categoryList;
         }
         private async Task<SelectList> Levels()
         {
             var levels = await _levelDataService.GetAllLevels();
-            var levelList = new SelectList(levels, "Id", "Name");
+            var levelList = new SelectList(levels.Data, "Id", "Name");
             return levelList;
         }
 

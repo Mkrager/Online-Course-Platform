@@ -26,7 +26,14 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Cancel(Guid id)
         {
-            await _coursePublishRequestDataService.CancelCourseRequest(id);
+            var response = await _coursePublishRequestDataService.CancelCourseRequest(id);
+            
+            if (!response.IsSuccess)
+            {
+                TempData["ErrorMessage"] = response.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
+
             return Ok(new { redirectToUrl = Url.Action("List", "CoursePublishRequest") });
         }
         

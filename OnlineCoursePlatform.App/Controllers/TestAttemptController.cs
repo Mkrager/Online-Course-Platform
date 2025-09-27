@@ -20,15 +20,29 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize]
         public async Task<IActionResult> StartTest(Guid id)
         {
-            var test = await _testDataService.GetTestById(id);
-            var attemptId = await _testAttemptDataService.StartTestAttempt(new StartTestAttemptViewModel()
+            var testResponse = await _testDataService.GetTestById(id);
+
+            if (!testResponse.IsSuccess)
+            {
+                TempData["ErrorMessage"] = testResponse.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
+
+            var testAttemptResponse = await _testAttemptDataService.StartTestAttempt(new StartTestAttemptViewModel()
             {
                 TestId = id
             });
+
+            if (!testAttemptResponse.IsSuccess)
+            {
+                TempData["ErrorMessage"] = testAttemptResponse.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(new TestAttemptViewModel()
             {
-                AttemptId = attemptId.Data,
-                TestViewModel = test
+                AttemptId = testAttemptResponse.Data,
+                TestViewModel = testResponse.Data
             });
         }
 

@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.App.Helpers
 
         public static string HandleResponse(ApiResponse response, string successMessage = "")
         {
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.IsSuccess)
             {
                 return successMessage;
             }

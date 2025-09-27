@@ -19,13 +19,29 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             object viewModel;
 
-            if(User.IsInRole("Teacher"))
+            if (User.IsInRole("Teacher"))
             {
-                viewModel = await _userDataService.GetTeacherDetailsAsync();
+                var response = await _userDataService.GetTeacherDetailsAsync();
+
+                if (!response.IsSuccess || response.Data == null)
+                {
+                    TempData["ErrorMessage"] = response.ErrorText;
+                    return RedirectToAction("Index", "Home");
+                }
+
+                viewModel = response.Data;
             }
             else
             {
-                viewModel = await _userDataService.GetDefaultUserDetailsAsync();
+                var response = await _userDataService.GetDefaultUserDetailsAsync();
+
+                if (!response.IsSuccess || response.Data == null)
+                {
+                    TempData["ErrorMessage"] = response.ErrorText;
+                    return RedirectToAction("Index", "Home");
+                }
+
+                viewModel = response.Data;
             }
 
             return View("Profile", viewModel);

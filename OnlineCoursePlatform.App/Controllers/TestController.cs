@@ -19,11 +19,17 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize]
         public async Task<IActionResult> List(Guid lessonId)
         {
-            var tests = await _testDataService.GetTestByLessonId(lessonId);
+            var response = await _testDataService.GetTestByLessonId(lessonId);
+
+            if (!response.IsSuccess)
+            {
+                TempData["ErrorMessage"] = response.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
 
             var lessonTestViewModel = new LessonTestsViewModel()
             {
-                Tests = tests,
+                Tests = response.Data,
                 LessonId = lessonId
             };
 
