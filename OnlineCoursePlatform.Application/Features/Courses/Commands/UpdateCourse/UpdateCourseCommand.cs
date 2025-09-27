@@ -13,6 +13,6 @@ namespace OnlineCoursePlatform.Application.Features.Courses.Commands.UpdateCours
         public string ThumbnailUrl { get; set; } = string.Empty;
 
         public string UserId { get; set; } = string.Empty;
-        public List<string> UserRoles { get; set; } = default!;
+        public List<string> UserRoles { get; set; } = new List<string>();
     }
 }

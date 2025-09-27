@@ -90,7 +90,7 @@ namespace OnlineCoursePlatform.App.Controllers
             TempData["Categories"] = await Categories();
             TempData["Levels"] = await Levels();
 
-            return View(courseToUpdate);
+            return View(courseToUpdate.Data);
         }
 
         [HttpPut]

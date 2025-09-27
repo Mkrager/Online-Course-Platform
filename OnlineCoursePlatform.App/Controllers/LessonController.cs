@@ -84,7 +84,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Update(Guid id)
         {
             var lessonToUpdate = await _lessonDataService.GetLessonById(id);
-            return View(lessonToUpdate);
+            return View(lessonToUpdate.Data);
         }
 
         [HttpPut]

@@ -27,7 +27,7 @@ namespace OnlineCoursePlatform.App.ViewModels.Course
         [Required(ErrorMessage = "Image is required")]
         public string ThumbnailUrl { get; set; } = string.Empty;
 
-        public CategoryViewModel Category { get; set; } = default!;
-        public LevelViewModel Level { get; set; } = default!;
+        public CategoryViewModel? Category { get; set; }
+        public LevelViewModel? Level { get; set; }
     }
 }
