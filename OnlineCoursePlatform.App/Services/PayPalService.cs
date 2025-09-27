@@ -15,74 +15,33 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<ApiResponse<string>> CreateOrderAsync(Guid courseId)
         {
-            try
-            {
-                var response = await _httpClient.PostAsync($"paypal/create-order?courseId={courseId}", null);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await DeserializeResponse<CreateOrderResponse>(response);
-                    return new ApiResponse<string>(System.Net.HttpStatusCode.OK, result.Url);
-                }
-
-                var errorMessages = await DeserializeResponse<List<string>>(response);
-                return new ApiResponse<string>(System.Net.HttpStatusCode.BadRequest, string.Empty, errorMessages.FirstOrDefault());
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse<string>(System.Net.HttpStatusCode.BadRequest, string.Empty, ex.Message);
-            }
+            var response = await _httpClient.PostAsync($"paypal/create-order?courseId={courseId}", null);
+            return await HandleResponse<string>(response);
         }
 
         public async Task<ApiResponse<bool>> CaptureOrderAsync(CaptureOrderRequest captureOrderRequest)
         {
-            try
-            {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(captureOrderRequest),
-                    Encoding.UTF8,
-                    "application/json");
 
-                var response = await _httpClient.PostAsync("paypal/capture-order", content);
+            var content = new StringContent(
+                JsonSerializer.Serialize(captureOrderRequest),
+                Encoding.UTF8,
+                "application/json");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await DeserializeResponse<bool>(response);
-                    return new ApiResponse<bool>(System.Net.HttpStatusCode.OK, result);
-                }
-
-                var errorMessages = await DeserializeResponse<List<string>>(response);
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, errorMessages.FirstOrDefault());
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse<bool>(System.Net.HttpStatusCode.BadRequest, false, ex.Message);
-            }
+            var response = await _httpClient.PostAsync("paypal/capture-order", content);
+            return await HandleResponse<bool>(response);
         }
 
         public async Task<ApiResponse> CancelOrderAsync(CancelOrderViewModel cancelOrderViewModel)
         {
-            try
-            {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(cancelOrderViewModel),
-                    Encoding.UTF8,
-                    "application/json");
 
-                var response = await _httpClient.PatchAsync("paypal/cancel", content);
+            var content = new StringContent(
+                JsonSerializer.Serialize(cancelOrderViewModel),
+                Encoding.UTF8,
+                "application/json");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return new ApiResponse(System.Net.HttpStatusCode.OK);
-                }
-
-                var errorMessages = await DeserializeResponse<List<string>>(response);
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
-            }
+            var response = await _httpClient.PatchAsync("paypal/cancel", content);
+            return await HandleResponse(response);
         }
     }
 }

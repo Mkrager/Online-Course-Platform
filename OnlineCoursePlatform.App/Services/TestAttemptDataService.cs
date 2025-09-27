@@ -15,53 +15,26 @@ namespace OnlineCoursePlatform.App.Services
 
         public async Task<ApiResponse> EndTestAttempt(EndTestAttemptViewModel endAttemptViewModel)
         {
-            try
-            {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(endAttemptViewModel),
-                    Encoding.UTF8,
-                    "application/json");
 
-                var response = await _httpClient.PutAsync("testAttempt", content);
+            var content = new StringContent(
+                JsonSerializer.Serialize(endAttemptViewModel),
+                Encoding.UTF8,
+                "application/json");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return new ApiResponse(System.Net.HttpStatusCode.OK);
-                }
-
-                var errorMessages = await DeserializeResponse<List<string>>(response);
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, errorMessages.FirstOrDefault());
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse(System.Net.HttpStatusCode.BadRequest, ex.Message);
-            }
+            var response = await _httpClient.PutAsync("testAttempt", content);
+            return await HandleResponse(response);
         }
 
         public async Task<ApiResponse<Guid>> StartTestAttempt(StartTestAttemptViewModel startAttemptViewModel)
         {
-            try
-            {
-                var content = new StringContent(
-                    JsonSerializer.Serialize(startAttemptViewModel),
-                    Encoding.UTF8,
-                    "application/json");
 
-                var response = await _httpClient.PostAsync("testAttempt", content);
+            var content = new StringContent(
+                JsonSerializer.Serialize(startAttemptViewModel),
+                Encoding.UTF8,
+                "application/json");
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var lessonId = await DeserializeResponse<Guid>(response);
-                    return new ApiResponse<Guid>(System.Net.HttpStatusCode.OK, lessonId);
-                }
-
-                var errorMessages = await DeserializeResponse<List<string>>(response);
-                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, errorMessages.FirstOrDefault());
-            }
-            catch (Exception ex)
-            {
-                return new ApiResponse<Guid>(System.Net.HttpStatusCode.BadRequest, Guid.Empty, ex.Message);
-            }
+            var response = await _httpClient.PostAsync("testAttempt", content);
+            return await HandleResponse<Guid>(response);
         }
     }
 }

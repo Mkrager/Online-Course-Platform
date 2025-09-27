@@ -1,4 +1,5 @@
 ﻿using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.Infrastructure.Api;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.Level;
 
@@ -10,18 +11,10 @@ namespace OnlineCoursePlatform.App.Services
         {
         }
 
-        public async Task<List<LevelViewModel>> GetAllLevels()
+        public async Task<ApiResponse<List<LevelViewModel>>> GetAllLevels()
         {
             var response = await _httpClient.GetAsync("level");
-
-            if (response.IsSuccessStatusCode)
-            {
-                var levelList = await DeserializeResponse<List<LevelViewModel>>(response);
-                return levelList;
-            }
-
-            return new List<LevelViewModel>();
-
+            return await HandleResponse<List<LevelViewModel>>(response);
         }
     }
 }

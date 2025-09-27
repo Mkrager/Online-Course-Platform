@@ -1,9 +1,10 @@
-﻿using OnlineCoursePlatform.App.ViewModels.Level;
+﻿using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.ViewModels.Level;
 
 namespace OnlineCoursePlatform.App.Contracts
 {
     public interface ILevelDataService
     {
-        Task<List<LevelViewModel>> GetAllLevels();
+        Task<ApiResponse<List<LevelViewModel>>> GetAllLevels();
     }
 }

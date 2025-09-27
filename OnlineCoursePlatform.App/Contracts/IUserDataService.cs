@@ -1,10 +1,11 @@
-﻿using OnlineCoursePlatform.App.ViewModels.User;
+﻿using OnlineCoursePlatform.App.Infrastructure.Api;
+using OnlineCoursePlatform.App.ViewModels.User;
 
 namespace OnlineCoursePlatform.App.Contracts
 {
     public interface IUserDataService
     {
-        Task<UserDetailsResponse> GetTeacherDetailsAsync();
-        Task<UserDetailsResponse> GetDefaultUserDetailsAsync();
+        Task<ApiResponse<UserDetailsResponse>> GetTeacherDetailsAsync();
+        Task<ApiResponse<UserDetailsResponse>> GetDefaultUserDetailsAsync();
     }
 }
