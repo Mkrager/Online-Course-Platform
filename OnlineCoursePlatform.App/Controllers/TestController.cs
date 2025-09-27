@@ -67,8 +67,15 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(Guid id)
         {
-            var testToUpdate = await _testDataService.GetTestById(id);
-            return View(testToUpdate.Data);
+            var response = await _testDataService.GetTestById(id);
+
+            if (!response.IsSuccess)
+            {
+                TempData["ErrorMessage"] = response.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(response.Data);
         }
 
         [HttpPut]

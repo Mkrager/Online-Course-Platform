@@ -1,10 +1,16 @@
 ﻿using FluentValidation;
+using OnlineCoursePlatform.Application.Common.Filters;
+using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts.Application;
+using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Application.Exceptions;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 {
-    public class CreateTestCommandValidator : AbstractValidator<CreateTestCommand>
+    public class CreateTestCommandValidator : AccessValidator<CreateTestCommand, ICourseRepository>
     {
-        public CreateTestCommandValidator()
+        public CreateTestCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) : base(service, permissionService, errorMessage)
         {
             RuleFor(p => p.Title)
                 .NotEmpty()
@@ -24,6 +30,19 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 
             RuleForEach(p => p.Questions)
                 .SetValidator(new QuestionDtoValidator());
+        }
+
+        protected override async Task<bool> HasAccessInternal(CreateTestCommand model, CancellationToken token)
+        {
+            var course = await _service.GetCourseAsync(new CourseFilter()
+            {
+                LessonId = model.LessonId,
+            });
+
+            if (course == null)
+                throw new NotFoundException(nameof(Course), model.LessonId);
+
+            return await _service.IsUserCourseTeacherAsync(model.UserId, course.Id);
         }
     }
 }

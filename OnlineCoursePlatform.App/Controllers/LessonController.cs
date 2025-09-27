@@ -83,8 +83,15 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Update(Guid id)
         {
-            var lessonToUpdate = await _lessonDataService.GetLessonById(id);
-            return View(lessonToUpdate.Data);
+            var response = await _lessonDataService.GetLessonById(id);
+            
+            if (!response.IsSuccess)
+            {
+                TempData["ErrorMessage"] = response.ErrorText;
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(response.Data);
         }
 
         [HttpPut]
