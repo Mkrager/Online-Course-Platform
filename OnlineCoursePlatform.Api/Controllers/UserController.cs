@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
 using OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrollmentsByStudent;
-using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole;
+using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole.AssignTeacherRole;
 using OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails;
 
 namespace OnlineCoursePlatform.Api.Controllers
@@ -48,13 +48,13 @@ namespace OnlineCoursePlatform.Api.Controllers
         }
 
         [Authorize(Roles = "Moderator")]
-        [HttpPut("assign-role", Name = "AssignRole")]
+        [HttpPut("assign-teacher", Name = "AssignRole")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> AssignRole(AssignRoleCommand assignRoleCommand)
+        public async Task<ActionResult> AssignTeacherRole(AssignTeacherRoleCommand assignTeacherRoleCommand)
         {
-            await mediator.Send(assignRoleCommand);
+            await mediator.Send(assignTeacherRoleCommand);
             return NoContent();
         }
     }
