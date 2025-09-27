@@ -7,7 +7,7 @@ namespace OnlineCoursePlatform.App.Infrastructure.Api
         public HttpStatusCode StatusCode { get; set; }
         public T? Data { get; set; }
         public string? ErrorText { get; set; }
-        public bool IsSuccess => StatusCode == HttpStatusCode.OK;
+        public bool IsSuccess => ((int)StatusCode >= 200 && (int)StatusCode <= 299);
 
         public ApiResponse(HttpStatusCode statusCode, T? data = default, string? errorText = null)
         {
@@ -21,7 +21,7 @@ namespace OnlineCoursePlatform.App.Infrastructure.Api
     {
         public HttpStatusCode StatusCode { get; set; }
         public string? ErrorText { get; set; }
-        public bool IsSuccess => StatusCode == HttpStatusCode.OK;
+        public bool IsSuccess => ((int)StatusCode >= 200 && (int)StatusCode <= 299);
 
         public ApiResponse(HttpStatusCode statusCode, string? errorText = null)
         {

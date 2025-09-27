@@ -33,18 +33,18 @@
                         <div class="answer">
                             <input type="checkbox" name="Questions[@i].Answers[@j].IsCorrect" value="true" @(Model.Questions[i].Answers[j].IsCorrect ? "checked" : "") />
                             <input type="text" name="Questions[@i].Answers[@j].Text" value="@Model.Questions[i].Answers[j].Text" placeholder="Answer Option" />
-                            <button type="button" class="btn btn-danger delete-answer" onclick="removeAnswer(this)">Delete Answer</button>
+                            <button type="button" class="btn btn-danger-test delete-answer" onclick="removeAnswer(this)">Delete Answer</button>
                         </div>
                     }
                     <button type="button" class="btn add-answer" onclick="addAnswer(@i, this)">+ Add Answer</button>
-                    <button type="button" class="btn btn-danger delete-question" onclick="removeQuestion(this)">Delete Question</button>
+                    <button type="button" class="btn btn-danger-test delete-question" onclick="removeQuestion(this)">Delete Question</button>
                 </div>
             </div>
         }
     </div>
 
     <button type="button" class="btn add-answer" onclick="addQuestion()">+ Add Question</button>
-    <button type="button" class="btn btn-danger delete-question" onclick="updateTest()">Save Changes</button>
+    <button type="button" class="btn btn-danger-test delete-question" onclick="updateTest()">Save Changes</button>
 </form>
 
 <template id="question-template">
@@ -55,7 +55,7 @@
         </div>
         <div class="answers">
             <button type="button" class="btn add-answer">+ Add Answer</button>
-            <button type="button" class="btn btn-danger delete-question">Delete Question</button>
+            <button type="button" class="btn btn-danger-test delete-question">Delete Question</button>
         </div>
     </div>
 </template>
@@ -64,7 +64,7 @@
     <div class="answer">
         <input type="checkbox" value="true" />
         <input type="text" placeholder="Answer Option" />
-        <button type="button" class="btn btn-danger delete-answer">Delete Answer</button>
+        <button type="button" class="btn btn-danger-test delete-answer">Delete Answer</button>
     </div>
 </template>
 

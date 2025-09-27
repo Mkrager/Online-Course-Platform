@@ -114,7 +114,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
             TempData["Message"] = HandleErrors.HandleResponse(result);
 
-            return Json(new { redirectToUrl = Url.Action("Update", "Course") });
+            return Json(new { redirectToUrl = Url.Action("Update", "Course", new { id = courseDetailViewModel.Id }) });
         }
 
         [HttpGet]
@@ -129,7 +129,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var courses = await _courseDataService.GetCoursesByCategoryId(categoryId);
             return View(courses.Data);
-        }        
+        }
 
         [HttpDelete]
         [Authorize(Roles = "Teacher")]

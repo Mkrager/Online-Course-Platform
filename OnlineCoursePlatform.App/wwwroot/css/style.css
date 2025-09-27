@@ -994,3 +994,11 @@ input[type="text"] {
     margin-top: 5px;
     justify-content: center;
 }
+
+.btn-danger-test {
+    background: #3a0071 !important;
+}
+
+    .btn-danger-test:hover {
+        background: #28004e !important;
+    }

@@ -21,7 +21,7 @@
     <input type="hidden" asp-for="LessonId" />
 
     <button type="button" class="btn add-answer" id="addQuestionBtn">+ Add Question</button>
-    <button type="submit" class="btn btn-danger delete-question">Save Test</button>
+    <button type="submit" class="btn delete-question">Save Test</button>
 </form>
 
 <template id="question-template">
@@ -32,7 +32,7 @@
         </div>
         <div class="answers">
             <button type="button" class="btn add-answer">+ Add Answer</button>
-            <button type="button" class="btn btn-danger delete-question">Delete Question</button>
+            <button type="button" class="btn btn-danger-test delete-question">Delete Question</button>
         </div>
     </div>
 </template>
@@ -41,7 +41,7 @@
     <div class="answer">
         <input type="checkbox" value="true" />
         <input type="text" placeholder="Answer Option" />
-        <button type="button" class="btn btn-danger delete-answer">Delete Answer</button>
+        <button type="button" class="btn btn-danger-test delete-answer">Delete Answer</button>
     </div>
 </template>
 
