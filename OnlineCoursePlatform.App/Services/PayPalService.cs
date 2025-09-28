@@ -13,11 +13,11 @@ namespace OnlineCoursePlatform.App.Services
         {
         }
 
-        public async Task<ApiResponse<string>> CreateOrderAsync(Guid courseId)
+        public async Task<ApiResponse<CreateOrderResponse>> CreateOrderAsync(Guid courseId)
         {
 
             var response = await _httpClient.PostAsync($"paypal/create-order?courseId={courseId}", null);
-            return await HandleResponse<string>(response);
+            return await HandleResponse<CreateOrderResponse>(response);
         }
 
         public async Task<ApiResponse<bool>> CaptureOrderAsync(CaptureOrderRequest captureOrderRequest)

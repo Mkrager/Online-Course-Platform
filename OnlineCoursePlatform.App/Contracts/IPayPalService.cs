@@ -5,7 +5,7 @@ namespace OnlineCoursePlatform.App.Contracts
 {
     public interface IPayPalService
     {
-        Task<ApiResponse<string>> CreateOrderAsync(Guid courseId);
+        Task<ApiResponse<CreateOrderResponse>> CreateOrderAsync(Guid courseId);
         Task<ApiResponse<bool>> CaptureOrderAsync(CaptureOrderRequest captureOrderRequest);
         Task<ApiResponse> CancelOrderAsync(CancelOrderViewModel cancelOrderViewModel);
     }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson

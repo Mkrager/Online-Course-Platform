@@ -18,6 +18,9 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpPost(Name = "AddLesson")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateLessonCommand createLessonCommand)
         {
+            createLessonCommand.UserId = currentUserService.UserId;
+            createLessonCommand.UserRoles = currentUserService.UserRoles;
+
             var id = await mediator.Send(createLessonCommand);
             return Ok(id);
         }

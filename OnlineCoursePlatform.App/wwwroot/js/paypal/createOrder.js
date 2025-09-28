@@ -5,7 +5,7 @@
         success: function (result) {
             if (result.isSuccess) {
                 window.open(
-                    result.data,
+                    result.data.url,
                     '_blank',
                     'width=1000,height=800,top=100,left=200,toolbar=no,menubar=no,scrollbars=yes,resizable=yes'
                 );

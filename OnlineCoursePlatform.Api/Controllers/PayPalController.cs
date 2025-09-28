@@ -27,7 +27,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             return Ok(new { url = redirectUrl });
         }
 
-        [Authorize(Roles = "Default")]
         [HttpPost("capture-order", Name = "CaptureOrder")]
         public async Task<IActionResult> CaptureOrder(CaptureOrderRequest captureOrderRequest)
         {

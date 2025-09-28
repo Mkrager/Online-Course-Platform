@@ -52,7 +52,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetUserCoursePublishRequests();
 
-            return View(coursePublishRequests);
+            return View(coursePublishRequests.Data);
         }
 
         [HttpGet]
@@ -61,7 +61,7 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(null);
 
-            return View(coursePublishRequests);
+            return View(coursePublishRequests.Data);
         }
 
         [HttpGet]
@@ -69,7 +69,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> ListFiltered([FromQuery] CoursePublishStatus? status)
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(status);
-            return Ok(new { data = coursePublishRequests });
+            return Ok(new { data = coursePublishRequests.Data });
         }
     }
 }

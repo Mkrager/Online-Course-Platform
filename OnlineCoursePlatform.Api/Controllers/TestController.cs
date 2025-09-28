@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.Application.Contracts;
+using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest;
@@ -49,6 +50,10 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateTestCommand createTestCommand)
         {
+            createTestCommand.UserId = currentUserService.UserId;
+            createTestCommand.UserRoles = currentUserService.UserRoles;
+
+
             var id = await mediator.Send(createTestCommand);
             return Ok(id);
         }
