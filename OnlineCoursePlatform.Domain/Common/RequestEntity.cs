@@ -9,6 +9,6 @@ namespace OnlineCoursePlatform.Domain.Common
         public DateTime RequestedDate { get; set; }
         public string ProcessedBy { get; set; } = string.Empty;
         public DateTime ProcessedAt { get; set; }
-        public RequestStatus RequestStatus { get; set; }
+        public RequestStatus Status { get; set; }
     }
 }

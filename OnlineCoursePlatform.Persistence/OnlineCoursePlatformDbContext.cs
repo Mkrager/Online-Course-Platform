@@ -26,6 +26,7 @@ namespace OnlineCoursePlatform.Persistence
         public DbSet<TestAttempt> TestAttempts { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<CoursePublishRequest> CoursePublishRequests { get; set; }
+        public DbSet<TeacherApplication> TeacherApplications { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(_auditableInterceptor);

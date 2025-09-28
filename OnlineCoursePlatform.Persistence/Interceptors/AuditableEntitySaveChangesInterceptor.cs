@@ -59,20 +59,18 @@ namespace OnlineCoursePlatform.Persistence.Interceptors
                     userEntity.UserId = userId;
                 }
 
-                if (entry.Entity is CoursePublishRequest coursePublishRequest)
+                if (entry.Entity is RequestEntity teacherApplication)
                 {
                     if (entry.State == EntityState.Added)
                     {
-                        coursePublishRequest.RequestedBy = userId;
-                        coursePublishRequest.RequestedDate = now;
-                        coursePublishRequest.Status = CoursePublishStatus.Pending;
+                        teacherApplication.RequestedBy = userId;
+                        teacherApplication.RequestedDate = now;
+                        teacherApplication.Status = RequestStatus.Pending;
                     }
                     else if (entry.State == EntityState.Modified)
                     {
-
-                        coursePublishRequest.ProcessedBy = userId;
-                        coursePublishRequest.ProcessedAt = now;
-
+                        teacherApplication.ProcessedBy = userId;
+                        teacherApplication.ProcessedAt = now;
                     }
                 }
             }

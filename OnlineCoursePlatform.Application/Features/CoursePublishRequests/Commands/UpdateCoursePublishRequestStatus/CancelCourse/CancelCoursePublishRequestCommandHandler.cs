@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
             if (coursePublishRequest == null)
                 throw new NotFoundException(nameof(CoursePublishRequest), request.Id);
 
-            await _coursePublishRequestRepository.UpdateStatusAsync(coursePublishRequest, CoursePublishStatus.Canceled);
+            await _coursePublishRequestRepository.UpdateStatusAsync(coursePublishRequest, RequestStatus.Canceled);
 
             return Unit.Value;
         }

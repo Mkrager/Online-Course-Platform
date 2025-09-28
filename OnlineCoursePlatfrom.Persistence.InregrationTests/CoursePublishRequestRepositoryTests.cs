@@ -38,16 +38,16 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             var coursePublishRequest = new CoursePublishRequest
             {
                 Id = Guid.Parse("5c711b2d-55b2-4624-8881-7c4b5013f40f"),
-                Status = CoursePublishStatus.Pending,
+                Status = RequestStatus.Pending,
             };
 
             await _repository.AddAsync(coursePublishRequest);
 
-            await _repository.UpdateStatusAsync(coursePublishRequest, CoursePublishStatus.Approved);
+            await _repository.UpdateStatusAsync(coursePublishRequest, RequestStatus.Approved);
 
             var updatedCoursePublishRequest = await _dbContext.CoursePublishRequests.FindAsync(coursePublishRequest.Id);
             Assert.NotNull(updatedCoursePublishRequest);
-            Assert.Equal(CoursePublishStatus.Approved, updatedCoursePublishRequest.Status);
+            Assert.Equal(RequestStatus.Approved, updatedCoursePublishRequest.Status);
         }
 
         [Fact]
@@ -152,12 +152,12 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.CoursePublishRequests.AddRange(coursePublishRequest, coursePublishRequest2, coursePublishRequest3);
             await _dbContext.SaveChangesAsync();
 
-            coursePublishRequest.Status = CoursePublishStatus.Approved;
+            coursePublishRequest.Status = RequestStatus.Approved;
 
             _dbContext.CoursePublishRequests.Update(coursePublishRequest);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursePublishRequestsAsync(CoursePublishStatus.Pending);
+            var result = await _repository.GetCoursePublishRequestsAsync(RequestStatus.Pending);
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);

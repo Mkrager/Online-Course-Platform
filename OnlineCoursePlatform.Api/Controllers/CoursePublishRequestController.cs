@@ -65,7 +65,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpGet(Name = "GetAllCoursesRequests")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<List<CoursePublishRequestsListVm>>> GetAllCoursesRequests([FromQuery] CoursePublishStatus? status)
+        public async Task<ActionResult<List<CoursePublishRequestsListVm>>> GetAllCoursesRequests([FromQuery] RequestStatus? status)
         {
             var dtos = await mediator.Send(new GetCoursePublishRequestsListQuery() { Status = status });
             return Ok(dtos);

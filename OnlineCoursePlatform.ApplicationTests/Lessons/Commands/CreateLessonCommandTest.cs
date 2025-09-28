@@ -7,7 +7,7 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
 {
-    public class CreateLessonCommandTest : TestBase
+    public class CreateLessonCommandTest : AccessValidatorBaseTest
     {
         private readonly Mock<ILessonRepository> _mockLessonRepository;
 
@@ -46,7 +46,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenTitleEmpty()
         {
-            var validator = new CreateLessonCommandValidator();
+            var validator = new CreateLessonCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateLessonCommand
             {
                 CourseId = Guid.Parse("c3e5468c-a2f9-4853-8ac1-5f8d098dd2c8"),
@@ -65,7 +65,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenTitleGratherThan100()
         {
-            var validator = new CreateLessonCommandValidator();
+            var validator = new CreateLessonCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateLessonCommand
             {
                 CourseId = Guid.Parse("c3e5468c-a2f9-4853-8ac1-5f8d098dd2c8"),
@@ -84,7 +84,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenOrderDontGratherThan0()
         {
-            var validator = new CreateLessonCommandValidator();
+            var validator = new CreateLessonCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateLessonCommand
             {
                 CourseId = Guid.Parse("c3e5468c-a2f9-4853-8ac1-5f8d098dd2c8"),

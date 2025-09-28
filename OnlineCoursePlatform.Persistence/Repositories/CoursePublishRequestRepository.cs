@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<CoursePublishRequest>> GetCoursePublishRequestsAsync(CoursePublishStatus? status)
+        public async Task<List<CoursePublishRequest>> GetCoursePublishRequestsAsync(RequestStatus? status)
         {
             var query = _dbContext.CoursePublishRequests.AsQueryable();
 
@@ -30,7 +30,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? rejectReason = null)
+        public async Task UpdateStatusAsync(CoursePublishRequest coursePublishRequest, RequestStatus newStatus, string? rejectReason = null)
         {
             coursePublishRequest.Status = newStatus;
             coursePublishRequest.RejectReason = rejectReason;

@@ -35,7 +35,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
             var updCoursePublishRequests = coursePublishRequests.FirstOrDefault(a => a.Id == command.Id);
             updCoursePublishRequests.ShouldNotBeNull();
             updCoursePublishRequests.Id.ShouldBe(command.Id);
-            updCoursePublishRequests.Status.ShouldBe(CoursePublishStatus.Approved);
+            updCoursePublishRequests.Status.ShouldBe(RequestStatus.Approved);
         }
     }
 }

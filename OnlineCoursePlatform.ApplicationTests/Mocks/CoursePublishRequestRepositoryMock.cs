@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                 {
                     Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6"),
                     CourseId =  Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b21e8"),
-                    Status = CoursePublishStatus.Pending,
+                    Status = RequestStatus.Pending,
                     CreatedBy = "userId"
                 },
                 new CoursePublishRequest()
@@ -44,8 +44,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.GetCoursePublishRequestByUserIdAsync(It.IsAny<string>()))
                 .ReturnsAsync((string userId) => coursePublishRequests.Where(r => r.CreatedBy == userId).ToList());
 
-            mockRepository.Setup(repo => repo.GetCoursePublishRequestsAsync(It.IsAny<CoursePublishStatus?>()))
-                .ReturnsAsync((CoursePublishStatus? status) =>
+            mockRepository.Setup(repo => repo.GetCoursePublishRequestsAsync(It.IsAny<RequestStatus?>()))
+                .ReturnsAsync((RequestStatus? status) =>
                 {
                     if (status.HasValue)
                         return coursePublishRequests.Where(r => r.Status == status).ToList();
@@ -53,8 +53,8 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                     return coursePublishRequests;
                 });
 
-            mockRepository.Setup(r => r.UpdateStatusAsync(It.IsAny<CoursePublishRequest>(), It.IsAny<CoursePublishStatus>(), It.IsAny<string?>()))
-                .Callback((CoursePublishRequest coursePublishRequest, CoursePublishStatus newStatus, string? reason) =>
+            mockRepository.Setup(r => r.UpdateStatusAsync(It.IsAny<CoursePublishRequest>(), It.IsAny<RequestStatus>(), It.IsAny<string?>()))
+                .Callback((CoursePublishRequest coursePublishRequest, RequestStatus newStatus, string? reason) =>
                 {
                     var oldCoursePublishRequest = coursePublishRequests.FirstOrDefault(x => x.Id == coursePublishRequest.Id);
                     if (oldCoursePublishRequest != null)

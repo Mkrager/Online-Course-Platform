@@ -21,7 +21,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
                 throw new NotFoundException(nameof(CoursePublishRequest), request.Id);
 
             await _coursePublishRequestRepository.UpdateStatusAsync
-                (coursePublishRequest, CoursePublishStatus.Rejected, request.RejectReason);
+                (coursePublishRequest, RequestStatus.Rejected, request.RejectReason);
 
             return Unit.Value;
 

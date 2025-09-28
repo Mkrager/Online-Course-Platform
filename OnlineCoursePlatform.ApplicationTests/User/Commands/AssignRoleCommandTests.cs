@@ -2,6 +2,7 @@
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole;
+using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole.AssignTeacherRole;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using Shouldly;
 
@@ -18,12 +19,11 @@ namespace OnlineCoursePlatform.Application.UnitTests.User.Commands
         [Fact]
         public async Task Should_Assign_Role_Successfully()
         {
-            var handler = new AssignRoleCommandHandler(_mockUserService.Object);
+            var handler = new AssignTeacherRoleCommandHandler(_mockUserService.Object);
 
-            var command = new AssignRoleCommand
+            var command = new AssignTeacherRoleCommand
             {
                 UserId = "id",
-                RoleName = "name"
             };
 
             var result = await handler.Handle(command, CancellationToken.None);
@@ -34,11 +34,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.User.Commands
         [Fact]
         public async void Validator_ShouldHaveError_WhenUserIdEmpty()
         {
-            var validator = new AssignRoleCommandValidator();
-            var query = new AssignRoleCommand
+            var validator = new AssignTeacherRoleCommandValidator();
+            var query = new AssignTeacherRoleCommand
             {
                 UserId = "",
-                RoleName = "name"
             };
 
             var result = await validator.ValidateAsync(query);

@@ -25,7 +25,7 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
             if (coursePublishRequest == null)
                 throw new NotFoundException(nameof(CoursePublishRequest), request.Id);
 
-            await _coursePublishRequestRepository.UpdateStatusAsync(coursePublishRequest, CoursePublishStatus.Approved);
+            await _coursePublishRequestRepository.UpdateStatusAsync(coursePublishRequest, RequestStatus.Approved);
 
             await _mediator.Send(new PublishCourseCommand() { Id = coursePublishRequest.CourseId });
 

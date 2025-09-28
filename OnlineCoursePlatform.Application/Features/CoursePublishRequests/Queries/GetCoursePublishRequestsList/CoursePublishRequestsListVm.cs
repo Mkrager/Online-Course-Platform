@@ -13,6 +13,6 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
         public string ProcessedName {  get; set; } = string.Empty;
         public DateTime ProcessedAt { get; set; }
         public string? RejectReason { get; set; }
-        public CoursePublishStatus Status { get; set; }
+        public RequestStatus Status { get; set; }
     }
 }

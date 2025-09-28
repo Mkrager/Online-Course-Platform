@@ -7,7 +7,7 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
 {
-    public class CreateTestCommandTest : TestBase
+    public class CreateTestCommandTest : AccessValidatorBaseTest
     {
         private readonly Mock<ITestRepository> _mockTestRepository;
 
@@ -53,7 +53,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionEmpty()
         {
-            var validator = new CreateTestCommandValidator();
+            var validator = new CreateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateTestCommand()
             {
                 LessonId = Guid.Parse("eede3937-e906-48a8-bb99-cf04c9a19767"),
@@ -69,7 +69,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenLessonIdEmpty()
         {
-            var validator = new CreateTestCommandValidator();
+            var validator = new CreateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateTestCommand()
             {
                 LessonId = Guid.Empty,
@@ -100,7 +100,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionsHasEmptyValue()
         {
-            var validator = new CreateTestCommandValidator();
+            var validator = new CreateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateTestCommand()
             {
                 LessonId = Guid.Parse("e138ba25-be71-47d2-9c13-a5ac8b0498fd"),
@@ -131,7 +131,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionsHasEmptyAnswers()
         {
-            var validator = new CreateTestCommandValidator();
+            var validator = new CreateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateTestCommand()
             {
                 LessonId = Guid.Parse("e138ba25-be71-47d2-9c13-a5ac8b0498fd"),
@@ -154,7 +154,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Validator_ShouldHaveError_WhenQuestionDontHaveCorrectAnswer()
         {
-            var validator = new CreateTestCommandValidator();
+            var validator = new CreateTestCommandValidator(_mockCourseRepository.Object, _mockPermissionService.Object);
             var query = new CreateTestCommand()
             {
                 LessonId = Guid.Parse("e138ba25-be71-47d2-9c13-a5ac8b0498fd"),

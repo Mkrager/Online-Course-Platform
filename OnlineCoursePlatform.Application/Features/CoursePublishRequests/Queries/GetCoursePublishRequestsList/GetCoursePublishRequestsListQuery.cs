@@ -5,6 +5,6 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Querie
 {
     public class GetCoursePublishRequestsListQuery : IRequest<List<CoursePublishRequestsListVm>>
     {
-        public CoursePublishStatus? Status { get; set; }
+        public RequestStatus? Status { get; set; }
     }
 }
