@@ -15,9 +15,6 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpPost(Name = "StartAttempt")]
         public async Task<ActionResult<Guid>> StartAttempt([FromBody] StartAttemptCommand startAttemptCommand)
         {
-            startAttemptCommand.UserId = currentUserService.UserId;
-            startAttemptCommand.UserRoles = currentUserService.UserRoles;
-
             var id = await mediator.Send(startAttemptCommand);
             return Ok(id);
         }

@@ -23,8 +23,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             var id = await mediator.Send(new CreateCoursePublishRequestCommand()
             {
                 CourseId = courseId,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
             });
             return Ok(id);
         }
@@ -55,8 +53,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             await mediator.Send(new CancelCoursePublishRequestCommand()
             {
                 Id = id,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
             });
             return NoContent();
         }

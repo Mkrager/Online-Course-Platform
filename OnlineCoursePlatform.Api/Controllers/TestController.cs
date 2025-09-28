@@ -24,8 +24,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             var getCourseDetailQuery = new GetTestDetailQuery()
             {
                 Id = id,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
             };
             return Ok(await mediator.Send(getCourseDetailQuery));
         }
@@ -38,8 +36,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             var getLessonTestQuery = new GetLessonTestsQuery() 
             {
                 LessonId = lessonId,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
             };
             return Ok(await mediator.Send(getLessonTestQuery));
         }
@@ -50,10 +46,6 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateTestCommand createTestCommand)
         {
-            createTestCommand.UserId = currentUserService.UserId;
-            createTestCommand.UserRoles = currentUserService.UserRoles;
-
-
             var id = await mediator.Send(createTestCommand);
             return Ok(id);
         }
@@ -64,9 +56,6 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UpdateTest([FromBody] UpdateTestCommand updateTestCommand)
         {
-            updateTestCommand.UserId = currentUserService.UserId;
-            updateTestCommand.UserRoles = currentUserService.UserRoles;
-
             await mediator.Send(updateTestCommand);
             return NoContent();
         }
@@ -81,8 +70,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             var deleteTestCommand = new DeleteTestCommand() 
             { 
                 Id = id,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
             };
             await mediator.Send(deleteTestCommand);
             return NoContent();

@@ -6,6 +6,7 @@ namespace OnlineCoursePlatform.Domain.Entities
     {
         public string Bio { get; set; } = string.Empty;
         public string Experience { get; set; } = string.Empty;
-        public ICollection<string>? Certificates { get; set; }
+
+        public ICollection<string>? CertificatesUrls { get; set; }
     }
 }

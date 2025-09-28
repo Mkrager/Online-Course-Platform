@@ -18,9 +18,6 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpPost(Name = "AddLesson")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateLessonCommand createLessonCommand)
         {
-            createLessonCommand.UserId = currentUserService.UserId;
-            createLessonCommand.UserRoles = currentUserService.UserRoles;
-
             var id = await mediator.Send(createLessonCommand);
             return Ok(id);
         }
@@ -32,9 +29,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var getLessonDetailQuery = new GetLessonDetailQuery() 
             { 
-                Id = id,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
+                Id = id
             };
             return Ok(await mediator.Send(getLessonDetailQuery));
         }
@@ -46,9 +41,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         {
             var getCourseLessonsQuery = new GetCourseLessonsQuery() 
             { 
-                CourseId = courseId,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
+                CourseId = courseId
             };
             return Ok(await mediator.Send(getCourseLessonsQuery));
         }
@@ -60,9 +53,6 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> UpdateLesson([FromBody] UpdateLessonCommand updateLessonCommand)
         {
-            updateLessonCommand.UserId = currentUserService.UserId;
-            updateLessonCommand.UserRoles = currentUserService.UserRoles;
-
             await mediator.Send(updateLessonCommand);
             return NoContent();
         }
@@ -77,8 +67,6 @@ namespace OnlineCoursePlatform.Api.Controllers
             var deleteLessonCommand = new DeleteLessonCommand() 
             { 
                 Id = id,
-                UserId = currentUserService.UserId,
-                UserRoles = currentUserService.UserRoles
             };
             await mediator.Send(deleteLessonCommand);
             return NoContent();

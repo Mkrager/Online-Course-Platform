@@ -20,6 +20,8 @@ namespace OnlineCoursePlatform.Application
             services.AddScoped<IPermissionService, PermissionService>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UserContextBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
             return services;

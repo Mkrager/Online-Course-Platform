@@ -24,6 +24,7 @@
 	  <Folder Include="Features\Levels\Commands\" />
 	  <Folder Include="Features\PayPal\Queries\" />
 	  <Folder Include="Features\Questions\Commands\" />
+	  <Folder Include="Features\TeacherApplications\Queries\" />
 	  <Folder Include="Features\TestAttemps\Queries\" />
 	</ItemGroup>
 
