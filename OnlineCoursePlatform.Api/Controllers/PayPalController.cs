@@ -12,7 +12,6 @@ namespace OnlineCoursePlatform.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class PayPalController(
-        ICurrentUserService currentUserService, 
         ICheckoutService checkoutService,
         IMediator mediator) : Controller
     {
@@ -20,9 +19,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         [HttpPost("create-order", Name = "CreateOrder")]
         public async Task<IActionResult> CreateOrder(Guid courseId)
         {
-            var userId = currentUserService.UserId;
-
-            var redirectUrl = await checkoutService.CreateOrderAsync(courseId, userId);
+            var redirectUrl = await checkoutService.CreateOrderAsync(courseId);
 
             return Ok(new { url = redirectUrl });
         }

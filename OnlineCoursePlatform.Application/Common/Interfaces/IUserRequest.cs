@@ -1,8 +1,7 @@
 ﻿namespace OnlineCoursePlatform.Application.Common.Interfaces
 {
-    public interface IUserRequest
+    public interface IUserRequest : IUserIdRequest
     {
-        public string UserId { get; set; }
-        public List<string> UserRoles { get; set; }
+        List<string> UserRoles { get; set; }
     }
 }

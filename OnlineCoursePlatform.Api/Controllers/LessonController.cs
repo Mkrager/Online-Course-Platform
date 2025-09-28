@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.DeleteLesson;
 using OnlineCoursePlatform.Application.Features.Lessons.Commands.UpdateLesson;
@@ -12,7 +11,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LessonController(IMediator mediator, ICurrentUserService currentUserService) : Controller
+    public class LessonController(IMediator mediator) : Controller
     {
         [Authorize(Roles = "Teacher")]
         [HttpPost(Name = "AddLesson")]

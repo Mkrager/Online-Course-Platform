@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.DeleteCourse;
 using OnlineCoursePlatform.Application.Features.Courses.Commands.UnPublishCourse;
@@ -14,7 +13,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController(IMediator mediator, ICurrentUserService currentUserService) : Controller
+    public class CourseController(IMediator mediator) : Controller
     {
         [Authorize(Roles = "Admin")]
         [HttpGet(Name = "GetAllCourses")]

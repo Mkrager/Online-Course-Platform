@@ -21,7 +21,7 @@ namespace OnlineCoursePlatform.Application.Services
             _mediator = mediator;
             _baseUrlProvider = baseUrlProvider;
         }
-        public async Task<string> CreateOrderAsync(Guid courseId, string userId)
+        public async Task<string> CreateOrderAsync(Guid courseId)
         {
             var paymentId = await _mediator.Send(new CreatePaymentCommand()
             {
@@ -37,7 +37,6 @@ namespace OnlineCoursePlatform.Application.Services
                 CancelUrl = cancelUrl,
                 ReturnUrl = returnUrl,
                 CourseId = courseId,
-                UserId = userId
             });
 
             await _mediator.Send(new UpdatePaymentCommand()

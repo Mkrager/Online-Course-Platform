@@ -5,7 +5,7 @@ using OnlineCoursePlatform.Application.Contracts;
 namespace OnlineCoursePlatform.Application.Behaviours
 {
     public class UserContextBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : IRequest<TResponse>, IUserRequest
+        where TRequest : IRequest<TResponse>, IUserIdRequest
     {
         private readonly ICurrentUserService _currentUserService;
 
@@ -20,7 +20,11 @@ namespace OnlineCoursePlatform.Application.Behaviours
             CancellationToken cancellationToken)
         {
             request.UserId = _currentUserService.UserId;
-            request.UserRoles = _currentUserService.UserRoles;
+
+            if (request is IUserRequest withRoles)
+            {
+                withRoles.UserRoles = _currentUserService.UserRoles;
+            }
 
             return await next();
         }

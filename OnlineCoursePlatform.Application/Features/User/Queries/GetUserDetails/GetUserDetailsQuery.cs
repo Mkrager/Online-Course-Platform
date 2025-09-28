@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using OnlineCoursePlatform.Application.Common.Interfaces;
 
 namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
 {
-    public class GetUserDetailsQuery : IRequest<UserDetailsVm>
+    public class GetUserDetailsQuery : IRequest<UserDetailsVm>, IUserIdRequest
     {
-        public string Id { get; set; } = string.Empty;
+        public string? UserId { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.Application.Features.User.Queries.GetUserDetails
         }
         public async Task<UserDetailsVm> Handle(GetUserDetailsQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userService.GetUserDetailsAsync(request.Id);
+            var user = await _userService.GetUserDetailsAsync(request.UserId);
 
             return _mapper.Map<UserDetailsVm>(user);
         }

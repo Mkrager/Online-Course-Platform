@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.Courses.Queries.GetCoursesByTeacher;
 using OnlineCoursePlatform.Application.Features.Enrollments.Queries.GetEnrollmentsByStudent;
 using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole.AssignTeacherRole;
@@ -11,7 +10,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController(IMediator mediator, ICurrentUserService currentUserService) : Controller
+    public class UserController(IMediator mediator) : Controller
     {
         [Authorize(Roles = "Teacher")]
         [HttpGet("teacher", Name = "GetTeacherDetails")]
@@ -19,13 +18,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserDetailsVm>> GetTeacherDetails()
         {
-            var userId = currentUserService.UserId;
-
-            var getUserDetailQuery = new GetUserDetailsQuery() { Id = userId };
+            var getUserDetailQuery = new GetUserDetailsQuery();
 
             var result = await mediator.Send(getUserDetailQuery);
 
-            result.Courses = await mediator.Send(new GetCoursesByTeacherQuery() { UserId = userId });
+            result.Courses = await mediator.Send(new GetCoursesByTeacherQuery());
 
             return Ok(result);
         }
@@ -36,13 +33,11 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserDetailsVm>> GetDefaultUserDetails()
         {
-            var userId = currentUserService.UserId;
-
-            var getUserDetailQuery = new GetUserDetailsQuery() { Id = userId };
+            var getUserDetailQuery = new GetUserDetailsQuery();
 
             var result = await mediator.Send(getUserDetailQuery);
 
-            result.Enrollments = await mediator.Send(new GetEnrollmentsByStudentQuery() { UserId = userId });
+            result.Enrollments = await mediator.Send(new GetEnrollmentsByStudentQuery());
 
             return Ok(result);
         }

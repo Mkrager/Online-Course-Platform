@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineCoursePlatform.Application.Contracts;
-using OnlineCoursePlatform.Application.Features.Lessons.Commands.CreateLesson;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest;
 using OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest;
@@ -13,7 +11,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController(IMediator mediator, ICurrentUserService currentUserService) : Controller
+    public class TestController(IMediator mediator) : Controller
     {
 
         [HttpGet("{id}", Name = "GetTestById")]

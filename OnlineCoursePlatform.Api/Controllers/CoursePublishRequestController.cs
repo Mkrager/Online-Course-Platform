@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.CreateCoursePublishRequest;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse;
@@ -14,7 +13,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoursePublishRequestController(IMediator mediator, ICurrentUserService currentUserService) : Controller
+    public class CoursePublishRequestController(IMediator mediator) : Controller
     {
         [Authorize(Roles = "Teacher")]
         [HttpPost("{courseId}", Name = "AddCoursePublishRequest")]
@@ -74,10 +73,7 @@ namespace OnlineCoursePlatform.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult<List<CoursePublishRequestsListVm>>> GetUserCoursesRequests()
         {
-            var dtos = await mediator.Send(new GetCoursePublishRequestByUserQuery()
-            {
-                UserId = currentUserService.UserId
-            });
+            var dtos = await mediator.Send(new GetCoursePublishRequestByUserQuery());
             return Ok(dtos);
         }
     }

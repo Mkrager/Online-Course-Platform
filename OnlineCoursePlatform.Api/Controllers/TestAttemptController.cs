@@ -9,7 +9,7 @@ namespace OnlineCoursePlatform.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestAttemptController(IMediator mediator, ICurrentUserService currentUserService) : Controller
+    public class TestAttemptController(IMediator mediator) : Controller
     {
         [Authorize(Roles = "Default")]
         [HttpPost(Name = "StartAttempt")]
