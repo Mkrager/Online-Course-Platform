@@ -1,6 +1,6 @@
 ﻿namespace OnlineCoursePlatform.Domain.Enums
 {
-    public enum CoursePublishStatus
+    public enum RequestStatus
     {
         Pending,
         Approved,
