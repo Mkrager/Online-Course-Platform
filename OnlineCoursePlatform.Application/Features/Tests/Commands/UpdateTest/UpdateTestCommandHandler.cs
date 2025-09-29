@@ -25,14 +25,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Commands.UpdateTest
 
             _mapper.Map(request, testToUpdate, typeof(UpdateTestCommand), typeof(Test));
 
-            try
-            {
-                await _testRepository.UpdateAsync(testToUpdate);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            await _testRepository.UpdateAsync(testToUpdate);
 
             return Unit.Value;
         }
