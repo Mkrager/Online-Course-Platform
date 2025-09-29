@@ -1,30 +1,22 @@
 ﻿using AutoMapper;
-using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAttempt
 {
-    public class StartAttemptCommandHandler : IRequestHandler<StartAttemptCommand, Guid>
+    public class StartAttemptCommandHandler : CreateEntityCommandHandler<StartAttemptCommand, TestAttempt, Guid>
     {
-        private readonly IMapper _mapper;
-        private readonly IAsyncRepository<TestAttempt> _testAttemptRepository;
-
-        public StartAttemptCommandHandler(IMapper mapper, IAsyncRepository<TestAttempt> testAttemptRepository)
+        public StartAttemptCommandHandler(IAsyncRepository<TestAttempt> repository, IMapper mapper) : base(repository, mapper)
         {
-            _mapper = mapper;
-            _testAttemptRepository = testAttemptRepository;
         }
 
-        public async Task<Guid> Handle(StartAttemptCommand request, CancellationToken cancellationToken)
+        protected override Task BeforeSaveAsync(TestAttempt entity)
         {
-            var testAttempt = _mapper.Map<TestAttempt>(request);
-
-            testAttempt.StartTime = DateTime.UtcNow;
-
-            testAttempt = await _testAttemptRepository.AddAsync(testAttempt);
-
-            return testAttempt.Id;
+            entity.StartTime = DateTime.Now;
+            return Task.CompletedTask;
         }
+
+        protected override Guid BuildResponse(TestAttempt entity) => entity.Id;
     }
 }

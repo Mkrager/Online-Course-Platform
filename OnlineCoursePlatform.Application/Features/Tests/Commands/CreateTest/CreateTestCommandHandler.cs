@@ -1,28 +1,16 @@
 ﻿using AutoMapper;
-using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.CreateTest
 {
-    public class CreateTestCommandHandler : IRequestHandler<CreateTestCommand, Guid>
+    public class CreateTestCommandHandler : CreateEntityCommandHandler<CreateTestCommand, Test, Guid>
     {
-        private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Test> _testRepository;
-        public CreateTestCommandHandler(IMapper mapper, IAsyncRepository<Test> testRepository)
+        public CreateTestCommandHandler(IAsyncRepository<Test> repository, IMapper mapper) : base(repository, mapper)
         {
-            _mapper = mapper;
-            _testRepository = testRepository;
         }
 
-        public async Task<Guid> Handle(CreateTestCommand request, CancellationToken cancellationToken)
-        {
-            var @test = _mapper.Map<Test>(request);            
-
-            @test = await _testRepository.AddAsync(test);
-
-            return @test.Id;
-        }
+        protected override Guid BuildResponse(Test entity) => entity.Id;
     }
 }

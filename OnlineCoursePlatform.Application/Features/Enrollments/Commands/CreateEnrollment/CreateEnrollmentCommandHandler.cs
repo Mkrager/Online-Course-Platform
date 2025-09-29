@@ -1,26 +1,16 @@
 ﻿using AutoMapper;
-using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Enrollments.Commands.CreateEnrollment
 {
-    public class CreateEnrollmentCommandHandler : IRequestHandler<CreateEnrollmentCommand, Guid>
+    public class CreateEnrollmentCommandHandler : CreateEntityCommandHandler<CreateEnrollmentCommand, Enrollment, Guid>
     {
-        private readonly IAsyncRepository<Enrollment> _enrollmentRepository;
-        private readonly IMapper _mapper;
-        public CreateEnrollmentCommandHandler(IAsyncRepository<Enrollment> enrollmentRepository, IMapper mapper)
+        public CreateEnrollmentCommandHandler(IAsyncRepository<Enrollment> repository, IMapper mapper) : base(repository, mapper)
         {
-            _enrollmentRepository = enrollmentRepository;
-            _mapper = mapper;
         }
 
-        public async Task<Guid> Handle(CreateEnrollmentCommand request, CancellationToken cancellationToken)
-        {
-            var enrollmentToCreate = _mapper.Map<Enrollment>(request);
-
-            var enrollment = await _enrollmentRepository.AddAsync(enrollmentToCreate);
-            return enrollment.Id;
-        }
+        protected override Guid BuildResponse(Enrollment entity) => entity.Id;
     }
 }

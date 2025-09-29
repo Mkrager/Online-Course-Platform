@@ -1,28 +1,16 @@
 ﻿using AutoMapper;
-using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Courses.Commands.CreateCourse
 {
-    public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, Guid>
+    public class CreateCourseCommandHandler : CreateEntityCommandHandler<CreateCourseCommand, Course, Guid>
     {
-        private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Course> _courseRepository;
-
-        public CreateCourseCommandHandler(IMapper mapper, IAsyncRepository<Course> courseRepository)
+        public CreateCourseCommandHandler(IAsyncRepository<Course> repository, IMapper mapper) : base(repository, mapper)
         {
-            _courseRepository = courseRepository;
-            _mapper = mapper;
         }
 
-        public async Task<Guid> Handle(CreateCourseCommand request, CancellationToken cancellationToken)
-        {
-            var @course = _mapper.Map<Course>(request);
-
-            @course = await _courseRepository.AddAsync(course);
-
-            return @course.Id;
-        }
+        protected override Guid BuildResponse(Course entity) => entity.Id;
     }
 }

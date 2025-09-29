@@ -1,27 +1,16 @@
 ﻿using AutoMapper;
-using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Categories.Commands.CreateCategory
-{
-    public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, Guid>
+{ 
+    public class CreateCategoryCommandHandler : CreateEntityCommandHandler<CreateCategoryCommand, Category, Guid>
     {
-        private readonly IMapper _mapper;
-        private readonly ICategoryRepository _categoryRepository;
-        public CreateCategoryCommandHandler(IMapper mapper, ICategoryRepository categoryRepository)
+        public CreateCategoryCommandHandler(IAsyncRepository<Category> repository, IMapper mapper) : base(repository, mapper)
         {
-            _categoryRepository = categoryRepository;
-            _mapper = mapper;
         }
 
-        public async Task<Guid> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
-        {
-            var @category = _mapper.Map<Category>(request);
-
-            @category = await _categoryRepository.AddAsync(category);
-
-            return @category.Id;
-        }
+        protected override Guid BuildResponse(Category entity) => entity.Id;
     }
 }

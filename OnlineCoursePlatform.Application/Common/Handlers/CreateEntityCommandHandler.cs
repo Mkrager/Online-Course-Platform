@@ -42,5 +42,4 @@ namespace OnlineCoursePlatform.Application.Common.Handlers
 
         protected abstract TResponse BuildResponse(TEntity entity);
     }
-
 }

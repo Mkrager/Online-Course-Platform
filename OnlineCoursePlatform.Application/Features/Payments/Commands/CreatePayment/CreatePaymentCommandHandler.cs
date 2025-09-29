@@ -1,27 +1,16 @@
 ﻿using AutoMapper;
-using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment
 {
-    public class CreatePaymentCommandHandler : IRequestHandler<CreatePaymentCommand, Guid>
+    public class CreatePaymentCommandHandler : CreateEntityCommandHandler<CreatePaymentCommand, Payment, Guid>
     {
-        private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Payment> _paymentRepository;
-
-        public CreatePaymentCommandHandler(IMapper mapper, IAsyncRepository<Payment> paymentRepository)
+        public CreatePaymentCommandHandler(IAsyncRepository<Payment> repository, IMapper mapper) : base(repository, mapper)
         {
-            _mapper = mapper;
-            _paymentRepository = paymentRepository;
         }
-        public async Task<Guid> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
-        {
-            var @payment = _mapper.Map<Payment>(request);
 
-            @payment = await _paymentRepository.AddAsync(payment);
-
-            return @payment.Id;
-        }
+        protected override Guid BuildResponse(Payment entity) => entity.Id;
     }
 }
