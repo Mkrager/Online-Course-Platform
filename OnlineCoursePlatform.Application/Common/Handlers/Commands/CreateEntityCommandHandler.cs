@@ -3,7 +3,7 @@ using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Common;
 
-namespace OnlineCoursePlatform.Application.Common.Handlers
+namespace OnlineCoursePlatform.Application.Common.Handlers.Commands
 {
     public abstract class CreateEntityCommandHandler<TCommand, TEntity, TResponse>
         : IRequestHandler<TCommand, TResponse>

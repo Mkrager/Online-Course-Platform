@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using OnlineCoursePlatform.Application.Common.Handlers;
+using OnlineCoursePlatform.Application.Common.Handlers.Commands;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 

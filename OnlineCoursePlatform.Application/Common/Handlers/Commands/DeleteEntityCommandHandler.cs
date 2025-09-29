@@ -3,7 +3,7 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Common;
 using OnlineCoursePlatform.Application.Exceptions;
 
-namespace OnlineCoursePlatform.Application.Common.Handlers
+namespace OnlineCoursePlatform.Application.Common.Handlers.Commands
 {
     public abstract class DeleteEntityCommandHandler<TCommand, TEntity>
         : IRequestHandler<TCommand, Unit>
