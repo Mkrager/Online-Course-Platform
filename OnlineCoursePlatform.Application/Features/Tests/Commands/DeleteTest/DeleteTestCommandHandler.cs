@@ -1,31 +1,15 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using OnlineCoursePlatform.Application.Common.Handlers;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.Tests.Commands.DeleteTest
 {
-    public class DeleteTestCommandHandler : IRequestHandler<DeleteTestCommand>
+    public class DeleteTestCommandHandler : DeleteEntityCommandHandler<DeleteTestCommand, Test>
     {
-        private readonly IMapper _mapper;
-        private readonly IAsyncRepository<Test> _testRepository;
-
-        public DeleteTestCommandHandler(IMapper mapper, IAsyncRepository<Test> testRepository)
+        public DeleteTestCommandHandler(IAsyncRepository<Test> repository) : base(repository)
         {
-            _mapper = mapper;
-            _testRepository = testRepository;
         }
-        public async Task<Unit> Handle(DeleteTestCommand request, CancellationToken cancellationToken)
-        {
-            var testToDelete = await _testRepository.GetByIdAsync(request.Id);
 
-            if (testToDelete == null)
-                throw new NotFoundException(nameof(Test), request.Id);
-
-            await _testRepository.DeleteAsync(testToDelete);
-
-            return Unit.Value;
-        }
+        protected override Guid GetEntityId(DeleteTestCommand command) => command.Id;
     }
 }
