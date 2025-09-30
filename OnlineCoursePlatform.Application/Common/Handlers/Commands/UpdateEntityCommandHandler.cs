@@ -7,7 +7,7 @@ using OnlineCoursePlatform.Domain.Common;
 
 namespace OnlineCoursePlatform.Application.Common.Handlers
 {
-    public abstract class UpdateEntityCommandHandler<TCommand, TEntity, TResponse>
+    public abstract class UpdateEntityCommandHandler<TCommand, TEntity>
         : MappedEntityCommandHandler<TEntity>, IRequestHandler<TCommand, Unit>
         where TCommand : IRequest<Unit>
         where TEntity : BaseEntity
