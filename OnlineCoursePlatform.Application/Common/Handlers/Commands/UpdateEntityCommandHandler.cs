@@ -1,23 +1,20 @@
 ﻿using AutoMapper;
 using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers.Base;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Common;
 
 namespace OnlineCoursePlatform.Application.Common.Handlers
 {
-    public abstract class UpdateEntityCommandHandler<TCommand, TEntity>
-        : IRequestHandler<TCommand, Unit>
+    public abstract class UpdateEntityCommandHandler<TCommand, TEntity, TResponse>
+        : MappedEntityCommandHandler<TEntity>, IRequestHandler<TCommand, Unit>
         where TCommand : IRequest<Unit>
         where TEntity : BaseEntity
-    {
-        protected readonly IAsyncRepository<TEntity> _repository;
-        protected readonly IMapper _mapper;
 
-        protected UpdateEntityCommandHandler(IAsyncRepository<TEntity> repository, IMapper mapper)
+    {
+        protected UpdateEntityCommandHandler(IAsyncRepository<TEntity> repository, IMapper mapper) : base(repository, mapper)
         {
-            _repository = repository;
-            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(TCommand request, CancellationToken cancellationToken)

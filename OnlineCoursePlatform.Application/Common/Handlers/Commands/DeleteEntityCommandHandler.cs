@@ -2,19 +2,17 @@
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Common;
 using OnlineCoursePlatform.Application.Exceptions;
+using OnlineCoursePlatform.Application.Common.Handlers.Base;
 
 namespace OnlineCoursePlatform.Application.Common.Handlers.Commands
 {
     public abstract class DeleteEntityCommandHandler<TCommand, TEntity>
-        : IRequestHandler<TCommand, Unit>
+        : EntityCommandHandler<TEntity>, IRequestHandler<TCommand, Unit>
         where TCommand : IRequest<Unit>
         where TEntity : BaseEntity
     {
-        protected readonly IAsyncRepository<TEntity> _repository;
-
-        protected DeleteEntityCommandHandler(IAsyncRepository<TEntity> repository)
+        protected DeleteEntityCommandHandler(IAsyncRepository<TEntity> repository) : base(repository)
         {
-            _repository = repository;
         }
 
         public async Task<Unit> Handle(TCommand request, CancellationToken cancellationToken)
