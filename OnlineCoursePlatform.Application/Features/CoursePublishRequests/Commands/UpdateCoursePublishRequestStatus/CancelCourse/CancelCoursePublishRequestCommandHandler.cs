@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using OnlineCoursePlatform.Application.Common.Handlers.Commands;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
@@ -6,23 +7,17 @@ using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
 {
-    public class CancelCoursePublishRequestCommandHandler : IRequestHandler<CancelCoursePublishRequestCommand>
+    public class CancelCoursePublishRequestCommandHandler
+        : BaseUpdateRequestStatusCommandHandler<CoursePublishRequest, CancelCoursePublishRequestCommand>
     {
-        private readonly IRequestRepository<CoursePublishRequest> _requestRepository;
         public CancelCoursePublishRequestCommandHandler(IRequestRepository<CoursePublishRequest> requestRepository)
+            : base(requestRepository) { }
+
+        protected override Guid GetId(CancelCoursePublishRequestCommand request) => request.Id;
+
+        protected override async Task HandleRequestAsync(CoursePublishRequest entity, CancelCoursePublishRequestCommand request, CancellationToken cancellationToken)
         {
-            _requestRepository = requestRepository;
-        }
-        public async Task<Unit> Handle(CancelCoursePublishRequestCommand request, CancellationToken cancellationToken)
-        {
-            var coursePublishRequest = await _requestRepository.GetByIdAsync(request.Id);
-
-            if (coursePublishRequest == null)
-                throw new NotFoundException(nameof(CoursePublishRequest), request.Id);
-
-            await _requestRepository.UpdateStatusAsync(coursePublishRequest, RequestStatus.Canceled);
-
-            return Unit.Value;
+            await UpdateStatusAsync(entity, RequestStatus.Canceled);
         }
     }
 }
