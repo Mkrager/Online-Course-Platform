@@ -1,23 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts;
-using OnlineCoursePlatform.Persistence.Repositories;
 using OnlineCoursePlatform.Persistence;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 using OnlineCoursePlatform.Persistence.Interceptors;
+using OnlineCoursePlatform.Persistence.Repositories;
 
 namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 {
-    public class CoursePublishRequestRepositoryTests
+    public class RequestRepositoryTests
     {
         private readonly OnlineCoursePlatformDbContext _dbContext;
-        private readonly CoursePublishRequestRepository _repository;
+        private readonly RequestRepository<CoursePublishRequest> _repository;
         private readonly Mock<ICurrentUserService> _currentUserServiceMock;
         private readonly AuditableEntitySaveChangesInterceptor _auditableEntitySaveChangesInterceptor;
         private readonly string _currentUserId;
 
-        public CoursePublishRequestRepositoryTests()
+        public RequestRepositoryTests()
         {
             var options = new DbContextOptionsBuilder<OnlineCoursePlatformDbContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
@@ -29,7 +29,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
 
             _auditableEntitySaveChangesInterceptor = new AuditableEntitySaveChangesInterceptor(_currentUserServiceMock.Object);
             _dbContext = new OnlineCoursePlatformDbContext(options, _auditableEntitySaveChangesInterceptor);
-            _repository = new CoursePublishRequestRepository(_dbContext);
+            _repository = new RequestRepository<CoursePublishRequest>(_dbContext);
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.CoursePublishRequests.Add(coursePublishRequest2);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursePublishRequestByUserIdAsync(_currentUserId);
+            var result = await _repository.GetRequestByUserIdAsync(_currentUserId);
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
@@ -157,7 +157,7 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             _dbContext.CoursePublishRequests.Update(coursePublishRequest);
             await _dbContext.SaveChangesAsync();
 
-            var result = await _repository.GetCoursePublishRequestsAsync(RequestStatus.Pending);
+            var result = await _repository.GetRequestsByStatusAsync(RequestStatus.Pending);
 
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
