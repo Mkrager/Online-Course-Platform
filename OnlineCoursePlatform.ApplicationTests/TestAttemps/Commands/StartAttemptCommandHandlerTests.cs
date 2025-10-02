@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.TestAttemps.Commands
         [Fact]
         public async Task Should_Add_TestAttempt_Successfully()
         {
-            var handler = new StartAttemptCommandHandler(_mapper, _mockTestAttemptRepository.Object);
+            var handler = new StartAttemptCommandHandler(_mockTestAttemptRepository.Object, _mapper);
 
             var command = new StartAttemptCommand
             {

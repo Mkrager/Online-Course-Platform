@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async Task UpdateLesson_ValidCommand_UpdatesLessonSuccessfully()
         {
-            var handler = new UpdateLessonCommandHandler(_mapper, _mockLessonRepository.Object);
+            var handler = new UpdateLessonCommandHandler(_mockLessonRepository.Object, _mapper);
 
             var updateLessonCommand = new UpdateLessonCommand
             {

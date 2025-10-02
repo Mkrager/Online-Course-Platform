@@ -2,6 +2,7 @@
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.RejectCourse;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
+using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 using Shouldly;
 
@@ -9,7 +10,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
 {
     public class RejectCoursePublishRequestCommandTest
     {
-        private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
+        private readonly Mock<IRequestRepository<CoursePublishRequest>> _mockCoursePublishRequestRepository;
 
         public RejectCoursePublishRequestCommandTest()
         {

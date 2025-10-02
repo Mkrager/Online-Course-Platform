@@ -3,6 +3,7 @@ using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
+using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 using Shouldly;
 
@@ -10,7 +11,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
 {
     public class ApproveCoursePublishRequestCommandTest
     {
-        private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
+        private readonly Mock<IRequestRepository<CoursePublishRequest>> _mockCoursePublishRequestRepository;
         private readonly Mock<IMediator> _mockMediator;
         public ApproveCoursePublishRequestCommandTest()
         {

@@ -2,6 +2,7 @@
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
+using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 using Shouldly;
 
@@ -9,7 +10,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
 {
     public class CancelCoursePublishRequestCommandTest
     {
-        private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
+        private readonly Mock<IRequestRepository<CoursePublishRequest>> _mockCoursePublishRequestRepository;
 
         public CancelCoursePublishRequestCommandTest()
         {
@@ -21,7 +22,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
         {
             var handler = new CancelCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
 
-            var command = new ApproveCoursePublishRequestCommand()
+            var command = new CancelCoursePublishRequestCommand()
             {
                 Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6")
             };

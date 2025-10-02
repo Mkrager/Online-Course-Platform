@@ -9,7 +9,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async Task UpdateCourse_ValidCommand_UpdatesCourseSuccessfully()
         {
-            var handler = new UpdateCourseCommandHandler(_mapper, _mockCourseRepository.Object);
+            var handler = new UpdateCourseCommandHandler(_mockCourseRepository.Object, _mapper);
             var updateCommand = new UpdateCourseCommand
             {
                 Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8"),

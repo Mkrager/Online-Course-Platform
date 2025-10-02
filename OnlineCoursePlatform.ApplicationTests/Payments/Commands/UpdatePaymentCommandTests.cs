@@ -22,7 +22,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
         [Fact]
         public async Task Should_Update_Payment_Successfully()
         {
-            var handler = new UpdatePaymentCommandHandler(_mapper, _mockPaymentRepository.Object);
+            var handler = new UpdatePaymentCommandHandler(_mockPaymentRepository.Object, _mapper);
 
             var command = new UpdatePaymentCommand
             {

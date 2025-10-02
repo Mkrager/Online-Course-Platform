@@ -5,13 +5,14 @@ using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.Ge
 using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList;
 using OnlineCoursePlatform.Application.UnitTests.Base;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
+using OnlineCoursePlatform.Domain.Entities;
 using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queries
 {
     public class GetCoursePublishRequestByUserQueryHandlerTest : TestBase
     {
-        private readonly Mock<ICoursePublishRequestRepository> _mockCoursePublishRequestRepository;
+        private readonly Mock<IRequestRepository<CoursePublishRequest>> _mockCoursePublishRequestRepository;
         private readonly Mock<IUserService> _mockUserService;
         public GetCoursePublishRequestByUserQueryHandlerTest()
         {

@@ -7,7 +7,7 @@ using Shouldly;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
 {
-    public class DeleteLessonCommandTest : TestBase
+    public class DeleteLessonCommandTest
     {
         private readonly Mock<ILessonRepository> _mockLessonRepository;
         public DeleteLessonCommandTest()
@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Lessons.Commands
         [Fact]
         public async Task Should_Delete_Lesson_Successfully()
         {
-            var handler = new DeleteLessonCommandHandler(_mapper, _mockLessonRepository.Object);
+            var handler = new DeleteLessonCommandHandler(_mockLessonRepository.Object);
 
             var result = handler.Handle(new DeleteLessonCommand() { Id = Guid.Parse("b8c3f27a-7b28-4ae6-94c2-91fdc33b77e8") }, CancellationToken.None);
 

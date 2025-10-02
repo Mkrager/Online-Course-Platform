@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Commands
         [Fact]
         public async Task Should_Create_Payment_Successfully()
         {
-            var handler = new CreatePaymentCommandHandler(_mapper, _mockPaymentRepository.Object);
+            var handler = new CreatePaymentCommandHandler(_mockPaymentRepository.Object, _mapper);
 
             var command = new CreatePaymentCommand
             {

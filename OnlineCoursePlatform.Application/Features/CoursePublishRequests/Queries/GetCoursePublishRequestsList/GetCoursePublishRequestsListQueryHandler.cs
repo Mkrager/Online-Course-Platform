@@ -2,23 +2,24 @@
 using MediatR;
 using OnlineCoursePlatform.Application.Contracts.Identity;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Queries.GetCoursePublishRequestsList
 {
     public class GetCoursePublishRequestsListQueryHandler : IRequestHandler<GetCoursePublishRequestsListQuery, List<CoursePublishRequestsListVm>>
     {
-        private readonly ICoursePublishRequestRepository _coursePublishRequestRepository;
+        private readonly IRequestRepository<CoursePublishRequest> _requestRepository;
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
-        public GetCoursePublishRequestsListQueryHandler(ICoursePublishRequestRepository coursePublishRequestRepository, IMapper mapper, IUserService userService)
+        public GetCoursePublishRequestsListQueryHandler(IRequestRepository<CoursePublishRequest> requestRepository, IMapper mapper, IUserService userService)
         {
-            _coursePublishRequestRepository = coursePublishRequestRepository;
+            _requestRepository = requestRepository;
             _mapper = mapper;
             _userService = userService;
         }
         public async Task<List<CoursePublishRequestsListVm>> Handle(GetCoursePublishRequestsListQuery request, CancellationToken cancellationToken)
         {
-            var coursePublishRequests = await _coursePublishRequestRepository.GetCoursePublishRequestsAsync(request.Status);
+            var coursePublishRequests = await _requestRepository.GetRequestsByStatusAsync(request.Status);
 
             var userIds = coursePublishRequests
                 .SelectMany(c => new[] { c.RequestedBy, c.ProcessedBy })

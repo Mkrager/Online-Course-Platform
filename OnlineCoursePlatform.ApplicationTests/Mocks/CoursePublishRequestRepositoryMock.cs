@@ -7,7 +7,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 {
     public class CoursePublishRequestRepositoryMock
     {
-        public static Mock<ICoursePublishRequestRepository> GetCoursePublishRequest()
+        public static Mock<IRequestRepository<CoursePublishRequest>> GetCoursePublishRequest()
         {
             var coursePublishRequests = new List<CoursePublishRequest>()
             {
@@ -25,7 +25,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                 }
             };
 
-            var mockRepository = new Mock<ICoursePublishRequestRepository>();
+            var mockRepository = new Mock<IRequestRepository<CoursePublishRequest>>();
 
             mockRepository.Setup(repo => repo.ListAllAsync())
                 .ReturnsAsync(coursePublishRequests);
@@ -41,10 +41,10 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
             mockRepository.Setup(r => r.GetByIdAsync(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid id) => coursePublishRequests.FirstOrDefault(x => x.Id == id));
 
-            mockRepository.Setup(r => r.GetCoursePublishRequestByUserIdAsync(It.IsAny<string>()))
+            mockRepository.Setup(r => r.GetRequestByUserIdAsync(It.IsAny<string>()))
                 .ReturnsAsync((string userId) => coursePublishRequests.Where(r => r.CreatedBy == userId).ToList());
 
-            mockRepository.Setup(repo => repo.GetCoursePublishRequestsAsync(It.IsAny<RequestStatus?>()))
+            mockRepository.Setup(repo => repo.GetRequestsByStatusAsync(It.IsAny<RequestStatus?>()))
                 .ReturnsAsync((RequestStatus? status) =>
                 {
                     if (status.HasValue)

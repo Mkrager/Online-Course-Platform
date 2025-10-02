@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Payments.Queries
         [Fact]
         public async Task GetPaymentDetails_ReturnsCorrectPaymentetails()
         {
-            var handler = new GetPaymentDetailQueryHandler(_mapper, _mockPaymentRepository.Object);
+            var handler = new GetPaymentDetailQueryHandler(_mockPaymentRepository.Object, _mapper);
 
             var result = await handler.Handle(new GetPaymentDetailQuery() 
             { 

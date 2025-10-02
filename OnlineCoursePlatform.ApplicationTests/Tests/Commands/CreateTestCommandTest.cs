@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Tests.Commands
         [Fact]
         public async Task Should_Create_Test_Successfully()
         {
-            var handler = new CreateTestCommandHandler(_mapper, _mockTestRepository.Object);
+            var handler = new CreateTestCommandHandler(_mockTestRepository.Object, _mapper);
 
             var answer = new AnswerDto
             {

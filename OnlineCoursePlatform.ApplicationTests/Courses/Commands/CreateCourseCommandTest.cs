@@ -19,7 +19,7 @@ namespace OnlineCoursePlatform.ApplicationTests.Courses.Commands
         [Fact]
         public async Task Should_Create_Course_Successfully()
         {
-            var handler = new CreateCourseCommandHandler(_mapper, _mockCourseRepository.Object);
+            var handler = new CreateCourseCommandHandler(_mockCourseRepository.Object, _mapper);
 
             var command = new CreateCourseCommand
             {
