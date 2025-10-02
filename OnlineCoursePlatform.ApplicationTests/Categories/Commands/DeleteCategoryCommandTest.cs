@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Categories.Commands
         [Fact]
         public async Task Delete_Category_RemovesCategoryFromRepo()
         {
-            var handler = new DeleteCategoryCommandHandler(_mapper, _mockCategoryRepository.Object);
+            var handler = new DeleteCategoryCommandHandler(_mockCategoryRepository.Object);
             await handler.Handle(new DeleteCategoryCommand() { Id = Guid.Parse("3f2a3a3e-27c9-4b65-bfb4-2b1e3d4b54ee") }, CancellationToken.None);
 
             var allCourses = await _mockCategoryRepository.Object.ListAllAsync();

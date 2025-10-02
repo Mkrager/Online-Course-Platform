@@ -8,19 +8,19 @@ namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Comman
 {
     public class RejectCoursePublishRequestCommandHandler : IRequestHandler<RejectCoursePublishRequestCommand>
     {
-        private readonly ICoursePublishRequestRepository _coursePublishRequestRepository;
-        public RejectCoursePublishRequestCommandHandler(ICoursePublishRequestRepository coursePublishRequestRepository)
+        private readonly IRequestRepository<CoursePublishRequest> _requestRepository;
+        public RejectCoursePublishRequestCommandHandler(IRequestRepository<CoursePublishRequest> requestRepository)
         {
-            _coursePublishRequestRepository = coursePublishRequestRepository;
+            _requestRepository = requestRepository;
         }
         public async Task<Unit> Handle(RejectCoursePublishRequestCommand request, CancellationToken cancellationToken)
         {
-            var coursePublishRequest = await _coursePublishRequestRepository.GetByIdAsync(request.Id);
+            var coursePublishRequest = await _requestRepository.GetByIdAsync(request.Id);
 
             if (coursePublishRequest == null)
                 throw new NotFoundException(nameof(CoursePublishRequest), request.Id);
 
-            await _coursePublishRequestRepository.UpdateStatusAsync
+            await _requestRepository.UpdateStatusAsync
                 (coursePublishRequest, RequestStatus.Rejected, request.RejectReason);
 
             return Unit.Value;

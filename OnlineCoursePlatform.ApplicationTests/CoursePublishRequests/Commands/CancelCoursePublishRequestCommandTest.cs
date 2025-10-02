@@ -21,7 +21,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
         {
             var handler = new CancelCoursePublishRequestCommandHandler(_mockCoursePublishRequestRepository.Object);
 
-            var command = new CancelCoursePublishRequestCommand()
+            var command = new ApproveCoursePublishRequestCommand()
             {
                 Id = Guid.Parse("6ba684fb-e3bc-418c-8971-2f302b43daf6")
             };

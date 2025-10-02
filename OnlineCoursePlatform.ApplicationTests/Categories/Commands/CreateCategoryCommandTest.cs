@@ -18,7 +18,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Categories.Commands
         [Fact]
         public async Task Handle_ValidCategory_AddedToCategoriesRepo()
         {
-            var handler = new CreateCategoryCommandHandler(_mapper, _mockCategoryRepository.Object);
+            var handler = new CreateCategoryCommandHandler(_mockCategoryRepository.Object, _mapper);
 
             var command = new CreateCategoryCommand() { Name = "dfgkldjklgjkd" };
 
