@@ -24,9 +24,6 @@
 	  <Folder Include="Features\Levels\Commands\" />
 	  <Folder Include="Features\PayPal\Queries\" />
 	  <Folder Include="Features\Questions\Commands\" />
-	  <Folder Include="Features\TeacherApplications\Commands\UpdateCoursePublishRequestStatus\ApproveTeacher\" />
-	  <Folder Include="Features\TeacherApplications\Commands\UpdateCoursePublishRequestStatus\CancelTeacher\" />
-	  <Folder Include="Features\TeacherApplications\Commands\UpdateCoursePublishRequestStatus\RejectTeacher\" />
 	  <Folder Include="Features\TeacherApplications\Queries\" />
 	  <Folder Include="Features\TestAttemps\Queries\" />
 	</ItemGroup>
