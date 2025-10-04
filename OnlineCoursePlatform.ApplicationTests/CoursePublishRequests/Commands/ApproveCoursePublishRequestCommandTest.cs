@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
         private readonly Mock<IMediator> _mockMediator;
         public ApproveCoursePublishRequestCommandTest()
         {
-            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequestRepository();
             _mockMediator = MediatorMock.GetMediator();
         }
 

@@ -14,7 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
 
         public CreateCoursePublishRequestCommadTests()
         {
-            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequestRepository();
         }
 
         [Fact]
@@ -29,12 +29,12 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
 
             var result = await handler.Handle(command, CancellationToken.None);
 
-            var allCategories = await _mockCoursePublishRequestRepository.Object.ListAllAsync();
-            allCategories.Count.ShouldBe(3);
+            var allCoursePublishRequest = await _mockCoursePublishRequestRepository.Object.ListAllAsync();
+            allCoursePublishRequest.Count.ShouldBe(3);
 
-            var createdCourse = allCategories.FirstOrDefault(a => a.CourseId == command.CourseId);
-            createdCourse.ShouldNotBeNull();
-            createdCourse.CourseId.ShouldBe(command.CourseId);
+            var createdCoursePublishRequest = allCoursePublishRequest.FirstOrDefault(a => a.CourseId == command.CourseId);
+            createdCoursePublishRequest.ShouldNotBeNull();
+            createdCoursePublishRequest.CourseId.ShouldBe(command.CourseId);
         }
 
         [Fact]

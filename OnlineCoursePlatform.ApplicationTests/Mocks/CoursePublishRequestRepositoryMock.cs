@@ -7,7 +7,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 {
     public class CoursePublishRequestRepositoryMock
     {
-        public static Mock<IRequestRepository<CoursePublishRequest>> GetCoursePublishRequest()
+        public static Mock<IRequestRepository<CoursePublishRequest>> GetCoursePublishRequestRepository()
         {
             var coursePublishRequests = new List<CoursePublishRequest>()
             {

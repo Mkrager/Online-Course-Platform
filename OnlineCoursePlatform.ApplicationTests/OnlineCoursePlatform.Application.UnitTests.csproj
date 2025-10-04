@@ -33,6 +33,7 @@
 	<ItemGroup>
 	  <Folder Include="Levels\Commands\" />
 	  <Folder Include="PayPal\Queries\" />
+	  <Folder Include="TeacherApplications\Queries\" />
 	  <Folder Include="TestAttemps\Queries\" />
 	</ItemGroup>
 

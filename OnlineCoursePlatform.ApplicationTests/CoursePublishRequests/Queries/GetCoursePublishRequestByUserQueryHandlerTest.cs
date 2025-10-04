@@ -16,7 +16,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Queri
         private readonly Mock<IUserService> _mockUserService;
         public GetCoursePublishRequestByUserQueryHandlerTest()
         {
-            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequestRepository();
             _mockUserService = UserServiceMock.GetUserService();
         }
 

@@ -14,7 +14,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.CoursePublishRequests.Comma
 
         public RejectCoursePublishRequestCommandTest()
         {
-            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequest();
+            _mockCoursePublishRequestRepository = CoursePublishRequestRepositoryMock.GetCoursePublishRequestRepository();
         }
 
         [Fact]
