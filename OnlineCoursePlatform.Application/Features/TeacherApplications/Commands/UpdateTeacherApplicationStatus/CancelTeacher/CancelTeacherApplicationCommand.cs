@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OnlineCoursePlatform.Application.Common.Interfaces;
 
-namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
+namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.CancelTeacher
 {
     public class CancelTeacherApplicationCommand : IRequest, IUserRequest
     {

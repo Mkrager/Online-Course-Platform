@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateCoursePublishRequestStatus.ApproveTeacher
+namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.ApproveTeacher
 {
     public class ApproveTeacherApplicationCommand : IRequest
     {

@@ -3,7 +3,7 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 
-namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
+namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.CancelTeacher
 {
     public class CancelTeacherApplicationCommandHandler
         : BaseUpdateRequestStatusCommandHandler<TeacherApplication, CancelTeacherApplicationCommand>

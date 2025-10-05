@@ -5,7 +5,7 @@ using OnlineCoursePlatform.Application.Features.User.Commands.AssignRole.AssignT
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;
 
-namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateCoursePublishRequestStatus.ApproveTeacher
+namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.ApproveTeacher
 {
     public class ApproveTeacherApplicationCommandHandler
                 : BaseUpdateRequestStatusCommandHandler<TeacherApplication, ApproveTeacherApplicationCommand>

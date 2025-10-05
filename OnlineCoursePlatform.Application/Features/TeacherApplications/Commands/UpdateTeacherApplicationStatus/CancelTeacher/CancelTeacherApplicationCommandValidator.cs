@@ -5,7 +5,7 @@ using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
 using OnlineCoursePlatform.Domain.Entities;
 
-namespace OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.CancelCourse
+namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.CancelTeacher
 {
     public class CancelTeacherApplicationCommandValidator : AccessValidator<CancelTeacherApplicationCommand, ICourseRepository>
     {
