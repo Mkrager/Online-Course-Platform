@@ -1,5 +1,6 @@
 ﻿using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Common.Validators;
+using OnlineCoursePlatform.Application.Contracts;
 using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Application.Exceptions;
@@ -7,21 +8,23 @@ using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.CancelTeacher
 {
-    public class CancelTeacherApplicationCommandValidator : AccessValidator<CancelTeacherApplicationCommand, ICourseRepository>
+    public class CancelTeacherApplicationCommandValidator : AccessValidator<CancelTeacherApplicationCommand, IRequestRepository<TeacherApplication>>
     {
-        public CancelTeacherApplicationCommandValidator(ICourseRepository service, IPermissionService permissionService, string? errorMessage = null) 
-            : base(service, permissionService, errorMessage)
+        public CancelTeacherApplicationCommandValidator(IRequestRepository<TeacherApplication> service, IPermissionService permissionService, string? errorMessage = null) : base(service, permissionService, errorMessage)
         {
         }
 
         protected async override Task<bool> HasAccessInternal(CancelTeacherApplicationCommand model, CancellationToken token)
         {
-            var course = await _service.GetCourseAsync(new CourseFilter() { CoursePublishRequestId = model.Id });
+            var teacherApplication = await _service.GetByIdAsync(model.Id);
 
-            if (course == null)
-                throw new NotFoundException(nameof(Course), model.Id);
+            if (teacherApplication == null)
+                throw new NotFoundException(nameof(TeacherApplication), model.Id);
 
-            return await _service.IsUserCourseTeacherAsync(model.UserId, course.Id);
+            if (teacherApplication.RequestedBy != model.UserId)
+                return false;
+
+            return true;
         }
     }
 }
