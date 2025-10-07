@@ -39,7 +39,7 @@ namespace OnlineCoursePlatform.Api.Controllers
             return NoContent();
         }
 
-        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Default")]
         [HttpPut("cancel/{id}", Name = "CancelTeacherApplication")]
         public async Task<ActionResult<Guid>> Cancel(Guid id)
         {
