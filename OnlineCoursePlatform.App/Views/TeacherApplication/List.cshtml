@@ -1,0 +1,42 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.Request
+@using OnlineCoursePlatform.App.ViewModels.TeacherApplication
+@model List<TeacherApplicationListViewModel>
+
+<div class="category-list-container">
+    <h2>Course Publish Requests</h2>
+    <p>Here you can approve or reject teacher applications.</p>
+    <div class="course-pulish-requests-actions">
+        <button class="btn-lessons" data-status="@RequestStatus.Pending">Pending</button>
+        <button class="btn-lessons" data-status="@RequestStatus.Approved">Approved</button>
+        <button class="btn-lessons" data-status="@RequestStatus.Rejected">Rejected</button>
+    </div>
+
+
+    <div class="course-request-container" id="courseRequestContainer">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var request in Model)
+            {
+                @await Html.PartialAsync("_RequestCard", request)
+            }
+        }
+        else
+        {
+            <p>No requests pending.</p>
+        }
+    </div>
+</div>
+
+@* <script src="~/js/coursePublishRequest/rejectAndApproveCourseRequestStatus.js"></script> *@
+
+<div id="rejectModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <h2>Reject Course</h2>
+        <p>Please provide a reason for rejection:</p>
+        <textarea id="rejectReason" class="modal-textarea"></textarea>
+        <div class="modal-actions">
+            <button class="btn-lessons" onclick="closeRejectModal()">Cancel</button>
+            <button class="btn-lessons btn-danger" id="confirmReject">Reject</button>
+        </div>
+    </div>
+</div>
