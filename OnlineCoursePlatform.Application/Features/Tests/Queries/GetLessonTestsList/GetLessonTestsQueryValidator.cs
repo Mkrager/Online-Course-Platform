@@ -22,7 +22,7 @@ namespace OnlineCoursePlatform.Application.Features.Tests.Queries.GetLessonTests
             if (course == null)
                 throw new NotFoundException(nameof(Course), model.LessonId);
 
-            return await _permissionService.HasUserCoursePermissionAsync(course.Id, model.UserId);
+            return await _permissionService.HasUserCoursePermissionAsync(course, model.UserId);
         }
     }
 }

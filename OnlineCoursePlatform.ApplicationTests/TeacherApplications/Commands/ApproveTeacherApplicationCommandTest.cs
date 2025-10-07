@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using Moq;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
-using OnlineCoursePlatform.Application.Features.CoursePublishRequests.Commands.UpdateCoursePublishRequestStatus.ApproveCourse;
-using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateCoursePublishRequestStatus.ApproveTeacher;
+using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.ApproveTeacher;
 using OnlineCoursePlatform.Application.UnitTests.Mocks;
 using OnlineCoursePlatform.Domain.Entities;
 using OnlineCoursePlatform.Domain.Enums;

@@ -23,7 +23,7 @@ namespace OnlineCoursePlatform.Application.Features.TestAttemps.Commands.StartAt
             if (course == null)
                 return false;
 
-            return await _permissionService.HasUserCoursePermissionAsync(course.Id, model.UserId);
+            return await _permissionService.HasUserCoursePermissionAsync(course, model.UserId);
         }
     }
 }

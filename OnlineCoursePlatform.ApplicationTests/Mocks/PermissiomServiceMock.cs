@@ -1,5 +1,6 @@
 ﻿using Moq;
 using OnlineCoursePlatform.Application.Contracts.Application;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.UnitTests.Mocks
 {
@@ -9,7 +10,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
         {
             var mockRepository = new Mock<IPermissionService>();
 
-            mockRepository.Setup(r => r.HasUserCoursePermissionAsync(It.IsAny<Guid>(), It.IsAny<string>()))
+            mockRepository.Setup(r => r.HasUserCoursePermissionAsync(It.IsAny<Course>(), It.IsAny<string>()))
                 .ReturnsAsync(true);
 
             mockRepository.Setup(r => r.UserHasPrivilegedRole(It.IsAny<List<string>>()))

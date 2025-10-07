@@ -58,11 +58,11 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .FirstOrDefaultAsync(r => r.Id == id);
         }
 
-        //public async Task<bool> IsUserCourseTeacherAsync(string userId, Guid courseId)
-        //{
-        //    var matches = await _dbContext.Courses.AnyAsync(x => x.CreatedBy == userId && x.Id == courseId);
-        //    return matches;
-        //}
+        public async Task<bool> IsUserCourseTeacherAsync(string userId, Guid courseId)
+        {
+            var matches = await _dbContext.Courses.AnyAsync(x => x.CreatedBy == userId && x.Id == courseId);
+            return matches;
+        }
 
         public async Task<Course?> GetCourseAsync(CourseFilter filter)
         {
