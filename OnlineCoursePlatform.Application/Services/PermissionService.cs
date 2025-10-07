@@ -1,23 +1,23 @@
-﻿using OnlineCoursePlatform.Application.Contracts.Application;
+﻿using OnlineCoursePlatform.Application.Common.Extensions;
+using OnlineCoursePlatform.Application.Contracts.Application;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
+using OnlineCoursePlatform.Domain.Entities;
 
 namespace OnlineCoursePlatform.Application.Services
 {
     public class PermissionService : IPermissionService
     {
         private readonly IEnrollmentRepository _enrollmentRepository;
-        private readonly ICourseRepository _courseRepository;
-        public PermissionService(IEnrollmentRepository enrollmentRepository, ICourseRepository courseRepository)
+        public PermissionService(IEnrollmentRepository enrollmentRepository)
         {
             _enrollmentRepository = enrollmentRepository;
-            _courseRepository = courseRepository;
         }
-        public async Task<bool> HasUserCoursePermissionAsync(Guid courseId, string userId)
+        public async Task<bool> HasUserCoursePermissionAsync(Course course, string userId)
         {
-            if (await _enrollmentRepository.IsUserEnrolledInCourseAsync(userId, courseId))
+            if (await _enrollmentRepository.IsUserEnrolledInCourseAsync(userId, course.Id))
                 return true;
 
-            if (await _courseRepository.IsUserCourseTeacherAsync(userId, courseId))
+            if (course.IsCreatedBy(userId))
                 return true;
 
             return false;
