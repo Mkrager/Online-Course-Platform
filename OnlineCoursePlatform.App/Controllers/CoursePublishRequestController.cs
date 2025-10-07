@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
-using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
+using OnlineCoursePlatform.App.ViewModels.Request;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -39,7 +39,7 @@ namespace OnlineCoursePlatform.App.Controllers
         
         [HttpPut]
         [Authorize(Roles = "Moderator")]
-        public async Task<IActionResult> Reject([FromBody] RejectCourseRequestDto rejectCourseRequestDto)
+        public async Task<IActionResult> Reject([FromBody] RejectRequestDto rejectCourseRequestDto)
         {
             await _coursePublishRequestDataService.RejectCourseRequest(rejectCourseRequestDto);
             return Ok(new { redirectToUrl = Url.Action("List", "CoursePublishRequest") });
@@ -66,7 +66,7 @@ namespace OnlineCoursePlatform.App.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Moderator")]
-        public async Task<IActionResult> ListFiltered([FromQuery] CoursePublishStatus? status)
+        public async Task<IActionResult> ListFiltered([FromQuery] RequestStatus? status)
         {
             var coursePublishRequests = await _coursePublishRequestDataService.GetAllCoursePublishRequests(status);
             return Ok(new { data = coursePublishRequests.Data });

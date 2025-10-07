@@ -1,4 +1,6 @@
-﻿namespace OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+﻿using OnlineCoursePlatform.App.ViewModels.Request;
+
+namespace OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
 {
     public class CoursePublishRequestListViewModel
     {
@@ -11,6 +13,6 @@
         public string ProcessedName { get; set; } = string.Empty;
         public DateTime ProcessedAt { get; set; }
         public string? RejectReason { get; set; }
-        public CoursePublishStatus Status { get; set; }
+        public RequestStatus Status { get; set; }
     }
 }

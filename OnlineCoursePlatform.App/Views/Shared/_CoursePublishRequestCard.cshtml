@@ -1,4 +1,5 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+@using OnlineCoursePlatform.App.ViewModels.Request
 @model CoursePublishRequestListViewModel
 
 <div class="course-card">
@@ -9,16 +10,16 @@
         <span class="category">Date: @Model.RequestedDate.ToShortDateString()</span>
     </div>
 
-    @if (Model.Status == CoursePublishStatus.Approved)
+    @if (Model.Status == RequestStatus.Approved)
     {
         <p class="author">Approved By: @Model.ProcessedName (@Model.ProcessedAt.ToShortDateString())</p>
     }
-    else if (Model.Status == CoursePublishStatus.Rejected)
+    else if (Model.Status == RequestStatus.Rejected)
     {
         <p class="author">Rejected By: @Model.ProcessedName (@Model.ProcessedAt.ToShortDateString())</p>
         <p class="author">Rejected reason: @Model.RejectReason</p>
     }
-    else if (Model.Status == CoursePublishStatus.Canceled)
+    else if (Model.Status == RequestStatus.Canceled)
     {
         <p class="author">canceled by the user himself</p>
     }

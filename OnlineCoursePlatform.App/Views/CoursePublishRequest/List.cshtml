@@ -1,13 +1,14 @@
 ﻿@using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+@using OnlineCoursePlatform.App.ViewModels.Request
 @model List<CoursePublishRequestListViewModel>
 
 <div class="category-list-container">
     <h2>Course Publish Requests</h2>
     <p>Here you can approve or reject requests to publish courses.</p>
     <div class="course-pulish-requests-actions">
-        <button class="btn-lessons" data-status="@CoursePublishStatus.Pending">Pending</button>
-        <button class="btn-lessons" data-status="@CoursePublishStatus.Approved">Approved</button>
-        <button class="btn-lessons" data-status="@CoursePublishStatus.Rejected">Rejected</button>
+        <button class="btn-lessons" data-status="@RequestStatus.Pending">Pending</button>
+        <button class="btn-lessons" data-status="@RequestStatus.Approved">Approved</button>
+        <button class="btn-lessons" data-status="@RequestStatus.Rejected">Rejected</button>
     </div>
 
 

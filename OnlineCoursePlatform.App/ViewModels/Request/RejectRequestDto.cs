@@ -1,6 +1,6 @@
-﻿namespace OnlineCoursePlatform.App.ViewModels.CoursePublishRequest
+﻿namespace OnlineCoursePlatform.App.ViewModels.Request
 {
-    public class RejectCourseRequestDto
+    public class RejectRequestDto
     {
         public Guid Id { get; set; }
         public string RejectReason { get; set; } = string.Empty;

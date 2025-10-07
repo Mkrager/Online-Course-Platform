@@ -2,6 +2,7 @@
 using OnlineCoursePlatform.App.Infrastructure.Api;
 using OnlineCoursePlatform.App.Infrastructure.BaseServices;
 using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
+using OnlineCoursePlatform.App.ViewModels.Request;
 using System.Text;
 using System.Text.Json;
 
@@ -25,7 +26,7 @@ namespace OnlineCoursePlatform.App.Services
             return await HandleResponse(response);
         }
 
-        public async Task<ApiResponse> RejectCourseRequest(RejectCourseRequestDto rejectCourseRequestDto)
+        public async Task<ApiResponse> RejectCourseRequest(RejectRequestDto rejectCourseRequestDto)
         {
             var content = new StringContent(
                 JsonSerializer.Serialize(rejectCourseRequestDto),
@@ -41,7 +42,7 @@ namespace OnlineCoursePlatform.App.Services
             return await HandleResponse(response);
         }
 
-        public async Task<ApiResponse<List<CoursePublishRequestListViewModel>>> GetAllCoursePublishRequests(CoursePublishStatus? status)
+        public async Task<ApiResponse<List<CoursePublishRequestListViewModel>>> GetAllCoursePublishRequests(RequestStatus? status)
         {
             var url = "coursePublishRequest";
             if (status.HasValue)
