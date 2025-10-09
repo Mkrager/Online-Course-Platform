@@ -18,6 +18,7 @@ namespace OnlineCoursePlatform.Application
 
             services.AddScoped<ICheckoutService, CheckoutService>();
             services.AddScoped<IPermissionService, PermissionService>();
+            services.AddScoped<IRequestUserNamePopulator, RequestUserNamePopulator>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
