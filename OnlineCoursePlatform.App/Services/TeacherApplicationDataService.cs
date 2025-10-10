@@ -38,6 +38,12 @@ namespace OnlineCoursePlatform.App.Services
             return await HandleResponse<Guid>(response);
         }
 
+        public async Task<ApiResponse<List<TeacherApplicationListViewModel>>> GetTeacherRequests()
+        {
+            var response = await _httpClient.GetAsync("teacherApplication");
+            return await HandleResponse<List<TeacherApplicationListViewModel>>(response);
+        }
+
         public async Task<ApiResponse> RejectTeacherApplication(RejectRequestDto rejectCourseRequestDto)
         {
             var content = new StringContent(
@@ -48,5 +54,7 @@ namespace OnlineCoursePlatform.App.Services
             var response = await _httpClient.PutAsync($"teacherApplication/reject", content);
             return await HandleResponse(response);
         }
+
+        
     }
 }

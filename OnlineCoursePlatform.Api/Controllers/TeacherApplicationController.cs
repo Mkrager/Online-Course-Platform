@@ -5,6 +5,7 @@ using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.Cre
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.ApproveTeacher;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.CancelTeacher;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.RejectTeacher;
+using OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.GetTeacherApplicationLIst;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -12,6 +13,14 @@ namespace OnlineCoursePlatform.Api.Controllers
     [ApiController]
     public class TeacherApplicationController(IMediator mediator) : Controller
     {
+        [Authorize(Roles = "Moderator")]
+        [HttpGet(Name = "GetPendingTeacherApplication")]
+        public async Task<ActionResult<List<TeacherApplicationListVm>>> GetPendingTeacherApplication()
+        {
+            var dtos = await mediator.Send(new GetTeacherApplicationListQuery());
+            return dtos;
+        }
+
         [Authorize(Roles = "Default")]
         [HttpPost(Name = "AddTeacherApplication")]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateTeacherApplicationCommand createTeacherApplicationCommand)
