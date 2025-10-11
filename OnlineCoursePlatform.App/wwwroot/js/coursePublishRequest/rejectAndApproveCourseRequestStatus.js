@@ -43,6 +43,7 @@ function rejectCourse(id, rejectReason) {
         }
     });
 }
+
 const CoursePublishStatusText = {
     0: "Pending",
     1: "Approved",

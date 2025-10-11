@@ -1003,3 +1003,9 @@ input[type="text"] {
     .btn-danger-test:hover {
         background: #28004e !important;
     }
+
+.custom-modal-content p {
+    word-break: break-word;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}

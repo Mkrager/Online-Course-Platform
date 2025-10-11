@@ -26,6 +26,7 @@ builder.Services.AddScoped<ITestDataService, TestDataService>();
 builder.Services.AddScoped<ITestAttemptDataService, TestAttemptDataService>();
 builder.Services.AddScoped<IPayPalService, PayPalService>();
 builder.Services.AddScoped<ICoursePublishRequestDataService, CoursePublishRequestDataService>();
+builder.Services.AddScoped<ITeacherApplicationDataService, TeacherApplicationDataService>();
 builder.Services.AddScoped<ITokenProvider, TokenProvider>();
 
 builder.Services.AddTransient<AuthHeaderHandler>();

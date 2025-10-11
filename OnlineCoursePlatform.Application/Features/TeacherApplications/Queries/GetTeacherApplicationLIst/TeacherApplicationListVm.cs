@@ -10,6 +10,8 @@ namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.
         public DateTime RequestedDate { get; set; }
         public string ProcessedBy { get; set; } = string.Empty;
         public string ProcessedName { get; set; } = string.Empty;
+        public string Bio { get; set; } = string.Empty;
+        public string Experience { get; set; } = string.Empty;
         public DateTime ProcessedAt { get; set; }
         public string? RejectReason { get; set; }
         public RequestStatus Status { get; set; }

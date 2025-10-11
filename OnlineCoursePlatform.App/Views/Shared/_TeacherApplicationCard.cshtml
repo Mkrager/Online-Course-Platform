@@ -3,7 +3,7 @@
 @model TeacherApplicationListViewModel
 
 <div class="course-card">
-    <h3 class="title">Course:<a asp-controller="course" asp-action="details" asp-route-id="@Model.CourseId" class="btn-submit btn-view-details">View details</a></h3>
+    <h3 class="title">Bio:<a class="btn-submit btn-view-details">View bio</a></h3>
 
     <div class="category-section">
         <span class="category">Requested By: @Model.RequestedName</span>
@@ -26,7 +26,6 @@
     else
     {
         <p class="author">Status: @Model.Status</p>
-        <button type="button" class="btn-view-details" onclick="openBioModal()">View bio</button>
 
         <div class="course-request-actions">
             <button type="submit" class="btn-lessons" onclick="approveCourse('@Model.Id')">Approve</button>

@@ -3,21 +3,15 @@
 @model List<TeacherApplicationListViewModel>
 
 <div class="category-list-container">
-    <h2>Course Publish Requests</h2>
+    <h2>Teacher applications</h2>
     <p>Here you can approve or reject teacher applications.</p>
-    <div class="course-pulish-requests-actions">
-        <button class="btn-lessons" data-status="@RequestStatus.Pending">Pending</button>
-        <button class="btn-lessons" data-status="@RequestStatus.Approved">Approved</button>
-        <button class="btn-lessons" data-status="@RequestStatus.Rejected">Rejected</button>
-    </div>
-
 
     <div class="course-request-container" id="courseRequestContainer">
         @if (Model != null && Model.Any())
         {
             foreach (var request in Model)
             {
-                @await Html.PartialAsync("_RequestCard", request)
+                @await Html.PartialAsync("_TeacherApplicationCard", request)
             }
         }
         else
