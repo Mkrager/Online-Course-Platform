@@ -26,5 +26,13 @@ namespace OnlineCoursePlatform.App.Controllers
             await _teacherApplicationDataService.RejectTeacherApplication(rejectRequestDto);
             return Ok(new { redirectToUrl = Url.Action("List", "TeacherApplication") });
         }
+
+        [HttpPut]
+        [Authorize(Roles = "Moderator")]
+        public async Task<IActionResult> Approve(Guid id)
+        {
+            await _teacherApplicationDataService.ApproveTeacherApplication(id);
+            return Ok(new { redirectToUrl = Url.Action("List", "TeacherApplication") });
+        }
     }
 }
