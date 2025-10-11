@@ -29,7 +29,7 @@ namespace OnlineCoursePlatform.App.Controllers
             var response = await _coursePublishRequestDataService.CancelCourseRequest(id);
             
             if (!response.IsSuccess)
-            {
+            { 
                 TempData["ErrorMessage"] = response.ErrorText;
                 return RedirectToAction("Index", "Home");
             }
