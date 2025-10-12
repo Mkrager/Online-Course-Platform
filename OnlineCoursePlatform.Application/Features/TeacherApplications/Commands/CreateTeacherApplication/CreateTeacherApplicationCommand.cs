@@ -8,6 +8,6 @@ namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands
         public string Experience { get; set; } = string.Empty;
 
         public string UserId { get; set; } = string.Empty;
-        public List<string> UserRoles { get; set; } = default!;
+        public List<string> UserRoles { get; set; } = new List<string>();
     }
 }

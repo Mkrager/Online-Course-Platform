@@ -27,7 +27,14 @@ namespace OnlineCoursePlatform.App.Controllers
         [Authorize(Roles = "Default")]
         public async Task<IActionResult> Create([FromBody] CreateTeacherApplicationRequest createTeacherApplicationRequest)
         {
-            await _teacherApplicationDataService.CreateTeacherApplication(createTeacherApplicationRequest);
+            var result = await _teacherApplicationDataService.CreateTeacherApplication(createTeacherApplicationRequest);
+
+            if (!result.IsSuccess)
+            {
+                TempData["ErrorMessage"] = result.ErrorText;
+                return Ok(new { redirectToUrl = Url.Action("Profile", "Account") });
+            }
+
             return Ok(new { redirectToUrl = Url.Action("Profile", "Account") });
         }
 
