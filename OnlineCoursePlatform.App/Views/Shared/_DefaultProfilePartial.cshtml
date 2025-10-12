@@ -3,6 +3,9 @@
 
 <div class="courses-section">
     <h3>Purchased courses</h3>
+
+    <button type="button" class="btn-edit" onclick="openApplicationModal()">Teacher application</button>
+
     <div class="course-list">
         @foreach (var enrollments in Model.Enrollments)
         {
@@ -20,3 +23,19 @@
         }
     </div>
 </div>
+
+<div id="applicationModal" class="custom-modal">
+    <div class="custom-modal-content">
+        <h2>Send application</h2>
+        <p class="application-label">Please provide a bio:</p>
+        <textarea id="bio" class="modal-textarea"></textarea>
+        <p class="application-label">Please provide an experience:</p>
+        <textarea id="experience" class="modal-textarea"></textarea>
+        <div class="modal-actions">
+            <button class="btn-lessons btn-danger" onclick="closeApplicationModal()">Close</button>
+            <button class="btn-lessons" id="createApplciation">Send application</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/teacherApplication/createTeacherApplication.js"></script>

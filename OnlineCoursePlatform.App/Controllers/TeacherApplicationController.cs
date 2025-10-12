@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
 using OnlineCoursePlatform.App.ViewModels.Request;
+using OnlineCoursePlatform.App.ViewModels.TeacherApplication;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -13,10 +14,21 @@ namespace OnlineCoursePlatform.App.Controllers
         {
             _teacherApplicationDataService = teacherApplicationDataService;
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Moderator")]
         public async Task<IActionResult> List()
         {
             var list = await _teacherApplicationDataService.GetTeacherRequests();
             return View(list.Data);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Default")]
+        public async Task<IActionResult> Create([FromBody] CreateTeacherApplicationRequest createTeacherApplicationRequest)
+        {
+            await _teacherApplicationDataService.CreateTeacherApplication(createTeacherApplicationRequest);
+            return Ok(new { redirectToUrl = Url.Action("Profile", "Account") });
         }
 
         [HttpPut]

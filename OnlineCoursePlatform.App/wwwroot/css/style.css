@@ -954,7 +954,6 @@ input[type="text"] {
     background: #000000eb;
     color: #fff;
     resize: vertical;
-    margin-top: 15px;
     min-height: 100px;
 }
 
@@ -1009,3 +1008,9 @@ input[type="text"] {
     margin-bottom: 10px;
     line-height: 1.5;
 }
+
+.application-label {
+    margin-top: 10px;
+    font-size: 23px;
+}
+
