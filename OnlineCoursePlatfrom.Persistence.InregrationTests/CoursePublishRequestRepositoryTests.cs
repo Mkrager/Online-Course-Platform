@@ -101,6 +101,60 @@ namespace OnlineCoursePlatfrom.Persistence.InregrationTests
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
         }
+        [Fact]
+        public async Task GetCoursePublishRequestsByUserIdAndStatus_WhenUserHasCoursePublishRequestsWithCorrectStatus_ReturnsUserCoursePublishRequests()
+        {
+            var courseId = Guid.NewGuid();
+
+            var levelId = Guid.NewGuid();
+
+            var level = new Level
+            {
+                Id = levelId,
+                Name = "Test"
+            };
+
+            var categoryId = Guid.NewGuid();
+
+            var category = new Category
+            {
+                Id = categoryId,
+                Name = "Test",
+            };
+
+            var course = new Course
+            {
+                Id = courseId,
+                LevelId = levelId,
+                CategoryId = categoryId,
+                Title = "TestCourse",
+                Level = level,
+                Category = category,
+            };
+
+            var coursePublishRequest = new CoursePublishRequest
+            {
+                CourseId = courseId,
+                Status = RequestStatus.Pending,
+            };
+
+            var coursePublishRequest2 = new CoursePublishRequest
+            {
+                CourseId = courseId,
+                Status = RequestStatus.Pending,
+            };
+
+
+            _dbContext.Courses.Add(course);
+            _dbContext.CoursePublishRequests.Add(coursePublishRequest);
+            _dbContext.CoursePublishRequests.Add(coursePublishRequest2);
+            await _dbContext.SaveChangesAsync();
+
+            var result = await _repository.GetRequestsByUserIdAndStatusAsync(_currentUserId, RequestStatus.Pending);
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+        }
 
         [Fact]
         public async Task GetCoursePublishRequests_oursePublishRequestsHasCorrectStatus_ReturnsFilteredCoursePublishRequests()
