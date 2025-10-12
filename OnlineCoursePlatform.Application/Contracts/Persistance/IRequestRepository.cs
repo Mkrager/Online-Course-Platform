@@ -8,5 +8,6 @@ namespace OnlineCoursePlatform.Application.Contracts.Persistance
         Task<List<T>> GetRequestByUserIdAsync(string userId);
         Task<List<T>> GetRequestsByStatusAsync(RequestStatus? status);
         Task UpdateStatusAsync(T request, RequestStatus newStatus, string? rejectReason = null);
+        Task<List<T>> GetRequestsByUserIdAndStatusAsync(string userId, RequestStatus status);
     }
 }

@@ -18,6 +18,14 @@ namespace OnlineCoursePlatform.Persistence.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<T>> GetRequestsByUserIdAndStatusAsync(string userId, RequestStatus status)
+        {
+            return await _dbContext.Set<T>()
+                .Where(r => r.CreatedBy == userId)
+                .Where(r => r.Status == status)
+                .ToListAsync();
+        }
+
         public async Task<List<T>> GetRequestsByStatusAsync(RequestStatus? status)
         {
             var query = _dbContext.Set<T>().AsQueryable();
