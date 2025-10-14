@@ -7,6 +7,7 @@ namespace OnlineCoursePlatform.App.Contracts
     public interface ITeacherApplicationDataService
     {
         Task<ApiResponse<List<TeacherApplicationListViewModel>>> GetTeacherRequests();
+        Task<ApiResponse<List<TeacherApplicationListViewModel>>> GetUserPendingTeacherRequests();
         Task<ApiResponse> ApproveTeacherApplication(Guid id);
         Task<ApiResponse> CancelTeacherApplication(Guid id);
         Task<ApiResponse> RejectTeacherApplication(RejectRequestDto rejectCourseRequestDto);
