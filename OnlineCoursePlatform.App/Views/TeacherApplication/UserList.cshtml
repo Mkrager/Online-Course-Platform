@@ -1,0 +1,23 @@
+﻿@using OnlineCoursePlatform.App.ViewModels.TeacherApplication;
+@model List<TeacherApplicationListViewModel>;
+
+<div class="category-list-container">
+    <h2>Your teacher applications</h2>
+    <p>Here you can cancel or view your teacher applications</p>
+
+    <div class="course-request-container" id="courseRequestContainer">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var request in Model)
+            {
+                @await Html.PartialAsync("_TeacherApplicationCard", request)
+            }
+        }
+        else
+        {
+            <p>No requests pending.</p>
+        }
+    </div>
+</div>
+
+<script src="~/js/teacherApplication/cancelTeacherApplication.js"></script>

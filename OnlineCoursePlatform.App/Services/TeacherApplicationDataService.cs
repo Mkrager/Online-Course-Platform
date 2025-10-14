@@ -44,7 +44,7 @@ namespace OnlineCoursePlatform.App.Services
             return await HandleResponse<List<TeacherApplicationListViewModel>>(response);
         }
 
-        public async Task<ApiResponse<List<TeacherApplicationListViewModel>>> GetUserPendingTeacherRequests()
+        public async Task<ApiResponse<List<TeacherApplicationListViewModel>>> GetUserTeacherRequests()
         {
             var response = await _httpClient.GetAsync("teacherApplication/user");
             return await HandleResponse<List<TeacherApplicationListViewModel>>(response);

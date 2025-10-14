@@ -42,7 +42,7 @@ namespace OnlineCoursePlatform.App.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                var teacherApplication = await _teacherApplicationDataService.GetUserPendingTeacherRequests();
+                var teacherApplication = await _teacherApplicationDataService.GetUserTeacherRequests();
 
                 response.Data.TeacherApplications = teacherApplication.Data;
                 viewModel = response.Data;

@@ -23,13 +23,13 @@ namespace OnlineCoursePlatform.App.Controllers
             return View(list.Data);
         }
 
-        //[HttpGet]
-        //[Authorize(Roles = "Default")]
-        //public async Task<IActionResult> UserList()
-        //{
-        //    var list = await _teacherApplicationDataService.GetUserPendingTeacherRequests();
-        //    return View(list.Data);
-        //}
+        [HttpGet]
+        [Authorize(Roles = "Default")]
+        public async Task<IActionResult> UserList()
+        {
+            var list = await _teacherApplicationDataService.GetUserTeacherRequests();
+            return View(list.Data);
+        }
 
         [HttpPost]
         [Authorize(Roles = "Default")]
@@ -51,6 +51,14 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Reject([FromBody] RejectRequestDto rejectRequestDto)
         {
             await _teacherApplicationDataService.RejectTeacherApplication(rejectRequestDto);
+            return Ok(new { redirectToUrl = Url.Action("List", "TeacherApplication") });
+        }
+
+        [HttpPut]
+        [Authorize(Roles = "Default")]
+        public async Task<IActionResult> Cancel(Guid id)
+        {
+            await _teacherApplicationDataService.CancelTeacherApplication(id);
             return Ok(new { redirectToUrl = Url.Action("List", "TeacherApplication") });
         }
 

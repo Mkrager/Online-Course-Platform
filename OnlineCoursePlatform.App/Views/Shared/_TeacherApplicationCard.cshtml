@@ -26,11 +26,19 @@
     else
     {
         <p class="author">Status: @Model.Status</p>
-
-        <div class="course-request-actions">
-            <button type="submit" class="btn-lessons" onclick="approveCourse('@Model.Id')">Approve</button>
-            <button type="button" class="btn-lessons btn-danger" onclick="openRejectModal('@Model.Id')">Reject</button>
-        </div>
+        @if (User.IsInRole("Moderator"))
+        {
+            <div class="course-request-actions">
+                <button type="submit" class="btn-lessons" onclick="approveCourse('@Model.Id')">Approve</button>
+                <button type="button" class="btn-lessons btn-danger" onclick="openRejectModal('@Model.Id')">Reject</button>
+            </div>
+        }
+        else if (User.IsInRole("Default"))
+        {
+            <div class="course-request-actions">
+                <button type="submit" class="btn-lessons btn-danger" onclick="cancelApplication('@Model.Id')">Cancel</button>
+            </div>
+        }
 
     }
 </div>
