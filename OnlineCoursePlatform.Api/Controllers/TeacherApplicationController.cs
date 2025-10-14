@@ -7,6 +7,7 @@ using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.Upd
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.UpdateTeacherApplicationStatus.RejectTeacher;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.GetPendingTeacherApplicationByUser;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.GetTeacherApplicationLIst;
+using OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.GetUserTeacherApplication;
 
 namespace OnlineCoursePlatform.Api.Controllers
 {
@@ -23,10 +24,10 @@ namespace OnlineCoursePlatform.Api.Controllers
         }
 
         [Authorize(Roles = "Default")]
-        [HttpGet("user", Name = "GetUserPendingTeacherApplication")]
-        public async Task<ActionResult<List<TeacherApplicationListVm>>> GetUserPendingTeacherApplication()
+        [HttpGet("user", Name = "GetUserTeacherApplication")]
+        public async Task<ActionResult<List<TeacherApplicationListVm>>> GetUserTeacherApplication()
         {
-            var dtos = await mediator.Send(new GetPendingTeacherApplicationByUserQuery());
+            var dtos = await mediator.Send(new GetTeacherApplicationByUserQuery());
             return dtos;
         }
 
