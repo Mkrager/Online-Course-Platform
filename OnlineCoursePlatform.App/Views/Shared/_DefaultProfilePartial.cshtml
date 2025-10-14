@@ -4,7 +4,10 @@
 <div class="courses-section">
     <h3>Purchased courses</h3>
 
-    <button type="button" class="btn-edit" onclick="openApplicationModal()">Teacher application</button>
+    @if (Model.TeacherApplications.Count == 0)
+    {
+        <button type="button" class="btn-edit" onclick="openApplicationModal()">Teacher application</button>
+    }
 
     <div class="course-list">
         @foreach (var enrollments in Model.Enrollments)

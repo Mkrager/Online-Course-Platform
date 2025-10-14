@@ -7,10 +7,11 @@ namespace OnlineCoursePlatform.App.Controllers
     public class AccountController : Controller
     {
         private readonly IUserDataService _userDataService;
-
-        public AccountController(IUserDataService userDataService)
+        private readonly ITeacherApplicationDataService _teacherApplicationDataService;
+        public AccountController(IUserDataService userDataService, ITeacherApplicationDataService teacherApplicationDataService)
         {
             _userDataService = userDataService;
+            _teacherApplicationDataService = teacherApplicationDataService;
         }
 
         [HttpGet]
@@ -41,6 +42,9 @@ namespace OnlineCoursePlatform.App.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
+                var teacherApplication = await _teacherApplicationDataService.GetUserPendingTeacherRequests();
+
+                response.Data.TeacherApplications = teacherApplication.Data;
                 viewModel = response.Data;
             }
 

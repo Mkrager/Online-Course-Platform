@@ -1,6 +1,7 @@
 ﻿using OnlineCoursePlatform.App.ViewModels.Course;
 using OnlineCoursePlatform.App.ViewModels.CoursePublishRequest;
 using OnlineCoursePlatform.App.ViewModels.Enrollments;
+using OnlineCoursePlatform.App.ViewModels.TeacherApplication;
 
 namespace OnlineCoursePlatform.App.ViewModels.User
 {
@@ -13,5 +14,6 @@ namespace OnlineCoursePlatform.App.ViewModels.User
         public List<CoursePublishRequestListViewModel>? CoursePublishRequests { get; set; }
         public List<StudentEnrollmentsListViewModel>? Enrollments { get; set; }
         public List<CourseListViewModel>? Courses { get; set; }
+        public List<TeacherApplicationListViewModel>? TeacherApplications {  get; set; }
     }
 }
