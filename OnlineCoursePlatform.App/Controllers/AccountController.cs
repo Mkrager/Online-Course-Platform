@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineCoursePlatform.App.Contracts;
+using OnlineCoursePlatform.App.ViewModels.Request;
 
 namespace OnlineCoursePlatform.App.Controllers
 {
@@ -42,9 +43,9 @@ namespace OnlineCoursePlatform.App.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                var teacherApplication = await _teacherApplicationDataService.GetUserTeacherRequests();
+                var pendingTeacherApplication = (await _teacherApplicationDataService.GetUserTeacherRequests()).Data.Where(r => r.Status == RequestStatus.Pending).ToList();
 
-                response.Data.TeacherApplications = teacherApplication.Data;
+                response.Data.TeacherApplications = pendingTeacherApplication;
                 viewModel = response.Data;
             }
 
