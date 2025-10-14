@@ -4,10 +4,14 @@
 <div class="courses-section">
     <h3>Purchased courses</h3>
 
-    @if (Model.TeacherApplications.Count == 0)
-    {
+    @* @if (Model.TeacherApplications.Count == 0) *@
+    @* { *@
         <button type="button" class="btn-edit" onclick="openApplicationModal()">Teacher application</button>
-    }
+    @* } *@
+    @* else *@
+    @* { *@
+    @*     <a asp-controller="TeacherApplication" asp-action="List" class="btn-edit">Teacher application</a> *@
+    @* } *@
 
     <div class="course-list">
         @foreach (var enrollments in Model.Enrollments)
@@ -27,7 +31,7 @@
     </div>
 </div>
 
-<div id="applicationModal" class="custom-modal">
+<div id="createApplicationModal" class="custom-modal">
     <div class="custom-modal-content">
         <h2>Send application</h2>
         <p class="application-label">Please provide a bio:</p>

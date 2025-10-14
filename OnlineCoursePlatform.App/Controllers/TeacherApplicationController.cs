@@ -23,6 +23,14 @@ namespace OnlineCoursePlatform.App.Controllers
             return View(list.Data);
         }
 
+        //[HttpGet]
+        //[Authorize(Roles = "Default")]
+        //public async Task<IActionResult> UserList()
+        //{
+        //    var list = await _teacherApplicationDataService.GetUserPendingTeacherRequests();
+        //    return View(list.Data);
+        //}
+
         [HttpPost]
         [Authorize(Roles = "Default")]
         public async Task<IActionResult> Create([FromBody] CreateTeacherApplicationRequest createTeacherApplicationRequest)

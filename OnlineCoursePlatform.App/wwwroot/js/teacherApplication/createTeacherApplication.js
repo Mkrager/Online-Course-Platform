@@ -27,11 +27,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     function openApplicationModal(requestId) {
         currentRejectId = requestId;
-        document.getElementById("applicationModal").style.display = "flex";
+        document.getElementById("createApplicationModal").style.display = "flex";
     }
 
     function closeApplicationModal() {
-        document.getElementById("applicationModal").style.display = "none";
+        document.getElementById("createApplicationModal").style.display = "none";
         document.getElementById("bio").value = "";
         document.getElementById("experience").value = "";
     }
