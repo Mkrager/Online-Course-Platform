@@ -39,5 +39,19 @@ namespace OnlineCoursePlatform.Application.UnitTests.TeacherApplications.Command
             createdCourse.Experience.ShouldBe(command.Experience);
         }
 
+        [Fact]
+        public async void Validator_ShouldHaveError_WhenUserHavePendingApplication()
+        {
+            var validator = new CreateTeacherApplicationCommandValidator(_mockTeacherRepository.Object);
+            var query = new CreateTeacherApplicationCommand
+            {
+                UserId = "userId"
+            };
+
+            var result = await validator.ValidateAsync(query);
+
+            Assert.False(result.IsValid);
+            Assert.Contains(result.Errors, f => f.PropertyName == "UserId");
+        }
     }
 }

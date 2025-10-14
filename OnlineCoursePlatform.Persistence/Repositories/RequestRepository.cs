@@ -21,8 +21,7 @@ namespace OnlineCoursePlatform.Persistence.Repositories
         public async Task<List<T>> GetRequestsByUserIdAndStatusAsync(string userId, RequestStatus status)
         {
             return await _dbContext.Set<T>()
-                .Where(r => r.CreatedBy == userId)
-                .Where(r => r.Status == status)
+                .Where(r => r.CreatedBy == userId && r.Status == status)
                 .ToListAsync();
         }
 

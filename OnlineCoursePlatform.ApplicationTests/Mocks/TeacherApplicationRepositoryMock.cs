@@ -20,7 +20,7 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                 new TeacherApplication()
                 {
                     Id = Guid.Parse("e706a9cf-6e56-46ed-896a-eadcad69c90f"),
-                    CreatedBy = "userId"
+                    CreatedBy = "userId2"
                 }
             };
 
@@ -50,6 +50,12 @@ namespace OnlineCoursePlatform.Application.UnitTests.Mocks
                         return teacherApplications.Where(r => r.Status == status).ToList();
 
                     return teacherApplications;
+                });
+
+            mockRepository.Setup(repo => repo.GetRequestsByUserIdAndStatusAsync(It.IsAny<string>(), It.IsAny<RequestStatus>()))
+                .ReturnsAsync((string userId, RequestStatus status) =>
+                {
+                    return teacherApplications.Where(r => r.Status == status && r.CreatedBy == userId).ToList();
                 });
 
             mockRepository.Setup(r => r.UpdateStatusAsync(It.IsAny<TeacherApplication>(), It.IsAny<RequestStatus>(), It.IsAny<string?>()))

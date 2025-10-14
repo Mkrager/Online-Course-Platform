@@ -13,14 +13,14 @@ namespace OnlineCoursePlatform.Application.Features.TeacherApplications.Commands
         {
             _teacherApplicationRepository = teacherApplicationRepository;
 
-            RuleFor(e => e)
+            RuleFor(e => e.UserId)
                 .MustAsync(HasUserPendingRequest)
                 .WithMessage("You already have a pending application.");
         }
 
-        private async Task<bool> HasUserPendingRequest(CreateTeacherApplicationCommand model, CancellationToken token)
+        private async Task<bool> HasUserPendingRequest(string? userId, CancellationToken token)
         {
-            var pendingApplciations = await _teacherApplicationRepository.GetRequestsByUserIdAndStatusAsync(model.UserId, RequestStatus.Pending);
+            var pendingApplciations = await _teacherApplicationRepository.GetRequestsByUserIdAndStatusAsync(userId, RequestStatus.Pending);
 
             if(pendingApplciations.Count == 0)
                 return true;
