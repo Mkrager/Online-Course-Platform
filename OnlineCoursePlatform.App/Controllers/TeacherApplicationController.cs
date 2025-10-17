@@ -59,7 +59,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> Cancel(Guid id)
         {
             await _teacherApplicationDataService.CancelTeacherApplication(id);
-            return Ok(new { redirectToUrl = Url.Action("List", "TeacherApplication") });
+            return Ok(new { redirectToUrl = Url.Action("Profile", "Account") });
         }
 
         [HttpPut]
