@@ -901,6 +901,11 @@ input[type="text"] {
     transition: background-color 0.3s ease;
 }
 
+    .btn-pass:hover {
+        background-color: #355F89;
+    }
+
+
 .btn-view-details {
     margin: 10px;
     font-size: 0.7em;

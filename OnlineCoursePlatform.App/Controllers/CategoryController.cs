@@ -15,7 +15,7 @@ namespace OnlineCoursePlatform.App.Controllers
         public async Task<IActionResult> List()
         {
             var categories = await _categoryDataService.GetAllCategories();
-            return View(categories);
+            return View(categories.Data);
         }
     }
 }
