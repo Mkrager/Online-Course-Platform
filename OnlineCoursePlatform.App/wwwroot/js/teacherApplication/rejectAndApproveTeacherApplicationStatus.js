@@ -1,21 +1,4 @@
-﻿const bioModal = document.getElementById("bioModal");
-const viewBioBtn = document.querySelector(".btn-view-details");
-
-viewBioBtn.addEventListener("click", function () {
-    bioModal.style.display = "flex";
-});
-
-function closeBioModal() {
-    bioModal.style.display = "none";
-}
-
-window.addEventListener("click", function (event) {
-    if (event.target === bioModal) {
-        bioModal.style.display = "none";
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
     let currentRejectId = null;
 
     function openRejectModal(requestId) {
