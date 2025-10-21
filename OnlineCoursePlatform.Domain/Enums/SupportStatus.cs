@@ -3,7 +3,8 @@
     public enum SupportStatus
     {
         Open,
-        Answered,
+        InProgress,
+        Resolved,
         Closed
     }
 }

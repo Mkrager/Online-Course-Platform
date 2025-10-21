@@ -3,7 +3,6 @@ using OnlineCoursePlatform.Domain.Enums;
 
 namespace OnlineCoursePlatform.Domain.Entities
 {
-    //TODO: Finish later
     public class SupportTicket : AuditableEntity
     {
         public string Subject { get; set; } = string.Empty;
