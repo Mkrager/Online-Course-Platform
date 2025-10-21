@@ -28,6 +28,9 @@ using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Queries.GetPaymentDetail;
 using OnlineCoursePlatform.Application.Features.SupportTickets.Commands.CreateSupportTicket;
+using OnlineCoursePlatform.Application.Features.SupportTickets.Commands.UpdateSupportTicket.CloseTicket;
+using OnlineCoursePlatform.Application.Features.SupportTickets.Commands.UpdateSupportTicket.InProgressTicket;
+using OnlineCoursePlatform.Application.Features.SupportTickets.Commands.UpdateSupportTicket.ResolveTicket;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.CreateTeacherApplication;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.GetTeacherApplicationLIst;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
@@ -117,6 +120,9 @@ namespace OnlineCoursePlatform.Application.Profiles
             CreateMap<TeacherApplication, TeacherApplicationListVm>().ReverseMap();
 
             CreateMap<SupportTicket, CreateSupportTicketCommand>().ReverseMap();
+            CreateMap<SupportTicket, InProgressTicketCommand>().ReverseMap();
+            CreateMap<SupportTicket, CloseTicketCommand>().ReverseMap();
+            CreateMap<SupportTicket, ResolveTicketCommand>().ReverseMap();
         }
     }
 }
