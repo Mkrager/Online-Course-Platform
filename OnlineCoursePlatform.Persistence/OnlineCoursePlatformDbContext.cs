@@ -28,6 +28,7 @@ namespace OnlineCoursePlatform.Persistence
         public DbSet<CoursePublishRequest> CoursePublishRequests { get; set; }
         public DbSet<TeacherApplication> TeacherApplications { get; set; }
         public DbSet<SupportTicket> SupportTickets { get; set; }
+        public DbSet<SupportTicketMessage> SupportTicketMessages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
