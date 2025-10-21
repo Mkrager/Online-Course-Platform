@@ -1,5 +1,4 @@
-﻿using EmptyFiles;
-using Moq;
+﻿using Moq;
 using OnlineCoursePlatform.Application.Common.Filters;
 using OnlineCoursePlatform.Application.Contracts.Persistance;
 using OnlineCoursePlatform.Domain.Entities;

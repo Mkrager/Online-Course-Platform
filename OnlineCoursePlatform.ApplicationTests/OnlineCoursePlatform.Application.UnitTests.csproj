@@ -32,8 +32,8 @@
 
 	<ItemGroup>
 	  <Folder Include="Levels\Commands\" />
-	  <Folder Include="SupportTicket\" />
 	  <Folder Include="PayPal\Queries\" />
+	  <Folder Include="SupportTickets\Queries\" />
 	  <Folder Include="TeacherApplications\Queries\" />
 	  <Folder Include="TestAttemps\Queries\" />
 	</ItemGroup>

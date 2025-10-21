@@ -16,7 +16,7 @@ namespace OnlineCoursePlatform.Application.Features.SupportTickets.Commands.Upda
 
         protected override Task BeforeUpdateAsync(SupportTicket entity)
         {
-            entity.SupportStatus = SupportStatus.Closed;
+            entity.Status = SupportStatus.Closed;
             return Task.CompletedTask;
         }
     }

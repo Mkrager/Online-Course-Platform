@@ -27,6 +27,7 @@ using OnlineCoursePlatform.Application.Features.Levels.Queries.GetLevelsList;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.CreatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Commands.UpdatePayment;
 using OnlineCoursePlatform.Application.Features.Payments.Queries.GetPaymentDetail;
+using OnlineCoursePlatform.Application.Features.SupportTickets.Commands.CreateSupportTicket;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Commands.CreateTeacherApplication;
 using OnlineCoursePlatform.Application.Features.TeacherApplications.Queries.GetTeacherApplicationLIst;
 using OnlineCoursePlatform.Application.Features.TestAttemps.Commands.EndAttempt;
@@ -114,6 +115,8 @@ namespace OnlineCoursePlatform.Application.Profiles
 
             CreateMap<TeacherApplication, CreateTeacherApplicationCommand>().ReverseMap();
             CreateMap<TeacherApplication, TeacherApplicationListVm>().ReverseMap();
+
+            CreateMap<SupportTicket, CreateSupportTicketCommand>().ReverseMap();
         }
     }
 }
