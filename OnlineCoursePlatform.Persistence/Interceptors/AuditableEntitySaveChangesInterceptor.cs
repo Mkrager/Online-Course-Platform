@@ -73,6 +73,15 @@ namespace OnlineCoursePlatform.Persistence.Interceptors
                         teacherApplication.ProcessedAt = now;
                     }
                 }
+
+                if (entry.Entity is SupportTicket supportTicket)
+                {
+                    if (entry.State == EntityState.Added)
+                    {
+                        supportTicket.Status = SupportStatus.Open;
+                    }
+
+                }
             }
 
             return base.SavingChangesAsync(eventData, result, cancellationToken);

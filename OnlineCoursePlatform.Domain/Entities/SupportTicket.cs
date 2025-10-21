@@ -7,7 +7,7 @@ namespace OnlineCoursePlatform.Domain.Entities
     {
         public string Subject { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
-        public SupportStatus SupportStatus { get; set; }
+        public SupportStatus Status { get; set; }
 
         public ICollection<SupportTicketMessage>? Messages { get; set; }
     }
